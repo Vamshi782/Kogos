@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The H-1B Escape Plan — Europe for Indian Engineers 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #050810;
+  --surface: #0b0f1a;
+  --surface2: #0f1520;
+  --border: #1a2235;
+  --border2: #243048;
+  --cyan: #00e5ff;
+  --cyan-dim: rgba(0,229,255,0.08);
+  --cyan-mid: rgba(0,229,255,0.15);
+  --green: #00ff9d;
+  --green-dim: rgba(0,255,157,0.08);
+  --red: #ff3d71;
+  --red-dim: rgba(255,61,113,0.1);
+  --amber: #ffb800;
+  --amber-dim: rgba(255,184,0,0.1);
+  --white: #e8f0ff;
+  --muted: #4a6080;
+  --text: #8aa0c0;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ── GRID OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,229,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── TOP ALERT BAR ── */
+.alert-bar {
+  background: var(--red);
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 10;
+}
+.alert-bar span { opacity: 0.7; margin: 0 8px; }
+
+/* ── HERO ── */
+.hero {
+  padding: 70px 0 60px;
+  border-bottom: 1px solid var(--border);
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--cyan);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--cyan);
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 10vw, 108px);
+  line-height: 0.95;
+  color: var(--white);
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.hero h1 .red { color: var(--red); }
+.hero h1 .cyan { color: var(--cyan); }
+.hero-sub {
+  font-size: 16px;
+  color: var(--text);
+  max-width: 580px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+.hero-sub strong { color: var(--white); font-weight: 600; }
+
+/* hero stat pills */
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.hpill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 12px;
+}
+.hpill-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.hpill-dot.green { background: var(--green); box-shadow: 0 0 6px var(--green); }
+.hpill-dot.red { background: var(--red); }
+.hpill-dot.amber { background: var(--amber); }
+.hpill-val { color: var(--white); font-weight: 600; }
+.hpill-lbl { color: var(--muted); }
+
+/* ── SALARY SHOWDOWN ── */
+.showdown {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  gap: 0;
+  border: 1px solid var(--border2);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+.sd-side { padding: 28px 24px; }
+.sd-side.trap {
+  background: linear-gradient(135deg, var(--red-dim), rgba(0,0,0,0));
+  border-right: 1px solid var(--border);
+}
+.sd-side.escape {
+  background: linear-gradient(135deg, var(--cyan-dim), rgba(0,0,0,0));
+}
+.sd-middle {
+  background: var(--surface2);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--white);
+  letter-spacing: 2px;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+.sd-middle small { font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 2px; }
+.sd-flag { font-size: 32px; margin-bottom: 8px; }
+.sd-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+.sd-label.bad { color: var(--red); }
+.sd-label.good { color: var(--green); }
+.sd-amount {
+  font-family: var(--font-display);
+  font-size: 36px;
+  letter-spacing: 1px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.sd-amount.bad { color: var(--red); }
+.sd-amount.good { color: var(--green); }
+.sd-per { font-size: 11px; color: var(--muted); }
+.sd-roles { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+.sd-role {
+  font-size: 12px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sd-role::before {
+  content: '→';
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* ── SECTION ── */
+.section { padding: 52px 0 0; }
+.sec-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sec-tag::before { content: '//'; opacity: 0.5; }
+.sec-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 48px);
+  color: var(--white);
+  letter-spacing: 2px;
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+/* ── PROFILE MATRIX ── */
+.matrix { width: 100%; border-collapse: collapse; margin-top: 4px; }
+.matrix thead tr { background: var(--surface2); }
+.matrix th {
+  padding: 11px 14px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  text-align: left;
+  border-bottom: 1px solid var(--border2);
+}
+.matrix td {
+  padding: 11px 14px;
+  font-size: 12.5px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  line-height: 1.5;
+}
+.matrix tr:hover td { background: var(--cyan-dim); }
+.eu-sal { color: var(--green); font-weight: 700; font-family: var(--font-mono); }
+.in-sal { color: var(--red); font-family: var(--font-mono); }
+.ctag {
+  display: inline-block;
+  background: var(--cyan-dim);
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  margin: 1px;
+  border: 1px solid rgba(0,229,255,0.2);
+}
+
+/* ── PATH CARDS ── */
+.paths { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 4px; }
+@media(max-width:580px){ .paths { grid-template-columns: 1fr; } }
+
+.path-card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.path-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+.path-card.path-fast::before { background: var(--green); }
+.path-card.path-study::before { background: var(--amber); }
+.path-card.path-contract::before { background: var(--cyan); }
+.path-card.path-remote::before { background: var(--red); }
+.path-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+
+.path-num {
+  font-family: var(--font-display);
+  font-size: 48px;
+  color: var(--border2);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.path-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.path-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  margin-bottom: 12px;
+}
+.path-fast .path-badge { background: rgba(0,255,157,0.15); color: var(--green); border: 1px solid rgba(0,255,157,0.3); }
+.path-study .path-badge { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(255,184,0,0.3); }
+.path-contract .path-badge { background: var(--cyan-dim); color: var(--cyan); border: 1px solid rgba(0,229,255,0.3); }
+.path-remote .path-badge { background: var(--red-dim); color: var(--red); border: 1px solid rgba(255,61,113,0.3); }
+.path-body { font-size: 12.5px; color: var(--text); line-height: 1.7; }
+
+/* ── COMPANIES ── */
+.co-grid { display: grid; gap: 10px; margin-top: 4px; }
+.co-row {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: border-color 0.2s;
+}
+.co-row:hover { border-color: var(--cyan); }
+.co-rank {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--border2);
+  min-width: 32px;
+  line-height: 1;
+}
+.co-info { flex: 1; }
+.co-name { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 3px; }
+.co-loc { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+.co-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.co-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  border: 1px solid rgba(0,229,255,0.2);
+  background: var(--cyan-dim);
+  color: var(--cyan);
+}
+.co-right { text-align: right; }
+.co-sal {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--green);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.co-visa { font-family: var(--font-mono); font-size: 9px; color: var(--muted); margin-top: 3px; }
+
+/* ── VISA GRID ── */
+.visa-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 4px; }
+@media(max-width:560px){ .visa-cards { grid-template-columns: 1fr; } }
+
+.visa-card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 18px 16px;
+  text-align: center;
+}
+.vc-flag { font-size: 30px; margin-bottom: 8px; }
+.vc-country { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.vc-visa { font-family: var(--font-mono); font-size: 10px; color: var(--cyan); margin-bottom: 8px; letter-spacing: 1px; }
+.vc-time {
+  display: inline-block;
+  background: var(--green-dim);
+  color: var(--green);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.vc-note { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+/* ── MASTERS ── */
+.masters-card {
+  background: linear-gradient(135deg, var(--amber-dim), rgba(0,0,0,0));
+  border: 1px solid rgba(255,184,0,0.2);
+  border-radius: 14px;
+  padding: 28px;
+  margin-top: 4px;
+}
+.masters-card h3 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--amber);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+.masters-card p { font-size: 13.5px; line-height: 1.8; margin-bottom: 16px; }
+.uni-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 8px; margin-top: 4px; }
+@media(max-width:480px){ .uni-grid { grid-template-columns: 1fr; } }
+.uni-item {
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,184,0,0.15);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.uni-name { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 3px; }
+.uni-detail { font-size: 11px; color: var(--muted); line-height: 1.5; }
+.uni-cost { font-family: var(--font-mono); font-size: 11px; color: var(--amber); margin-top: 4px; }
+
+/* ── POSITIONING GUIDE ── */
+.position-grid { display: grid; gap: 10px; margin-top: 4px; }
+.pos-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.pos-step {
+  width: 32px; height: 32px;
+  background: var(--cyan);
+  color: var(--bg);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.pos-title { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.pos-body { font-size: 12.5px; color: var(--text); line-height: 1.6; }
+.pos-code {
+  display: inline-block;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--cyan);
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+/* ── EMAIL TEMPLATE ── */
+.email-terminal {
+  background: #030508;
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+.et-titlebar {
+  background: var(--surface2);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.et-dot { width: 10px; height: 10px; border-radius: 50%; }
+.et-dot.r { background: #ff5f57; }
+.et-dot.y { background: #ffbd2e; }
+.et-dot.g { background: #28c840; }
+.et-title { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-left: 6px; }
+.et-body {
+  padding: 22px 24px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 2;
+  color: var(--text);
+  white-space: pre-line;
+}
+.et-subj { color: var(--amber); }
+.et-hl { color: var(--cyan); }
+.et-fill { color: var(--green); }
+.et-muted { color: var(--muted); }
+
+/* ── CHECKLIST ── */
+.checklist { display: grid; gap: 8px; margin-top: 4px; }
+.chk {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  transition: border-color 0.2s;
+}
+.chk:hover { border-color: var(--cyan); }
+.chk-box {
+  width: 20px; height: 20px;
+  border: 1.5px solid var(--cyan);
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--cyan);
+}
+.chk-t { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+.chk-s { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+
+/* ── FOOTER ── */
+.footer {
+  margin-top: 60px;
+  background: var(--surface);
+  border-top: 1px solid var(--border2);
+  padding: 40px 0;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.footer::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 50%; transform: translateX(-50%);
+  width: 200px; height: 1px;
+  background: var(--cyan);
+  box-shadow: 0 0 20px var(--cyan);
+}
+.footer h3 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: var(--white);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.footer p { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.ig-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--cyan);
+  color: var(--bg);
+  font-weight: 800;
+  font-size: 14px;
+  padding: 12px 30px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  letter-spacing: 0.5px;
+}
+.ig-btn:hover { opacity: 0.85; }
+.footer-disc { margin-top: 16px; font-family: var(--font-mono); font-size: 10px; color: var(--muted); }
+
+/* scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 4px; }
+
+@media(max-width:560px){
+  .showdown { grid-template-columns: 1fr; }
+  .sd-middle { padding: 12px; flex-direction: row; }
+  .matrix { font-size: 11px; }
+  .matrix th, .matrix td { padding: 8px 10px; }
+}
+</style>
+</head>
+<body>
+
+<div class="alert-bar">
+  🚨 H-1B Rejection Rate Rising in 2026 <span>|</span> 7,300+ Indian Tech Professionals Returned to India This Year <span>|</span> There Is a Better Way
+</div>
+
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Indian Engineers — 2026 Escape Plan</div>
+  <h1>ESCAPE<br/>THE <span class="red">H-1B</span><br/><span class="cyan">TRAP.</span></h1>
+  <p class="hero-sub">The US H-1B lottery is a <strong>random number generator</strong> deciding your life. Europe has no lottery. No quota. No waiting. Just a job offer — and you're in.</p>
+
+  <div class="hero-pills">
+    <div class="hpill"><div class="hpill-dot red"></div><span class="hpill-val">67%</span><span class="hpill-lbl">H-1B rejection rate 2025</span></div>
+    <div class="hpill"><div class="hpill-dot amber"></div><span class="hpill-val">7,300+</span><span class="hpill-lbl">Indian tech pros returned to India this year</span></div>
+    <div class="hpill"><div class="hpill-dot green"></div><span class="hpill-val">2 weeks</span><span class="hpill-lbl">Netherlands visa approval time</span></div>
+    <div class="hpill"><div class="hpill-dot green"></div><span class="hpill-val">0</span><span class="hpill-lbl">Lottery. Quota. Waiting years.</span></div>
+  </div>
+
+  <div class="showdown">
+    <div class="sd-side trap">
+      <div class="sd-flag">🇮🇳→🇺🇸</div>
+      <div class="sd-label bad">// The H-1B Trap</div>
+      <div class="sd-amount bad">₹18L–₹35L</div>
+      <div class="sd-per">average Indian IT salary in India/year</div>
+      <div class="sd-roles">
+        <div class="sd-role">67% H-1B rejection rate</div>
+        <div class="sd-role">Years on waiting list</div>
+        <div class="sd-role">Job tied to employer</div>
+        <div class="sd-role">Deportation risk</div>
+        <div class="sd-role">No stability</div>
+      </div>
+    </div>
+    <div class="sd-middle">
+      VS
+      <small>Choose<br/>wisely</small>
+    </div>
+    <div class="sd-side escape">
+      <div class="sd-flag">🇮🇳→🇪🇺</div>
+      <div class="sd-label good">// The Europe Escape</div>
+      <div class="sd-amount good">₹75L–₹1.2Cr</div>
+      <div class="sd-per">European tech salary per year</div>
+      <div class="sd-roles">
+        <div class="sd-role">No lottery. Job offer = visa.</div>
+        <div class="sd-role">Approved in 2–4 weeks</div>
+        <div class="sd-role">Change jobs freely</div>
+        <div class="sd-role">PR in 5 years</div>
+        <div class="sd-role">Spouse works immediately</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SALARY BY ROLE -->
+<div class="section">
+  <div class="sec-tag">salary intelligence</div>
+  <div class="sec-h2">WHAT EUROPE PAYS<br/>YOUR EXACT ROLE</div>
+  <table class="matrix">
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th>Experience</th>
+        <th>India/year</th>
+        <th>Europe/year</th>
+        <th>Top Countries</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="color:var(--white);font-weight:600">Software Engineer</td>
+        <td>2–5 yrs</td>
+        <td class="in-sal">₹15L–₹28L</td>
+        <td class="eu-sal">€65K–€90K</td>
+        <td><span class="ctag">🇳🇱 NL</span><span class="ctag">🇩🇪 DE</span><span class="ctag">🇮🇪 IE</span></td>
+      </tr>
+      <tr>
+        <td style="color:var(--white);font-weight:600">Data Engineer</td>
+        <td>2–5 yrs</td>
+        <td class="in-sal">₹18L–₹35L</td>
+        <td class="eu-sal">€68K–€95K</td>
+        <td><span class="ctag">🇳🇱 NL</span><span class="ctag">🇸🇪 SE</span><span class="ctag">🇩🇪 DE</span></td>
+      </tr>
+      <tr>
+        <td style="color:var(--white);font-weight:600">ML / AI Engineer</td>
+        <td>2–5 yrs</td>
+        <td class="in-sal">₹22L–₹45L</td>
+        <td class="eu-sal">€75K–€110K</td>
+        <td><span class="ctag">🇳🇱 NL</span><span class="ctag">🇩🇪 DE</span><span class="ctag">🇨🇭 CH</span></td>
+      </tr>
+      <tr>
+        <td style="color:var(--white);font-weight:600">DevOps / Cloud Engineer</td>
+        <td>2–5 yrs</td>
+        <td class="in-sal">₹18L–₹38L</td>
+        <td class="eu-sal">€70K–€100K</td>
+        <td><span class="ctag">🇮🇪 IE</span><span class="ctag">🇩🇪 DE</span><span class="ctag">🇳🇱 NL</span></td>
+      </tr>
+      <tr>
+        <td style="color:var(--white);font-weight:600">Full Stack Developer</td>
+        <td>2–5 yrs</td>
+        <td class="in-sal">₹14L–₹28L</td>
+        <td class="eu-sal">€60K–€88K</td>
+        <td><span class="ctag">🇮🇪 IE</span><span class="ctag">🇳🇱 NL</span><span class="ctag">🇸🇪 SE</span></td>
+      </tr>
+      <tr>
+        <td style="color:var(--white);font-weight:600">Data Scientist</td>
+        <td>2–5 yrs</td>
+        <td class="in-sal">₹18L–₹40L</td>
+        <td class="eu-sal">€68K–€95K</td>
+        <td><span class="ctag">🇳🇱 NL</span><span class="ctag">🇩🇰 DK</span><span class="ctag">🇩🇪 DE</span></td>
+      </tr>
+      <tr>
+        <td style="color:var(--white);font-weight:600">Product Manager</td>
+        <td>3–6 yrs</td>
+        <td class="in-sal">₹25L–₹55L</td>
+        <td class="eu-sal">€80K–€115K</td>
+        <td><span class="ctag">🇳🇱 NL</span><span class="ctag">🇮🇪 IE</span><span class="ctag">🇸🇪 SE</span></td>
+      </tr>
+      <tr>
+        <td style="color:var(--white);font-weight:600">Backend Engineer</td>
+        <td>2–5 yrs</td>
+        <td class="in-sal">₹16L–₹32L</td>
+        <td class="eu-sal">€65K–€92K</td>
+        <td><span class="ctag">🇩🇪 DE</span><span class="ctag">🇳🇱 NL</span><span class="ctag">🇦🇹 AT</span></td>
+      </tr>
+      <tr>
+        <td style="color:var(--white);font-weight:600">Security Engineer</td>
+        <td>3–6 yrs</td>
+        <td class="in-sal">₹20L–₹42L</td>
+        <td class="eu-sal">€75K–€108K</td>
+        <td><span class="ctag">🇩🇪 DE</span><span class="ctag">🇳🇱 NL</span><span class="ctag">🇨🇭 CH</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 4 PATHS -->
+<div class="section">
+  <div class="sec-tag">escape routes</div>
+  <div class="sec-h2">4 PATHS OUT.<br/>PICK YOURS.</div>
+  <div class="paths">
+
+    <div class="path-card path-fast">
+      <div class="path-num">01</div>
+      <div class="path-title">Direct Job Application</div>
+      <div class="path-badge">Fastest — 3 to 6 months</div>
+      <div class="path-body">Apply directly to European tech companies. Get an offer. Visa follows automatically in 2–4 weeks. Best for engineers with 3+ years experience. Netherlands and Ireland are your easiest entry points — both English-speaking workplaces, both fast visa processes.</div>
+    </div>
+
+    <div class="path-card path-study">
+      <div class="path-num">02</div>
+      <div class="path-title">Masters First — Then Get Hired</div>
+      <div class="path-badge">Safest — 18 to 24 months</div>
+      <div class="path-body">Come on a student visa. Do a 1–2 year Masters in CS or Data Science at a German or Dutch university — tuition near €0. During your thesis, intern at a European tech company. Graduate with EU degree + EU experience. Companies hire you as a local candidate. Success rate: 10x higher than applying from India.</div>
+    </div>
+
+    <div class="path-card path-contract">
+      <div class="path-num">03</div>
+      <div class="path-title">Indian IT Firm in Europe</div>
+      <div class="path-badge">Easiest Entry Point</div>
+      <div class="path-body">Get transferred by your Indian IT company — TCS, Infosys, Wipro, HCL, Cognizant all have large European offices. Request a transfer to their Netherlands, Germany or Ireland delivery center. Internal transfer bypasses job hunting entirely. Once inside Europe for 2 years, job hop to a local European company for 3x salary.</div>
+    </div>
+
+    <div class="path-card path-remote">
+      <div class="path-num">04</div>
+      <div class="path-title">EU Digital Nomad Visa → Convert</div>
+      <div class="path-badge">New in 2024–2026</div>
+      <div class="path-body">Germany, Portugal, Spain, and Czech Republic now offer Digital Nomad visas. Move to Europe working remotely for an Indian company. Build your network on the ground. Convert to a local work visa when you land a European employer. Start networking in-person — Europeans hire people they have met.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TOP COMPANIES -->
+<div class="section">
+  <div class="sec-tag">target list</div>
+  <div class="sec-h2">TOP COMPANIES<br/>HIRING INDIAN ENGINEERS</div>
+  <div class="co-grid">
+    <div class="co-row">
+      <div class="co-rank">01</div>
+      <div class="co-info">
+        <div class="co-name">ASML</div>
+        <div class="co-loc">📍 Eindhoven, Netherlands 🇳🇱 | asml.com/careers</div>
+        <div class="co-tags"><span class="co-tag">Python</span><span class="co-tag">C++</span><span class="co-tag">ML</span><span class="co-tag">Software Eng</span><span class="co-tag">Data</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€75K–€110K</div><div class="co-visa">HSM Visa</div></div>
+    </div>
+    <div class="co-row">
+      <div class="co-rank">02</div>
+      <div class="co-info">
+        <div class="co-name">Booking.com</div>
+        <div class="co-loc">📍 Amsterdam, Netherlands 🇳🇱 | booking.com/content/careers</div>
+        <div class="co-tags"><span class="co-tag">Java</span><span class="co-tag">Python</span><span class="co-tag">Data Eng</span><span class="co-tag">ML</span><span class="co-tag">Full Stack</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€70K–€105K</div><div class="co-visa">HSM Visa</div></div>
+    </div>
+    <div class="co-row">
+      <div class="co-rank">03</div>
+      <div class="co-info">
+        <div class="co-name">Stripe Ireland</div>
+        <div class="co-loc">📍 Dublin, Ireland 🇮🇪 | stripe.com/jobs</div>
+        <div class="co-tags"><span class="co-tag">Backend</span><span class="co-tag">Ruby</span><span class="co-tag">Go</span><span class="co-tag">Platform Eng</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€80K–€120K</div><div class="co-visa">Critical Skills</div></div>
+    </div>
+    <div class="co-row">
+      <div class="co-rank">04</div>
+      <div class="co-info">
+        <div class="co-name">Spotify</div>
+        <div class="co-loc">📍 Stockholm, Sweden 🇸🇪 | lifeatspotify.com</div>
+        <div class="co-tags"><span class="co-tag">Backend</span><span class="co-tag">Data Eng</span><span class="co-tag">ML</span><span class="co-tag">Python</span><span class="co-tag">Scala</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€75K–€108K</div><div class="co-visa">EU Blue Card</div></div>
+    </div>
+    <div class="co-row">
+      <div class="co-rank">05</div>
+      <div class="co-info">
+        <div class="co-name">SAP</div>
+        <div class="co-loc">📍 Walldorf & Berlin, Germany 🇩🇪 | jobs.sap.com</div>
+        <div class="co-tags"><span class="co-tag">Cloud</span><span class="co-tag">Java</span><span class="co-tag">Python</span><span class="co-tag">S/4HANA</span><span class="co-tag">AI</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€68K–€98K</div><div class="co-visa">EU Blue Card</div></div>
+    </div>
+    <div class="co-row">
+      <div class="co-rank">06</div>
+      <div class="co-info">
+        <div class="co-name">Revolut</div>
+        <div class="co-loc">📍 Dublin, Ireland 🇮🇪 | revolut.com/careers</div>
+        <div class="co-tags"><span class="co-tag">Python</span><span class="co-tag">Kotlin</span><span class="co-tag">Data</span><span class="co-tag">Backend</span><span class="co-tag">Security</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€70K–€100K</div><div class="co-visa">Critical Skills</div></div>
+    </div>
+    <div class="co-row">
+      <div class="co-rank">07</div>
+      <div class="co-info">
+        <div class="co-name">Zalando</div>
+        <div class="co-loc">📍 Berlin, Germany 🇩🇪 | jobs.zalando.com</div>
+        <div class="co-tags"><span class="co-tag">Python</span><span class="co-tag">Scala</span><span class="co-tag">Data Eng</span><span class="co-tag">ML</span><span class="co-tag">DevOps</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€68K–€95K</div><div class="co-visa">EU Blue Card</div></div>
+    </div>
+    <div class="co-row">
+      <div class="co-rank">08</div>
+      <div class="co-info">
+        <div class="co-name">TomTom</div>
+        <div class="co-loc">📍 Amsterdam, Netherlands 🇳🇱 | tomtom.com/careers</div>
+        <div class="co-tags"><span class="co-tag">C++</span><span class="co-tag">AI</span><span class="co-tag">Maps</span><span class="co-tag">Embedded</span><span class="co-tag">Cloud</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€65K–€92K</div><div class="co-visa">HSM Visa</div></div>
+    </div>
+    <div class="co-row">
+      <div class="co-rank">09</div>
+      <div class="co-info">
+        <div class="co-name">ING Bank Tech</div>
+        <div class="co-loc">📍 Amsterdam, Netherlands 🇳🇱 | ing.jobs</div>
+        <div class="co-tags"><span class="co-tag">Java</span><span class="co-tag">Python</span><span class="co-tag">Cloud</span><span class="co-tag">Data Eng</span><span class="co-tag">DevOps</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€65K–€90K</div><div class="co-visa">HSM Visa</div></div>
+    </div>
+    <div class="co-row">
+      <div class="co-rank">10</div>
+      <div class="co-info">
+        <div class="co-name">Siemens Digital Industries</div>
+        <div class="co-loc">📍 Munich & Berlin, Germany 🇩🇪 | siemens.com/careers</div>
+        <div class="co-tags"><span class="co-tag">Python</span><span class="co-tag">IoT</span><span class="co-tag">AI</span><span class="co-tag">Cloud</span><span class="co-tag">Industrial SW</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€65K–€92K</div><div class="co-visa">EU Blue Card</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- VISA GRID -->
+<div class="section">
+  <div class="sec-tag">visa intelligence</div>
+  <div class="sec-h2">NO LOTTERY.<br/>ANYWHERE.</div>
+  <div class="visa-cards">
+    <div class="visa-card">
+      <div class="vc-flag">🇳🇱</div>
+      <div class="vc-country">Netherlands</div>
+      <div class="vc-visa">HIGHLY SKILLED MIGRANT</div>
+      <div class="vc-time">⚡ 2 weeks</div>
+      <div class="vc-note">Salary threshold only. Employer registers with IND. No quota. Spouse gets automatic work permit.</div>
+    </div>
+    <div class="visa-card">
+      <div class="vc-flag">🇩🇪</div>
+      <div class="vc-country">Germany</div>
+      <div class="vc-visa">EU BLUE CARD</div>
+      <div class="vc-time">⚡ 4–8 weeks</div>
+      <div class="vc-note">Salary ≥ €45,300/yr. Also: Germany Opportunity Card — search jobs while already in Germany.</div>
+    </div>
+    <div class="visa-card">
+      <div class="vc-flag">🇮🇪</div>
+      <div class="vc-country">Ireland</div>
+      <div class="vc-visa">CRITICAL SKILLS PERMIT</div>
+      <div class="vc-time">⚡ 3–4 weeks</div>
+      <div class="vc-note">English speaking. All FAANG EU HQs here. Google, Meta, Stripe, LinkedIn, Salesforce, Amazon.</div>
+    </div>
+    <div class="visa-card">
+      <div class="vc-flag">🇸🇪</div>
+      <div class="vc-country">Sweden</div>
+      <div class="vc-visa">WORK PERMIT</div>
+      <div class="vc-time">⚡ 1–4 months</div>
+      <div class="vc-note">Spotify, Klarna, Ericsson HQ. Work permit tied to offer. No minimum salary for most tech roles.</div>
+    </div>
+    <div class="visa-card">
+      <div class="vc-flag">🇩🇰</div>
+      <div class="vc-country">Denmark</div>
+      <div class="vc-visa">PAY LIMIT SCHEME</div>
+      <div class="vc-time">⚡ 4–6 weeks</div>
+      <div class="vc-note">Salary ≥ DKK 465,000/yr. Fast track tech talent. Major companies: Novo Nordisk, Maersk, Unity.</div>
+    </div>
+    <div class="visa-card">
+      <div class="vc-flag">🇵🇹</div>
+      <div class="vc-country">Portugal</div>
+      <div class="vc-visa">DIGITAL NOMAD / D8</div>
+      <div class="vc-time">⚡ 2–3 months</div>
+      <div class="vc-note">Come on Digital Nomad visa. Build network. Convert to work visa when you land a local role. Low cost of living.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MASTERS PATH -->
+<div class="section">
+  <div class="sec-tag">alternative path</div>
+  <div class="sec-h2">STUDY IN EUROPE FIRST.<br/>GET HIRED FASTER.</div>
+  <div class="masters-card">
+    <h3>THE MASTERS SHORTCUT 🎓</h3>
+    <p>If direct applications aren't working — come do a Masters in Computer Science, Data Science, or AI in Europe. German public university tuition: near €0. Dutch university: €2,500/year. By graduation, you have a European degree, European network, and you're already inside the country. Companies hire you as a local. Your Indian work experience adds seniority on top.</p>
+    <div class="uni-grid">
+      <div class="uni-item">
+        <div class="uni-name">TU Munich 🇩🇪</div>
+        <div class="uni-detail">MSc Computer Science | English taught | Top 50 world | Near SAP, Siemens, BMW</div>
+        <div class="uni-cost">~€0/year tuition</div>
+      </div>
+      <div class="uni-item">
+        <div class="uni-name">Delft University 🇳🇱</div>
+        <div class="uni-detail">MSc CS / Data Science | English | Near ASML, Booking.com, TomTom</div>
+        <div class="uni-cost">€2,314/year</div>
+      </div>
+      <div class="uni-item">
+        <div class="uni-name">KTH Stockholm 🇸🇪</div>
+        <div class="uni-detail">MSc Machine Learning | English | Spotify, Klarna, Ericsson nearby</div>
+        <div class="uni-cost">~€0 for EU / low for non-EU</div>
+      </div>
+      <div class="uni-item">
+        <div class="uni-name">University College Dublin 🇮🇪</div>
+        <div class="uni-detail">MSc CS / Data Analytics | English | Google, Meta, Stripe all 20 min away</div>
+        <div class="uni-cost">€12K–€18K/year</div>
+      </div>
+      <div class="uni-item">
+        <div class="uni-name">RWTH Aachen 🇩🇪</div>
+        <div class="uni-detail">MSc Software Systems Engineering | Strong industry ties | Germany's MIT</div>
+        <div class="uni-cost">~€0/year tuition</div>
+      </div>
+      <div class="uni-item">
+        <div class="uni-name">ETH Zurich 🇨🇭</div>
+        <div class="uni-detail">MSc CS / Data Science | World top 7 | Roche, Google Zurich, IBM nearby</div>
+        <div class="uni-cost">~€730/year tuition</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW TO POSITION -->
+<div class="section">
+  <div class="sec-tag">positioning guide</div>
+  <div class="sec-h2">HOW TO POSITION<br/>YOURSELF TO GET HIRED</div>
+  <div class="position-grid">
+    <div class="pos-item">
+      <div class="pos-step">1</div>
+      <div>
+        <div class="pos-title">Update LinkedIn Headline — Do This Today</div>
+        <div class="pos-body">Dutch and German recruiters search LinkedIn first. If your headline doesn't say visa status — they skip you assuming complex immigration.</div>
+        <div class="pos-code">"Senior Data Engineer | Python Spark AWS | 5 Yrs | Open to Netherlands & Germany | EU Blue Card / HSM Visa Eligible"</div>
+      </div>
+    </div>
+    <div class="pos-item">
+      <div class="pos-step">2</div>
+      <div>
+        <div class="pos-title">Remove These From Your CV Immediately</div>
+        <div class="pos-body">Photo, Date of Birth, Marital Status, Objective Statement, References. European CVs: 1–2 pages max, ATS-friendly, no tables. Save as PDF.</div>
+        <div class="pos-code">Filename: FirstName_LastName_SWE_CV_2026.pdf</div>
+      </div>
+    </div>
+    <div class="pos-item">
+      <div class="pos-step">3</div>
+      <div>
+        <div class="pos-title">Create a XING Profile — Germans Use This</div>
+        <div class="pos-body">XING is Germany's LinkedIn. German companies check XING before LinkedIn. Create your profile at xing.com with the exact same content as LinkedIn. Most Indian engineers miss this completely.</div>
+        <div class="pos-code">xing.com → Create profile → Mirror your LinkedIn exactly</div>
+      </div>
+    </div>
+    <div class="pos-item">
+      <div class="pos-step">4</div>
+      <div>
+        <div class="pos-title">Apply on Career Page + Email HR Same Day</div>
+        <div class="pos-body">Apply on the official career page. Same day — find the Engineering Recruiter or TA Manager on LinkedIn. Send a 3-line email. Doing both doubles your callback rate.</div>
+      </div>
+    </div>
+    <div class="pos-item">
+      <div class="pos-step">5</div>
+      <div>
+        <div class="pos-title">Mention Visa Upfront — Never Hide It</div>
+        <div class="pos-body">Say it in line 1 of your email: "I am eligible for the EU Blue Card / Highly Skilled Migrant Visa — straightforward process, no burden on your team." This removes their only hesitation instantly.</div>
+      </div>
+    </div>
+    <div class="pos-item">
+      <div class="pos-step">6</div>
+      <div>
+        <div class="pos-title">Set LinkedIn Job Alerts — Be First to Apply</div>
+        <div class="pos-body">80% of applications come in the first 48 hours. Set daily alerts for "Software Engineer Netherlands", "Data Engineer Germany", "ML Engineer Ireland". Apply within 24 hours of every posting.</div>
+        <div class="pos-code">LinkedIn → Jobs → Set Alert → Daily → Your role + Country</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EMAIL TEMPLATE -->
+<div class="section">
+  <div class="sec-tag">outreach template</div>
+  <div class="sec-h2">COLD EMAIL THAT<br/>GETS REPLIES.</div>
+  <div class="email-terminal">
+    <div class="et-titlebar">
+      <div class="et-dot r"></div>
+      <div class="et-dot y"></div>
+      <div class="et-dot g"></div>
+      <div class="et-title">email_template_eu_tech.txt — Copy → Personalise → Send</div>
+    </div>
+    <div class="et-body">Subject: <span class="et-subj">[Role] — [Tech Stack] | [X] Years | EU Blue Card / HSM Visa Eligible | Ready to Relocate</span>
+
+Hi <span class="et-hl">[Engineering Manager / Recruiter First Name]</span>,
+
+I'm <span class="et-fill">[Your Name]</span> — a <span class="et-fill">[Software / Data / ML] Engineer</span> with <span class="et-fill">[X years]</span> of experience in <span class="et-fill">[Python, Java, Spark, AWS / your stack]</span>.
+
+I'm reaching out directly because <span class="et-hl">[Company Name]</span>'s work on <span class="et-fill">[specific product/feature you genuinely know about]</span> caught my attention.
+
+Three things I'd bring to your team:
+  → <span class="et-fill">[Achievement 1: e.g., Built data pipeline processing 50M events/day — reduced latency by 60%]</span>
+  → <span class="et-fill">[Achievement 2: e.g., Led migration from monolith to microservices — 0 downtime]</span>
+  → <span class="et-fill">[Achievement 3: e.g., Open source contributor — 400+ GitHub stars on ETL library]</span>
+
+<span class="et-hl">Visa note:</span> I'm eligible for the EU Blue Card / Highly Skilled Migrant Visa.
+No complex process on your end — employer registers, approved in 2–4 weeks.
+
+I'd love a 20-minute call at your convenience.
+
+<span class="et-fill">[Your Name]</span>
+<span class="et-muted">[LinkedIn] | [GitHub] | [Portfolio] | [Phone]</span></div>
+  </div>
+</div>
+
+<!-- APPLICATION CHECKLIST -->
+<div class="section">
+  <div class="sec-tag">before you apply</div>
+  <div class="sec-h2">YOUR COMPLETE<br/>CHECKLIST.</div>
+  <div class="checklist">
+    <div class="chk"><div class="chk-box">✓</div><div><div class="chk-t">LinkedIn headline has visa status and "Open to [Country]"</div><div class="chk-s">Single most impactful change. Takes 2 minutes. Do it right now.</div></div></div>
+    <div class="chk"><div class="chk-box">✓</div><div><div class="chk-t">CV is 1–2 pages, no photo, no DOB, ATS-friendly PDF</div><div class="chk-s">No tables, no columns. Plain structure. Named correctly. Saved as PDF.</div></div></div>
+    <div class="chk"><div class="chk-box">✓</div><div><div class="chk-t">GitHub profile is active and shows real projects</div><div class="chk-s">European tech companies check GitHub. Pin your 3 best repos. Add README to each.</div></div></div>
+    <div class="chk"><div class="chk-box">✓</div><div><div class="chk-t">XING profile created (for Germany/Austria/Switzerland)</div><div class="chk-s">Mirror your LinkedIn exactly. German recruiters use this more than LinkedIn for tech roles.</div></div></div>
+    <div class="chk"><div class="chk-box">✓</div><div><div class="chk-t">Applied on company career page directly — not Indeed</div><div class="chk-s">asml.com/careers, booking.com/content/careers, stripe.com/jobs — go direct.</div></div></div>
+    <div class="chk"><div class="chk-box">✓</div><div><div class="chk-t">Cold email sent to recruiter same day as application</div><div class="chk-s">Find Engineering Recruiter or TA Manager on LinkedIn. Email same day you applied online.</div></div></div>
+    <div class="chk"><div class="chk-box">✓</div><div><div class="chk-t">Mentioned visa type in first line of email</div><div class="chk-s">"EU Blue Card / HSM Visa Eligible — no burden on your team." Removes their biggest hesitation.</div></div></div>
+    <div class="chk"><div class="chk-box">✓</div><div><div class="chk-t">LinkedIn Job Alert set for your role + target country</div><div class="chk-s">Daily alert. Apply within 24 hours. Early applicants get 3x more interviews.</div></div></div>
+    <div class="chk"><div class="chk-box">✓</div><div><div class="chk-t">One follow-up email after 7 days — then stop</div><div class="chk-s">"Following up on my [role] application — happy to connect for a brief call." One only. Never more.</div></div></div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="wrap">
+    <h3>FOLLOW FOR WEEKLY INTEL 🚀</h3>
+    <p>Country job lists, visa guides, salary data, and real stories from Indians who escaped the H-1B trap</p>
+    <a class="ig-btn" href="https://instagram.com/vamshi.indianabroad" target="_blank">
+      📱 @vamshi.indianabroad
+    </a>
+    <div class="footer-disc">
+      // Salary data approximate — Glassdoor, LinkedIn Salary, Levels.fyi 2024–2025. Not legal or immigration advice. Always verify with employers.
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

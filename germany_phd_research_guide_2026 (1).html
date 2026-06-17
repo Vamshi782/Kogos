@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PhD & Research in Germany — Complete Guide for Indians 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #f0f4f0;
+  --card: #ffffff;
+  --dark: #0d1f0d;
+  --green: #166534;
+  --green-light: #f0fdf4;
+  --green-mid: rgba(22,101,52,0.1);
+  --yellow: #854d0e;
+  --yellow-light: #fefce8;
+  --yellow-mid: rgba(133,77,14,0.1);
+  --red: #dc2626;
+  --red-light: #fef2f2;
+  --blue: #1d4ed8;
+  --blue-light: #eff6ff;
+  --border: #e2e8e2;
+  --text: #111827;
+  --muted: #6b7280;
+  --de-gold: #ffcc00;
+  --de-red: #dd0000;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 18px 70px;
+}
+
+/* HERO */
+.hero {
+  background: var(--dark);
+  color: white;
+  border-radius: 0 0 24px 24px;
+  padding: 52px 36px 44px;
+  margin-bottom: 36px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '🇩🇪';
+  position: absolute;
+  right: -10px; top: -10px;
+  font-size: 200px;
+  opacity: 0.06;
+  line-height: 1;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(22,101,52,0.3);
+  border: 1px solid rgba(22,101,52,0.5);
+  color: #86efac;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.hero h1 span { color: var(--de-gold); font-style: italic; }
+.hero-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  max-width: 540px;
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+
+/* salary comparison */
+.comp-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  max-width: 520px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.comp-box { padding: 18px 20px; text-align: center; }
+.comp-box.bad { background: rgba(220,38,38,0.2); }
+.comp-box.good { background: rgba(22,101,52,0.25); }
+.comp-mid {
+  background: rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  padding: 0 14px;
+}
+.cb-flag { font-size: 22px; margin-bottom: 5px; }
+.cb-lbl { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+.cb-lbl.bad { color: #fca5a5; }
+.cb-lbl.good { color: #86efac; }
+.cb-num { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 700; line-height: 1.2; }
+.cb-num.bad { color: #f87171; }
+.cb-num.good { color: #86efac; }
+.cb-per { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 3px; }
+
+/* stat pills */
+.stat-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.stat-pill {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sp-val { color: var(--de-gold); font-weight: 700; }
+.sp-lbl { color: rgba(255,255,255,0.5); }
+
+/* SECTION */
+.sec { margin-top: 40px; }
+.sec-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.sec h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 16px;
+}
+
+/* WHO QUALIFIES */
+.qualify-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:560px){ .qualify-grid { grid-template-columns: 1fr; } }
+
+.q-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  border-top: 3px solid var(--green);
+}
+.q-icon { font-size: 22px; margin-bottom: 8px; }
+.q-title { font-weight: 700; font-size: 14px; color: var(--dark); margin-bottom: 4px; }
+.q-body { font-size: 12.5px; color: var(--text); line-height: 1.65; }
+.q-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.q-tag {
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* INSTITUTE CARDS */
+.inst-grid { display: grid; gap: 14px; }
+.inst-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.inst-header {
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.inst-header.mpi { background: linear-gradient(135deg, #1e3a5f, #0d2d4a); color: white; }
+.inst-header.hh { background: linear-gradient(135deg, #1a3a1a, #0d2d0d); color: white; }
+.inst-header.fr { background: linear-gradient(135deg, #4a1a00, #3a1200); color: white; }
+.inst-header.lb { background: linear-gradient(135deg, #2a1a00, #1a1000); color: white; }
+.inst-header.daad { background: linear-gradient(135deg, #1a0a2e, #0d0a1a); color: white; }
+
+.inst-name { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 700; }
+.inst-sub { font-size: 11px; opacity: 0.7; margin-top: 2px; }
+.inst-badge {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.inst-body { padding: 18px 20px; }
+.inst-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 14px; }
+.inst-stat { text-align: center; }
+.is-num { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: var(--green); }
+.is-lbl { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+.inst-desc { font-size: 12.5px; color: var(--text); line-height: 1.7; margin-bottom: 12px; }
+.inst-fields { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+.inst-field {
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.inst-field.yellow {
+  background: var(--yellow-light);
+  color: var(--yellow);
+}
+.inst-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--dark);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+/* FUNDING TABLE */
+.fund-table { width: 100%; border-collapse: collapse; }
+.fund-table thead tr { background: var(--dark); }
+.fund-table th {
+  padding: 10px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: white;
+  text-align: left;
+}
+.fund-table th:first-child { border-radius: 8px 0 0 0; }
+.fund-table th:last-child { border-radius: 0 8px 0 0; }
+.fund-table td {
+  padding: 10px 14px;
+  font-size: 12.5px;
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+  vertical-align: top;
+  line-height: 1.55;
+}
+.fund-table tr:last-child td { border-bottom: none; }
+.fund-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+.fund-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+.amt { font-weight: 700; color: var(--green); }
+.free-tag {
+  display: inline-block;
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+/* ROADMAP */
+.steps { display: grid; gap: 10px; }
+.step {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.step-num {
+  width: 30px; height: 30px;
+  background: var(--green);
+  color: white;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800;
+  flex-shrink: 0;
+}
+.step-title { font-weight: 700; font-size: 13.5px; color: var(--dark); margin-bottom: 4px; }
+.step-body { font-size: 12px; color: var(--muted); line-height: 1.65; }
+.step-code {
+  display: inline-block;
+  margin-top: 5px;
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* PORTALS */
+.portals { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:540px){ .portals { grid-template-columns: 1fr; } }
+.portal-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s;
+}
+.portal-card:hover { border-color: var(--green); }
+.pc-name { font-weight: 700; font-size: 14px; color: var(--dark); margin-bottom: 3px; }
+.pc-url { font-size: 11px; color: var(--green); margin-bottom: 6px; }
+.pc-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+/* AFTER PHD PATH */
+.after-box {
+  background: linear-gradient(135deg, var(--green-light), #f0f9f4);
+  border: 1px solid rgba(22,101,52,0.2);
+  border-radius: 16px;
+  padding: 26px;
+}
+.after-box h3 { font-family: 'Fraunces', serif; font-size: 20px; color: var(--dark); margin-bottom: 8px; }
+.after-box p { font-size: 13.5px; color: var(--text); line-height: 1.75; margin-bottom: 14px; }
+.after-steps { display: grid; gap: 8px; }
+.as-item {
+  background: white;
+  border: 1px solid rgba(22,101,52,0.15);
+  border-radius: 8px;
+  padding: 11px 14px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.as-arrow { color: var(--green); font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+/* EMAIL */
+.email-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.email-top {
+  background: var(--dark);
+  color: white;
+  padding: 12px 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.email-body {
+  padding: 20px;
+  font-size: 13.5px;
+  line-height: 1.9;
+  color: var(--text);
+  white-space: pre-line;
+}
+.ehl { color: var(--green); font-weight: 700; }
+.egold { color: var(--yellow); font-weight: 600; }
+
+/* CHECKLIST */
+.checklist { display: grid; gap: 8px; }
+.chk {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.chk-box {
+  width: 20px; height: 20px;
+  border: 1.5px solid var(--green);
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  color: var(--green);
+}
+.chk-t { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 2px; }
+.chk-s { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+
+/* FOOTER */
+.footer {
+  margin-top: 48px;
+  background: var(--dark);
+  color: white;
+  border-radius: 18px;
+  padding: 32px;
+  text-align: center;
+}
+.footer h3 { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 900; margin-bottom: 8px; }
+.footer p { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 18px; }
+.ig-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green);
+  color: white;
+  font-weight: 800;
+  font-size: 14px;
+  padding: 11px 26px;
+  border-radius: 50px;
+  text-decoration: none;
+}
+.footer-disc { margin-top: 14px; font-size: 10px; color: rgba(255,255,255,0.2); }
+
+@media(max-width:540px){
+  .comp-row { grid-template-columns: 1fr; }
+  .comp-mid { padding: 10px; }
+  .inst-stats { grid-template-columns: repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">🇩🇪 Free Guide — @vamshi.indianabroad</div>
+  <h1>PhD & Research<br/>in <span>Germany</span> —<br/>Your 2026 Playbook</h1>
+  <p class="hero-sub">Germany pays you to do your PhD. Zero tuition. Free healthcare. €1,500–€2,800 per month. And after your PhD — EU Blue Card opens a direct path to permanent residency. Here is everything you need to know.</p>
+
+  <div class="comp-row">
+    <div class="comp-box bad">
+      <div class="cb-flag">🇮🇳</div>
+      <div class="cb-lbl bad">Research salary India</div>
+      <div class="cb-num bad">₹25K–₹50K</div>
+      <div class="cb-per">per month</div>
+    </div>
+    <div class="comp-mid">VS</div>
+    <div class="comp-box good">
+      <div class="cb-flag">🇩🇪</div>
+      <div class="cb-lbl good">PhD stipend Germany</div>
+      <div class="cb-num good">€1,500–€2,800</div>
+      <div class="cb-per">per month + free healthcare + zero tuition</div>
+    </div>
+  </div>
+
+  <div class="stat-pills">
+    <div class="stat-pill"><span class="sp-val">86</span><span class="sp-lbl">Max Planck Institutes</span></div>
+    <div class="stat-pill"><span class="sp-val">76</span><span class="sp-lbl">Fraunhofer Institutes</span></div>
+    <div class="stat-pill"><span class="sp-val">18</span><span class="sp-lbl">Helmholtz Centres</span></div>
+    <div class="stat-pill"><span class="sp-val">€0</span><span class="sp-lbl">Tuition Fees</span></div>
+    <div class="stat-pill"><span class="sp-val">English</span><span class="sp-lbl">No German needed</span></div>
+  </div>
+</div>
+
+<!-- WHO QUALIFIES -->
+<div class="sec">
+  <div class="sec-label">Who qualifies</div>
+  <h2>Your Background Qualifies You 🎓</h2>
+  <div class="qualify-grid">
+    <div class="q-card">
+      <div class="q-icon">⚗️</div>
+      <div class="q-title">Chemistry / Biochemistry</div>
+      <div class="q-body">One of the most recruited profiles at German research institutes. Organic, inorganic, analytical, physical chemistry — all in demand. Max Planck has entire institutes dedicated to chemistry research.</div>
+      <div class="q-tags"><span class="q-tag">MSc Chemistry</span><span class="q-tag">Biochemistry</span><span class="q-tag">Analytical Chem</span></div>
+    </div>
+    <div class="q-card">
+      <div class="q-icon">🧬</div>
+      <div class="q-title">Biotechnology / Life Sciences</div>
+      <div class="q-body">Germany is one of the top biotech research hubs in the world. MSc Biotech, Molecular Biology, Genetics, Microbiology — all actively recruited. Strong Indian community already present.</div>
+      <div class="q-tags"><span class="q-tag">MSc Biotech</span><span class="q-tag">Molecular Biology</span><span class="q-tag">Genetics</span></div>
+    </div>
+    <div class="q-card">
+      <div class="q-icon">💻</div>
+      <div class="q-title">Computer Science / AI / Data</div>
+      <div class="q-body">Fraunhofer and multiple German universities are building massive AI and data science research groups. CS, AI, ML, Data Science graduates are extremely sought after for funded positions.</div>
+      <div class="q-tags"><span class="q-tag">CS</span><span class="q-tag">AI / ML</span><span class="q-tag">Data Science</span></div>
+    </div>
+    <div class="q-card">
+      <div class="q-icon">⚡</div>
+      <div class="q-title">Engineering / Physics / Materials</div>
+      <div class="q-body">Electrical, mechanical, materials science, nanotechnology, photonics — Germany is the engineering research capital of Europe. Helmholtz Association specifically focuses on large-scale engineering projects.</div>
+      <div class="q-tags"><span class="q-tag">Electrical</span><span class="q-tag">Mechanical</span><span class="q-tag">Materials Science</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- THE 4 BIG INSTITUTES -->
+<div class="sec">
+  <div class="sec-label">Research powerhouses</div>
+  <h2>The 4 Institutes That Will Change Your Life</h2>
+  <div class="inst-grid">
+
+    <!-- Max Planck -->
+    <div class="inst-card">
+      <div class="inst-header mpi">
+        <div>
+          <div class="inst-name">Max Planck Society</div>
+          <div class="inst-sub">mpg.de | Germany's most prestigious research organisation</div>
+        </div>
+        <div class="inst-badge">🏆 Elite</div>
+      </div>
+      <div class="inst-body">
+        <div class="inst-stats">
+          <div class="inst-stat"><div class="is-num">86</div><div class="is-lbl">Institutes</div></div>
+          <div class="inst-stat"><div class="is-num">€2,700</div><div class="is-lbl">Monthly gross</div></div>
+          <div class="inst-stat"><div class="is-num">30+</div><div class="is-lbl">Nobel Prizes</div></div>
+        </div>
+        <div class="inst-desc">Max Planck is Germany's flagship fundamental research organisation — equivalent to the Indian CSIR but 10x better funded. They run structured PhD programs called IMPRS (International Max Planck Research Schools) specifically designed for international students including Indians. English is the working language at almost all institutes. No German required. The stipend is approximately €2,700/month gross — that is around ₹2.4 lakhs per month.</div>
+        <div class="inst-fields">
+          <span class="inst-field">Chemistry</span>
+          <span class="inst-field">Biochemistry</span>
+          <span class="inst-field">Molecular Biology</span>
+          <span class="inst-field">Physics</span>
+          <span class="inst-field">Neuroscience</span>
+          <span class="inst-field">Computer Science</span>
+        </div>
+        <a class="inst-link" href="https://www.mpg.de/en/careers" target="_blank">🔗 mpg.de/careers →</a>
+        &nbsp;
+        <a class="inst-link" href="https://www.imprs.mpg.de" target="_blank">🔗 IMPRS Programs →</a>
+      </div>
+    </div>
+
+    <!-- Helmholtz -->
+    <div class="inst-card">
+      <div class="inst-header hh">
+        <div>
+          <div class="inst-name">Helmholtz Association</div>
+          <div class="inst-sub">helmholtz.de | Germany's largest scientific organisation</div>
+        </div>
+        <div class="inst-badge">⚡ Large Scale</div>
+      </div>
+      <div class="inst-body">
+        <div class="inst-stats">
+          <div class="inst-stat"><div class="is-num">18</div><div class="is-lbl">Centres</div></div>
+          <div class="inst-stat"><div class="is-num">€1,800</div><div class="is-lbl">Avg monthly</div></div>
+          <div class="inst-stat"><div class="is-num">45,000</div><div class="is-lbl">Employees</div></div>
+        </div>
+        <div class="inst-desc">Helmholtz runs Germany's largest research infrastructure — including particle accelerators, nuclear reactors, and supercomputers. They focus on energy, earth sciences, aeronautics, and health. Their PhD programs are typically funded through research contracts (TV-L E13 scale). DESY (Hamburg), FZJ (Jülich), and DKFZ (cancer research) are particularly strong for Indian researchers.</div>
+        <div class="inst-fields">
+          <span class="inst-field">Energy Research</span>
+          <span class="inst-field">Health Sciences</span>
+          <span class="inst-field">Aeronautics</span>
+          <span class="inst-field">Earth Sciences</span>
+          <span class="inst-field">Materials</span>
+        </div>
+        <a class="inst-link" href="https://www.helmholtz.de/en/career/" target="_blank">🔗 helmholtz.de/career →</a>
+      </div>
+    </div>
+
+    <!-- Fraunhofer -->
+    <div class="inst-card">
+      <div class="inst-header fr">
+        <div>
+          <div class="inst-name">Fraunhofer Society</div>
+          <div class="inst-sub">fraunhofer.de | Applied research + industry connection</div>
+        </div>
+        <div class="inst-badge">🏭 Industry Link</div>
+      </div>
+      <div class="inst-body">
+        <div class="inst-stats">
+          <div class="inst-stat"><div class="is-num">76</div><div class="is-lbl">Institutes</div></div>
+          <div class="inst-stat"><div class="is-num">€2,000</div><div class="is-lbl">Avg monthly</div></div>
+          <div class="inst-stat"><div class="is-num">30,000</div><div class="is-lbl">Employees</div></div>
+        </div>
+        <div class="inst-desc">Fraunhofer is unique — they do applied research funded by industry partners like Siemens, Bosch, BMW, and BASF. This means your PhD project is directly connected to real industry problems. After your PhD, you often get a job offer from the company that funded your research. Strongest areas: AI, software, manufacturing, materials, biomedical engineering. Very friendly to Indian applicants.</div>
+        <div class="inst-fields">
+          <span class="inst-field yellow">AI & Software</span>
+          <span class="inst-field yellow">Manufacturing</span>
+          <span class="inst-field yellow">Biomedical Engineering</span>
+          <span class="inst-field yellow">Materials</span>
+          <span class="inst-field yellow">Photonics</span>
+        </div>
+        <a class="inst-link" href="https://www.fraunhofer.de/en/jobs-and-careers.html" target="_blank">🔗 fraunhofer.de/careers →</a>
+      </div>
+    </div>
+
+    <!-- Leibniz -->
+    <div class="inst-card">
+      <div class="inst-header lb">
+        <div>
+          <div class="inst-name">Leibniz Association</div>
+          <div class="inst-sub">leibniz-gemeinschaft.de | 97 diverse institutes</div>
+        </div>
+        <div class="inst-badge">🌿 Diverse Fields</div>
+      </div>
+      <div class="inst-body">
+        <div class="inst-stats">
+          <div class="inst-stat"><div class="is-num">97</div><div class="is-lbl">Institutes</div></div>
+          <div class="inst-stat"><div class="is-num">€1,500</div><div class="is-lbl">Avg monthly</div></div>
+          <div class="inst-stat"><div class="is-num">20,000</div><div class="is-lbl">Employees</div></div>
+        </div>
+        <div class="inst-desc">Leibniz covers the widest range of topics — life sciences, environment, economics, social sciences, mathematics, and more. If your field doesn't fit neatly into Max Planck or Fraunhofer, Leibniz likely has an institute for you. Less competitive than Max Planck but still excellent. Strong for ecology, marine science, bioeconomy, and bioinformatics.</div>
+        <div class="inst-fields">
+          <span class="inst-field">Life Sciences</span>
+          <span class="inst-field">Environment</span>
+          <span class="inst-field">Bioinformatics</span>
+          <span class="inst-field">Economics</span>
+          <span class="inst-field">Marine Science</span>
+        </div>
+        <a class="inst-link" href="https://www.leibniz-gemeinschaft.de/en/careers" target="_blank">🔗 leibniz-gemeinschaft.de →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FUNDING TABLE -->
+<div class="sec">
+  <div class="sec-label">Show me the money</div>
+  <h2>Complete Funding Breakdown</h2>
+  <table class="fund-table">
+    <thead>
+      <tr>
+        <th>Funding Type</th>
+        <th>Monthly Amount</th>
+        <th>Duration</th>
+        <th>Who</th>
+        <th>Includes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-weight:700">Max Planck Work Contract (TV-L E13)</td>
+        <td class="amt">€2,700 gross</td>
+        <td>3–4 years</td>
+        <td>All backgrounds</td>
+        <td><span class="free-tag">Health Insurance</span> <span class="free-tag">Pension</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:700">IMPRS Max Planck Scholarship</td>
+        <td class="amt">€1,365–€1,800</td>
+        <td>3–4 years</td>
+        <td>International students</td>
+        <td><span class="free-tag">Health Insurance</span> <span class="free-tag">Travel</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:700">DAAD Research Grant (PhD)</td>
+        <td class="amt">€1,400/month</td>
+        <td>7–24 months</td>
+        <td>All nationalities</td>
+        <td><span class="free-tag">Health Insurance</span> <span class="free-tag">Travel Allowance</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:700">University TV-L E13 (50%)</td>
+        <td class="amt">€1,800–€2,200</td>
+        <td>3–4 years</td>
+        <td>All backgrounds</td>
+        <td><span class="free-tag">Health Insurance</span> <span class="free-tag">Pension</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:700">DAAD WISE Internship (undergrad)</td>
+        <td class="amt">€650–€800</td>
+        <td>2–3 months</td>
+        <td>B.Tech/BSc students</td>
+        <td><span class="free-tag">Accommodation</span> <span class="free-tag">Travel</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:700">Fraunhofer Project PhD</td>
+        <td class="amt">€2,000–€2,500</td>
+        <td>3 years</td>
+        <td>Engineering/CS</td>
+        <td><span class="free-tag">Health Insurance</span> <span class="free-tag">Industry Access</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top:10px;padding:12px 16px;background:var(--green-light);border:1px solid rgba(22,101,52,0.2);border-radius:8px;font-size:12.5px;color:var(--green);">
+    ✅ <strong>Important:</strong> On top of ALL these stipends — Germany has <strong>zero tuition fees</strong> at public universities. You pay only a semester fee of ~€300 which covers public transport pass. Healthcare is included or heavily subsidized. Living costs in smaller German cities (Leipzig, Jena, Göttingen) are €700–€1,000/month. You will save money.
+  </div>
+</div>
+
+<!-- APPLICATION PORTALS -->
+<div class="sec">
+  <div class="sec-label">Where to find positions</div>
+  <h2>6 Portals to Find Your PhD Position</h2>
+  <div class="portals">
+    <a class="portal-card" href="https://www.academics.com" target="_blank">
+      <div class="pc-name">academics.com</div>
+      <div class="pc-url">academics.com</div>
+      <div class="pc-desc">Germany's largest academic job portal. Filter by "Doktorand" or "PhD" and your subject. Updated daily. Most Max Planck and university positions are listed here.</div>
+    </a>
+    <a class="portal-card" href="https://euraxess.ec.europa.eu" target="_blank">
+      <div class="pc-name">EURAXESS</div>
+      <div class="pc-url">euraxess.ec.europa.eu</div>
+      <div class="pc-desc">EU-wide research job portal. Filter by Germany + PhD + your field. Thousands of funded positions. Official EU portal — very reliable.</div>
+    </a>
+    <a class="portal-card" href="https://www.research-in-germany.org" target="_blank">
+      <div class="pc-name">Research in Germany</div>
+      <div class="pc-url">research-in-germany.org</div>
+      <div class="pc-desc">Official German government portal for international researchers. Scholarships, PhD programs, funding — all in one place. Made specifically for Indians and international students.</div>
+    </a>
+    <a class="portal-card" href="https://www.daad.de/en" target="_blank">
+      <div class="pc-name">DAAD Portal</div>
+      <div class="pc-url">daad.de</div>
+      <div class="pc-desc">Germany's official academic exchange portal. Apply for DAAD scholarships here. Also use the Research Explorer to find PhD programs at German universities by subject.</div>
+    </a>
+    <a class="portal-card" href="https://www.imprs.mpg.de" target="_blank">
+      <div class="pc-name">IMPRS Max Planck</div>
+      <div class="pc-url">imprs.mpg.de</div>
+      <div class="pc-desc">Directory of all International Max Planck Research Schools. Find your field → find the school → apply directly. Most have annual application cycles in October–January.</div>
+    </a>
+    <a class="portal-card" href="https://www.findaphd.com/phds/germany" target="_blank">
+      <div class="pc-name">FindAPhD Germany</div>
+      <div class="pc-url">findaphd.com/phds/germany</div>
+      <div class="pc-desc">International PhD search engine. Filter by Germany + your subject. Good for finding English-language programs across all German universities and institutes.</div>
+    </a>
+  </div>
+</div>
+
+<!-- AFTER PHD PATH -->
+<div class="sec">
+  <div class="sec-label">After your PhD</div>
+  <div class="after-box">
+    <h3>🚀 PhD in Germany = Permanent Path to Europe</h3>
+    <p>This is why Germany is the smartest move. Your PhD is not just a degree — it is a 3–4 year visa, a salary, and a permanent residency pathway all in one. After your PhD, you qualify for the EU Blue Card immediately.</p>
+    <div class="after-steps">
+      <div class="as-item"><div class="as-arrow">→</div><div><strong>During PhD (3–4 years):</strong> Paid €1,500–€2,800/month. Free healthcare. Build German work experience and network.</div></div>
+      <div class="as-item"><div class="as-arrow">→</div><div><strong>After PhD — EU Blue Card:</strong> With your German PhD + job offer, you get EU Blue Card in 4–8 weeks. Salary ≥ €45,300/yr needed — all research and industry jobs comfortably exceed this.</div></div>
+      <div class="as-item"><div class="as-arrow">→</div><div><strong>21 months to Permanent Residency:</strong> EU Blue Card holders who pass B1 German test can apply for PR in just 21 months. Standard is 5 years.</div></div>
+      <div class="as-item"><div class="as-arrow">→</div><div><strong>Industry salary after PhD:</strong> Research Scientist at Siemens, BASF, Bayer, or Bosch = €65K–€90K/year. Your PhD from Max Planck or Fraunhofer makes you extremely competitive.</div></div>
+      <div class="as-item"><div class="as-arrow">→</div><div><strong>Fraunhofer PhD bonus:</strong> Since Fraunhofer works directly with industry, many PhD students receive job offers from their funding company before they even finish their dissertation.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP BY STEP -->
+<div class="sec">
+  <div class="sec-label">Your roadmap</div>
+  <h2>How to Apply — Step by Step</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-title">Identify Your Research Area and 3 Target Institutes</div>
+        <div class="step-body">Be specific. Not "chemistry" — "organic synthesis" or "computational chemistry". Go to academics.com or IMPRS directory. Search your subject. Find 3 institutes that match. Read their recent publications.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-title">Contact the Professor BEFORE Applying</div>
+        <div class="step-body">German academic culture: email the professor whose research matches yours. Send a 5-line email: who you are, what you work on, one specific paper of theirs you read, and ask if they have open positions.</div>
+        <div class="step-code">"Dear Prof. [Name], I am [Your Name] from India, MSc in [field]. Your recent work on [specific paper topic] connects closely with my thesis on [your topic]. Do you have any PhD openings?"</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-title">Prepare Your Research Proposal (5–10 pages)</div>
+        <div class="step-body">Most German PhD applications require a research proposal. This is your biggest differentiator. It should cover: background, your proposed research question, methodology, expected outcomes, and why this institute. DAAD scholarships also require this.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-title">Apply to IMPRS Programs (October–January deadline)</div>
+        <div class="step-body">Most IMPRS programs have annual applications between October and January. Go to imprs.mpg.de → find your field → submit online application. Documents needed: MSc transcripts, CV, research proposal, 2 reference letters, TOEFL/IELTS optional but helps.</div>
+        <div class="step-code">Apply to minimum 5–8 IMPRS programs in your field simultaneously</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-title">Apply for DAAD Scholarship Simultaneously</div>
+        <div class="step-body">Go to daad.de → create account → find "Research Grants" for PhD → apply. DAAD India office is in New Delhi. You need a supervisor acceptance letter from a German professor — this is why Step 2 matters. DAAD gives €1,400/month + health insurance + travel.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div>
+        <div class="step-title">Student Visa → PhD Position → EU Blue Card</div>
+        <div class="step-body">Once accepted, apply for a German student or researcher visa from VFS Global in India. Processing time 4–8 weeks. After arrival: register at local Bürgeramt (resident registration). After PhD: apply for EU Blue Card with your job offer.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DOCUMENT CHECKLIST -->
+<div class="sec">
+  <div class="sec-label">What you need</div>
+  <h2>Application Document Checklist</h2>
+  <div class="checklist">
+    <div class="chk"><div class="chk-box">✓</div><div><div class="chk-t">MSc degree certificate + transcripts</div><div class="chk-s">With English translation if issued in regional language. Minimum 65–70% aggregate for most programs. IMPRS and DAAD prefer 75%+.</div></div></div>
+    <div class="chk"><div class="chk-box">✓</div><div><div class="chk-t">CV in European format — 2 pages max</div><div class="chk-s">No photo. No DOB. Focus on research experience, publications, lab skills, conferences. Use reverse chronological order.</div></div></div>
+    <div class="chk"><div class="chk-box">✓</div><div><div class="chk-t">Research proposal — 5 to 10 pages</div><div class="chk-s">Background, research question, methodology, expected outcomes, why this specific institute. This separates accepted candidates from rejected ones.</div></div></div>
+    <div class="chk"><div class="chk-box">✓</div><div><div class="chk-t">2 reference letters from professors</div><div class="chk-s">Ideally from your MSc supervisor AND one other faculty member who knows your research work well. Should be on official letterhead.</div></div></div>
+    <div class="chk"><div class="chk-box">✓</div><div><div class="chk-t">Professor acceptance email (for DAAD)</div><div class="chk-s">Email German professors in Step 2 before applying to DAAD. DAAD requires a supervisor letter. Without this, DAAD application cannot proceed.</div></div></div>
+    <div class="chk"><div class="chk-box">✓</div><div><div class="chk-t">English proficiency — IELTS 6.5 / TOEFL 90</div><div class="chk-s">Many IMPRS programs say "not required" but having an IELTS score strengthens your application significantly. Most Indians already qualify.</div></div></div>
+    <div class="chk"><div class="chk-box">✓</div><div><div class="chk-t">Publications or preprints (if any)</div><div class="chk-s">Even one publication or conference paper puts you ahead of 90% of applicants. List on CV and research proposal. Preprints on arXiv or bioRxiv count.</div></div></div>
+  </div>
+</div>
+
+<!-- EMAIL TEMPLATE -->
+<div class="sec">
+  <div class="sec-label">Cold email</div>
+  <h2>Professor Email Template — Gets Replies</h2>
+  <div class="email-card">
+    <div class="email-top">📧 Email the Professor FIRST — Before Applying Anywhere</div>
+    <div class="email-body">Subject: <span class="ehl">PhD Inquiry — MSc [Your Field] | Interest in Your Work on [Specific Topic]</span>
+
+Dear Professor <span class="egold">[Last Name]</span>,
+
+I am <span class="egold">[Your Name]</span>, an MSc graduate in <span class="egold">[Chemistry / Biochemistry / Biotech / CS]</span> from <span class="egold">[Your University, India]</span> with a GPA of <span class="egold">[X.X]</span> and research experience in <span class="egold">[Your specific area]</span>.
+
+I read your recent paper "<span class="ehl">[Exact paper title]</span>" and found your approach to <span class="egold">[specific aspect]</span> directly relevant to the work I did during my MSc on <span class="egold">[your thesis topic in 1 line]</span>.
+
+I am writing to ask whether you have any PhD openings in your group for the upcoming intake. I am applying to the <span class="ehl">[IMPRS / DAAD / university PhD program]</span> and would be very interested to discuss potential research directions if you have capacity.
+
+I have attached my CV and a brief 1-page research summary for your reference.
+
+Best regards,
+<span class="egold">[Your Name] | [University, India] | [LinkedIn] | [Google Scholar if available]</span></div>
+  </div>
+  <div style="margin-top:10px;padding:12px 16px;background:var(--yellow-light);border:1px solid rgba(133,77,14,0.2);border-radius:8px;font-size:12.5px;color:var(--yellow);">
+    💡 <strong>Key tip:</strong> Always mention a SPECIFIC paper the professor wrote. Professors receive hundreds of generic emails. Mentioning their specific work proves you have done your research and are genuinely interested — this alone doubles your reply rate.
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <h3>More research + job guides weekly 🙏</h3>
+  <p>Germany, Netherlands, Ireland — country-specific career guides for Indians every week</p>
+  <a class="ig-btn" href="https://instagram.com/vamshi.indianabroad" target="_blank">📱 @vamshi.indianabroad</a>
+  <div class="footer-disc">Stipend data from GradGermany, DAAD, Max Planck official sources 2025–2026. Not immigration advice. Always verify program details directly with institutions.</div>
+</div>
+
+</body>
+</html>

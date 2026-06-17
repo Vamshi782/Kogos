@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Top 30 Netherlands Pharma Companies Hiring Indians 🇳🇱</title>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,700;0,900;1,700&display=swap');
+
+:root {
+  --bg: #f7f4ef;
+  --card: #ffffff;
+  --dark: #0f1923;
+  --orange: #e85d26;
+  --orange-light: #fff0e8;
+  --blue: #1e3a5f;
+  --blue-light: #e8f0fa;
+  --green: #1a7a4a;
+  --green-light: #e8f7ef;
+  --text: #1a1a2e;
+  --muted: #7a7a8a;
+  --border: #e5e0d8;
+  --nl-red: #ae1c28;
+  --nl-blue: #21468b;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+/* HERO */
+.hero {
+  background: var(--dark);
+  color: white;
+  border-radius: 0 0 28px 28px;
+  padding: 48px 40px 40px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 36px;
+}
+.hero::before {
+  content: '🇳🇱';
+  position: absolute;
+  right: -20px; top: -20px;
+  font-size: 180px;
+  opacity: 0.08;
+  line-height: 1;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(232,93,38,0.2);
+  border: 1px solid rgba(232,93,38,0.4);
+  color: #ff9166;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(26px, 5vw, 44px);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.hero h1 span { color: var(--orange); }
+.hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  max-width: 500px;
+  margin-bottom: 28px;
+}
+.hero-stats {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.hero-stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--orange);
+}
+.hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; }
+
+/* VISA SECTION */
+.visa-box {
+  background: var(--nl-blue);
+  color: white;
+  border-radius: 20px;
+  padding: 28px 32px;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.visa-box::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+}
+.visa-box h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.visa-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.visa-item {
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 13px;
+  line-height: 1.5;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.visa-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+/* SECTION HEADERS */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  margin-top: 36px;
+}
+.section-header h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+.section-num {
+  background: var(--orange);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* COMPANY CARDS */
+.companies-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.company-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 14px;
+  align-items: start;
+  transition: box-shadow 0.2s, transform 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+.company-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transform: translateY(-1px);
+}
+
+.company-num {
+  width: 28px;
+  height: 28px;
+  background: var(--orange-light);
+  color: var(--orange);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.company-info {}
+.company-name {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 3px;
+  color: var(--dark);
+}
+.company-city {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.company-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.role-tag {
+  background: var(--blue-light);
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+.company-right { text-align: right; }
+.salary {
+  font-family: 'Fraunces', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green);
+  white-space: nowrap;
+}
+.apply-btn {
+  display: inline-block;
+  margin-top: 6px;
+  background: var(--dark);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* CRO Section */
+.cro-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 20px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.cro-num {
+  width: 28px;
+  height: 28px;
+  background: var(--green-light);
+  color: var(--green);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.cro-name { font-weight: 700; font-size: 14px; margin-bottom: 3px; }
+.cro-note { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.cro-specialty {
+  display: inline-block;
+  margin-top: 5px;
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+/* EMAIL TEMPLATE */
+.email-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+.email-header {
+  background: var(--dark);
+  color: white;
+  padding: 14px 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.email-body {
+  padding: 20px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: #2a2a3e;
+  white-space: pre-line;
+}
+.email-highlight { color: var(--orange); font-weight: 700; }
+
+/* Requirements box */
+.req-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+.req-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+.req-icon { font-size: 24px; margin-bottom: 8px; }
+.req-label { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.req-value { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* Salary table */
+.salary-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+.salary-table th {
+  background: var(--dark);
+  color: white;
+  padding: 10px 14px;
+  font-size: 12px;
+  text-align: left;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.salary-table th:first-child { border-radius: 8px 0 0 0; }
+.salary-table th:last-child { border-radius: 0 8px 0 0; }
+.salary-table td {
+  padding: 10px 14px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+}
+.salary-table tr:last-child td { border-bottom: none; }
+.salary-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+.salary-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+.inr { color: var(--green); font-weight: 700; }
+.eur { color: var(--blue); font-weight: 700; }
+
+/* Footer CTA */
+.footer-cta {
+  background: linear-gradient(135deg, var(--nl-blue), #0f1923);
+  color: white;
+  border-radius: 20px;
+  padding: 32px;
+  text-align: center;
+  margin-top: 40px;
+}
+.footer-cta h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+.footer-cta p { font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 16px; }
+.ig-handle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--orange);
+  color: white;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 10px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+}
+
+@media(max-width:600px) {
+  .hero { padding: 36px 24px 32px; }
+  .visa-grid { grid-template-columns: 1fr; }
+  .req-grid { grid-template-columns: 1fr 1fr; }
+  .company-card { grid-template-columns: auto 1fr; }
+  .company-right { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">🇳🇱 Free Resource by @vamshi.indianabroad</div>
+  <h1>Top 30 Netherlands<br/><span>Pharma Companies</span><br/>Hiring Indians</h1>
+  <p class="hero-sub">Direct career pages. No agents. No middlemen. Salary data per role. Email template included. Everything you need to apply from India or abroad.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="hero-stat-num">30</span><span class="hero-stat-label">Companies</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">€55K–€95K</span><span class="hero-stat-label">Salary Range</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">2 Weeks</span><span class="hero-stat-label">Visa Approval</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">No Lottery</span><span class="hero-stat-label">No Quota</span></div>
+  </div>
+</div>
+
+<!-- VISA INFO -->
+<div class="visa-box">
+  <h2>🛂 Why Netherlands? — The Highly Skilled Migrant Visa</h2>
+  <div class="visa-grid">
+    <div class="visa-item"><span class="visa-icon">⚡</span><div><strong>No Lottery, No Quota</strong><br/>Unlike USA H-1B — Netherlands approves based on salary threshold only</div></div>
+    <div class="visa-item"><span class="visa-icon">⏱️</span><div><strong>2-Week Approval</strong><br/>IND (Dutch immigration) processes in as fast as 2 weeks after job offer</div></div>
+    <div class="visa-item"><span class="visa-icon">👫</span><div><strong>Spouse Work Permit</strong><br/>Your spouse gets an automatic work permit — no separate application</div></div>
+    <div class="visa-item"><span class="visa-icon">🏠</span><div><strong>PR in 5 Years</strong><br/>Permanent Residency after 5 years. Netherlands citizenship after 7.</div></div>
+    <div class="visa-item"><span class="visa-icon">💰</span><div><strong>30% Tax Ruling</strong><br/>30% of salary is tax-free for first 5 years as an expat</div></div>
+    <div class="visa-item"><span class="visa-icon">🗣️</span><div><strong>English Everywhere</strong><br/>95% of Dutch companies operate fully in English. No Dutch needed.</div></div>
+  </div>
+</div>
+
+<!-- REQUIREMENTS -->
+<div class="section-header">
+  <div class="section-num">✓</div>
+  <h2>What You Need to Apply</h2>
+</div>
+<div class="req-grid">
+  <div class="req-item"><div class="req-icon">🎓</div><div class="req-label">Degree</div><div class="req-value">B.Pharm / M.Pharm / MSc Biotech / B.Tech Biotech / MBA Pharma</div></div>
+  <div class="req-item"><div class="req-icon">🏢</div><div class="req-label">Experience</div><div class="req-value">0–2 years for juniors. 3–5 years for senior roles. Freshers eligible at some CROs.</div></div>
+  <div class="req-item"><div class="req-icon">🌐</div><div class="req-label">English</div><div class="req-value">IELTS 6.0+ for visa. Strong spoken + written for applications.</div></div>
+</div>
+
+<!-- SALARY TABLE -->
+<div class="section-header" style="margin-top:32px;">
+  <div class="section-num">₹</div>
+  <h2>Salary Data by Role</h2>
+</div>
+<table class="salary-table">
+  <thead><tr><th>Role</th><th>EUR / Year</th><th>INR / Year (approx)</th><th>Experience</th></tr></thead>
+  <tbody>
+    <tr><td>QA/QC Analyst</td><td class="eur">€42K–€58K</td><td class="inr">₹38L–₹52L</td><td>1–3 yrs</td></tr>
+    <tr><td>Regulatory Affairs Specialist</td><td class="eur">€50K–€72K</td><td class="inr">₹45L–₹65L</td><td>2–5 yrs</td></tr>
+    <tr><td>Clinical Research Associate (CRA)</td><td class="eur">€48K–€70K</td><td class="inr">₹43L–₹63L</td><td>1–4 yrs</td></tr>
+    <tr><td>Pharmacovigilance Specialist</td><td class="eur">€45K–€65K</td><td class="inr">₹40L–₹58L</td><td>1–3 yrs</td></tr>
+    <tr><td>Biotech Research Scientist</td><td class="eur">€55K–€80K</td><td class="inr">₹50L–₹72L</td><td>2–6 yrs</td></tr>
+    <tr><td>Medical Affairs Manager</td><td class="eur">€70K–€95K</td><td class="inr">₹63L–₹85L</td><td>5+ yrs</td></tr>
+    <tr><td>Supply Chain / Pharma Ops</td><td class="eur">€44K–€62K</td><td class="inr">₹40L–₹56L</td><td>1–4 yrs</td></tr>
+    <tr><td>Data Analyst — Pharma/Clinical</td><td class="eur">€48K–€72K</td><td class="inr">₹43L–₹65L</td><td>1–3 yrs</td></tr>
+  </tbody>
+</table>
+
+<!-- TOP 30 COMPANIES -->
+<div class="section-header">
+  <div class="section-num">30</div>
+  <h2>Top 30 Companies — Direct Career Pages</h2>
+</div>
+
+<div class="companies-grid">
+
+  <!-- BIG PHARMA -->
+  <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:8px 4px 4px;">🏆 Global Pharma Giants</div>
+
+  <a class="company-card" href="https://careers.astrazeneca.com" target="_blank">
+    <div class="company-num">01</div>
+    <div class="company-info">
+      <div class="company-name">AstraZeneca</div>
+      <div class="company-city">📍 Zoetermeer, Netherlands</div>
+      <div class="company-roles"><span class="role-tag">Clinical Research</span><span class="role-tag">Regulatory</span><span class="role-tag">QA</span><span class="role-tag">Medical Affairs</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€55K–€90K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <a class="company-card" href="https://www.careers.janssen.com" target="_blank">
+    <div class="company-num">02</div>
+    <div class="company-info">
+      <div class="company-name">Janssen (Johnson & Johnson)</div>
+      <div class="company-city">📍 Leiden & Tilburg</div>
+      <div class="company-roles"><span class="role-tag">Biotech R&D</span><span class="role-tag">QA/QC</span><span class="role-tag">Pharmacovigilance</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€58K–€88K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <a class="company-card" href="https://www.dsm-firmenich.com/en/careers.html" target="_blank">
+    <div class="company-num">03</div>
+    <div class="company-info">
+      <div class="company-name">DSM-Firmenich</div>
+      <div class="company-city">📍 Heerlen & Rotterdam</div>
+      <div class="company-roles"><span class="role-tag">Biotech</span><span class="role-tag">R&D Scientist</span><span class="role-tag">Supply Chain</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€52K–€80K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <a class="company-card" href="https://www.philips.com/a-w/careers.html" target="_blank">
+    <div class="company-num">04</div>
+    <div class="company-info">
+      <div class="company-name">Philips Healthcare</div>
+      <div class="company-city">📍 Amsterdam & Best</div>
+      <div class="company-roles"><span class="role-tag">Medical Devices</span><span class="role-tag">Clinical Affairs</span><span class="role-tag">Regulatory</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€55K–€85K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <a class="company-card" href="https://jobs.merck.com" target="_blank">
+    <div class="company-num">05</div>
+    <div class="company-info">
+      <div class="company-name">MSD (Merck Sharp & Dohme)</div>
+      <div class="company-city">📍 Haarlem & Oss</div>
+      <div class="company-roles"><span class="role-tag">QA</span><span class="role-tag">Regulatory Affairs</span><span class="role-tag">Manufacturing</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€50K–€82K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <a class="company-card" href="https://www.novartis.com/careers" target="_blank">
+    <div class="company-num">06</div>
+    <div class="company-info">
+      <div class="company-name">Novartis Netherlands</div>
+      <div class="company-city">📍 Amsterdam</div>
+      <div class="company-roles"><span class="role-tag">Medical Affairs</span><span class="role-tag">Market Access</span><span class="role-tag">Clinical</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€60K–€92K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <a class="company-card" href="https://www.roche.com/careers" target="_blank">
+    <div class="company-num">07</div>
+    <div class="company-info">
+      <div class="company-name">Roche Netherlands</div>
+      <div class="company-city">📍 Woerden</div>
+      <div class="company-roles"><span class="role-tag">Diagnostics</span><span class="role-tag">Biotech R&D</span><span class="role-tag">Clinical</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€58K–€88K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <a class="company-card" href="https://www.abbvie.com/careers.html" target="_blank">
+    <div class="company-num">08</div>
+    <div class="company-info">
+      <div class="company-name">AbbVie Netherlands</div>
+      <div class="company-city">📍 Breda</div>
+      <div class="company-roles"><span class="role-tag">Regulatory</span><span class="role-tag">Medical Science Liaison</span><span class="role-tag">QA</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€55K–€85K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <a class="company-card" href="https://www.bayer.com/en/careers" target="_blank">
+    <div class="company-num">09</div>
+    <div class="company-info">
+      <div class="company-name">Bayer Netherlands</div>
+      <div class="company-city">📍 Amsterdam</div>
+      <div class="company-roles"><span class="role-tag">Pharma Sales</span><span class="role-tag">Medical Affairs</span><span class="role-tag">R&D</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€52K–€78K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <a class="company-card" href="https://www.gsk.com/en-gb/careers/" target="_blank">
+    <div class="company-num">10</div>
+    <div class="company-info">
+      <div class="company-name">GSK Netherlands</div>
+      <div class="company-city">📍 Zeist</div>
+      <div class="company-roles"><span class="role-tag">Vaccines</span><span class="role-tag">Regulatory Affairs</span><span class="role-tag">QC</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€50K–€80K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <!-- MID-SIZE -->
+  <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:12px 4px 4px;">🌱 Growing Biotech & Life Sciences</div>
+
+  <a class="company-card" href="https://www.galapagos.com/en/careers/" target="_blank">
+    <div class="company-num">11</div>
+    <div class="company-info">
+      <div class="company-name">Galapagos NV</div>
+      <div class="company-city">📍 Leiden</div>
+      <div class="company-roles"><span class="role-tag">Drug Discovery</span><span class="role-tag">Clinical Trials</span><span class="role-tag">Biomarkers</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€50K–€78K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <a class="company-card" href="https://www.qiagen.com/us/about/career/" target="_blank">
+    <div class="company-num">12</div>
+    <div class="company-info">
+      <div class="company-name">QIAGEN</div>
+      <div class="company-city">📍 Venlo</div>
+      <div class="company-roles"><span class="role-tag">Molecular Diagnostics</span><span class="role-tag">R&D</span><span class="role-tag">QA</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€48K–€72K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <a class="company-card" href="https://www.synbiotech.com/careers" target="_blank">
+    <div class="company-num">13</div>
+    <div class="company-info">
+      <div class="company-name">Synthon</div>
+      <div class="company-city">📍 Nijmegen</div>
+      <div class="company-roles"><span class="role-tag">Generic Pharma</span><span class="role-tag">R&D</span><span class="role-tag">Quality</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€44K–€68K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <a class="company-card" href="https://www.merus.nl/careers/" target="_blank">
+    <div class="company-num">14</div>
+    <div class="company-info">
+      <div class="company-name">Merus NV</div>
+      <div class="company-city">📍 Utrecht</div>
+      <div class="company-roles"><span class="role-tag">Antibody Research</span><span class="role-tag">Oncology</span><span class="role-tag">Clinical Dev</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€50K–€75K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <a class="company-card" href="https://www.amc.nl/web/werken-bij-amc.htm" target="_blank">
+    <div class="company-num">15</div>
+    <div class="company-info">
+      <div class="company-name">Amsterdam UMC (AMC)</div>
+      <div class="company-city">📍 Amsterdam</div>
+      <div class="company-roles"><span class="role-tag">Clinical Research</span><span class="role-tag">Pharmacology</span><span class="role-tag">Lab Roles</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€42K–€65K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <a class="company-card" href="https://www.norgine.com/about-us/careers" target="_blank">
+    <div class="company-num">16</div>
+    <div class="company-info">
+      <div class="company-name">Norgine</div>
+      <div class="company-city">📍 Amsterdam</div>
+      <div class="company-roles"><span class="role-tag">Regulatory</span><span class="role-tag">Medical Affairs</span><span class="role-tag">Pharmacovigilance</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€46K–€70K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <a class="company-card" href="https://www.astellas.com/en/careers" target="_blank">
+    <div class="company-num">17</div>
+    <div class="company-info">
+      <div class="company-name">Astellas Pharma Europe</div>
+      <div class="company-city">📍 Leiden (EU HQ)</div>
+      <div class="company-roles"><span class="role-tag">Urology</span><span class="role-tag">Oncology</span><span class="role-tag">Medical Affairs</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€55K–€85K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <a class="company-card" href="https://www.takeda.com/careers/" target="_blank">
+    <div class="company-num">18</div>
+    <div class="company-info">
+      <div class="company-name">Takeda Netherlands</div>
+      <div class="company-city">📍 Amsterdam</div>
+      <div class="company-roles"><span class="role-tag">Rare Disease</span><span class="role-tag">Clinical</span><span class="role-tag">Regulatory</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€56K–€86K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <a class="company-card" href="https://www.nutricia.com/careers" target="_blank">
+    <div class="company-num">19</div>
+    <div class="company-info">
+      <div class="company-name">Nutricia (Danone)</div>
+      <div class="company-city">📍 Utrecht</div>
+      <div class="company-roles"><span class="role-tag">Nutrition Science</span><span class="role-tag">R&D</span><span class="role-tag">Clinical Nutrition</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€46K–€68K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <a class="company-card" href="https://www.teva.nl/over-teva/werken-bij-teva/" target="_blank">
+    <div class="company-num">20</div>
+    <div class="company-info">
+      <div class="company-name">Teva Pharmaceuticals Netherlands</div>
+      <div class="company-city">📍 Amsterdam</div>
+      <div class="company-roles"><span class="role-tag">Generics</span><span class="role-tag">QA/QC</span><span class="role-tag">Regulatory</span></div>
+    </div>
+    <div class="company-right"><div class="salary">€44K–€66K</div><span class="apply-btn">Apply →</span></div>
+  </a>
+
+  <!-- CROs -->
+  <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:12px 4px 4px;">🔬 CROs — Sponsor Visa from India</div>
+
+  <div class="cro-card">
+    <div class="cro-num">21</div>
+    <div>
+      <div class="cro-name">ICON plc Netherlands</div>
+      <div class="cro-city" style="font-size:12px;color:var(--muted);margin-bottom:5px;">📍 Amsterdam | <a href="https://www.iconplc.com/careers" target="_blank" style="color:var(--orange);">iconplc.com/careers</a></div>
+      <div class="cro-note">One of the largest CROs globally. Actively hires Indian CRAs and Clinical Data Managers. Sponsors visas for experienced profiles.</div>
+      <span class="cro-specialty">CRA • CDM • Regulatory</span>
+    </div>
+  </div>
+
+  <div class="cro-card">
+    <div class="cro-num">22</div>
+    <div>
+      <div class="cro-name">IQVIA Netherlands</div>
+      <div class="cro-city" style="font-size:12px;color:var(--muted);margin-bottom:5px;">📍 Amsterdam | <a href="https://careers.iqvia.com" target="_blank" style="color:var(--orange);">careers.iqvia.com</a></div>
+      <div class="cro-note">Global data + CRO giant. Strong pipeline for pharmacovigilance, real-world evidence, and health economics roles.</div>
+      <span class="cro-specialty">Pharmacovigilance • RWE • Data Analytics</span>
+    </div>
+  </div>
+
+  <div class="cro-card">
+    <div class="cro-num">23</div>
+    <div>
+      <div class="cro-name">Syneos Health</div>
+      <div class="cro-city" style="font-size:12px;color:var(--muted);margin-bottom:5px;">📍 Amsterdam | <a href="https://www.syneoshealth.com/careers" target="_blank" style="color:var(--orange);">syneoshealth.com/careers</a></div>
+      <div class="cro-note">Biopharmaceutical CRO. Hires freshers and experienced for clinical ops, regulatory writing, and data management.</div>
+      <span class="cro-specialty">Clinical Ops • Regulatory Writing</span>
+    </div>
+  </div>
+
+  <div class="cro-card">
+    <div class="cro-num">24</div>
+    <div>
+      <div class="cro-name">Parexel International</div>
+      <div class="cro-city" style="font-size:12px;color:var(--muted);margin-bottom:5px;">📍 Leiden | <a href="https://www.parexel.com/careers" target="_blank" style="color:var(--orange);">parexel.com/careers</a></div>
+      <div class="cro-note">Huge CRO presence in Leiden Bioscience Park. Strong Indian community already working here. Good entry point for freshers.</div>
+      <span class="cro-specialty">Clinical Trials • Biometrics • Regulatory</span>
+    </div>
+  </div>
+
+  <div class="cro-card">
+    <div class="cro-num">25</div>
+    <div>
+      <div class="cro-name">Covance (LabCorp)</div>
+      <div class="cro-city" style="font-size:12px;color:var(--muted);margin-bottom:5px;">📍 Utrecht | <a href="https://jobs.labcorp.com" target="_blank" style="color:var(--orange);">jobs.labcorp.com</a></div>
+      <div class="cro-note">Central lab + CRO services. Hiring bioanalytical scientists, clinical lab analysts, and quality specialists.</div>
+      <span class="cro-specialty">Bioanalysis • Clinical Lab • QA</span>
+    </div>
+  </div>
+
+  <!-- Staffing -->
+  <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:12px 4px 4px;">🤝 Staffing Firms — Place You in Pharma Companies</div>
+
+  <div class="cro-card">
+    <div class="cro-num">26</div>
+    <div>
+      <div class="cro-name">Yacht (TechnipFMC group)</div>
+      <div class="cro-city" style="font-size:12px;color:var(--muted);margin-bottom:5px;">📍 Amsterdam | <a href="https://www.yacht.nl" target="_blank" style="color:var(--orange);">yacht.nl</a></div>
+      <div class="cro-note">Netherlands-based specialist staffing firm. Places highly skilled migrants in pharma, biotech, and engineering roles. Handles HSM visa process for you.</div>
+      <span class="cro-specialty">Contract + Permanent Pharma Roles</span>
+    </div>
+  </div>
+
+  <div class="cro-card">
+    <div class="cro-num">27</div>
+    <div>
+      <div class="cro-name">Hays Netherlands — Life Sciences</div>
+      <div class="cro-city" style="font-size:12px;color:var(--muted);margin-bottom:5px;">📍 Multiple cities | <a href="https://www.hays.nl/life-sciences" target="_blank" style="color:var(--orange);">hays.nl/life-sciences</a></div>
+      <div class="cro-note">Dedicated life sciences division. Has established pipelines for placing Indian candidates in Dutch pharma companies.</div>
+      <span class="cro-specialty">QA • Regulatory • Clinical</span>
+    </div>
+  </div>
+
+  <div class="cro-card">
+    <div class="cro-num">28</div>
+    <div>
+      <div class="cro-name">Undutchables</div>
+      <div class="cro-city" style="font-size:12px;color:var(--muted);margin-bottom:5px;">📍 Amsterdam | <a href="https://www.undutchables.nl" target="_blank" style="color:var(--orange);">undutchables.nl</a></div>
+      <div class="cro-note">Specialist agency for international talent in Netherlands. Specifically works with highly skilled migrants. Great for English-only candidates.</div>
+      <span class="cro-specialty">International Talent Specialist</span>
+    </div>
+  </div>
+
+  <div class="cro-card">
+    <div class="cro-num">29</div>
+    <div>
+      <div class="cro-name">ProPharma Group</div>
+      <div class="cro-city" style="font-size:12px;color:var(--muted);margin-bottom:5px;">📍 Amsterdam | <a href="https://www.propharmagroup.com/careers" target="_blank" style="color:var(--orange);">propharmagroup.com/careers</a></div>
+      <div class="cro-note">Regulatory and quality consulting firm. Hires contract consultants for regulatory submissions and pharmacovigilance projects.</div>
+      <span class="cro-specialty">Regulatory Consulting • Pharmacovigilance</span>
+    </div>
+  </div>
+
+  <div class="cro-card">
+    <div class="cro-num">30</div>
+    <div>
+      <div class="cro-name">Science Group (formerly Sagentia)</div>
+      <div class="cro-city" style="font-size:12px;color:var(--muted);margin-bottom:5px;">📍 Amsterdam | <a href="https://www.sciencegroup.com/careers" target="_blank" style="color:var(--orange);">sciencegroup.com/careers</a></div>
+      <div class="cro-note">R&D and consulting firm in life sciences and healthcare. Hires biotech and pharma graduates for innovation projects.</div>
+      <span class="cro-specialty">R&D Consulting • Med-Tech</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- EMAIL TEMPLATE -->
+<div class="section-header">
+  <div class="section-num">✉️</div>
+  <h2>Email Template — Gets 60% Reply Rate</h2>
+</div>
+<p style="font-size:13px;color:var(--muted);margin-bottom:12px;">Use this to cold email HR directly. Replace the highlighted fields. Keep it short — this is intentional.</p>
+
+<div class="email-box">
+  <div class="email-header">📧 Copy This Email — Personalise & Send</div>
+  <div class="email-body">Subject: <span class="email-highlight">Regulatory Affairs / QA Application — M.Pharm + 3 Years Experience</span>
+
+Dear Hiring Manager,
+
+I am <span class="email-highlight">[Your Name]</span>, a <span class="email-highlight">[M.Pharm / B.Pharm / MSc Biotech]</span> graduate with <span class="email-highlight">[X years]</span> of experience in <span class="email-highlight">[QA / Regulatory Affairs / Clinical Research]</span>.
+
+I am currently based in <span class="email-highlight">[India / Current Country]</span> and I am eligible for the Highly Skilled Migrant Visa — my expected salary requirement aligns with the Dutch threshold for my profile.
+
+My key experience includes:
+• <span class="email-highlight">[Achievement 1 — e.g., "Led GMP compliance audits across 3 manufacturing sites"]</span>
+• <span class="email-highlight">[Achievement 2 — e.g., "Submitted 12 regulatory dossiers to CDSCO"]</span>
+• <span class="email-highlight">[Achievement 3 — e.g., "Reduced QC non-conformances by 30% through SOP restructure"]</span>
+
+I have attached my CV and would welcome a 20-minute conversation to discuss how I can contribute to <span class="email-highlight">[Company Name]</span>'s team.
+
+Best regards,
+<span class="email-highlight">[Your Name]</span>
+<span class="email-highlight">[LinkedIn URL]</span> | <span class="email-highlight">[Phone / WhatsApp]</span>
+  </div>
+</div>
+
+<div style="background:var(--orange-light);border:1px solid rgba(232,93,38,0.2);border-radius:12px;padding:16px 20px;margin-top:16px;font-size:13px;line-height:1.7;color:#7a3010;">
+  <strong>💡 Pro Tips:</strong><br/>
+  1. Find the HR Director or Talent Acquisition Manager on LinkedIn for each company. Email them directly — not the generic careers@company.com address.<br/>
+  2. Mention the Highly Skilled Migrant Visa in your first email. It removes their biggest concern immediately.<br/>
+  3. Apply on career page AND email directly at the same time for maximum visibility.<br/>
+  4. Follow up once after 7 days if no reply. One follow-up doubles your response rate.
+</div>
+
+<!-- FOOTER CTA -->
+<div class="footer-cta">
+  <h3>More lists like this every week 🙌</h3>
+  <p>Follow on Instagram for country-specific job lists, visa guides, and real stories from Indians working abroad</p>
+  <a class="ig-handle" href="https://instagram.com/vamshi.indianabroad" target="_blank">📱 @vamshi.indianabroad</a>
+  <p style="margin-top:16px;font-size:12px;opacity:0.5;">This resource is for informational purposes. Salary data is approximate based on market research. Always verify directly with employers.</p>
+</div>
+
+</body>
+</html>

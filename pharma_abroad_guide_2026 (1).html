@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pharma Abroad Guide 2026 | @vamshi.indianabroad</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #0a0f1a;
+  --card: #0f1825;
+  --card2: #131f30;
+  --border: #1e2d42;
+  --teal: #00c9a7;
+  --teal-dim: rgba(0,201,167,0.12);
+  --gold: #f5c842;
+  --gold-dim: rgba(245,200,66,0.12);
+  --red: #ff4d6d;
+  --red-dim: rgba(255,77,109,0.12);
+  --blue: #4d9fff;
+  --blue-dim: rgba(77,159,255,0.1);
+  --white: #f0f4f8;
+  --muted: #5a7a9a;
+  --text: #c8d8e8;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 16px 60px;
+  overflow-x: hidden;
+}
+
+/* animated background */
+body::before {
+  content: '';
+  position: fixed;
+  top: -200px; left: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,201,167,0.06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -200px; right: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(77,159,255,0.06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  padding: 56px 0 40px;
+  text-align: center;
+  z-index: 1;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--teal-dim);
+  border: 1px solid rgba(0,201,167,0.3);
+  color: var(--teal);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 50px;
+  margin-bottom: 22px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 6vw, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--teal);
+}
+.hero-sub {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 32px;
+}
+
+/* salary comparison hero */
+.salary-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 0 auto 36px;
+  max-width: 540px;
+}
+.sal-box {
+  flex: 1;
+  padding: 20px 16px;
+  border-radius: 14px;
+  text-align: center;
+}
+.sal-box.india {
+  background: var(--red-dim);
+  border: 1px solid rgba(255,77,109,0.25);
+  border-radius: 14px 0 0 14px;
+}
+.sal-box.europe {
+  background: var(--teal-dim);
+  border: 1px solid rgba(0,201,167,0.25);
+  border-radius: 0 14px 14px 0;
+}
+.sal-flag { font-size: 28px; margin-bottom: 6px; }
+.sal-country { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+.sal-country.india { color: var(--red); }
+.sal-country.europe { color: var(--teal); }
+.sal-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+}
+.sal-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+.vs-badge {
+  width: 44px;
+  height: 44px;
+  background: var(--gold);
+  color: var(--bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  flex-shrink: 0;
+  z-index: 2;
+  margin: 0 -2px;
+  box-shadow: 0 0 20px rgba(245,200,66,0.4);
+}
+
+.hero-note {
+  background: var(--gold-dim);
+  border: 1px solid rgba(245,200,66,0.2);
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 13px;
+  color: #fde68a;
+  display: inline-block;
+  max-width: 460px;
+}
+
+/* ── SECTION ── */
+.section { position: relative; z-index: 1; margin-top: 40px; }
+.sec-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sec-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── PROFILE CARDS ── */
+.profiles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media(max-width:560px) { .profiles-grid { grid-template-columns: 1fr; } }
+
+.profile-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 18px;
+  transition: border-color 0.3s, transform 0.2s;
+}
+.profile-card:hover {
+  border-color: rgba(0,201,167,0.35);
+  transform: translateY(-2px);
+}
+.pc-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.pc-icon {
+  width: 36px; height: 36px;
+  background: var(--teal-dim);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.pc-title { font-weight: 700; font-size: 14px; color: var(--white); }
+.pc-sub { font-size: 11px; color: var(--muted); }
+.pc-body { font-size: 12.5px; color: var(--text); line-height: 1.65; }
+.pc-countries {
+  display: flex; flex-wrap: wrap; gap: 5px;
+  margin-top: 10px;
+}
+.cc {
+  background: var(--blue-dim);
+  color: var(--blue);
+  font-size: 11px; font-weight: 600;
+  padding: 2px 9px; border-radius: 5px;
+}
+.pc-salary {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.pc-sal-label { font-size: 11px; color: var(--muted); }
+.pc-sal-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--teal);
+}
+
+/* ── VISA STRIP ── */
+.visa-strip {
+  background: linear-gradient(135deg, rgba(0,201,167,0.12), rgba(77,159,255,0.08));
+  border: 1px solid rgba(0,201,167,0.25);
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-top: 12px;
+}
+.visa-strip h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.visa-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+@media(max-width:560px) { .visa-grid { grid-template-columns: 1fr; } }
+.visa-item {
+  background: rgba(0,0,0,0.3);
+  border-radius: 10px;
+  padding: 12px 14px;
+  text-align: center;
+}
+.vi-flag { font-size: 22px; margin-bottom: 5px; }
+.vi-name { font-size: 12px; font-weight: 700; color: var(--white); margin-bottom: 3px; }
+.vi-visa { font-size: 10.5px; color: var(--teal); font-weight: 600; margin-bottom: 3px; }
+.vi-time { font-size: 10px; color: var(--muted); }
+
+/* ── PATH STEPS ── */
+.steps { display: grid; gap: 10px; margin-top: 12px; }
+.step {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.step-num {
+  width: 30px; height: 30px;
+  background: var(--teal);
+  color: var(--bg);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800;
+  flex-shrink: 0;
+}
+.step-title { font-weight: 700; font-size: 14px; color: var(--white); margin-bottom: 3px; }
+.step-body { font-size: 12.5px; color: var(--text); line-height: 1.6; }
+
+/* ── TOP COMPANIES ── */
+.companies-list { display: grid; gap: 10px; margin-top: 12px; }
+.co-row {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.co-rank {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--border);
+  min-width: 30px;
+}
+.co-info { flex: 1; }
+.co-name { font-weight: 700; font-size: 14px; color: var(--white); margin-bottom: 3px; }
+.co-meta { font-size: 11.5px; color: var(--muted); }
+.co-roles { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
+.co-role {
+  background: var(--teal-dim);
+  color: var(--teal);
+  font-size: 10.5px; font-weight: 600;
+  padding: 2px 7px; border-radius: 4px;
+}
+.co-sal {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+/* ── EMAIL TEMPLATE ── */
+.email-card {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+.email-top {
+  background: rgba(0,201,167,0.15);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--teal);
+  display: flex; align-items: center; gap: 8px;
+}
+.email-body {
+  padding: 20px;
+  font-size: 13.5px;
+  line-height: 1.9;
+  color: var(--text);
+  white-space: pre-line;
+}
+.hl { color: var(--teal); font-weight: 700; }
+.hl-gold { color: var(--gold); font-weight: 700; }
+
+/* ── FRESHER BOX ── */
+.fresher-box {
+  background: var(--blue-dim);
+  border: 1px solid rgba(77,159,255,0.25);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-top: 12px;
+}
+.fresher-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.cro-list { display: grid; gap: 8px; }
+.cro-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text);
+}
+.cro-dot {
+  width: 7px; height: 7px;
+  background: var(--blue);
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+/* ── FOOTER ── */
+.footer {
+  margin-top: 48px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.footer::before {
+  content: '';
+  position: absolute;
+  top: -60px; left: 50%;
+  transform: translateX(-50%);
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(0,201,167,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.footer h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.footer p { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+.ig-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--teal);
+  color: var(--bg);
+  font-weight: 800;
+  font-size: 14px;
+  padding: 12px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.ig-btn:hover { opacity: 0.85; }
+.footer-note {
+  margin-top: 16px;
+  font-size: 11px;
+  color: var(--muted);
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="pill">💊 Free Resource — @vamshi.indianabroad</div>
+  <h1>Your Pharma Degree<br/>is Worth <em>More Abroad</em><br/>Than You Think</h1>
+  <p class="hero-sub">B.Pharm · M.Pharm · MSc · MBBS · BDS · Pharmacovigilance · QA/QC · R&D — everything you need to move abroad in 2026.</p>
+
+  <div class="salary-hero">
+    <div class="sal-box india">
+      <div class="sal-flag">🇮🇳</div>
+      <div class="sal-country india">India</div>
+      <div class="sal-amount">₹25K–₹50K<br/><span style="font-size:14px">per month</span></div>
+      <div class="sal-sub">Average pharma salary</div>
+    </div>
+    <div class="vs-badge">VS</div>
+    <div class="sal-box europe">
+      <div class="sal-flag">🇳🇱</div>
+      <div class="sal-country europe">Netherlands</div>
+      <div class="sal-amount">₹40L–₹85L<br/><span style="font-size:14px">per year</span></div>
+      <div class="sal-sub">Same degree. Same exp.</div>
+    </div>
+  </div>
+
+  <div class="hero-note">
+    🛂 Netherlands Highly Skilled Migrant Visa — No lottery. No quota.<br/>
+    A job offer is all you need. Visa approved in <strong>2 weeks.</strong>
+  </div>
+</div>
+
+<!-- YOUR PROFILE SECTION -->
+<div class="section">
+  <div class="sec-label">Find your profile</div>
+  <div class="profiles-grid">
+
+    <div class="profile-card">
+      <div class="pc-header">
+        <div class="pc-icon">🔬</div>
+        <div><div class="pc-title">QA / QC</div><div class="pc-sub">1–10+ years experience</div></div>
+      </div>
+      <div class="pc-body">You are one of the most in-demand profiles in Europe. GMP experience from India counts directly. Companies hire and sponsor visa.</div>
+      <div class="pc-countries">
+        <span class="cc">🇳🇱 Netherlands</span>
+        <span class="cc">🇩🇪 Germany</span>
+        <span class="cc">🇮🇪 Ireland</span>
+      </div>
+      <div class="pc-salary">
+        <span class="pc-sal-label">Salary range</span>
+        <span class="pc-sal-num">€42K–€72K/yr</span>
+      </div>
+    </div>
+
+    <div class="profile-card">
+      <div class="pc-header">
+        <div class="pc-icon">🧪</div>
+        <div><div class="pc-title">R&D Scientist</div><div class="pc-sub">M.Pharm / MSc / PhD</div></div>
+      </div>
+      <div class="pc-body">Netherlands and Denmark are your targets. Roche, Novartis, Novo Nordisk have large Indian R&D teams. Strong publication record helps.</div>
+      <div class="pc-countries">
+        <span class="cc">🇳🇱 Netherlands</span>
+        <span class="cc">🇩🇰 Denmark</span>
+        <span class="cc">🇨🇭 Switzerland</span>
+      </div>
+      <div class="pc-salary">
+        <span class="pc-sal-label">Salary range</span>
+        <span class="pc-sal-num">€55K–€88K/yr</span>
+      </div>
+    </div>
+
+    <div class="profile-card">
+      <div class="pc-header">
+        <div class="pc-icon">⚕️</div>
+        <div><div class="pc-title">Pharmacovigilance</div><div class="pc-sub">🔥 Hottest role in Europe</div></div>
+      </div>
+      <div class="pc-body">Massive shortage of PV professionals across Europe. B.Pharm + 1 year PV experience = senior level in Europe. CROs hire freshers too.</div>
+      <div class="pc-countries">
+        <span class="cc">🇳🇱 Netherlands</span>
+        <span class="cc">🇮🇪 Ireland</span>
+        <span class="cc">🇩🇪 Germany</span>
+      </div>
+      <div class="pc-salary">
+        <span class="pc-sal-label">Salary range</span>
+        <span class="pc-sal-num">€45K–€72K/yr</span>
+      </div>
+    </div>
+
+    <div class="profile-card">
+      <div class="pc-header">
+        <div class="pc-icon">📋</div>
+        <div><div class="pc-title">Regulatory Affairs</div><div class="pc-sub">CDSCO exp. counts</div></div>
+      </div>
+      <div class="pc-body">Your CDSCO and India regulatory experience transfers directly. EU dossier knowledge preferred but companies train you. High demand.</div>
+      <div class="pc-countries">
+        <span class="cc">🇳🇱 Netherlands</span>
+        <span class="cc">🇧🇪 Belgium</span>
+        <span class="cc">🇩🇪 Germany</span>
+      </div>
+      <div class="pc-salary">
+        <span class="pc-sal-label">Salary range</span>
+        <span class="pc-sal-num">€50K–€80K/yr</span>
+      </div>
+    </div>
+
+    <div class="profile-card">
+      <div class="pc-header">
+        <div class="pc-icon">🏥</div>
+        <div><div class="pc-title">Clinical Research</div><div class="pc-sub">CRA / CDM / Clinical Ops</div></div>
+      </div>
+      <div class="pc-body">CROs across Europe are always hiring. ICON, IQVIA, Parexel actively recruit from India. GCP certification is a bonus.</div>
+      <div class="pc-countries">
+        <span class="cc">🇮🇪 Ireland</span>
+        <span class="cc">🇳🇱 Netherlands</span>
+        <span class="cc">🇬🇧 UK</span>
+      </div>
+      <div class="pc-salary">
+        <span class="pc-sal-label">Salary range</span>
+        <span class="pc-sal-num">€48K–€70K/yr</span>
+      </div>
+    </div>
+
+    <div class="profile-card">
+      <div class="pc-header">
+        <div class="pc-icon">💼</div>
+        <div><div class="pc-title">Medical Affairs</div><div class="pc-sub">MBBS / BDS / M.Pharm</div></div>
+      </div>
+      <div class="pc-body">Medical Science Liaison and Medical Affairs roles pay very well. MBBS + pharma industry experience = strong profile for MSL roles.</div>
+      <div class="pc-countries">
+        <span class="cc">🇳🇱 Netherlands</span>
+        <span class="cc">🇩🇪 Germany</span>
+        <span class="cc">🇩🇰 Denmark</span>
+      </div>
+      <div class="pc-salary">
+        <span class="pc-sal-label">Salary range</span>
+        <span class="pc-sal-num">€60K–€92K/yr</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- VISA INFO -->
+<div class="section">
+  <div class="sec-label">Visa types — no lottery anywhere</div>
+  <div class="visa-strip">
+    <h3>Every country below has a fast-track skilled worker visa 🛂</h3>
+    <div class="visa-grid">
+      <div class="visa-item">
+        <div class="vi-flag">🇳🇱</div>
+        <div class="vi-name">Netherlands</div>
+        <div class="vi-visa">Highly Skilled Migrant</div>
+        <div class="vi-time">⏱ 2 weeks approval</div>
+      </div>
+      <div class="visa-item">
+        <div class="vi-flag">🇩🇪</div>
+        <div class="vi-name">Germany</div>
+        <div class="vi-visa">EU Blue Card</div>
+        <div class="vi-time">⏱ 4–8 weeks</div>
+      </div>
+      <div class="visa-item">
+        <div class="vi-flag">🇮🇪</div>
+        <div class="vi-name">Ireland</div>
+        <div class="vi-visa">Critical Skills Permit</div>
+        <div class="vi-time">⏱ 3–4 weeks</div>
+      </div>
+      <div class="visa-item">
+        <div class="vi-flag">🇩🇰</div>
+        <div class="vi-name">Denmark</div>
+        <div class="vi-visa">Pay Limit Scheme</div>
+        <div class="vi-time">⏱ 4–6 weeks</div>
+      </div>
+      <div class="visa-item">
+        <div class="vi-flag">🇨🇭</div>
+        <div class="vi-name">Switzerland</div>
+        <div class="vi-visa">Swiss Work Permit</div>
+        <div class="vi-time">⏱ 6–8 weeks</div>
+      </div>
+      <div class="visa-item">
+        <div class="vi-flag">🇧🇪</div>
+        <div class="vi-name">Belgium</div>
+        <div class="vi-visa">Single Permit</div>
+        <div class="vi-time">⏱ 4–8 weeks</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOP COMPANIES -->
+<div class="section">
+  <div class="sec-label">Top companies hiring Indians right now</div>
+  <div class="companies-list">
+    <div class="co-row">
+      <div class="co-rank">01</div>
+      <div class="co-info">
+        <div class="co-name">Roche Netherlands & Basel</div>
+        <div class="co-meta">📍 Woerden 🇳🇱 + Basel 🇨🇭 | careers.roche.com</div>
+        <div class="co-roles"><span class="co-role">R&D</span><span class="co-role">QA</span><span class="co-role">Regulatory</span><span class="co-role">Clinical</span></div>
+      </div>
+      <div class="co-sal">€58K–€90K</div>
+    </div>
+    <div class="co-row">
+      <div class="co-rank">02</div>
+      <div class="co-info">
+        <div class="co-name">Novartis Netherlands</div>
+        <div class="co-meta">📍 Amsterdam 🇳🇱 | novartis.com/careers</div>
+        <div class="co-roles"><span class="co-role">Medical Affairs</span><span class="co-role">Regulatory</span><span class="co-role">Clinical</span></div>
+      </div>
+      <div class="co-sal">€60K–€92K</div>
+    </div>
+    <div class="co-row">
+      <div class="co-rank">03</div>
+      <div class="co-info">
+        <div class="co-name">Novo Nordisk Denmark</div>
+        <div class="co-meta">📍 Copenhagen 🇩🇰 | novonordisk.com/careers</div>
+        <div class="co-roles"><span class="co-role">Drug Discovery</span><span class="co-role">QA</span><span class="co-role">PV</span><span class="co-role">R&D</span></div>
+      </div>
+      <div class="co-sal">€62K–€95K</div>
+    </div>
+    <div class="co-row">
+      <div class="co-rank">04</div>
+      <div class="co-info">
+        <div class="co-name">IQVIA Netherlands</div>
+        <div class="co-meta">📍 Amsterdam 🇳🇱 | careers.iqvia.com</div>
+        <div class="co-roles"><span class="co-role">Pharmacovigilance</span><span class="co-role">RWE</span><span class="co-role">Clinical Data</span></div>
+      </div>
+      <div class="co-sal">€48K–€72K</div>
+    </div>
+    <div class="co-row">
+      <div class="co-rank">05</div>
+      <div class="co-info">
+        <div class="co-name">AstraZeneca Ireland</div>
+        <div class="co-meta">📍 Dublin 🇮🇪 | careers.astrazeneca.com</div>
+        <div class="co-roles"><span class="co-role">Manufacturing</span><span class="co-role">QA</span><span class="co-role">Regulatory</span></div>
+      </div>
+      <div class="co-sal">€55K–€88K</div>
+    </div>
+    <div class="co-row">
+      <div class="co-rank">06</div>
+      <div class="co-info">
+        <div class="co-name">Boehringer Ingelheim Germany</div>
+        <div class="co-meta">📍 Ingelheim 🇩🇪 | boehringer-ingelheim.com/careers</div>
+        <div class="co-roles"><span class="co-role">PV</span><span class="co-role">Clinical</span><span class="co-role">Drug Discovery</span></div>
+      </div>
+      <div class="co-sal">€56K–€88K</div>
+    </div>
+    <div class="co-row">
+      <div class="co-rank">07</div>
+      <div class="co-info">
+        <div class="co-name">ICON plc Ireland</div>
+        <div class="co-meta">📍 Dublin 🇮🇪 | iconplc.com/careers — CRO, hires freshers</div>
+        <div class="co-roles"><span class="co-role">CRA</span><span class="co-role">CDM</span><span class="co-role">PV</span><span class="co-role">Regulatory</span></div>
+      </div>
+      <div class="co-sal">€42K–€65K</div>
+    </div>
+    <div class="co-row">
+      <div class="co-rank">08</div>
+      <div class="co-info">
+        <div class="co-name">Parexel International</div>
+        <div class="co-meta">📍 Leiden 🇳🇱 | parexel.com/careers — strong Indian community</div>
+        <div class="co-roles"><span class="co-role">Clinical Trials</span><span class="co-role">Biometrics</span><span class="co-role">Regulatory</span></div>
+      </div>
+      <div class="co-sal">€44K–€68K</div>
+    </div>
+  </div>
+</div>
+
+<!-- FRESHERS -->
+<div class="section">
+  <div class="sec-label">For freshers — 0 to 2 years</div>
+  <div class="fresher-box">
+    <h3>🎓 No experience abroad? Start with CROs.</h3>
+    <div class="cro-list">
+      <div class="cro-item"><div class="cro-dot"></div><div><strong style="color:#93c5fd">ICON plc</strong> — Dublin, Ireland. Hires B.Pharm freshers for CRA and PV roles. Trains you and sponsors visa.</div></div>
+      <div class="cro-item"><div class="cro-dot"></div><div><strong style="color:#93c5fd">IQVIA</strong> — Amsterdam, Netherlands. Entry level pharmacovigilance and clinical data positions open year round.</div></div>
+      <div class="cro-item"><div class="cro-dot"></div><div><strong style="color:#93c5fd">Parexel</strong> — Leiden, Netherlands. Huge Indian community already there. Good entry point for freshers and junior professionals.</div></div>
+      <div class="cro-item"><div class="cro-dot"></div><div><strong style="color:#93c5fd">Syneos Health</strong> — Amsterdam. Hires for clinical ops and regulatory writing. Freshers with good GCP knowledge eligible.</div></div>
+      <div class="cro-item"><div class="cro-dot"></div><div><strong style="color:#93c5fd">Tip:</strong> Get GCP certification (free on NIH website) before applying. It doubles your callback rate at CROs.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ROADMAP -->
+<div class="section">
+  <div class="sec-label">Your 5-step roadmap to get there</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-title">Update your CV to European format</div>
+        <div class="step-body">No photo. No date of birth. No marital status. 1–2 pages max. Use action verbs. Quantify every achievement. Use Europass template as a starting point.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-title">Optimise your LinkedIn headline</div>
+        <div class="step-body">Write: "QA Analyst | GMP | M.Pharm | Open to Netherlands & Ireland | HSM Visa Eligible" — recruiters in Netherlands search LinkedIn before job boards.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-title">Apply on company careers page directly</div>
+        <div class="step-body">Not Indeed. Not Naukri. Go to careers.roche.com, novartis.com/careers, iconplc.com/careers directly. Apply there first.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-title">Cold email HR on same day you apply</div>
+        <div class="step-body">Find the Talent Acquisition Manager or HR Business Partner on LinkedIn. Email them directly with 3 lines — your background, your visa status, and a request for a 20-minute call.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-title">Mention visa upfront — never hide it</div>
+        <div class="step-body">Say "I am eligible for the Highly Skilled Migrant Visa — no complex process on your end" in your first email. This removes their biggest fear immediately and sets you apart.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EMAIL TEMPLATE -->
+<div class="section">
+  <div class="sec-label">Cold email template — copy and send</div>
+  <div class="email-card">
+    <div class="email-top">📧 Personalise and send this to HR directly</div>
+    <div class="email-body">Subject: <span class="hl">[Your Role] Application — [Degree] + [X] Years | HSM Visa / EU Blue Card Eligible</span>
+
+Dear <span class="hl">[Hiring Manager Name]</span>,
+
+I am <span class="hl">[Your Name]</span>, a <span class="hl">[M.Pharm / B.Pharm / MSc Biotech]</span> graduate with <span class="hl">[X years]</span> of experience in <span class="hl">[QA / PV / Regulatory / R&D / Clinical Research]</span>.
+
+I am currently based in India and eligible for the <span class="hl">Highly Skilled Migrant Visa (Netherlands) / EU Blue Card / Critical Skills Permit (Ireland)</span> — no complex sponsorship process required from your end.
+
+Key highlights:
+  • <span class="hl-gold">[Achievement 1 — e.g., Led GMP audits across 3 API manufacturing sites]</span>
+  • <span class="hl-gold">[Achievement 2 — e.g., Filed 8 regulatory dossiers to CDSCO, all approved first submission]</span>
+  • <span class="hl-gold">[Achievement 3 — e.g., Reduced QC deviation cycle time by 35%]</span>
+
+I have attached my CV and would welcome a 20-minute conversation at your convenience.
+
+Best regards,
+<span class="hl">[Your Name] | [LinkedIn URL] | [Phone/WhatsApp]</span></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <h3>Follow for weekly pharma job updates 🙏</h3>
+  <p>Country lists, visa guides, and real stories from Indians working abroad — every week</p>
+  <a class="ig-btn" href="https://instagram.com/vamshi.indianabroad" target="_blank">
+    📱 @vamshi.indianabroad
+  </a>
+  <div class="footer-note">
+    Salary data approximate based on market research 2024–2025. Always verify directly with employers.<br/>
+    This resource is for informational purposes only.
+  </div>
+</div>
+
+</body>
+</html>

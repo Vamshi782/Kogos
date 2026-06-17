@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pharmacovigilance in Europe — Complete Guide for Indians 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #f5f0fb;
+  --card: #ffffff;
+  --dark: #1a0a2e;
+  --purple: #6d28d9;
+  --purple-light: #ede9fe;
+  --purple-mid: rgba(109,40,217,0.1);
+  --teal: #0d9488;
+  --teal-light: #f0fdfa;
+  --green: #15803d;
+  --green-light: #f0fdf4;
+  --amber: #b45309;
+  --amber-light: #fffbeb;
+  --red: #dc2626;
+  --red-light: #fef2f2;
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 18px 70px;
+}
+
+/* HERO */
+.hero {
+  background: var(--dark);
+  color: white;
+  border-radius: 0 0 24px 24px;
+  padding: 52px 36px 44px;
+  margin-bottom: 36px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: 'PV';
+  position: absolute;
+  right: -20px; top: -10px;
+  font-family: 'Fraunces', serif;
+  font-size: 180px;
+  font-weight: 900;
+  opacity: 0.04;
+  color: white;
+  line-height: 1;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(109,40,217,0.3);
+  border: 1px solid rgba(109,40,217,0.5);
+  color: #c4b5fd;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 5vw, 50px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.hero h1 span { color: #a78bfa; font-style: italic; }
+.hero-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+
+/* salary comparison */
+.sal-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  max-width: 520px;
+}
+.sal-box { padding: 18px 20px; text-align: center; }
+.sal-box.bad { background: rgba(220,38,38,0.2); }
+.sal-box.good { background: rgba(109,40,217,0.25); }
+.sal-mid {
+  background: rgba(255,255,255,0.05);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  padding: 0 14px;
+}
+.sal-flag { font-size: 22px; margin-bottom: 5px; }
+.sal-lbl { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+.sal-lbl.bad { color: #fca5a5; }
+.sal-lbl.good { color: #c4b5fd; }
+.sal-num { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 700; }
+.sal-num.bad { color: #f87171; }
+.sal-num.good { color: #a78bfa; }
+.sal-per { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+/* SECTION */
+.sec { margin-top: 40px; }
+.sec-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.sec h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 16px;
+}
+
+/* WHO QUALIFIES */
+.qualify-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:560px){ .qualify-grid { grid-template-columns: 1fr; } }
+
+.qualify-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.qc-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.qc-icon { font-size: 22px; }
+.qc-title { font-weight: 700; font-size: 14px; color: var(--dark); }
+.qc-sub { font-size: 11px; color: var(--muted); }
+.qc-body { font-size: 12.5px; color: var(--text); line-height: 1.65; }
+.qc-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.qc-tag {
+  background: var(--purple-light);
+  color: var(--purple);
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* SALARY TABLE */
+.sal-table { width: 100%; border-collapse: collapse; }
+.sal-table thead tr { background: var(--dark); }
+.sal-table th {
+  padding: 10px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: white;
+  text-align: left;
+}
+.sal-table th:first-child { border-radius: 8px 0 0 0; }
+.sal-table th:last-child { border-radius: 0 8px 0 0; }
+.sal-table td {
+  padding: 10px 14px;
+  font-size: 12.5px;
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+  vertical-align: middle;
+  line-height: 1.5;
+}
+.sal-table tr:last-child td { border-bottom: none; }
+.sal-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+.sal-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+.eu-s { font-weight: 700; color: var(--green); }
+.in-s { color: var(--red); font-weight: 600; }
+.vtag {
+  display: inline-block;
+  background: var(--purple-light);
+  color: var(--purple);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin: 1px 2px;
+}
+
+/* COMPANIES */
+.co-grid { display: grid; gap: 10px; }
+.co-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: border-color 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+.co-card:hover { border-color: var(--purple); }
+.co-num {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--border);
+  min-width: 28px;
+  line-height: 1;
+}
+.co-info { flex: 1; }
+.co-name { font-weight: 700; font-size: 14px; color: var(--dark); margin-bottom: 2px; }
+.co-loc { font-size: 11.5px; color: var(--muted); margin-bottom: 6px; }
+.co-roles { display: flex; flex-wrap: wrap; gap: 4px; }
+.co-role {
+  background: var(--purple-light);
+  color: var(--purple);
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+.co-role.teal {
+  background: var(--teal-light);
+  color: var(--teal);
+}
+.co-sal { font-family: 'Fraunces', serif; font-size: 15px; font-weight: 700; color: var(--green); white-space: nowrap; }
+.co-visa { font-size: 10px; color: var(--muted); margin-top: 3px; }
+
+/* VISA STRIP */
+.visa-strip {
+  background: var(--dark);
+  border-radius: 16px;
+  padding: 24px 28px;
+  color: white;
+}
+.visa-strip h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+.visa-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+@media(max-width:540px){ .visa-grid { grid-template-columns: 1fr; } }
+.vi-item { background: rgba(255,255,255,0.07); border-radius: 10px; padding: 14px; text-align: center; }
+.vi-flag { font-size: 24px; margin-bottom: 5px; }
+.vi-name { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+.vi-visa { font-size: 10px; color: #a78bfa; font-weight: 600; margin-bottom: 5px; letter-spacing: 0.5px; }
+.vi-time { display: inline-block; background: rgba(109,40,217,0.3); color: #c4b5fd; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-bottom: 5px; }
+.vi-note { font-size: 10.5px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+/* ROADMAP */
+.roadmap { display: grid; gap: 10px; }
+.rm-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.rm-num {
+  width: 30px; height: 30px;
+  background: var(--purple);
+  color: white;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800;
+  flex-shrink: 0;
+}
+.rm-title { font-weight: 700; font-size: 13.5px; margin-bottom: 3px; color: var(--dark); }
+.rm-body { font-size: 12px; color: var(--muted); line-height: 1.6; }
+.rm-tip {
+  display: inline-block;
+  margin-top: 4px;
+  background: var(--amber-light);
+  color: var(--amber);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* EMAIL */
+.email-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.email-top {
+  background: var(--dark);
+  color: white;
+  padding: 12px 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 8px;
+}
+.email-body {
+  padding: 20px;
+  font-size: 13.5px;
+  line-height: 1.9;
+  color: var(--text);
+  white-space: pre-line;
+}
+.ehl { color: var(--purple); font-weight: 700; }
+.egold { color: var(--amber); font-weight: 600; }
+
+/* CERT BOX */
+.cert-box {
+  background: var(--teal-light);
+  border: 1px solid rgba(13,148,136,0.25);
+  border-radius: 14px;
+  padding: 22px 24px;
+}
+.cert-box h3 { font-family: 'Fraunces', serif; font-size: 18px; color: var(--dark); margin-bottom: 12px; }
+.cert-list { display: grid; gap: 8px; }
+.cert-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.cert-dot { width: 7px; height: 7px; background: var(--teal); border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+.cert-name { font-weight: 700; color: var(--dark); }
+
+/* FOOTER */
+.footer {
+  margin-top: 48px;
+  background: var(--dark);
+  color: white;
+  border-radius: 18px;
+  padding: 32px;
+  text-align: center;
+}
+.footer h3 { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 900; margin-bottom: 8px; }
+.footer p { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 18px; }
+.ig-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #7c3aed;
+  color: white;
+  font-weight: 800;
+  font-size: 14px;
+  padding: 11px 26px;
+  border-radius: 50px;
+  text-decoration: none;
+}
+.footer-disc { margin-top: 14px; font-size: 10px; color: rgba(255,255,255,0.2); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">💊 Free Guide — @vamshi.indianabroad</div>
+  <h1>Pharmacovigilance<br/>in <span>Europe</span> —<br/>Your Complete 2026 Guide</h1>
+  <p class="hero-sub">You asked about PV jobs in Europe. Here is everything — which companies, which countries, what salary, what visa, and exactly how to get there from India.</p>
+
+  <div class="sal-row">
+    <div class="sal-box bad">
+      <div class="sal-flag">🇮🇳</div>
+      <div class="sal-lbl bad">India — PV Associate</div>
+      <div class="sal-num bad">₹8L–₹16L</div>
+      <div class="sal-per">per year average</div>
+    </div>
+    <div class="sal-mid">VS</div>
+    <div class="sal-box good">
+      <div class="sal-flag">🇳🇱🇩🇪🇮🇪</div>
+      <div class="sal-lbl good">Europe — PV Associate</div>
+      <div class="sal-num good">₹40L–₹65L</div>
+      <div class="sal-per">per year — same role</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHO QUALIFIES -->
+<div class="sec">
+  <div class="sec-label">Who qualifies</div>
+  <h2>Your Degree Already Qualifies You 🎓</h2>
+  <div class="qualify-grid">
+    <div class="qualify-card">
+      <div class="qc-top"><div class="qc-icon">💊</div><div><div class="qc-title">Pharmacy Graduates</div><div class="qc-sub">Fresher to 10+ years</div></div></div>
+      <div class="qc-body">B.Pharm and M.Pharm is the most accepted qualification for PV roles in Europe. Even freshers can get into CROs. 2+ years experience = senior level in Netherlands.</div>
+      <div class="qc-tags"><span class="qc-tag">B.Pharm</span><span class="qc-tag">M.Pharm</span><span class="qc-tag">Pharm D</span></div>
+    </div>
+    <div class="qualify-card">
+      <div class="qc-top"><div class="qc-icon">🏥</div><div><div class="qc-title">MBBS / BDS Doctors</div><div class="qc-sub">Medical background</div></div></div>
+      <div class="qc-body">Medical degree is highly valued for Medical Affairs and Safety Physician roles. MBBS + 2 years industry = immediate senior PV position in Germany or Netherlands.</div>
+      <div class="qc-tags"><span class="qc-tag">MBBS</span><span class="qc-tag">BDS</span><span class="qc-tag">Medical Affairs</span></div>
+    </div>
+    <div class="qualify-card">
+      <div class="qc-top"><div class="qc-icon">🧬</div><div><div class="qc-title">Life Sciences Graduates</div><div class="qc-sub">MSc / BSc backgrounds</div></div></div>
+      <div class="qc-body">MSc Biotechnology, Biochemistry, Microbiology, Life Sciences all accepted. Many European PV roles specifically recruit these profiles.</div>
+      <div class="qc-tags"><span class="qc-tag">MSc Biotech</span><span class="qc-tag">Biochemistry</span><span class="qc-tag">Microbiology</span></div>
+    </div>
+    <div class="qualify-card">
+      <div class="qc-top"><div class="qc-icon">📊</div><div><div class="qc-title">Existing PV Experience</div><div class="qc-sub">India experience counts</div></div></div>
+      <div class="qc-body">1–3 years PV experience in India = mid to senior level in Europe. ICSR processing, PSUR, signal detection experience all directly transfers to European companies.</div>
+      <div class="qc-tags"><span class="qc-tag">ICSR</span><span class="qc-tag">PSUR</span><span class="qc-tag">Signal Detection</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SALARY BY LEVEL -->
+<div class="sec">
+  <div class="sec-label">Salary intelligence</div>
+  <h2>What Europe Pays — By Your Level</h2>
+  <table class="sal-table">
+    <thead>
+      <tr>
+        <th>Level</th>
+        <th>Role Title</th>
+        <th>India / Year</th>
+        <th>Europe / Year</th>
+        <th>Best Country</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Fresher 0–1 yr</td>
+        <td>PV Associate / Case Processor</td>
+        <td class="in-s">₹4L–₹8L</td>
+        <td class="eu-s">€33K–€45K</td>
+        <td><span class="vtag">🇮🇪 Ireland</span></td>
+      </tr>
+      <tr>
+        <td>1–3 years</td>
+        <td>PV Specialist / Safety Associate</td>
+        <td class="in-s">₹8L–₹16L</td>
+        <td class="eu-s">€42K–€58K</td>
+        <td><span class="vtag">🇳🇱 NL</span><span class="vtag">🇩🇪 DE</span></td>
+      </tr>
+      <tr>
+        <td>3–6 years</td>
+        <td>Senior PV Specialist / Team Lead</td>
+        <td class="in-s">₹16L–₹28L</td>
+        <td class="eu-s">€58K–€78K</td>
+        <td><span class="vtag">🇩🇪 Germany</span></td>
+      </tr>
+      <tr>
+        <td>6–10 years</td>
+        <td>PV Manager / Safety Scientist</td>
+        <td class="in-s">₹28L–₹45L</td>
+        <td class="eu-s">€70K–€95K</td>
+        <td><span class="vtag">🇨🇭 Swiss</span><span class="vtag">🇳🇱 NL</span></td>
+      </tr>
+      <tr>
+        <td>10+ years</td>
+        <td>Head of PV / VP Drug Safety</td>
+        <td class="in-s">₹45L–₹80L</td>
+        <td class="eu-s">€95K–€140K</td>
+        <td><span class="vtag">🇨🇭 Swiss</span><span class="vtag">🇩🇪 DE</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- TOP COMPANIES -->
+<div class="sec">
+  <div class="sec-label">Where to apply</div>
+  <h2>Top 12 Companies Hiring Indian PV Professionals</h2>
+  <div class="co-grid">
+
+    <a class="co-card" href="https://careers.iqvia.com" target="_blank">
+      <div class="co-num">01</div>
+      <div class="co-info">
+        <div class="co-name">IQVIA Netherlands</div>
+        <div class="co-loc">📍 Amsterdam 🇳🇱 | careers.iqvia.com | World's largest CRO</div>
+        <div class="co-roles"><span class="co-role">PV Associate</span><span class="co-role">Safety Specialist</span><span class="co-role">Signal Detection</span><span class="co-role">RWE</span></div>
+      </div>
+      <div><div class="co-sal">€45K–€72K</div><div class="co-visa">HSM Visa</div></div>
+    </a>
+
+    <a class="co-card" href="https://www.iconplc.com/careers" target="_blank">
+      <div class="co-num">02</div>
+      <div class="co-info">
+        <div class="co-name">ICON plc Ireland</div>
+        <div class="co-loc">📍 Dublin 🇮🇪 | iconplc.com/careers | Hires freshers actively</div>
+        <div class="co-roles"><span class="co-role">CRA</span><span class="co-role">Safety Associate</span><span class="co-role">CDM</span><span class="co-role">PV Specialist</span></div>
+      </div>
+      <div><div class="co-sal">€38K–€65K</div><div class="co-visa">Critical Skills</div></div>
+    </a>
+
+    <a class="co-card" href="https://www.parexel.com/careers" target="_blank">
+      <div class="co-num">03</div>
+      <div class="co-info">
+        <div class="co-name">Parexel — Leiden, Netherlands</div>
+        <div class="co-loc">📍 Leiden 🇳🇱 | parexel.com/careers | Strong Indian community</div>
+        <div class="co-roles"><span class="co-role">PV</span><span class="co-role">Regulatory Writing</span><span class="co-role">Biometrics</span><span class="co-role">Clinical Trials</span></div>
+      </div>
+      <div><div class="co-sal">€40K–€65K</div><div class="co-visa">HSM Visa</div></div>
+    </a>
+
+    <a class="co-card" href="https://www.novartis.com/careers" target="_blank">
+      <div class="co-num">04</div>
+      <div class="co-info">
+        <div class="co-name">Novartis — Netherlands & Switzerland</div>
+        <div class="co-loc">📍 Amsterdam 🇳🇱 + Basel 🇨🇭 | novartis.com/careers</div>
+        <div class="co-roles"><span class="co-role">Drug Safety</span><span class="co-role">PV Scientist</span><span class="co-role">Medical Affairs</span></div>
+      </div>
+      <div><div class="co-sal">€60K–€92K</div><div class="co-visa">HSM / Swiss Permit</div></div>
+    </a>
+
+    <a class="co-card" href="https://careers.roche.com" target="_blank">
+      <div class="co-num">05</div>
+      <div class="co-info">
+        <div class="co-name">Roche Netherlands</div>
+        <div class="co-loc">📍 Woerden 🇳🇱 | careers.roche.com</div>
+        <div class="co-roles"><span class="co-role">Safety Officer</span><span class="co-role">PV Manager</span><span class="co-role">Risk Management</span></div>
+      </div>
+      <div><div class="co-sal">€58K–€88K</div><div class="co-visa">HSM Visa</div></div>
+    </a>
+
+    <a class="co-card" href="https://www.boehringer-ingelheim.com/careers" target="_blank">
+      <div class="co-num">06</div>
+      <div class="co-info">
+        <div class="co-name">Boehringer Ingelheim Germany</div>
+        <div class="co-loc">📍 Ingelheim 🇩🇪 | boehringer-ingelheim.com/careers</div>
+        <div class="co-roles"><span class="co-role">PV Operations</span><span class="co-role">Safety Reporting</span><span class="co-role">ICSR</span></div>
+      </div>
+      <div><div class="co-sal">€52K–€78K</div><div class="co-visa">EU Blue Card</div></div>
+    </a>
+
+    <a class="co-card" href="https://www.syneoshealth.com/careers" target="_blank">
+      <div class="co-num">07</div>
+      <div class="co-info">
+        <div class="co-name">Syneos Health — Amsterdam</div>
+        <div class="co-loc">📍 Amsterdam 🇳🇱 | syneoshealth.com/careers | Hires freshers</div>
+        <div class="co-roles"><span class="co-role">PV Associate</span><span class="co-role">Clinical Ops</span><span class="co-role">Reg. Writing</span></div>
+      </div>
+      <div><div class="co-sal">€38K–€60K</div><div class="co-visa">HSM Visa</div></div>
+    </a>
+
+    <a class="co-card" href="https://jobs.merck.com" target="_blank">
+      <div class="co-num">08</div>
+      <div class="co-info">
+        <div class="co-name">MSD (Merck) Netherlands</div>
+        <div class="co-loc">📍 Haarlem 🇳🇱 | jobs.merck.com</div>
+        <div class="co-roles"><span class="co-role">Safety Operations</span><span class="co-role">Pharmacovigilance</span><span class="co-role">PSUR</span></div>
+      </div>
+      <div><div class="co-sal">€50K–€75K</div><div class="co-visa">HSM Visa</div></div>
+    </a>
+
+    <a class="co-card" href="https://www.bayer.com/en/careers" target="_blank">
+      <div class="co-num">09</div>
+      <div class="co-info">
+        <div class="co-name">Bayer AG Germany</div>
+        <div class="co-loc">📍 Leverkusen 🇩🇪 | bayer.com/en/careers</div>
+        <div class="co-roles"><span class="co-role">Drug Safety</span><span class="co-role">Signal Management</span><span class="co-role">PV Compliance</span></div>
+      </div>
+      <div><div class="co-sal">€55K–€82K</div><div class="co-visa">EU Blue Card</div></div>
+    </a>
+
+    <a class="co-card" href="https://www.gsk.com/careers" target="_blank">
+      <div class="co-num">10</div>
+      <div class="co-info">
+        <div class="co-name">GSK Netherlands</div>
+        <div class="co-loc">📍 Zeist 🇳🇱 | gsk.com/careers</div>
+        <div class="co-roles"><span class="co-role">PV Associate</span><span class="co-role">Safety Scientist</span><span class="co-role">Vaccines Safety</span></div>
+      </div>
+      <div><div class="co-sal">€48K–€72K</div><div class="co-visa">HSM Visa</div></div>
+    </a>
+
+    <a class="co-card" href="https://jobs.abbvie.com" target="_blank">
+      <div class="co-num">11</div>
+      <div class="co-info">
+        <div class="co-name">AbbVie Netherlands</div>
+        <div class="co-loc">📍 Breda 🇳🇱 | jobs.abbvie.com</div>
+        <div class="co-roles"><span class="co-role">Medical Science Liaison</span><span class="co-role">PV</span><span class="co-role">Regulatory</span></div>
+      </div>
+      <div><div class="co-sal">€55K–€80K</div><div class="co-visa">HSM Visa</div></div>
+    </a>
+
+    <a class="co-card" href="https://www.primevigi.com/careers" target="_blank">
+      <div class="co-num">12</div>
+      <div class="co-info">
+        <div class="co-name">PrimeVigilance (Ergomed)</div>
+        <div class="co-loc">📍 Multiple EU countries | primevigi.com/careers | PV specialist CRO</div>
+        <div class="co-roles"><span class="co-role">PV Specialist</span><span class="co-role">Medical Information</span><span class="co-role">Quality</span></div>
+      </div>
+      <div><div class="co-sal">€40K–€65K</div><div class="co-visa">EU Blue Card</div></div>
+    </a>
+
+  </div>
+</div>
+
+<!-- VISA -->
+<div class="sec">
+  <div class="sec-label">Visa — no lottery anywhere</div>
+  <div class="visa-strip">
+    <h3>🛂 Every Country Below Has Fast-Track Skilled Visa</h3>
+    <div class="visa-grid">
+      <div class="vi-item">
+        <div class="vi-flag">🇳🇱</div>
+        <div class="vi-name">Netherlands</div>
+        <div class="vi-visa">HIGHLY SKILLED MIGRANT</div>
+        <div class="vi-time">⚡ 2 weeks</div>
+        <div class="vi-note">Salary threshold only. No lottery. Spouse gets automatic work permit.</div>
+      </div>
+      <div class="vi-item">
+        <div class="vi-flag">🇩🇪</div>
+        <div class="vi-name">Germany</div>
+        <div class="vi-visa">EU BLUE CARD</div>
+        <div class="vi-time">⚡ 4–8 weeks</div>
+        <div class="vi-note">Salary ≥ €45,300/yr. PR in 21 months if B1 German. English workplaces common.</div>
+      </div>
+      <div class="vi-item">
+        <div class="vi-flag">🇮🇪</div>
+        <div class="vi-name">Ireland</div>
+        <div class="vi-visa">CRITICAL SKILLS PERMIT</div>
+        <div class="vi-time">⚡ 3–4 weeks</div>
+        <div class="vi-note">English speaking. IQVIA, ICON, Parexel, MSD, Pfizer all based here.</div>
+      </div>
+      <div class="vi-item">
+        <div class="vi-flag">🇨🇭</div>
+        <div class="vi-name">Switzerland</div>
+        <div class="vi-visa">SWISS WORK PERMIT</div>
+        <div class="vi-time">⚡ 6–8 weeks</div>
+        <div class="vi-note">Highest PV salaries in Europe. Novartis, Roche, Lonza all HQ here.</div>
+      </div>
+      <div class="vi-item">
+        <div class="vi-flag">🇧🇪</div>
+        <div class="vi-name">Belgium</div>
+        <div class="vi-visa">SINGLE PERMIT</div>
+        <div class="vi-time">⚡ 4–8 weeks</div>
+        <div class="vi-note">UCB, Janssen, GSK Vaccines all recruiting PV professionals.</div>
+      </div>
+      <div class="vi-item">
+        <div class="vi-flag">🇩🇰</div>
+        <div class="vi-name">Denmark</div>
+        <div class="vi-visa">PAY LIMIT SCHEME</div>
+        <div class="vi-time">⚡ 4–6 weeks</div>
+        <div class="vi-note">Novo Nordisk HQ. One of the largest PV teams in the world.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CERTIFICATIONS -->
+<div class="sec">
+  <div class="sec-label">Boost your chances</div>
+  <div class="cert-box">
+    <h3>🏅 Free Certifications That Get You Hired Faster</h3>
+    <div class="cert-list">
+      <div class="cert-item"><div class="cert-dot"></div><div><span class="cert-name">GCP (Good Clinical Practice)</span> — Free on NIH website at citiprogram.org. Every PV employer in Europe asks for this. Takes 4–6 hours.</div></div>
+      <div class="cert-item"><div class="cert-dot"></div><div><span class="cert-name">EU Pharmacovigilance Legislation</span> — Free course on EMA website at ema.europa.eu/training. Specifically about European PV rules — instantly differentiates you.</div></div>
+      <div class="cert-item"><div class="cert-dot"></div><div><span class="cert-name">ICH E2B(R3) Training</span> — Free on ICH website. Electronic ICSR reporting standard used across all EU pharma companies.</div></div>
+      <div class="cert-item"><div class="cert-dot"></div><div><span class="cert-name">Pharmuni PV Certificate</span> — pharmuni.com — Paid but affordable online PV training platform. Very recognized by European CROs for Indian applicants.</div></div>
+      <div class="cert-item"><div class="cert-dot"></div><div><span class="cert-name">LinkedIn Learning: Drug Safety Fundamentals</span> — 3–5 hours. Free with LinkedIn Premium trial. Add it directly to your LinkedIn profile.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ROADMAP -->
+<div class="sec">
+  <div class="sec-label">Step by step</div>
+  <h2>Your 6-Step Roadmap to PV Job in Europe</h2>
+  <div class="roadmap">
+    <div class="rm-item">
+      <div class="rm-num">1</div>
+      <div>
+        <div class="rm-title">Update LinkedIn Headline Today</div>
+        <div class="rm-body">Add this exact format: "Pharmacovigilance Specialist | ICSR | GCP | M.Pharm | X Years | Open to Netherlands & Ireland | HSM Visa / EU Blue Card Eligible"</div>
+        <div class="rm-tip">Do this today — takes 2 minutes</div>
+      </div>
+    </div>
+    <div class="rm-item">
+      <div class="rm-num">2</div>
+      <div>
+        <div class="rm-title">Complete GCP Certification Free</div>
+        <div class="rm-body">Go to citiprogram.org → register free → complete GCP course → download certificate → upload to LinkedIn. Most CROs ask for this in first interview.</div>
+      </div>
+    </div>
+    <div class="rm-item">
+      <div class="rm-num">3</div>
+      <div>
+        <div class="rm-title">Apply to CROs First — Not Big Pharma</div>
+        <div class="rm-body">ICON, IQVIA, Parexel, Syneos Health hire freshers and junior PV professionals from India directly. Big pharma like Novartis and Roche prefer 3+ years experience. Start with CROs.</div>
+      </div>
+    </div>
+    <div class="rm-item">
+      <div class="rm-num">4</div>
+      <div>
+        <div class="rm-title">Apply on Career Page + Email HR Same Day</div>
+        <div class="rm-body">Find the PV Recruiter or HR Manager on LinkedIn. Email them directly same day you apply. 3 lines: your background, your visa eligibility, request for a call.</div>
+      </div>
+    </div>
+    <div class="rm-item">
+      <div class="rm-num">5</div>
+      <div>
+        <div class="rm-title">Mention HSM Visa / EU Blue Card in Line 1</div>
+        <div class="rm-body">Never hide it. Say "I am eligible for the Highly Skilled Migrant Visa — no complex process for your team, approved in 2 weeks." This removes their biggest hesitation immediately.</div>
+      </div>
+    </div>
+    <div class="rm-item">
+      <div class="rm-num">6</div>
+      <div>
+        <div class="rm-title">Set Job Alert on LinkedIn — Apply Within 24 Hours</div>
+        <div class="rm-body">Search "Pharmacovigilance Netherlands" and "Drug Safety Ireland" on LinkedIn → Set daily alert. 80% of interviews go to people who apply within the first 48 hours of posting.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EMAIL TEMPLATE -->
+<div class="sec">
+  <div class="sec-label">Cold outreach</div>
+  <h2>Email Template — Copy and Send to HR</h2>
+  <div class="email-card">
+    <div class="email-top">📧 Personalise and send directly to PV Recruiter on LinkedIn</div>
+    <div class="email-body">Subject: <span class="ehl">Pharmacovigilance [Associate/Specialist] — M.Pharm + [X] Years PV Experience | HSM Visa / EU Blue Card Eligible</span>
+
+Dear <span class="egold">[Hiring Manager First Name]</span>,
+
+I am <span class="egold">[Your Name]</span>, a pharmacovigilance professional with <span class="egold">[X years]</span> of experience in <span class="egold">[ICSR processing / signal detection / aggregate reporting / safety operations]</span>.
+
+I am reaching out directly because <span class="ehl">[Company Name]</span>'s PV team caught my attention. I am eligible for the <span class="ehl">Highly Skilled Migrant Visa / EU Blue Card / Critical Skills Permit</span> — straightforward process, no complexity on your team's end.
+
+Three highlights from my background:
+  • <span class="egold">[e.g., Processed 500+ ICSRs across Phase III clinical trials — 100% on-time regulatory submissions]</span>
+  • <span class="egold">[e.g., Led PSUR preparation for 3 marketed products — approved first submission by CDSCO]</span>
+  • <span class="egold">[e.g., Experienced in MedDRA coding, signal detection, and E2B(R3) reporting]</span>
+
+I have attached my CV and would welcome a 20-minute call at your convenience.
+
+Best regards,
+<span class="egold">[Your Name] | [LinkedIn URL] | [Phone/WhatsApp]</span></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <h3>More pharma job guides every week 🙏</h3>
+  <p>Country lists, visa guides, and real stories from Indians in pharma abroad</p>
+  <a class="ig-btn" href="https://instagram.com/vamshi.indianabroad" target="_blank">📱 @vamshi.indianabroad</a>
+  <div class="footer-disc">Salary data approximate — Glassdoor, Pharmuni, LinkedIn Salary 2025–2026. Not legal or immigration advice. Always verify directly with employers.</div>
+</div>
+
+</body>
+</html>

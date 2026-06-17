@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SAP Jobs in Europe — Complete Guide for Indians 🇪🇺</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --dark: #0d1b2a;
+  --blue: #0057b8;
+  --blue-light: #e8f0fb;
+  --sap-teal: #007db8;
+  --accent: #f0a500;
+  --accent-light: #fff8e6;
+  --green: #1a7a4a;
+  --green-light: #e8f7ef;
+  --text: #0d1b2a;
+  --muted: #6b7a8d;
+  --border: #dde4ed;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+/* HERO */
+.hero {
+  background: var(--dark);
+  color: white;
+  border-radius: 0 0 28px 28px;
+  padding: 48px 40px 40px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.hero::before {
+  content: 'SAP';
+  position: absolute;
+  right: -10px; top: 10px;
+  font-family: 'Fraunces', serif;
+  font-size: 160px;
+  font-weight: 900;
+  opacity: 0.04;
+  line-height: 1;
+  color: white;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0,87,184,0.25);
+  border: 1px solid rgba(0,87,184,0.5);
+  color: #7eb8ff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(26px, 5vw, 44px);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.hero h1 span { color: var(--accent); }
+.hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 28px;
+}
+.hero-stats {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.hero-stat { display: flex; flex-direction: column; gap: 3px; }
+.hero-stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1px; }
+
+/* MODULE BADGES */
+.modules-section {
+  background: var(--blue);
+  border-radius: 20px;
+  padding: 28px 32px;
+  margin-bottom: 32px;
+  color: white;
+}
+.modules-section h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.modules-section p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 16px; }
+.modules-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.module-pill {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.module-pill .dot {
+  width: 7px; height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* SECTION HEADERS */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  margin-top: 36px;
+}
+.section-num {
+  background: var(--blue);
+  color: white;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* MODULE COUNTRY TABLE */
+.module-table { width: 100%; border-collapse: collapse; }
+.module-table th {
+  background: var(--dark);
+  color: white;
+  padding: 10px 16px;
+  font-size: 12px;
+  text-align: left;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.module-table th:first-child { border-radius: 8px 0 0 0; }
+.module-table th:last-child { border-radius: 0 8px 0 0; }
+.module-table td {
+  padding: 11px 16px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.module-table tr:last-child td { border-bottom: none; }
+.module-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+.module-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+.mod-name { font-weight: 700; color: var(--blue); }
+.hot-tag {
+  display: inline-block;
+  background: rgba(240,165,0,0.15);
+  color: #b07800;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.country-flags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.cflag {
+  background: var(--blue-light);
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.salary-cell { font-weight: 700; color: var(--green); white-space: nowrap; }
+
+/* JOB SITES */
+.sites-grid { display: grid; gap: 12px; }
+.site-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.site-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); transform: translateY(-1px); }
+.site-icon {
+  width: 40px; height: 40px;
+  background: var(--blue-light);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.site-name { font-weight: 700; font-size: 15px; margin-bottom: 3px; }
+.site-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.site-tip {
+  background: var(--accent-light);
+  color: #8a6000;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+.visit-btn {
+  display: inline-block;
+  background: var(--dark);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+/* TOP COMPANIES */
+.company-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: 12px;
+  align-items: start;
+  margin-bottom: 10px;
+}
+.co-num {
+  width: 28px; height: 28px;
+  background: var(--blue-light);
+  color: var(--blue);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; flex-shrink: 0;
+}
+.co-name { font-weight: 700; font-size: 14px; margin-bottom: 2px; }
+.co-city { font-size: 12px; color: var(--muted); margin-bottom: 5px; }
+.co-roles { display: flex; flex-wrap: wrap; gap: 5px; }
+.role-tag {
+  background: var(--blue-light);
+  color: var(--blue);
+  font-size: 11px; font-weight: 600;
+  padding: 2px 8px; border-radius: 5px;
+}
+.co-salary { font-family: 'Fraunces', serif; font-size: 14px; font-weight: 700; color: var(--green); white-space: nowrap; }
+.apply-btn {
+  display: inline-block;
+  margin-top: 6px;
+  background: var(--dark);
+  color: white;
+  font-size: 10px; font-weight: 700;
+  padding: 4px 10px; border-radius: 6px;
+  text-decoration: none;
+  letter-spacing: 0.5px; text-transform: uppercase;
+}
+
+/* EMAIL TEMPLATE */
+.email-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+.email-header {
+  background: var(--dark);
+  color: white;
+  padding: 14px 20px;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.email-body {
+  padding: 20px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: #1a2a3a;
+  white-space: pre-line;
+}
+.hl { color: var(--blue); font-weight: 700; }
+
+/* KEYWORDS BOX */
+.kw-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-top: 16px;
+}
+.kw-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.kw-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.kw-tag {
+  background: var(--blue-light);
+  color: var(--blue);
+  font-size: 12px; font-weight: 600;
+  padding: 4px 10px; border-radius: 6px;
+}
+
+/* FOOTER */
+.footer-cta {
+  background: linear-gradient(135deg, var(--dark), #0d2a4a);
+  color: white;
+  border-radius: 20px;
+  padding: 32px;
+  text-align: center;
+  margin-top: 40px;
+}
+.footer-cta h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px; font-weight: 900;
+  margin-bottom: 8px;
+}
+.footer-cta p { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 16px; }
+.ig-btn {
+  display: inline-flex;
+  align-items: center; gap: 8px;
+  background: var(--accent);
+  color: var(--dark);
+  font-weight: 800; font-size: 15px;
+  padding: 10px 26px;
+  border-radius: 50px;
+  text-decoration: none;
+}
+
+@media(max-width:600px) {
+  .hero { padding: 36px 20px 30px; }
+  .modules-section { padding: 22px 20px; }
+  .site-card { grid-template-columns: 36px 1fr; }
+  .site-tip { display: none; }
+  .company-card { grid-template-columns: 28px 1fr; }
+  .co-salary, .apply-btn { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">🇪🇺 Free Resource by @vamshi.indianabroad</div>
+  <h1>SAP Jobs in <span>Europe</span><br/>— Complete Guide<br/>for Indians</h1>
+  <p class="hero-sub">Best job sites, top companies hiring by module, salary data, and a cold email template. Everything in one place. No agents. No fluff.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="hero-stat-num">8</span><span class="hero-stat-label">Job Sites</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">20+</span><span class="hero-stat-label">Top Companies</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">€60K–€110K</span><span class="hero-stat-label">Salary Range</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">Visa ✅</span><span class="hero-stat-label">Sponsored Roles</span></div>
+  </div>
+</div>
+
+<!-- MODULES -->
+<div class="modules-section">
+  <h2>✅ This Guide Covers All SAP Modules</h2>
+  <p>Whether you are a consultant, developer, or fresher — find your module below</p>
+  <div class="modules-grid">
+    <div class="module-pill"><span class="dot"></span>SAP FICO</div>
+    <div class="module-pill"><span class="dot"></span>SAP MM</div>
+    <div class="module-pill"><span class="dot"></span>SAP SD</div>
+    <div class="module-pill"><span class="dot"></span>SAP ABAP</div>
+    <div class="module-pill"><span class="dot"></span>SAP S/4HANA</div>
+    <div class="module-pill"><span class="dot"></span>SAP HCM / SuccessFactors</div>
+    <div class="module-pill"><span class="dot"></span>SAP BW / BI</div>
+    <div class="module-pill"><span class="dot"></span>SAP PP / PM</div>
+    <div class="module-pill"><span class="dot"></span>SAP Basis</div>
+    <div class="module-pill"><span class="dot"></span>SAP CRM / C4C</div>
+    <div class="module-pill"><span class="dot"></span>SAP WM / EWM</div>
+    <div class="module-pill"><span class="dot"></span>SAP GRC</div>
+  </div>
+</div>
+
+<!-- MODULE x COUNTRY TABLE -->
+<div class="section-header">
+  <div class="section-num">📍</div>
+  <h2>Which Country is Hiring Your Module Most</h2>
+</div>
+
+<table class="module-table">
+  <thead>
+    <tr>
+      <th>SAP Module</th>
+      <th>Best Countries</th>
+      <th>Avg Salary (EUR)</th>
+      <th>Demand</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="mod-name">SAP FICO</span><span class="hot-tag">🔥 HOT</span></td>
+      <td><div class="country-flags"><span class="cflag">🇩🇪 Germany</span><span class="cflag">🇳🇱 Netherlands</span><span class="cflag">🇨🇭 Switzerland</span></div></td>
+      <td class="salary-cell">€65K–€95K</td>
+      <td>Very High</td>
+    </tr>
+    <tr>
+      <td><span class="mod-name">SAP S/4HANA</span><span class="hot-tag">🔥 HOT</span></td>
+      <td><div class="country-flags"><span class="cflag">🇩🇪 Germany</span><span class="cflag">🇮🇪 Ireland</span><span class="cflag">🇧🇪 Belgium</span></div></td>
+      <td class="salary-cell">€70K–€105K</td>
+      <td>Extremely High</td>
+    </tr>
+    <tr>
+      <td><span class="mod-name">SAP MM / SD</span></td>
+      <td><div class="country-flags"><span class="cflag">🇩🇪 Germany</span><span class="cflag">🇳🇱 Netherlands</span><span class="cflag">🇦🇹 Austria</span></div></td>
+      <td class="salary-cell">€58K–€85K</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <td><span class="mod-name">SAP ABAP</span></td>
+      <td><div class="country-flags"><span class="cflag">🇩🇪 Germany</span><span class="cflag">🇵🇱 Poland</span><span class="cflag">🇨🇿 Czech Republic</span></div></td>
+      <td class="salary-cell">€60K–€90K</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <td><span class="mod-name">SAP HCM / SuccessFactors</span></td>
+      <td><div class="country-flags"><span class="cflag">🇮🇪 Ireland</span><span class="cflag">🇬🇧 UK</span><span class="cflag">🇩🇪 Germany</span></div></td>
+      <td class="salary-cell">€60K–€88K</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <td><span class="mod-name">SAP BW / BI / Analytics</span><span class="hot-tag">🔥 HOT</span></td>
+      <td><div class="country-flags"><span class="cflag">🇳🇱 Netherlands</span><span class="cflag">🇩🇪 Germany</span><span class="cflag">🇸🇪 Sweden</span></div></td>
+      <td class="salary-cell">€62K–€92K</td>
+      <td>Very High</td>
+    </tr>
+    <tr>
+      <td><span class="mod-name">SAP Basis / Technical</span></td>
+      <td><div class="country-flags"><span class="cflag">🇩🇪 Germany</span><span class="cflag">🇨🇭 Switzerland</span><span class="cflag">🇳🇱 Netherlands</span></div></td>
+      <td class="salary-cell">€65K–€95K</td>
+      <td>Medium-High</td>
+    </tr>
+    <tr>
+      <td><span class="mod-name">SAP GRC / Security</span></td>
+      <td><div class="country-flags"><span class="cflag">🇩🇪 Germany</span><span class="cflag">🇧🇪 Belgium</span><span class="cflag">🇳🇱 Netherlands</span></div></td>
+      <td class="salary-cell">€68K–€100K</td>
+      <td>High</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- JOB SITES -->
+<div class="section-header">
+  <div class="section-num">🔍</div>
+  <h2>Best Job Sites for SAP Roles in Europe</h2>
+</div>
+<div class="sites-grid">
+
+  <a class="site-card" href="https://jobs.sap.com" target="_blank">
+    <div class="site-icon">💼</div>
+    <div>
+      <div class="site-name">jobs.sap.com</div>
+      <div class="site-desc">SAP's own official careers portal. Always check here first — internal roles, global openings, and partner listings. Filter by Europe → your country → your module.</div>
+    </div>
+    <span class="site-tip">Start Here First</span>
+  </a>
+
+  <a class="site-card" href="https://www.linkedin.com/jobs/search/?keywords=SAP+Consultant+Europe" target="_blank">
+    <div class="site-icon">🔗</div>
+    <div>
+      <div class="site-name">LinkedIn Jobs</div>
+      <div class="site-desc">Search: "SAP FICO Consultant" → filter by Germany / Netherlands / Ireland. Set a Job Alert — you get notified the moment a role is posted. Message the recruiter directly after applying.</div>
+    </div>
+    <span class="site-tip">Set Daily Alert</span>
+  </a>
+
+  <a class="site-card" href="https://de.indeed.com/?q=SAP+consultant&l=Germany" target="_blank">
+    <div class="site-icon">🔎</div>
+    <div>
+      <div class="site-name">Indeed Europe</div>
+      <div class="site-desc">Use your exact module keyword — "SAP S/4HANA", "SAP MM", "SAP FICO". Add "visa sponsorship" to the keyword. Search by country-specific Indeed (de.indeed.com for Germany, nl.indeed.com for Netherlands).</div>
+    </div>
+    <span class="site-tip">Use Module Keywords</span>
+  </a>
+
+  <a class="site-card" href="https://www.xing.com/jobs" target="_blank">
+    <div class="site-icon">🇩🇪</div>
+    <div>
+      <div class="site-name">XING</div>
+      <div class="site-desc">Germany's version of LinkedIn. Massive for SAP roles in DACH region (Germany, Austria, Switzerland). Create a profile here — German recruiters use XING more than LinkedIn. Many Indians miss this completely.</div>
+    </div>
+    <span class="site-tip">Germany Secret Weapon</span>
+  </a>
+
+  <a class="site-card" href="https://www.stepstone.de/jobs/sap-consultant/" target="_blank">
+    <div class="site-icon">📋</div>
+    <div>
+      <div class="site-name">StepStone.de</div>
+      <div class="site-desc">Top job board in Germany and Austria. Thousands of SAP listings. Filter by "Berufserfahrung" (experience level) and look for companies offering relocation. Most listings are in English too.</div>
+    </div>
+    <span class="site-tip">Germany #1 Job Board</span>
+  </a>
+
+  <a class="site-card" href="https://www.glassdoor.com/Job/europe-sap-consultant-jobs" target="_blank">
+    <div class="site-icon">🏢</div>
+    <div>
+      <div class="site-name">Glassdoor Europe</div>
+      <div class="site-desc">Good for SAP roles AND salary benchmarking. Read company reviews before you apply. Filter "Visa Sponsorship" in benefits. Also useful to research interview questions for each company.</div>
+    </div>
+    <span class="site-tip">Salary Research Tool</span>
+  </a>
+
+  <a class="site-card" href="https://www.naukrigulf.com/sap-jobs" target="_blank">
+    <div class="site-icon">🌍</div>
+    <div>
+      <div class="site-name">Naukri Gulf</div>
+      <div class="site-desc">Many European-based consultancies post here targeting Indian SAP professionals. Look for roles in Dubai/UAE first — these are often stepping stones to European roles with same employer.</div>
+    </div>
+    <span class="site-tip">Indian SAP Audience</span>
+  </a>
+
+  <a class="site-card" href="https://www.itjobswatch.co.uk/jobs/europe/sap.do" target="_blank">
+    <div class="site-icon">📊</div>
+    <div>
+      <div class="site-name">IT Jobs Watch (Europe)</div>
+      <div class="site-desc">Niche IT job tracker across Europe. Good for contract SAP roles. Also tracks salary trends for each module over time — useful for knowing your market rate before negotiating.</div>
+    </div>
+    <span class="site-tip">Contract + Perm</span>
+  </a>
+
+</div>
+
+<!-- TOP COMPANIES -->
+<div class="section-header">
+  <div class="section-num">🏢</div>
+  <h2>Top Companies Hiring SAP Professionals in Europe</h2>
+</div>
+
+<div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:4px 4px 8px;">🔵 SAP Consulting & Implementation Partners</div>
+
+<div class="company-card">
+  <div class="co-num">01</div>
+  <div>
+    <div class="co-name">Accenture</div>
+    <div class="co-city">📍 Germany, Netherlands, Ireland, UK | <a href="https://www.accenture.com/us-en/careers" style="color:var(--blue);" target="_blank">accenture.com/careers</a></div>
+    <div class="co-roles"><span class="role-tag">SAP S/4HANA</span><span class="role-tag">SAP FICO</span><span class="role-tag">SAP BW</span><span class="role-tag">All Modules</span></div>
+  </div>
+  <div><div class="co-salary">€65K–€100K</div><a class="apply-btn" href="https://www.accenture.com/us-en/careers" target="_blank">Apply →</a></div>
+</div>
+
+<div class="company-card">
+  <div class="co-num">02</div>
+  <div>
+    <div class="co-name">Deloitte Europe</div>
+    <div class="co-city">📍 Germany, Netherlands, Belgium | <a href="https://jobs2.deloitte.com" style="color:var(--blue);" target="_blank">jobs2.deloitte.com</a></div>
+    <div class="co-roles"><span class="role-tag">SAP GRC</span><span class="role-tag">SAP FICO</span><span class="role-tag">S/4HANA Migration</span></div>
+  </div>
+  <div><div class="co-salary">€68K–€105K</div><a class="apply-btn" href="https://jobs2.deloitte.com" target="_blank">Apply →</a></div>
+</div>
+
+<div class="company-card">
+  <div class="co-num">03</div>
+  <div>
+    <div class="co-name">Capgemini</div>
+    <div class="co-city">📍 Netherlands, Germany, France | <a href="https://www.capgemini.com/careers/" style="color:var(--blue);" target="_blank">capgemini.com/careers</a></div>
+    <div class="co-roles"><span class="role-tag">SAP MM</span><span class="role-tag">SAP SD</span><span class="role-tag">SAP ABAP</span><span class="role-tag">S/4HANA</span></div>
+  </div>
+  <div><div class="co-salary">€60K–€92K</div><a class="apply-btn" href="https://www.capgemini.com/careers/" target="_blank">Apply →</a></div>
+</div>
+
+<div class="company-card">
+  <div class="co-num">04</div>
+  <div>
+    <div class="co-name">IBM Europe</div>
+    <div class="co-city">📍 Germany, Netherlands, Ireland | <a href="https://www.ibm.com/employment/" style="color:var(--blue);" target="_blank">ibm.com/employment</a></div>
+    <div class="co-roles"><span class="role-tag">SAP Basis</span><span class="role-tag">SAP HANA</span><span class="role-tag">Cloud SAP</span></div>
+  </div>
+  <div><div class="co-salary">€65K–€95K</div><a class="apply-btn" href="https://www.ibm.com/employment/" target="_blank">Apply →</a></div>
+</div>
+
+<div class="company-card">
+  <div class="co-num">05</div>
+  <div>
+    <div class="co-name">Wipro Europe</div>
+    <div class="co-city">📍 Netherlands, Germany, UK | <a href="https://careers.wipro.com" style="color:var(--blue);" target="_blank">careers.wipro.com</a></div>
+    <div class="co-roles"><span class="role-tag">All SAP Modules</span><span class="role-tag">S/4HANA</span><span class="role-tag">SAP Analytics</span></div>
+  </div>
+  <div><div class="co-salary">€58K–€85K</div><a class="apply-btn" href="https://careers.wipro.com" target="_blank">Apply →</a></div>
+</div>
+
+<div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:16px 4px 8px;">🏭 End-User Companies (Non-IT — Better Pay, More Stability)</div>
+
+<div class="company-card">
+  <div class="co-num">06</div>
+  <div>
+    <div class="co-name">Shell Netherlands</div>
+    <div class="co-city">📍 Den Haag | <a href="https://www.shell.com/careers.html" style="color:var(--blue);" target="_blank">shell.com/careers</a></div>
+    <div class="co-roles"><span class="role-tag">SAP FICO</span><span class="role-tag">SAP MM</span><span class="role-tag">SAP ERP</span></div>
+  </div>
+  <div><div class="co-salary">€70K–€100K</div><a class="apply-btn" href="https://www.shell.com/careers.html" target="_blank">Apply →</a></div>
+</div>
+
+<div class="company-card">
+  <div class="co-num">07</div>
+  <div>
+    <div class="co-name">Siemens AG Germany</div>
+    <div class="co-city">📍 Munich & Berlin | <a href="https://jobs.siemens.com" style="color:var(--blue);" target="_blank">jobs.siemens.com</a></div>
+    <div class="co-roles"><span class="role-tag">SAP PM</span><span class="role-tag">SAP PP</span><span class="role-tag">SAP EWM</span><span class="role-tag">S/4HANA</span></div>
+  </div>
+  <div><div class="co-salary">€65K–€95K</div><a class="apply-btn" href="https://jobs.siemens.com" target="_blank">Apply →</a></div>
+</div>
+
+<div class="company-card">
+  <div class="co-num">08</div>
+  <div>
+    <div class="co-name">ASML Netherlands</div>
+    <div class="co-city">📍 Eindhoven | <a href="https://www.asml.com/en/careers" style="color:var(--blue);" target="_blank">asml.com/careers</a></div>
+    <div class="co-roles"><span class="role-tag">SAP SCM</span><span class="role-tag">SAP MM</span><span class="role-tag">SAP Finance</span></div>
+  </div>
+  <div><div class="co-salary">€68K–€98K</div><a class="apply-btn" href="https://www.asml.com/en/careers" target="_blank">Apply →</a></div>
+</div>
+
+<div class="company-card">
+  <div class="co-num">09</div>
+  <div>
+    <div class="co-name">Bosch Germany</div>
+    <div class="co-city">📍 Stuttgart & multiple | <a href="https://www.bosch.com/careers/" style="color:var(--blue);" target="_blank">bosch.com/careers</a></div>
+    <div class="co-roles"><span class="role-tag">SAP S/4HANA</span><span class="role-tag">SAP Basis</span><span class="role-tag">SAP BW</span></div>
+  </div>
+  <div><div class="co-salary">€62K–€90K</div><a class="apply-btn" href="https://www.bosch.com/careers/" target="_blank">Apply →</a></div>
+</div>
+
+<div class="company-card">
+  <div class="co-num">10</div>
+  <div>
+    <div class="co-name">Unilever Netherlands</div>
+    <div class="co-city">📍 Rotterdam | <a href="https://careers.unilever.com" style="color:var(--blue);" target="_blank">careers.unilever.com</a></div>
+    <div class="co-roles"><span class="role-tag">SAP FICO</span><span class="role-tag">SAP SD</span><span class="role-tag">SAP Analytics</span></div>
+  </div>
+  <div><div class="co-salary">€62K–€88K</div><a class="apply-btn" href="https://careers.unilever.com" target="_blank">Apply →</a></div>
+</div>
+
+<!-- EMAIL TEMPLATE -->
+<div class="section-header">
+  <div class="section-num">✉️</div>
+  <h2>Cold Email Template for SAP Roles</h2>
+</div>
+<p style="font-size:13px;color:var(--muted);margin-bottom:12px;">Email the SAP Practice Lead or IT Recruitment Manager directly on LinkedIn. Do not use generic careers@ email addresses.</p>
+
+<div class="email-box">
+  <div class="email-header">📧 Copy, Personalise & Send</div>
+  <div class="email-body">Subject: <span class="hl">SAP [Your Module] Consultant — [X Years] Experience | Open to Relocation to [Country]</span>
+
+Dear <span class="hl">[Hiring Manager Name]</span>,
+
+I am <span class="hl">[Your Name]</span>, an SAP <span class="hl">[FICO / MM / SD / S4HANA / ABAP]</span> Consultant with <span class="hl">[X years]</span> of experience across <span class="hl">[industry, e.g., Manufacturing / FMCG / Pharma]</span>.
+
+I am actively exploring opportunities in <span class="hl">[Germany / Netherlands / Ireland]</span> and am eligible for the Highly Skilled Migrant / EU Blue Card Visa — no sponsorship complexity on your end.
+
+Key highlights:
+• <span class="hl">[e.g., Led full-cycle S/4HANA implementation for 3 business units — go-live in 6 months]</span>
+• <span class="hl">[e.g., SAP FICO configuration for 5 company codes across India and Middle East]</span>
+• <span class="hl">[e.g., Certified in SAP S/4HANA Finance — 2023]</span>
+
+I would welcome a 20-minute call to discuss how I can contribute to <span class="hl">[Company Name]</span>'s SAP roadmap.
+
+Best regards,
+<span class="hl">[Your Name]</span>
+<span class="hl">[LinkedIn URL]</span> | <span class="hl">[Phone / WhatsApp]</span>
+  </div>
+</div>
+
+<div style="background:var(--accent-light);border:1px solid rgba(240,165,0,0.25);border-radius:12px;padding:16px 20px;margin-top:14px;font-size:13px;line-height:1.8;color:#6a4400;">
+  <strong>💡 SAP-Specific Tips:</strong><br/>
+  1. Always mention your <strong>specific module</strong> in the subject line — "SAP Consultant" is too vague and gets ignored.<br/>
+  2. Mention your <strong>S/4HANA experience</strong> even if partial — every company is migrating right now and this keyword gets you callbacks.<br/>
+  3. Germany uses <strong>XING more than LinkedIn</strong> for SAP roles. Create a XING profile with the same content as LinkedIn.<br/>
+  4. Add <strong>"EU Blue Card eligible"</strong> or <strong>"Highly Skilled Migrant Visa eligible"</strong> to your LinkedIn headline — recruiters filter for this.
+</div>
+
+<!-- KEYWORDS -->
+<div class="section-header">
+  <div class="section-num">🔑</div>
+  <h2>Keywords to Use When Searching</h2>
+</div>
+<div class="kw-box">
+  <div class="kw-label">Use these exact phrases on LinkedIn, Indeed, StepStone</div>
+  <div class="kw-grid">
+    <span class="kw-tag">SAP S/4HANA Consultant</span>
+    <span class="kw-tag">SAP FICO Europe</span>
+    <span class="kw-tag">SAP MM Consultant Germany</span>
+    <span class="kw-tag">SAP SD Netherlands</span>
+    <span class="kw-tag">SAP ABAP Developer Europe</span>
+    <span class="kw-tag">SAP Basis Administrator</span>
+    <span class="kw-tag">SAP BW/4HANA</span>
+    <span class="kw-tag">SAP SuccessFactors Consultant</span>
+    <span class="kw-tag">SAP Implementation Consultant</span>
+    <span class="kw-tag">SAP visa sponsorship Europe</span>
+    <span class="kw-tag">S/4HANA migration project</span>
+    <span class="kw-tag">SAP functional consultant relocation</span>
+    <span class="kw-tag">SAP ERP project lead</span>
+    <span class="kw-tag">EU Blue Card SAP</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-cta">
+  <h3>More free guides every week 🙌</h3>
+  <p>Country job lists, visa guides, and real stories from Indians working abroad</p>
+  <a class="ig-btn" href="https://instagram.com/vamshi.indianabroad" target="_blank">📱 @vamshi.indianabroad</a>
+  <p style="margin-top:16px;font-size:12px;opacity:0.45;">Salary data is approximate based on market research. Always verify with employers. This is not legal or immigration advice.</p>
+</div>
+
+</body>
+</html>

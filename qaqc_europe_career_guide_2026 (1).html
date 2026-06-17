@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>QA/QC Europe Career Guide 2026 | @vamshi.indianabroad</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #faf9f7;
+  --dark: #141210;
+  --card: #ffffff;
+  --border: #e8e4de;
+  --green: #1a6b47;
+  --green-light: #eef7f2;
+  --green-mid: rgba(26,107,71,0.12);
+  --amber: #b45309;
+  --amber-light: #fffbeb;
+  --amber-mid: rgba(180,83,9,0.1);
+  --red: #dc2626;
+  --red-light: #fef2f2;
+  --blue: #1d4ed8;
+  --blue-light: #eff6ff;
+  --text: #1c1917;
+  --muted: #78716c;
+  --soft: #a8a29e;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 20px 72px;
+}
+
+/* ── TOP BAR ── */
+.topbar {
+  background: var(--dark);
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 0 -20px 0;
+}
+.topbar span { color: #86efac; }
+
+/* ── HERO ── */
+.hero {
+  padding: 52px 0 44px;
+  border-bottom: 1px solid var(--border);
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 50px;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 6vw, 58px);
+  font-weight: 700;
+  line-height: 1.08;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+.hero h1 .accent { color: var(--green); font-style: italic; }
+.hero-sub {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 560px;
+  margin-bottom: 32px;
+  font-weight: 300;
+}
+
+/* salary comparison */
+.sal-compare {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 560px;
+}
+.sal-side {
+  padding: 22px 24px;
+  text-align: center;
+}
+.sal-side.india { background: var(--red-light); }
+.sal-side.europe { background: var(--green-light); }
+.sal-divider {
+  background: var(--dark);
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 16px;
+  font-size: 12px; font-weight: 800; color: white;
+  letter-spacing: 1px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+.sal-flag { font-size: 26px; margin-bottom: 8px; }
+.sal-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.sal-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.sal-num.bad { color: var(--red); }
+.sal-num.good { color: var(--green); }
+.sal-per { font-size: 12px; color: var(--muted); margin-top: 3px; }
+.sal-note {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ── SECTION HEADERS ── */
+.sec {
+  padding-top: 44px;
+}
+.sec-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 6px;
+}
+.sec h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+/* ── EXPERIENCE TABLE ── */
+.exp-table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+.exp-table thead tr {
+  background: var(--dark);
+}
+.exp-table th {
+  padding: 10px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: white;
+  text-align: left;
+}
+.exp-table th:first-child { border-radius: 10px 0 0 0; }
+.exp-table th:last-child { border-radius: 0 10px 0 0; }
+.exp-table td {
+  padding: 11px 14px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+  vertical-align: middle;
+  line-height: 1.5;
+}
+.exp-table tr:last-child td { border-bottom: none; }
+.exp-table tr:last-child td:first-child { border-radius: 0 0 0 10px; }
+.exp-table tr:last-child td:last-child { border-radius: 0 0 10px 0; }
+.exp-table tr:nth-child(even) td { background: #fafaf9; }
+.eu-sal { font-weight: 700; color: var(--green); }
+.in-sal { color: var(--red); font-weight: 600; }
+.target-tag {
+  display: inline-block;
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin: 1px 2px;
+}
+
+/* ── CV SECTION ── */
+.cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px; }
+@media(max-width:560px){ .cv-grid { grid-template-columns: 1fr; } }
+
+.cv-card {
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.cv-card.do {
+  background: var(--green-light);
+  border: 1px solid rgba(26,107,71,0.2);
+}
+.cv-card.dont {
+  background: var(--red-light);
+  border: 1px solid rgba(220,38,38,0.15);
+}
+.cv-head {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cv-head.do { color: var(--green); }
+.cv-head.dont { color: var(--red); }
+.cv-items { list-style: none; }
+.cv-items li {
+  font-size: 12.5px;
+  line-height: 1.6;
+  margin-bottom: 7px;
+  padding-left: 16px;
+  position: relative;
+  color: var(--text);
+}
+.cv-items li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  font-size: 11px;
+}
+.cv-card.do .cv-items li::before { color: var(--green); }
+.cv-card.dont .cv-items li::before { color: var(--red); content: '✗'; }
+
+/* ── LINKEDIN BOX ── */
+.linkedin-box {
+  background: var(--blue-light);
+  border: 1px solid rgba(29,78,216,0.2);
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin-top: 12px;
+}
+.linkedin-box h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 14px;
+}
+.headline-example {
+  background: white;
+  border: 1px solid rgba(29,78,216,0.2);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--blue);
+  margin-bottom: 10px;
+  font-style: italic;
+  line-height: 1.5;
+}
+.headline-note { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* ── COMPANY GRID ── */
+.company-grid { display: grid; gap: 10px; margin-top: 4px; }
+.co-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.co-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--border);
+  min-width: 28px;
+  line-height: 1;
+  margin-top: 2px;
+}
+.co-body { flex: 1; }
+.co-name { font-weight: 700; font-size: 14px; color: var(--dark); margin-bottom: 2px; }
+.co-location { font-size: 11.5px; color: var(--muted); margin-bottom: 6px; }
+.co-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.co-tag {
+  background: var(--green-mid);
+  color: var(--green);
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+.co-tag.amber {
+  background: var(--amber-mid);
+  color: var(--amber);
+}
+.co-right { text-align: right; min-width: 80px; }
+.co-sal {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--green);
+  white-space: nowrap;
+}
+.co-link {
+  display: block;
+  margin-top: 4px;
+  font-size: 10px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+/* ── MASTERS PATH ── */
+.masters-box {
+  background: linear-gradient(135deg, var(--amber-light), #fffdf5);
+  border: 1px solid rgba(180,83,9,0.2);
+  border-radius: 16px;
+  padding: 28px;
+  margin-top: 4px;
+}
+.masters-box h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+.masters-box p { font-size: 13.5px; color: var(--text); line-height: 1.75; margin-bottom: 14px; }
+.masters-steps { display: grid; gap: 8px; }
+.ms-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: white;
+  border-radius: 10px;
+  padding: 12px 14px;
+  border: 1px solid rgba(180,83,9,0.12);
+}
+.ms-num {
+  width: 26px; height: 26px;
+  background: var(--amber);
+  color: white;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800;
+  flex-shrink: 0;
+}
+.ms-text { font-size: 13px; line-height: 1.6; color: var(--text); }
+.ms-text strong { color: var(--amber); }
+
+.masters-unis { margin-top: 14px; }
+.mu-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--amber); margin-bottom: 10px; }
+.mu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+@media(max-width:480px){ .mu-grid { grid-template-columns: 1fr; } }
+.mu-item {
+  background: white;
+  border: 1px solid rgba(180,83,9,0.12);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 12.5px;
+}
+.mu-name { font-weight: 700; color: var(--dark); margin-bottom: 2px; }
+.mu-detail { font-size: 11px; color: var(--muted); }
+
+/* ── EMAIL TEMPLATE ── */
+.email-outer {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+.email-bar {
+  background: var(--dark);
+  padding: 12px 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #86efac;
+}
+.email-content {
+  padding: 20px 22px;
+  font-size: 13.5px;
+  line-height: 1.9;
+  color: var(--text);
+  white-space: pre-line;
+}
+.em-hl { color: var(--green); font-weight: 700; }
+.em-fill { color: var(--amber); font-weight: 600; }
+
+/* ── CHECKLIST ── */
+.checklist { display: grid; gap: 8px; margin-top: 4px; }
+.chk-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+.chk-box {
+  width: 22px; height: 22px;
+  border: 2px solid var(--green);
+  border-radius: 5px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  color: var(--green);
+}
+.chk-title { font-weight: 600; font-size: 13.5px; margin-bottom: 2px; color: var(--dark); }
+.chk-sub { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* ── FOOTER ── */
+.footer {
+  margin-top: 52px;
+  background: var(--dark);
+  color: white;
+  border-radius: 18px;
+  padding: 36px 32px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+.footer h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.footer p { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 20px; line-height: 1.6; }
+.ig-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #86efac;
+  color: var(--dark);
+  font-weight: 800;
+  font-size: 14px;
+  padding: 12px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+}
+.footer-disc { margin-top: 16px; font-size: 10px; color: rgba(255,255,255,0.25); }
+
+@media(max-width:560px){
+  .sal-compare { grid-template-columns: 1fr; }
+  .sal-divider { writing-mode: horizontal-tb; padding: 10px; font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">Exclusively for 🧪 QA · QC Pharma Professionals | <span>@vamshi.indianabroad</span></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">🇪🇺 Free Career Guide — 2026 Edition</div>
+  <h1>QA / QC in India<br/>vs <span class="accent">QA / QC in Europe.</span><br/>Same Role. Different Life.</h1>
+  <p class="hero-sub">If you have quality experience in a pharma plant in India — European companies are actively looking for exactly your profile. Here is everything you need to know.</p>
+
+  <div class="sal-compare">
+    <div class="sal-side india">
+      <div class="sal-flag">🇮🇳</div>
+      <div class="sal-label">India — 5 yrs QA exp.</div>
+      <div class="sal-num bad">₹40K–₹60K</div>
+      <div class="sal-per">per month</div>
+    </div>
+    <div class="sal-divider">VS</div>
+    <div class="sal-side europe">
+      <div class="sal-flag">🇩🇪</div>
+      <div class="sal-label">Germany — 5 yrs QA exp.</div>
+      <div class="sal-num good">₹55L–₹80L</div>
+      <div class="sal-per">per year</div>
+    </div>
+  </div>
+  <p class="sal-note">* Same degree. Same GMP experience. Different country. No lottery for the visa.</p>
+</div>
+
+<!-- SALARY BY EXPERIENCE -->
+<div class="sec">
+  <div class="sec-eyebrow">Know your worth</div>
+  <h2>What Europe Pays — By Your Experience Level</h2>
+  <table class="exp-table">
+    <thead>
+      <tr>
+        <th>Experience Level</th>
+        <th>Role</th>
+        <th>India Salary</th>
+        <th>Europe Salary</th>
+        <th>Best Countries</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>0–2 years</td>
+        <td>QC Analyst / QA Associate</td>
+        <td class="in-sal">₹25K–₹40K/mo</td>
+        <td class="eu-sal">€38K–€50K/yr</td>
+        <td><span class="target-tag">🇮🇪 Ireland</span><span class="target-tag">🇳🇱 NL</span></td>
+      </tr>
+      <tr>
+        <td>2–5 years</td>
+        <td>QA Specialist / QC Chemist</td>
+        <td class="in-sal">₹40K–₹65K/mo</td>
+        <td class="eu-sal">€48K–€68K/yr</td>
+        <td><span class="target-tag">🇩🇪 Germany</span><span class="target-tag">🇳🇱 NL</span></td>
+      </tr>
+      <tr>
+        <td>5–8 years</td>
+        <td>QA Manager / QC Team Lead</td>
+        <td class="in-sal">₹60K–₹1L/mo</td>
+        <td class="eu-sal">€65K–€85K/yr</td>
+        <td><span class="target-tag">🇩🇪 Germany</span><span class="target-tag">🇧🇪 Belgium</span></td>
+      </tr>
+      <tr>
+        <td>8–12 years</td>
+        <td>QA Director / Head of Quality</td>
+        <td class="in-sal">₹1L–₹1.8L/mo</td>
+        <td class="eu-sal">€85K–€110K/yr</td>
+        <td><span class="target-tag">🇨🇭 Swiss</span><span class="target-tag">🇩🇪 Germany</span></td>
+      </tr>
+      <tr>
+        <td>12+ years</td>
+        <td>VP Quality / Global Quality Head</td>
+        <td class="in-sal">₹2L–₹4L/mo</td>
+        <td class="eu-sal">€110K–€150K/yr</td>
+        <td><span class="target-tag">🇨🇭 Swiss</span><span class="target-tag">🇳🇱 NL</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CV GUIDE -->
+<div class="sec">
+  <div class="sec-eyebrow">Application documents</div>
+  <h2>How to Write Your CV for European Pharma Companies</h2>
+  <div class="cv-grid">
+    <div class="cv-card do">
+      <div class="cv-head do">✓ Always include</div>
+      <ul class="cv-items">
+        <li>1–2 pages maximum. Never more.</li>
+        <li>Start with a 3-line professional summary mentioning your QA/QC specialisation and years</li>
+        <li>Quantify everything — "reduced deviations by 35%", "audited 3 API sites", "approved 120+ batch records"</li>
+        <li>List GMP, GDP, ICH Q10, ISO 9001, pharmacopoeias you have worked with</li>
+        <li>Mention specific instruments and software — HPLC, GC, LIMS, SAP QM</li>
+        <li>List your language skills — English level B2 or above is key</li>
+        <li>Add "Open to relocation — EU Blue Card / HSM Visa eligible" at top</li>
+        <li>Save as PDF named: FirstName_LastName_QA_CV_2026.pdf</li>
+      </ul>
+    </div>
+    <div class="cv-card dont">
+      <div class="cv-head dont">✗ Never include</div>
+      <ul class="cv-items">
+        <li>Your photo — illegal in some EU countries to ask for</li>
+        <li>Date of birth or age</li>
+        <li>Marital status or family details</li>
+        <li>Religion or caste</li>
+        <li>Salary expectations (unless specifically asked)</li>
+        <li>Objective statements like "seeking a challenging role" — waste of space</li>
+        <li>More than 3 pages</li>
+        <li>Tables and heavy formatting — ATS systems cannot read them</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- LinkedIn -->
+  <div class="linkedin-box" style="margin-top:16px;">
+    <h3>🔗 Your LinkedIn Headline — This Is What Gets You Found</h3>
+    <div class="headline-example">"QA Specialist | GMP | GDP | M.Pharm | 6 Years API & Formulation | Open to Netherlands & Germany | HSM Visa / EU Blue Card Eligible"</div>
+    <div class="headline-example">"QC Chemist | HPLC | GC | Pharma Manufacturing | 3 Years | Actively Looking — Europe | Visa Sponsorship Eligible"</div>
+    <div class="headline-note">Dutch and German recruiters search LinkedIn before job boards. If your headline does not say EU Blue Card or HSM Visa eligible — they skip your profile assuming you need a complex work permit. Adding those 4 words changes everything.</div>
+  </div>
+</div>
+
+<!-- TOP COMPANIES -->
+<div class="sec">
+  <div class="sec-eyebrow">Where to apply</div>
+  <h2>Top Companies Hiring QA/QC Indians in Europe</h2>
+  <div class="company-grid">
+
+    <div class="co-card">
+      <div class="co-number">01</div>
+      <div class="co-body">
+        <div class="co-name">Boehringer Ingelheim</div>
+        <div class="co-location">📍 Ingelheim, Germany 🇩🇪 | boehringer-ingelheim.com/careers</div>
+        <div class="co-tags"><span class="co-tag">QA</span><span class="co-tag">GMP Compliance</span><span class="co-tag">Batch Release</span><span class="co-tag">EU Blue Card</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€58K–€82K</div></div>
+    </div>
+
+    <div class="co-card">
+      <div class="co-number">02</div>
+      <div class="co-body">
+        <div class="co-name">Bayer AG</div>
+        <div class="co-location">📍 Leverkusen & Berlin, Germany 🇩🇪 | bayer.com/en/careers</div>
+        <div class="co-tags"><span class="co-tag">QC Analyst</span><span class="co-tag">Quality Systems</span><span class="co-tag">GDP</span><span class="co-tag">EU Blue Card</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€55K–€80K</div></div>
+    </div>
+
+    <div class="co-card">
+      <div class="co-number">03</div>
+      <div class="co-body">
+        <div class="co-name">MSD (Merck Sharp & Dohme)</div>
+        <div class="co-location">📍 Haarlem & Oss, Netherlands 🇳🇱 | jobs.merck.com</div>
+        <div class="co-tags"><span class="co-tag">QA</span><span class="co-tag">Manufacturing QC</span><span class="co-tag">Validation</span><span class="co-tag">HSM Visa</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€52K–€78K</div></div>
+    </div>
+
+    <div class="co-card">
+      <div class="co-number">04</div>
+      <div class="co-body">
+        <div class="co-name">Pfizer Ireland</div>
+        <div class="co-location">📍 Dublin & Cork, Ireland 🇮🇪 | pfizer.com/careers</div>
+        <div class="co-tags"><span class="co-tag">Biologic QA</span><span class="co-tag">QC Lab</span><span class="co-tag">Batch Certification</span><span class="co-tag">Critical Skills</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€54K–€80K</div></div>
+    </div>
+
+    <div class="co-card">
+      <div class="co-number">05</div>
+      <div class="co-body">
+        <div class="co-name">Sanofi Germany & France</div>
+        <div class="co-location">📍 Frankfurt 🇩🇪 + Lyon 🇫🇷 | sanofi.com/careers</div>
+        <div class="co-tags"><span class="co-tag">Quality Systems</span><span class="co-tag">GMP Audit</span><span class="co-tag">CAPA</span><span class="co-tag">EU Blue Card</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€55K–€82K</div></div>
+    </div>
+
+    <div class="co-card">
+      <div class="co-number">06</div>
+      <div class="co-body">
+        <div class="co-name">Lonza Group</div>
+        <div class="co-location">📍 Visp & Basel, Switzerland 🇨🇭 | lonza.com/careers</div>
+        <div class="co-tags"><span class="co-tag">CDMO QA</span><span class="co-tag">Biotech QC</span><span class="co-tag">GMP</span><span class="co-tag">Swiss Permit</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€70K–€100K</div></div>
+    </div>
+
+    <div class="co-card">
+      <div class="co-number">07</div>
+      <div class="co-body">
+        <div class="co-name">AbbVie Ireland</div>
+        <div class="co-location">📍 Sligo & Dublin, Ireland 🇮🇪 | abbvie.com/careers</div>
+        <div class="co-tags"><span class="co-tag">Biologic QA</span><span class="co-tag">Packaging QC</span><span class="co-tag">Critical Skills</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€52K–€75K</div></div>
+    </div>
+
+    <div class="co-card">
+      <div class="co-number">08</div>
+      <div class="co-body">
+        <div class="co-name">GSK Vaccines — Belgium</div>
+        <div class="co-location">📍 Rixensart, Belgium 🇧🇪 | gsk.com/careers</div>
+        <div class="co-tags"><span class="co-tag">Vaccine QC</span><span class="co-tag">Manufacturing QA</span><span class="co-tag">Single Permit</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€54K–€78K</div></div>
+    </div>
+
+    <div class="co-card">
+      <div class="co-number">09</div>
+      <div class="co-body">
+        <div class="co-name">Fresenius Kabi</div>
+        <div class="co-location">📍 Bad Homburg, Germany 🇩🇪 | fresenius-kabi.com/careers</div>
+        <div class="co-tags"><span class="co-tag">Formulation QA</span><span class="co-tag">QC Lab</span><span class="co-tag">IV Manufacturing</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€50K–€72K</div></div>
+    </div>
+
+    <div class="co-card">
+      <div class="co-number">10</div>
+      <div class="co-body">
+        <div class="co-name">Teva Pharmaceuticals</div>
+        <div class="co-location">📍 Amsterdam, Netherlands 🇳🇱 | teva.nl/careers</div>
+        <div class="co-tags"><span class="co-tag">Generics QA</span><span class="co-tag">QC</span><span class="co-tag">Regulatory Compliance</span><span class="co-tag">HSM Visa</span></div>
+      </div>
+      <div class="co-right"><div class="co-sal">€46K–€68K</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MASTERS PATH -->
+<div class="sec">
+  <div class="sec-eyebrow">Alternative path — especially for freshers</div>
+  <h2>No European Experience? Come Study First. Then Get Hired.</h2>
+  <div class="masters-box">
+    <h3>🎓 The Masters Route — Why It Actually Works Better</h3>
+    <p>If you have 0–2 years of experience and keep getting rejected for European jobs — there is a smarter path. Come to Europe for a 1–2 year Masters degree in Pharmaceutical Sciences, Quality Management, or Regulatory Affairs. By the time you graduate, you have a European degree, European lab experience, and you are already inside the country. Companies treat you as a local candidate. Your chances of getting hired go from 5% to 80%.</p>
+
+    <div class="masters-steps">
+      <div class="ms-step">
+        <div class="ms-num">1</div>
+        <div class="ms-text">Apply for a <strong>Masters in Pharmaceutical Sciences / Quality Management / Regulatory Affairs</strong> at a European university — tuition can be as low as €0–€3,000/year in Germany and Netherlands for public universities</div>
+      </div>
+      <div class="ms-step">
+        <div class="ms-num">2</div>
+        <div class="ms-text">During your Masters — do <strong>internships and thesis projects</strong> at pharma companies. Many become full-time hires from their thesis company alone</div>
+      </div>
+      <div class="ms-step">
+        <div class="ms-num">3</div>
+        <div class="ms-text">After graduation — apply with a <strong>European degree + EU work authorization</strong>. Companies prefer you over candidates applying from India directly</div>
+      </div>
+      <div class="ms-step">
+        <div class="ms-num">4</div>
+        <div class="ms-text">Your <strong>Indian QA/QC work experience ADDS to your European degree</strong> — you become a senior candidate from Day 1. Starting salary jumps to €55K+ immediately</div>
+      </div>
+    </div>
+
+    <div class="masters-unis">
+      <div class="mu-label">Universities to target for pharma quality programs</div>
+      <div class="mu-grid">
+        <div class="mu-item">
+          <div class="mu-name">Leiden University 🇳🇱</div>
+          <div class="mu-detail">MSc Drug Innovation | €2,314/yr (EU fee) | Excellent pharma industry connections</div>
+        </div>
+        <div class="mu-item">
+          <div class="mu-name">University of Bonn 🇩🇪</div>
+          <div class="mu-detail">MSc Pharmaceutical Sciences | Near €0 tuition | Strong industry network</div>
+        </div>
+        <div class="mu-item">
+          <div class="mu-name">KU Leuven 🇧🇪</div>
+          <div class="mu-detail">MSc Drug Development | English taught | GSK, UCB nearby</div>
+        </div>
+        <div class="mu-item">
+          <div class="mu-name">Uppsala University 🇸🇪</div>
+          <div class="mu-detail">MSc Quality & Regulatory Affairs | Low cost | AstraZeneca HQ nearby</div>
+        </div>
+        <div class="mu-item">
+          <div class="mu-name">University College Dublin 🇮🇪</div>
+          <div class="mu-detail">MSc Pharmaceutical Manufacturing | Pfizer, MSD, AbbVie all within 30 mins</div>
+        </div>
+        <div class="mu-item">
+          <div class="mu-name">ETH Zurich 🇨🇭</div>
+          <div class="mu-detail">MSc Pharmaceutical Sciences | World top 10 | Roche & Novartis HQ in same city</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EMAIL TEMPLATE -->
+<div class="sec">
+  <div class="sec-eyebrow">Cold outreach</div>
+  <h2>Email Template — QA/QC Application to European Companies</h2>
+  <div class="email-outer">
+    <div class="email-bar">📧 Copy → Personalise → Send to HR on LinkedIn</div>
+    <div class="email-content">Subject: <span class="em-hl">QA [Specialist/Manager] Application — GMP | [X] Years API & Formulation | EU Blue Card Eligible</span>
+
+Dear <span class="em-fill">[Hiring Manager First Name]</span>,
+
+I am <span class="em-fill">[Your Name]</span>, a pharmaceutical quality professional with <span class="em-fill">[X years]</span> of hands-on GMP experience in <span class="em-fill">[API manufacturing / formulation / biologic production]</span>, currently based in India.
+
+I am writing to express my interest in QA/QC opportunities at <span class="em-fill">[Company Name]</span>. I am eligible for the <span class="em-hl">EU Blue Card / Highly Skilled Migrant Visa / Critical Skills Permit</span> — the visa process is straightforward and does not create significant administrative burden.
+
+Key experience highlights:
+  • <span class="em-fill">[e.g., Managed GMP compliance across 2 API manufacturing sites — zero critical findings in 3 CDSCO audits]</span>
+  • <span class="em-fill">[e.g., Led CAPA closure for 45 deviations — reduced repeat deviations by 40%]</span>
+  • <span class="em-fill">[e.g., Responsible for batch release and certificate of analysis for 150+ commercial batches/year]</span>
+
+Familiar with: <span class="em-hl">ICH Q10 | EU GMP | FDA 21 CFR Part 211 | ISO 9001 | HPLC | GC | LIMS | SAP QM</span>
+
+I have attached my CV and would welcome a brief call at your convenience.
+
+Best regards,
+<span class="em-fill">[Your Name] | [LinkedIn] | [Phone/WhatsApp]</span></div>
+  </div>
+</div>
+
+<!-- APPLICATION CHECKLIST -->
+<div class="sec">
+  <div class="sec-eyebrow">Before you hit send</div>
+  <h2>Your QA/QC Application Checklist</h2>
+  <div class="checklist">
+    <div class="chk-item"><div class="chk-box">✓</div><div><div class="chk-title">CV is 1–2 pages, no photo, no DOB</div><div class="chk-sub">European format. Saved as PDF. Named properly. ATS-friendly — no tables or columns.</div></div></div>
+    <div class="chk-item"><div class="chk-box">✓</div><div><div class="chk-title">LinkedIn headline says "EU Blue Card / HSM Visa eligible"</div><div class="chk-sub">This is the single highest-impact change you can make to your profile today.</div></div></div>
+    <div class="chk-item"><div class="chk-box">✓</div><div><div class="chk-title">Applied on company career page directly — not Indeed</div><div class="chk-sub">Go to careers.bayer.com, boehringer-ingelheim.com/careers, lonza.com/careers directly.</div></div></div>
+    <div class="chk-item"><div class="chk-box">✓</div><div><div class="chk-title">Found and emailed the HR/TA Manager on LinkedIn same day</div><div class="chk-sub">Apply online AND email HR directly on the same day. Doubles your callback rate.</div></div></div>
+    <div class="chk-item"><div class="chk-box">✓</div><div><div class="chk-title">Mentioned visa type in the first line of email</div><div class="chk-sub">Never hide your visa situation. Stating it upfront removes their biggest concern.</div></div></div>
+    <div class="chk-item"><div class="chk-box">✓</div><div><div class="chk-title">Set a job alert on LinkedIn for "QA Specialist Europe"</div><div class="chk-sub">New roles get 80% of applications in first 48 hours. Alerts keep you first in line.</div></div></div>
+    <div class="chk-item"><div class="chk-box">✓</div><div><div class="chk-title">One follow-up email exactly 7 days after applying</div><div class="chk-sub">"Following up on my application for [role] — happy to connect for a brief call." One follow-up doubles response rate. Never send more than one.</div></div></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <h3>More guides every week 🙌</h3>
+  <p>Country job lists, visa breakdowns, and real stories<br/>from Indians working in European pharma — every week</p>
+  <a class="ig-link" href="https://instagram.com/vamshi.indianabroad" target="_blank">
+    📱 @vamshi.indianabroad
+  </a>
+  <div class="footer-disc">Salary data approximate — based on Glassdoor, LinkedIn Salary, and Levels.fyi 2024–2025. Always verify directly with employers. Not legal or immigration advice.</div>
+</div>
+
+</body>
+</html>
