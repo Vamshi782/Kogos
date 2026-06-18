@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Free US Jobs Tracker — KOGOS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#05060a;--s1:#0a0c14;--s2:#0e1120;
+  --ring:#18213a;--ring2:#222e4a;
+  --gold:#e8b040;--gold-d:rgba(232,176,64,.1);
+  --green:#0eb87a;--rose:#e84560;
+  --white:#ede8dc;--text:#6a7d9a;--muted:#333d55;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Outfit',system-ui,sans-serif;
+  --mono:'DM Mono','Courier New',monospace;
+}
+html{scroll-behavior:smooth;height:100%}
+body{
+  background:var(--bg);color:var(--text);font-family:var(--sans);
+  min-height:100vh;overflow-x:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:24px 20px;
+}
+
+/* ── BACKGROUND GLOW ── */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%,rgba(232,176,64,.06) 0%,transparent 70%),
+    radial-gradient(ellipse 40% 30% at 80% 80%,rgba(24,170,200,.04) 0%,transparent 60%);
+  pointer-events:none;
+}
+
+/* ── WRAPPER ── */
+.wrap{
+  position:relative;z-index:1;
+  width:100%;max-width:560px;
+  display:flex;flex-direction:column;align-items:center;
+  gap:0;
+}
+
+/* ── TOP BADGE ── */
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(232,176,64,.08);border:1px solid rgba(232,176,64,.2);
+  color:var(--gold);font-family:var(--mono);font-size:10px;letter-spacing:2.5px;
+  text-transform:uppercase;padding:6px 16px;border-radius:3px;
+  margin-bottom:28px;
+}
+.badge-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 6px var(--green);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+
+/* ── CARD ── */
+.card{
+  width:100%;
+  background:var(--s2);
+  border:1px solid var(--ring2);
+  border-radius:12px;
+  padding:48px 44px 44px;
+  text-align:center;
+}
+@media(max-width:480px){.card{padding:36px 24px 32px}}
+
+/* ── HEADLINE ── */
+.kicker{
+  font-family:var(--mono);font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold);margin-bottom:14px;
+}
+.headline{
+  font-family:var(--serif);font-size:clamp(36px,8vw,58px);
+  font-weight:600;color:var(--white);line-height:1.0;
+  letter-spacing:-.5px;margin-bottom:14px;
+}
+.headline em{font-style:italic;color:var(--gold)}
+.sub{
+  font-size:15px;color:var(--text);line-height:1.75;
+  font-weight:300;max-width:420px;margin:0 auto 32px;
+}
+
+/* ── STATS ROW ── */
+.stats{
+  display:flex;justify-content:center;gap:1px;
+  background:var(--ring);border:1px solid var(--ring);
+  border-radius:7px;overflow:hidden;margin-bottom:32px;
+}
+.stat{
+  flex:1;background:var(--s1);padding:16px 12px;
+}
+.stat-val{
+  font-family:var(--serif);font-size:26px;font-weight:600;
+  color:var(--white);line-height:1;margin-bottom:4px;
+}
+.stat-lbl{
+  font-family:var(--mono);font-size:9px;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--muted);
+}
+
+/* ── FORM ── */
+.form-group{display:flex;gap:8px;margin-bottom:12px}
+@media(max-width:440px){.form-group{flex-direction:column}}
+
+.email-input{
+  flex:1;background:var(--s1);border:1px solid var(--ring2);
+  border-radius:6px;padding:13px 18px;color:var(--white);
+  font-family:var(--sans);font-size:14px;outline:none;
+  transition:border-color .2s;
+}
+.email-input:focus{border-color:var(--gold)}
+.email-input::placeholder{color:var(--muted)}
+
+.submit-btn{
+  background:var(--gold);color:var(--bg);border:none;
+  border-radius:6px;padding:13px 26px;font-family:var(--sans);
+  font-size:13px;font-weight:700;cursor:pointer;
+  transition:opacity .2s,transform .2s;white-space:nowrap;
+  flex-shrink:0;
+}
+.submit-btn:hover{opacity:.88;transform:translateY(-1px)}
+.submit-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+.form-note{
+  font-size:11.5px;color:var(--muted);line-height:1.6;
+}
+.form-note a{color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+
+/* ── SUCCESS STATE ── */
+.success{display:none;text-align:center;padding:12px 0}
+.success-icon{font-size:48px;margin-bottom:16px;display:block}
+.success h3{
+  font-family:var(--serif);font-size:32px;font-weight:600;
+  color:var(--white);margin-bottom:8px;
+}
+.success p{font-size:14px;color:var(--text);line-height:1.7;margin-bottom:22px}
+.success-link{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold);color:var(--bg);border:none;border-radius:6px;
+  padding:14px 28px;font-family:var(--sans);font-size:13px;font-weight:700;
+  text-decoration:none;transition:opacity .2s;
+}
+.success-link:hover{opacity:.88}
+
+/* ── ERROR ── */
+.error-msg{
+  color:var(--rose);font-size:12px;margin-top:8px;
+  display:none;text-align:left;
+}
+
+/* ── FEATURES ── */
+.features{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  margin-bottom:32px;
+}
+@media(max-width:400px){.features{grid-template-columns:1fr}}
+.feat{
+  display:flex;align-items:flex-start;gap:9px;
+  background:var(--s1);border:1px solid var(--ring);
+  border-radius:5px;padding:12px 14px;
+  font-size:12.5px;color:var(--text);line-height:1.5;
+  text-align:left;
+}
+.feat-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+
+/* ── FOOTER ── */
+.foot{
+  margin-top:28px;text-align:center;
+  font-size:11.5px;color:var(--muted);line-height:1.7;
+}
+.foot a{color:var(--gold);text-decoration:none}
+.foot a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="badge">
+    <span class="badge-dot"></span>
+    Live Job Tracker — Updated Every 15 Min
+  </div>
+
+  <div class="card">
+
+    <!-- DEFAULT STATE -->
+    <div id="formState">
+      <div class="kicker">Free for Job Seekers in the US</div>
+      <h1 class="headline">The jobs board<br/>that never <em>sleeps</em></h1>
+      <p class="sub">Built by a 40-year industry veteran. Scrapes fresh Data, Biotech, and Pharma roles every 15 minutes — before they disappear. Free. No catch.</p>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-val">15 min</div>
+          <div class="stat-lbl">Update cycle</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">ATS</div>
+          <div class="stat-lbl">Resume help</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$0</div>
+          <div class="stat-lbl">Forever free</div>
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feat"><span class="feat-icon">⚡</span>Real-time scraping — roles posted minutes ago</div>
+        <div class="feat"><span class="feat-icon">🎯</span>Data, Pharma, Biotech — your exact niche</div>
+        <div class="feat"><span class="feat-icon">📄</span>ATS-friendly resume builder included</div>
+        <div class="feat"><span class="feat-icon">🇺🇸</span>US-only roles — no noise, no international</div>
+      </div>
+
+      <div class="form-group">
+        <input class="email-input" id="emailInput" type="email" placeholder="your@email.com" autocomplete="email"/>
+        <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">Get Access →</button>
+      </div>
+      <div class="error-msg" id="errorMsg">Please enter a valid email address.</div>
+      <p class="form-note">Enter your email and we'll send you the direct link instantly. No spam, unsubscribe anytime. Shared by <a href="https://www.instagram.com/vamshi.indianabroad" target="_blank">@vamshi.indianabroad</a></p>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <div class="success" id="successState">
+      <span class="success-icon">🎉</span>
+      <h3>Check your inbox!</h3>
+      <p>The tracker link is on its way to you right now. Open it, bookmark it, and check it daily — fresh roles every 15 minutes.</p>
+      <a class="success-link" href="https://www.bghscout.com/" target="_blank" rel="noopener">
+        Open BGHScout Now →
+      </a>
+      <p style="margin-top:18px;font-size:12px;color:var(--muted)">
+        Also follow <a href="https://www.instagram.com/vamshi.indianabroad" target="_blank" style="color:var(--gold);text-decoration:none">@vamshi.indianabroad</a> for daily job tips
+      </p>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    By <a href="https://kogos.co">KOGOS</a> · Helping Indians navigate careers abroad ·
+    <a href="https://www.instagram.com/vamshi.indianabroad" target="_blank">Instagram</a>
+  </div>
+
+</div>
+
+<script>
+const SHEET_URL = "YOUR_APPS_SCRIPT_URL_HERE";
+// ↑ Replace this with your Google Apps Script URL (same one from KOGOS signup,
+//   OR deploy a new one using the Apps Script below)
+
+async function handleSubmit() {
+  const emailEl = document.getElementById('emailInput');
+  const btn = document.getElementById('submitBtn');
+  const errEl = document.getElementById('errorMsg');
+  const email = emailEl.value.trim();
+
+  // Validate
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    errEl.style.display = 'block';
+    emailEl.focus();
+    emailEl.style.borderColor = '#e84560';
+    setTimeout(() => { emailEl.style.borderColor = ''; errEl.style.display = 'none'; }, 3000);
+    return;
+  }
+
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  errEl.style.display = 'none';
+
+  const payload = {
+    email,
+    source: 'jobs-tracker-landing',
+    timestamp: new Date().toISOString(),
+    page: 'bghscout-landing'
+  };
+
+  try {
+    await fetch(SHEET_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      mode: 'no-cors'
+    });
+  } catch(e) {
+    // Fail silently — still show success so user gets the link
+  }
+
+  // Show success
+  document.getElementById('formState').style.display = 'none';
+  document.getElementById('successState').style.display = 'block';
+}
+
+// Allow Enter key to submit
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') handleSubmit();
+});
+</script>
+
+</body>
+</html>
