@@ -272,12 +272,18 @@ const _d = { who:[], dest:[], goal:[], field:[], exp:[] };
 function startForm() {
   document.getElementById('intro').style.display = 'none';
   document.getElementById('stepsWrap').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function startForm() {
+  document.getElementById('intro').style.display = 'none';
+  document.getElementById('stepsWrap').style.display = 'block';
 }
 
 function tog(el, grp, cls) {
   const c = cls || 'on';
   el.classList.toggle(c);
-  const lbl = el.textContent.trim().replace(/^[^\w🇦-🇿]+/,'').trim();
+  const lbl = el.textContent.trim().replace(/^[\s\u{1F1E0}-\u{1F1FF}]+/u,'').trim();
   const arr = _d[grp];
   const i = arr.indexOf(lbl);
   if (i > -1) arr.splice(i, 1); else arr.push(lbl);
