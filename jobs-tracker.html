@@ -25,8 +25,6 @@ body{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   padding:24px 20px;
 }
-
-/* ── BACKGROUND GLOW ── */
 body::before{
   content:'';position:fixed;inset:0;z-index:0;
   background:
@@ -34,16 +32,12 @@ body::before{
     radial-gradient(ellipse 40% 30% at 80% 80%,rgba(24,170,200,.04) 0%,transparent 60%);
   pointer-events:none;
 }
-
-/* ── WRAPPER ── */
 .wrap{
   position:relative;z-index:1;
   width:100%;max-width:560px;
   display:flex;flex-direction:column;align-items:center;
   gap:0;
 }
-
-/* ── TOP BADGE ── */
 .badge{
   display:inline-flex;align-items:center;gap:8px;
   background:rgba(232,176,64,.08);border:1px solid rgba(232,176,64,.2);
@@ -57,8 +51,6 @@ body::before{
   animation:pulse 2s ease-in-out infinite;
 }
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-
-/* ── CARD ── */
 .card{
   width:100%;
   background:var(--s2);
@@ -68,8 +60,6 @@ body::before{
   text-align:center;
 }
 @media(max-width:480px){.card{padding:36px 24px 32px}}
-
-/* ── HEADLINE ── */
 .kicker{
   font-family:var(--mono);font-size:10px;letter-spacing:3px;
   text-transform:uppercase;color:var(--gold);margin-bottom:14px;
@@ -84,16 +74,12 @@ body::before{
   font-size:15px;color:var(--text);line-height:1.75;
   font-weight:300;max-width:420px;margin:0 auto 32px;
 }
-
-/* ── STATS ROW ── */
 .stats{
   display:flex;justify-content:center;gap:1px;
   background:var(--ring);border:1px solid var(--ring);
   border-radius:7px;overflow:hidden;margin-bottom:32px;
 }
-.stat{
-  flex:1;background:var(--s1);padding:16px 12px;
-}
+.stat{flex:1;background:var(--s1);padding:16px 12px;}
 .stat-val{
   font-family:var(--serif);font-size:26px;font-weight:600;
   color:var(--white);line-height:1;margin-bottom:4px;
@@ -102,11 +88,8 @@ body::before{
   font-family:var(--mono);font-size:9px;letter-spacing:1.5px;
   text-transform:uppercase;color:var(--muted);
 }
-
-/* ── FORM ── */
 .form-group{display:flex;gap:8px;margin-bottom:12px}
 @media(max-width:440px){.form-group{flex-direction:column}}
-
 .email-input{
   flex:1;background:var(--s1);border:1px solid var(--ring2);
   border-radius:6px;padding:13px 18px;color:var(--white);
@@ -115,7 +98,6 @@ body::before{
 }
 .email-input:focus{border-color:var(--gold)}
 .email-input::placeholder{color:var(--muted)}
-
 .submit-btn{
   background:var(--gold);color:var(--bg);border:none;
   border-radius:6px;padding:13px 26px;font-family:var(--sans);
@@ -125,13 +107,8 @@ body::before{
 }
 .submit-btn:hover{opacity:.88;transform:translateY(-1px)}
 .submit-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
-
-.form-note{
-  font-size:11.5px;color:var(--muted);line-height:1.6;
-}
+.form-note{font-size:11.5px;color:var(--muted);line-height:1.6;}
 .form-note a{color:var(--muted);text-decoration:underline;text-underline-offset:3px}
-
-/* ── SUCCESS STATE ── */
 .success{display:none;text-align:center;padding:12px 0}
 .success-icon{font-size:48px;margin-bottom:16px;display:block}
 .success h3{
@@ -146,14 +123,10 @@ body::before{
   text-decoration:none;transition:opacity .2s;
 }
 .success-link:hover{opacity:.88}
-
-/* ── ERROR ── */
 .error-msg{
   color:var(--rose);font-size:12px;margin-top:8px;
   display:none;text-align:left;
 }
-
-/* ── FEATURES ── */
 .features{
   display:grid;grid-template-columns:1fr 1fr;gap:8px;
   margin-bottom:32px;
@@ -167,8 +140,6 @@ body::before{
   text-align:left;
 }
 .feat-icon{font-size:16px;flex-shrink:0;margin-top:1px}
-
-/* ── FOOTER ── */
 .foot{
   margin-top:28px;text-align:center;
   font-size:11.5px;color:var(--muted);line-height:1.7;
@@ -247,9 +218,8 @@ body::before{
 </div>
 
 <script>
-const SHEET_URL = "https://script.google.com/macros/s/AKfycbzmxhPn_26un9gJx66DLL_6yC9HrsCPJx3oC5rj8S197hQjCNYXimQ7_Vd1xo64kvU/exec";
-// ↑ Replace this with your Google Apps Script URL (same one from KOGOS signup,
-//   OR deploy a new one using the Apps Script below)
+// ✅ UPDATED — New unified script URL
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbxWk7N3BbnTtZsEzkNKnJeKTQb9dkBlp1S5WxMwO4c_f8MhkY2dDNQtw5Rr1F-mDSkM/exec";
 
 async function handleSubmit() {
   const emailEl = document.getElementById('emailInput');
@@ -257,7 +227,6 @@ async function handleSubmit() {
   const errEl = document.getElementById('errorMsg');
   const email = emailEl.value.trim();
 
-  // Validate
   if (!email || !email.includes('@') || !email.includes('.')) {
     errEl.style.display = 'block';
     emailEl.focus();
@@ -272,6 +241,7 @@ async function handleSubmit() {
 
   const payload = {
     email,
+    destination: 'USA',                  // ✅ Routes to US_JobSeekers sheet
     source: 'jobs-tracker-landing',
     timestamp: new Date().toISOString(),
     page: 'bghscout-landing'
@@ -288,12 +258,10 @@ async function handleSubmit() {
     // Fail silently — still show success so user gets the link
   }
 
-  // Show success
   document.getElementById('formState').style.display = 'none';
   document.getElementById('successState').style.display = 'block';
 }
 
-// Allow Enter key to submit
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Enter') handleSubmit();
 });
