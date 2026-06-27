@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>50+ Germany Companies Hiring Indians | KOGOS</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700;800&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0d0d0d;
+    --white: #ffffff;
+    --gold: #E8B84B;
+    --gold-light: #FDF3D9;
+    --gray-100: #f5f5f5;
+    --gray-200: #e8e8e8;
+    --gray-500: #888888;
+    --gray-700: #444444;
+    --green: #1a7a4a;
+    --green-light: #e6f5ed;
+    --red-light: #fef0f0;
+    --red: #c0392b;
+    --blue-light: #eef4ff;
+    --blue: #2563eb;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .hero {
+    background: var(--black);
+    color: var(--white);
+    padding: 48px 20px 40px;
+    text-align: center;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(26px, 6vw, 42px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 span { color: var(--gold); }
+
+  .hero p {
+    color: #aaa;
+    font-size: 14px;
+    max-width: 480px;
+    margin: 0 auto 24px;
+    line-height: 1.6;
+  }
+
+  .honest-note {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #bbb;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+    line-height: 1.6;
+  }
+
+  .honest-note strong { color: var(--gold); }
+
+  .section {
+    padding: 36px 20px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-bottom: 6px;
+  }
+
+  .section h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--gray-200);
+    margin: 0 20px;
+  }
+
+  /* Email capture */
+  .capture-box {
+    background: var(--gold-light);
+    border: 1.5px solid var(--gold);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 32px;
+  }
+
+  .capture-box p {
+    font-size: 13px;
+    color: var(--gray-700);
+    margin-bottom: 12px;
+  }
+
+  .capture-box strong { color: var(--black); }
+
+  .email-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .email-row input {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 14px;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    background: white;
+  }
+
+  .email-row input:focus { border-color: var(--gold); }
+
+  .btn-gold {
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .btn-gold:hover { background: #d4a435; }
+
+  /* Filter tabs */
+  .filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .filter-btn {
+    padding: 7px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--gray-200);
+    background: white;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    color: var(--gray-700);
+    transition: all 0.15s;
+  }
+
+  .filter-btn.active, .filter-btn:hover {
+    background: var(--black);
+    color: white;
+    border-color: var(--black);
+  }
+
+  /* Company cards */
+  .company-grid { display: flex; flex-direction: column; gap: 12px; }
+
+  .company-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 16px;
+    background: white;
+    transition: border-color 0.15s;
+  }
+
+  .company-card:hover { border-color: var(--gold); }
+
+  .company-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .company-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--black);
+  }
+
+  .company-city {
+    font-size: 12px;
+    color: var(--gray-500);
+    margin-top: 2px;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .tag-pharma { background: #ede9fe; color: #5b21b6; }
+  .tag-tech { background: var(--blue-light); color: var(--blue); }
+  .tag-food { background: #fef9c3; color: #713f12; }
+  .tag-data { background: #d1fae5; color: #065f46; }
+  .tag-bio { background: #fce7f3; color: #9d174d; }
+  .tag-eng { background: #fee2e2; color: #991b1b; }
+  .tag-ai { background: #f0fdf4; color: #166534; }
+
+  .company-roles {
+    font-size: 13px;
+    color: var(--gray-700);
+    margin-bottom: 8px;
+  }
+
+  .company-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .salary-badge {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--green);
+    background: var(--green-light);
+    padding: 3px 9px;
+    border-radius: 6px;
+  }
+
+  .lang-badge {
+    font-size: 11px;
+    color: var(--gray-500);
+  }
+
+  .lang-badge.needs-german { color: var(--red); background: var(--red-light); padding: 2px 8px; border-radius: 6px; }
+  .lang-badge.english-ok { color: var(--green); background: var(--green-light); padding: 2px 8px; border-radius: 6px; }
+
+  .careers-link {
+    font-size: 12px;
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .careers-link:hover { text-decoration: underline; }
+
+  /* Tips section */
+  .tip-card {
+    background: var(--gray-100);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+
+  .tip-card h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--black);
+  }
+
+  .tip-card p, .tip-card li {
+    font-size: 13px;
+    color: var(--gray-700);
+    line-height: 1.6;
+  }
+
+  .tip-card ul { padding-left: 16px; }
+
+  /* Cold email templates */
+  .template-box {
+    background: #f9f9f9;
+    border: 1px solid var(--gray-200);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .template-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  .template-box pre {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--gray-700);
+    white-space: pre-wrap;
+    line-height: 1.7;
+  }
+
+  /* Reality check */
+  .reality-box {
+    background: #fff8e1;
+    border: 1px solid #f9c74f;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+
+  .reality-box h4 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .reality-box p { font-size: 13px; color: var(--gray-700); line-height: 1.6; }
+
+  .footer {
+    background: var(--black);
+    color: #888;
+    text-align: center;
+    padding: 24px 20px;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .footer a { color: var(--gold); text-decoration: none; }
+
+  .hidden { display: none; }
+  .success-msg { color: var(--green); font-size: 13px; margin-top: 8px; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">🇩🇪 Germany Jobs 2026</div>
+  <h1>50+ Companies Hiring Indians<br>with <span>Visa Sponsorship</span></h1>
+  <p>No H-1B lottery. No random rejection. Just your skills and a direct path. Here's the real list — with careers links, salary ranges, and honest notes.</p>
+  <div class="honest-note">
+    <strong>⚠️ Read this first.</strong> Germany is not a shortcut. Most roles outside tech startups require at least basic German (A2–B1). The job market has slowed in 2025–26 compared to 2022–23. But for pharma, food science, data, and engineering — opportunities are real, especially at Series B+ startups and multinationals. Verify each opening directly on the careers page before applying.
+  </div>
+</div>
+
+<div class="section">
+  <div class="capture-box">
+    <p><strong>Get this list + weekly Germany job updates to your inbox.</strong><br>Free. No spam. Unsubscribe anytime.</p>
+    <div class="email-row">
+      <input type="email" id="emailInput" placeholder="your@email.com" />
+      <button class="btn-gold" onclick="submitEmail()">Send me updates</button>
+    </div>
+    <div id="successMsg" class="success-msg hidden">✓ Done! Check your inbox in a few minutes.</div>
+  </div>
+
+  <div class="section-label">Filter by domain</div>
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterCards('all', this)">All (52)</button>
+    <button class="filter-btn" onclick="filterCards('pharma', this)">Pharma / Life Sciences</button>
+    <button class="filter-btn" onclick="filterCards('food', this)">Food Science</button>
+    <button class="filter-btn" onclick="filterCards('tech', this)">Tech / Data / AI</button>
+    <button class="filter-btn" onclick="filterCards('eng', this)">Engineering</button>
+  </div>
+
+  <div class="company-grid" id="companyGrid">
+
+    <!-- PHARMA / LIFE SCIENCES -->
+    <div class="company-card" data-type="pharma">
+      <div class="company-header">
+        <div><div class="company-name">Bayer AG</div><div class="company-city">Berlin / Leverkusen</div></div>
+        <span class="tag tag-pharma">Pharma</span>
+      </div>
+      <div class="company-roles">Regulatory Affairs, Clinical Research, Data Science, QA/QC, Biostatistics</div>
+      <div class="company-footer">
+        <span class="salary-badge">€55K–€85K</span>
+        <span class="lang-badge english-ok">English OK (most roles)</span>
+        <a href="https://career.bayer.com" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="pharma">
+      <div class="company-header">
+        <div><div class="company-name">Boehringer Ingelheim</div><div class="company-city">Ingelheim / Berlin</div></div>
+        <span class="tag tag-pharma">Pharma</span>
+      </div>
+      <div class="company-roles">Pharmacovigilance, Drug Safety, Clinical Operations, Bioinformatics</div>
+      <div class="company-footer">
+        <span class="salary-badge">€52K–€80K</span>
+        <span class="lang-badge needs-german">German preferred</span>
+        <a href="https://www.boehringer-ingelheim.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="pharma">
+      <div class="company-header">
+        <div><div class="company-name">Merck KGaA</div><div class="company-city">Darmstadt</div></div>
+        <span class="tag tag-pharma">Pharma / Science</span>
+      </div>
+      <div class="company-roles">Life Science Research, Process Development, Regulatory, Data Analytics</div>
+      <div class="company-footer">
+        <span class="salary-badge">€55K–€90K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.merckgroup.com/en/careers.html" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="pharma bio">
+      <div class="company-header">
+        <div><div class="company-name">BioNTech</div><div class="company-city">Mainz</div></div>
+        <span class="tag tag-bio">Biotech</span>
+      </div>
+      <div class="company-roles">mRNA Research, Clinical Data, Bioinformatics, Regulatory Affairs</div>
+      <div class="company-footer">
+        <span class="salary-badge">€58K–€95K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://biontech.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="pharma bio">
+      <div class="company-header">
+        <div><div class="company-name">Evotec SE</div><div class="company-city">Hamburg / Munich</div></div>
+        <span class="tag tag-bio">Biotech</span>
+      </div>
+      <div class="company-roles">Drug Discovery, Computational Chemistry, DMPK, Clinical Science</div>
+      <div class="company-footer">
+        <span class="salary-badge">€50K–€80K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.evotec.com/en/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="pharma bio">
+      <div class="company-header">
+        <div><div class="company-name">Immunic Therapeutics</div><div class="company-city">Munich</div></div>
+        <span class="tag tag-bio">Biotech Startup</span>
+      </div>
+      <div class="company-roles">Clinical Development, Regulatory, Medical Affairs</div>
+      <div class="company-footer">
+        <span class="salary-badge">€50K–€75K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.imux.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="pharma bio">
+      <div class="company-header">
+        <div><div class="company-name">Centogene</div><div class="company-city">Berlin / Rostock</div></div>
+        <span class="tag tag-bio">Rare Disease / Genomics</span>
+      </div>
+      <div class="company-roles">Genetic Counseling, Lab Science, Bioinformatics, Data Science</div>
+      <div class="company-footer">
+        <span class="salary-badge">€45K–€72K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.centogene.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="pharma bio">
+      <div class="company-header">
+        <div><div class="company-name">Nuvation Bio</div><div class="company-city">Munich</div></div>
+        <span class="tag tag-bio">Oncology Startup</span>
+      </div>
+      <div class="company-roles">Clinical Operations, Regulatory Affairs, Data Management</div>
+      <div class="company-footer">
+        <span class="salary-badge">€50K–€78K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://nuvationbio.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="pharma">
+      <div class="company-header">
+        <div><div class="company-name">Fresenius</div><div class="company-city">Bad Homburg</div></div>
+        <span class="tag tag-pharma">Healthcare / Pharma</span>
+      </div>
+      <div class="company-roles">Pharmaceutical Operations, Supply Chain, QA, Medical Affairs</div>
+      <div class="company-footer">
+        <span class="salary-badge">€50K–€78K</span>
+        <span class="lang-badge needs-german">German preferred</span>
+        <a href="https://www.fresenius.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="pharma bio">
+      <div class="company-header">
+        <div><div class="company-name">Miltenyi Biotec</div><div class="company-city">Bergisch Gladbach</div></div>
+        <span class="tag tag-bio">Biotech</span>
+      </div>
+      <div class="company-roles">Cell Biology, Product Development, R&D, Applications Specialist</div>
+      <div class="company-footer">
+        <span class="salary-badge">€48K–€75K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.miltenyibiotec.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <!-- FOOD SCIENCE -->
+    <div class="company-card" data-type="food">
+      <div class="company-header">
+        <div><div class="company-name">Döhler Group</div><div class="company-city">Darmstadt</div></div>
+        <span class="tag tag-food">Food Science</span>
+      </div>
+      <div class="company-roles">Food Technologist, Flavor Development, QA/QC, R&D, Regulatory</div>
+      <div class="company-footer">
+        <span class="salary-badge">€45K–€70K</span>
+        <span class="lang-badge needs-german">German required</span>
+        <a href="https://www.doehler.com/en/careers.html" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="food">
+      <div class="company-header">
+        <div><div class="company-name">Symrise AG</div><div class="company-city">Holzminden</div></div>
+        <span class="tag tag-food">Flavor & Fragrance</span>
+      </div>
+      <div class="company-roles">Flavor Chemist, Food Technologist, Sensory Science, R&D</div>
+      <div class="company-footer">
+        <span class="salary-badge">€48K–€75K</span>
+        <span class="lang-badge english-ok">English OK (R&D)</span>
+        <a href="https://www.symrise.com/careers/" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="food">
+      <div class="company-header">
+        <div><div class="company-name">BRAIN Biotech</div><div class="company-city">Zwingenberg</div></div>
+        <span class="tag tag-food">Food Biotech</span>
+      </div>
+      <div class="company-roles">Fermentation Science, Bioprocess Engineering, Food Innovation R&D</div>
+      <div class="company-footer">
+        <span class="salary-badge">€46K–€72K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.brain-biotech.com/en/career" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="food">
+      <div class="company-header">
+        <div><div class="company-name">Foodji</div><div class="company-city">Berlin (Startup)</div></div>
+        <span class="tag tag-food">FoodTech Startup</span>
+      </div>
+      <div class="company-roles">Food Operations, Supply Chain, Product Development, Tech</div>
+      <div class="company-footer">
+        <span class="salary-badge">€42K–€65K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.foodji.eu/jobs" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="food">
+      <div class="company-header">
+        <div><div class="company-name">Formo (Formo Bio)</div><div class="company-city">Berlin (Startup)</div></div>
+        <span class="tag tag-food">Alt Protein / Biotech</span>
+      </div>
+      <div class="company-roles">Fermentation Engineer, Food Scientist, Regulatory, Operations</div>
+      <div class="company-footer">
+        <span class="salary-badge">€48K–€75K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://formo.bio/jobs" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="food">
+      <div class="company-header">
+        <div><div class="company-name">Mushlabs</div><div class="company-city">Hamburg (Startup)</div></div>
+        <span class="tag tag-food">Alt Protein Startup</span>
+      </div>
+      <div class="company-roles">Bioprocess Engineer, Food Scientist, QA, Fermentation R&D</div>
+      <div class="company-footer">
+        <span class="salary-badge">€45K–€70K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://mushlabs.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="food">
+      <div class="company-header">
+        <div><div class="company-name">Planted Foods (German ops)</div><div class="company-city">Berlin</div></div>
+        <span class="tag tag-food">Plant-Based Food</span>
+      </div>
+      <div class="company-roles">Food Technologist, Process Engineer, Regulatory, Operations</div>
+      <div class="company-footer">
+        <span class="salary-badge">€44K–€68K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://eatplanted.com/jobs" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <!-- TECH / DATA / AI -->
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">Zalando</div><div class="company-city">Berlin</div></div>
+        <span class="tag tag-tech">E-commerce Tech</span>
+      </div>
+      <div class="company-roles">Data Engineer, ML Engineer, Software Engineer, Product Manager</div>
+      <div class="company-footer">
+        <span class="salary-badge">€65K–€100K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://jobs.zalando.com" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">N26</div><div class="company-city">Berlin</div></div>
+        <span class="tag tag-tech">Fintech</span>
+      </div>
+      <div class="company-roles">Data Analyst, Backend Engineer, Risk Analytics, Product</div>
+      <div class="company-footer">
+        <span class="salary-badge">€60K–€95K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://n26.com/en-eu/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">Personio</div><div class="company-city">Munich / Berlin</div></div>
+        <span class="tag tag-tech">HR Tech</span>
+      </div>
+      <div class="company-roles">Backend Engineer, Data Engineer, Platform, Full Stack</div>
+      <div class="company-footer">
+        <span class="salary-badge">€65K–€100K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.personio.com/about-personio/careers/" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">Trade Republic</div><div class="company-city">Berlin</div></div>
+        <span class="tag tag-tech">Fintech</span>
+      </div>
+      <div class="company-roles">Backend Engineer, Data Scientist, Security, Infrastructure</div>
+      <div class="company-footer">
+        <span class="salary-badge">€70K–€110K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://traderepublic.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech ai">
+      <div class="company-header">
+        <div><div class="company-name">Aleph Alpha</div><div class="company-city">Heidelberg</div></div>
+        <span class="tag tag-ai">AI Startup</span>
+      </div>
+      <div class="company-roles">ML Researcher, NLP Engineer, AI Safety, Backend, Data</div>
+      <div class="company-footer">
+        <span class="salary-badge">€65K–€105K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://aleph-alpha.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">Contentful</div><div class="company-city">Berlin</div></div>
+        <span class="tag tag-tech">SaaS / CMS</span>
+      </div>
+      <div class="company-roles">Backend, Platform, Full Stack, Data Engineering</div>
+      <div class="company-footer">
+        <span class="salary-badge">€60K–€95K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.contentful.com/careers/" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">SoundCloud</div><div class="company-city">Berlin</div></div>
+        <span class="tag tag-tech">Audio Tech</span>
+      </div>
+      <div class="company-roles">Backend, Audio Processing, Infrastructure, Data Science</div>
+      <div class="company-footer">
+        <span class="salary-badge">€58K–€90K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://soundcloud.com/jobs" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech ai">
+      <div class="company-header">
+        <div><div class="company-name">Merantix</div><div class="company-city">Berlin</div></div>
+        <span class="tag tag-ai">AI Venture Studio</span>
+      </div>
+      <div class="company-roles">ML Engineer, AI Researcher, Data Scientist, Product</div>
+      <div class="company-footer">
+        <span class="salary-badge">€58K–€90K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.merantix.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">Celonis</div><div class="company-city">Munich</div></div>
+        <span class="tag tag-tech">Process Mining / SaaS</span>
+      </div>
+      <div class="company-roles">Data Engineer, Software Engineer, Solutions Architect, Analytics</div>
+      <div class="company-footer">
+        <span class="salary-badge">€65K–€100K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.celonis.com/careers/" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">Delivery Hero</div><div class="company-city">Berlin</div></div>
+        <span class="tag tag-tech">FoodTech / Delivery</span>
+      </div>
+      <div class="company-roles">Backend, Data Engineer, ML, Product, Operations</div>
+      <div class="company-footer">
+        <span class="salary-badge">€60K–€95K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://careers.deliveryhero.com" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">Wolt (Germany ops)</div><div class="company-city">Berlin / Munich</div></div>
+        <span class="tag tag-tech">FoodTech / Logistics</span>
+      </div>
+      <div class="company-roles">Operations, Data Analyst, Software Engineer, Product</div>
+      <div class="company-footer">
+        <span class="salary-badge">€55K–€85K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://careers.wolt.com" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech ai">
+      <div class="company-header">
+        <div><div class="company-name">Helsing</div><div class="company-city">Munich / Berlin</div></div>
+        <span class="tag tag-ai">Defense AI Startup</span>
+      </div>
+      <div class="company-roles">ML Engineer, Signal Processing, Software, Research</div>
+      <div class="company-footer">
+        <span class="salary-badge">€70K–€115K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://helsing.ai/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">About You</div><div class="company-city">Hamburg</div></div>
+        <span class="tag tag-tech">Fashion Tech</span>
+      </div>
+      <div class="company-roles">Data Engineer, ML Engineer, Backend, Analytics</div>
+      <div class="company-footer">
+        <span class="salary-badge">€55K–€88K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://corporate.aboutyou.de/en/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">AUTO1 Group</div><div class="company-city">Berlin</div></div>
+        <span class="tag tag-tech">Auto / Tech</span>
+      </div>
+      <div class="company-roles">Data Scientist, Backend Engineer, Product, Operations</div>
+      <div class="company-footer">
+        <span class="salary-badge">€58K–€92K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.auto1-group.com/jobs/" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">FlixBus / FlixMobility</div><div class="company-city">Munich</div></div>
+        <span class="tag tag-tech">Mobility Tech</span>
+      </div>
+      <div class="company-roles">Data Analyst, Software Engineer, Operations, Product</div>
+      <div class="company-footer">
+        <span class="salary-badge">€52K–€82K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.flixbus.com/company/jobs" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">GetYourGuide</div><div class="company-city">Berlin</div></div>
+        <span class="tag tag-tech">Travel Tech</span>
+      </div>
+      <div class="company-roles">Data Scientist, Backend, ML, Product Manager</div>
+      <div class="company-footer">
+        <span class="salary-badge">€60K–€95K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.getyourguide.careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">Taxfix</div><div class="company-city">Berlin</div></div>
+        <span class="tag tag-tech">Fintech Startup</span>
+      </div>
+      <div class="company-roles">Backend, Data Engineer, ML, Product</div>
+      <div class="company-footer">
+        <span class="salary-badge">€58K–€88K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://taxfix.de/en/careers/" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech ai">
+      <div class="company-header">
+        <div><div class="company-name">Luminovo</div><div class="company-city">Munich</div></div>
+        <span class="tag tag-ai">AI / Electronics Tech</span>
+      </div>
+      <div class="company-roles">ML Engineer, Backend, Data, Product</div>
+      <div class="company-footer">
+        <span class="salary-badge">€55K–€85K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://luminovo.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <!-- ENGINEERING -->
+    <div class="company-card" data-type="eng">
+      <div class="company-header">
+        <div><div class="company-name">Siemens Healthineers</div><div class="company-city">Erlangen / Munich</div></div>
+        <span class="tag tag-eng">MedTech / Engineering</span>
+      </div>
+      <div class="company-roles">Biomedical Engineer, Software, Data Science, Regulatory</div>
+      <div class="company-footer">
+        <span class="salary-badge">€58K–€92K</span>
+        <span class="lang-badge english-ok">English OK (tech)</span>
+        <a href="https://www.siemens-healthineers.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="eng">
+      <div class="company-header">
+        <div><div class="company-name">Volocopter</div><div class="company-city">Bruchsal / Berlin</div></div>
+        <span class="tag tag-eng">Aviation Startup</span>
+      </div>
+      <div class="company-roles">Aerospace Engineer, Software, Systems Engineer, Data</div>
+      <div class="company-footer">
+        <span class="salary-badge">€55K–€85K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.volocopter.com/en/jobs/" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="eng">
+      <div class="company-header">
+        <div><div class="company-name">Lilium (restructured)</div><div class="company-city">Munich</div></div>
+        <span class="tag tag-eng">EV Aviation</span>
+      </div>
+      <div class="company-roles">Electrical Engineer, Systems, Battery Engineering, Software</div>
+      <div class="company-footer">
+        <span class="salary-badge">€55K–€88K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://lilium.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="eng">
+      <div class="company-header">
+        <div><div class="company-name">Evonik Industries</div><div class="company-city">Essen</div></div>
+        <span class="tag tag-eng">Specialty Chemicals</span>
+      </div>
+      <div class="company-roles">Process Engineer, Chemical Engineer, R&D, QA</div>
+      <div class="company-footer">
+        <span class="salary-badge">€52K–€82K</span>
+        <span class="lang-badge needs-german">German required</span>
+        <a href="https://career.evonik.com" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="eng">
+      <div class="company-header">
+        <div><div class="company-name">Webasto</div><div class="company-city">Stockdorf / Munich</div></div>
+        <span class="tag tag-eng">Automotive / EV</span>
+      </div>
+      <div class="company-roles">EV Charging Systems, Embedded, Electrical, Software</div>
+      <div class="company-footer">
+        <span class="salary-badge">€55K–€85K</span>
+        <span class="lang-badge needs-german">German preferred</span>
+        <a href="https://www.webasto-group.com/de-de/karriere/" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="eng">
+      <div class="company-header">
+        <div><div class="company-name">Skeleton Technologies</div><div class="company-city">Berlin</div></div>
+        <span class="tag tag-eng">Energy Storage</span>
+      </div>
+      <div class="company-roles">Materials Engineer, Battery R&D, Process, Software</div>
+      <div class="company-footer">
+        <span class="salary-badge">€52K–€80K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.skeletontech.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="eng">
+      <div class="company-header">
+        <div><div class="company-name">1KOMMA5°</div><div class="company-city">Hamburg</div></div>
+        <span class="tag tag-eng">Climate Tech</span>
+      </div>
+      <div class="company-roles">Energy Systems, Software, Operations, Data Analyst</div>
+      <div class="company-footer">
+        <span class="salary-badge">€50K–€78K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://1komma5grad.com/de/karriere/" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="eng">
+      <div class="company-header">
+        <div><div class="company-name">Climeworks (Germany ops)</div><div class="company-city">Berlin</div></div>
+        <span class="tag tag-eng">Carbon Capture</span>
+      </div>
+      <div class="company-roles">Process Engineer, Chemical Engineer, Data, Operations</div>
+      <div class="company-footer">
+        <span class="salary-badge">€50K–€80K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.climeworks.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <!-- More pharma/data/mixed -->
+    <div class="company-card" data-type="pharma tech">
+      <div class="company-header">
+        <div><div class="company-name">Noscendo</div><div class="company-city">Duisburg (Startup)</div></div>
+        <span class="tag tag-bio">MedTech Startup</span>
+      </div>
+      <div class="company-roles">Bioinformatics, Clinical Data, Software, Lab Science</div>
+      <div class="company-footer">
+        <span class="salary-badge">€46K–€70K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.noscendo.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech ai">
+      <div class="company-header">
+        <div><div class="company-name">Vara</div><div class="company-city">Berlin (Startup)</div></div>
+        <span class="tag tag-ai">AI Health Startup</span>
+      </div>
+      <div class="company-roles">ML Engineer, Clinical AI, Software, Data Science</div>
+      <div class="company-footer">
+        <span class="salary-badge">€60K–€90K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.vara.ai/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">SolarisBank</div><div class="company-city">Berlin</div></div>
+        <span class="tag tag-tech">Banking as a Service</span>
+      </div>
+      <div class="company-roles">Backend, Data Engineer, Risk, Compliance Tech</div>
+      <div class="company-footer">
+        <span class="salary-badge">€60K–€92K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.solarisgroup.com/en/career/" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech ai">
+      <div class="company-header">
+        <div><div class="company-name">Understand.ai (Daimler)</div><div class="company-city">Karlsruhe</div></div>
+        <span class="tag tag-ai">AI / Autonomous Driving</span>
+      </div>
+      <div class="company-roles">ML Engineer, CV Engineer, Data Labeling Ops, Software</div>
+      <div class="company-footer">
+        <span class="salary-badge">€60K–€95K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://understand.ai/jobs" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">Raisin</div><div class="company-city">Berlin</div></div>
+        <span class="tag tag-tech">Fintech / Savings</span>
+      </div>
+      <div class="company-roles">Data Engineer, Backend, Analytics, Product</div>
+      <div class="company-footer">
+        <span class="salary-badge">€58K–€88K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.raisin.com/careers/" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="pharma bio">
+      <div class="company-header">
+        <div><div class="company-name">Ribocure Pharmaceuticals</div><div class="company-city">Hamburg (Startup)</div></div>
+        <span class="tag tag-bio">RNA Biotech Startup</span>
+      </div>
+      <div class="company-roles">Molecular Biology, Bioinformatics, Research Scientist</div>
+      <div class="company-footer">
+        <span class="salary-badge">€48K–€72K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.ribocure.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="eng tech">
+      <div class="company-header">
+        <div><div class="company-name">Isar Aerospace</div><div class="company-city">Ottobrunn / Munich</div></div>
+        <span class="tag tag-eng">Space Startup</span>
+      </div>
+      <div class="company-roles">Propulsion Engineer, Software, Systems, Data</div>
+      <div class="company-footer">
+        <span class="salary-badge">€55K–€88K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.isaraerospace.com/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">Adjust (AppLovin)</div><div class="company-city">Berlin</div></div>
+        <span class="tag tag-tech">Ad Tech / Mobile</span>
+      </div>
+      <div class="company-roles">Backend, Data Engineer, Analytics, Software</div>
+      <div class="company-footer">
+        <span class="salary-badge">€62K–€95K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.adjust.com/company/careers/" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="pharma bio">
+      <div class="company-header">
+        <div><div class="company-name">Immunogenetics (img)</div><div class="company-city">Berlin (Startup)</div></div>
+        <span class="tag tag-bio">Immunology Startup</span>
+      </div>
+      <div class="company-roles">Research Scientist, Data Science, Lab Operations</div>
+      <div class="company-footer">
+        <span class="salary-badge">€46K–€70K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.linkedin.com/company/immunogenetics-img" target="_blank" class="careers-link">LinkedIn →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech ai">
+      <div class="company-header">
+        <div><div class="company-name">DeepL</div><div class="company-city">Cologne / Berlin</div></div>
+        <span class="tag tag-ai">AI Language Tech</span>
+      </div>
+      <div class="company-roles">ML Engineer, NLP Researcher, Backend, Data Science</div>
+      <div class="company-footer">
+        <span class="salary-badge">€65K–€105K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.deepl.com/en/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">Tier Mobility</div><div class="company-city">Berlin</div></div>
+        <span class="tag tag-tech">Mobility Startup</span>
+      </div>
+      <div class="company-roles">Backend, Data Engineer, Operations Tech, Product</div>
+      <div class="company-footer">
+        <span class="salary-badge">€52K–€82K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.tier.app/en/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="eng">
+      <div class="company-header">
+        <div><div class="company-name">Enpal</div><div class="company-city">Berlin</div></div>
+        <span class="tag tag-eng">Solar / Climate Tech</span>
+      </div>
+      <div class="company-roles">Electrical Engineer, Data Analyst, Operations, Software</div>
+      <div class="company-footer">
+        <span class="salary-badge">€50K–€80K</span>
+        <span class="lang-badge english-ok">English OK (tech)</span>
+        <a href="https://www.enpal.de/karriere" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+    <div class="company-card" data-type="tech">
+      <div class="company-header">
+        <div><div class="company-name">Clark (Insurance Tech)</div><div class="company-city">Frankfurt / Berlin</div></div>
+        <span class="tag tag-tech">InsurTech</span>
+      </div>
+      <div class="company-roles">Data Engineer, Backend, Analytics, Product</div>
+      <div class="company-footer">
+        <span class="salary-badge">€55K–€85K</span>
+        <span class="lang-badge english-ok">English OK</span>
+        <a href="https://www.clark.de/careers" target="_blank" class="careers-link">careers →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- RESUME TIPS -->
+<div class="section">
+  <div class="section-label">Before you apply</div>
+  <h2>German CV tips for Indians</h2>
+
+  <div class="tip-card">
+    <h4>German CV ≠ Indian resume</h4>
+    <p>German CVs are called "Lebenslauf." They're typically 1–2 pages, chronological (most recent first), and include a professional photo at the top right. No photo = your CV looks incomplete to German recruiters.</p>
+  </div>
+
+  <div class="tip-card">
+    <h4>What to include (and what to cut)</h4>
+    <ul>
+      <li>✅ Professional photo (formal, white/neutral background)</li>
+      <li>✅ Date of birth and nationality (standard in Germany, unlike US)</li>
+      <li>✅ Degree recognition status if applicable</li>
+      <li>✅ Results-focused bullet points with numbers</li>
+      <li>✅ Cover letter in German (even A2–B1 level shows effort)</li>
+      <li>❌ Don't use US resume format — no "objective statement"</li>
+      <li>❌ Don't list 10+ skills without showing where you used them</li>
+    </ul>
+  </div>
+
+  <div class="tip-card">
+    <h4>Degree recognition</h4>
+    <p>Your Indian degree (B.E., B.Tech, B.Pharm, M.Sc.) must be recognized. Check anabin.kmk.org to see if your university is listed. If not, apply through the official recognition portal at anerkennung-in-deutschland.de. For pharma and food science roles, contact the state-level authority in the city you're applying to.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- COLD EMAIL TEMPLATES -->
+<div class="section">
+  <div class="section-label">Outreach</div>
+  <h2>Cold email / LinkedIn templates</h2>
+
+  <p style="font-size:13px;color:#666;margin-bottom:20px;">Keep it short. Germans value directness and clarity. No fluff. No "I hope this email finds you well." Get to the point in 4–5 lines max.</p>
+
+  <div class="template-box">
+    <div class="template-label">Template 1 — LinkedIn DM (no open role)</div>
+    <pre>Hi [Name],
+
+I'm a [role] with [X years] experience in [pharma/food science/data].
+I noticed [Company] is doing interesting work in [specific area].
+
+I'd love to understand if there's any fit — happy to share my profile.
+
+Best,
+[Your name]</pre>
+  </div>
+
+  <div class="template-box">
+    <div class="template-label">Template 2 — Cold email (open role)</div>
+    <pre>Subject: Application — [Role Title] | [Your name]
+
+Hi [Name],
+
+I'm applying for [Role] at [Company]. I have [X years] in [domain],
+including [one specific relevant achievement — 1 line].
+
+I'm based in [India/abroad], have a valid degree in [field],
+and am open to relocation with visa support.
+
+CV attached. Happy to connect.
+
+[Your name]
+[LinkedIn link]</pre>
+  </div>
+
+  <div class="template-box">
+    <div class="template-label">Template 3 — Pharma / Food Science specific</div>
+    <pre>Subject: [Regulatory/QA/Food Science] Profile — [Your name]
+
+Hi [Name],
+
+I'm a [B.Pharm / M.Sc Food Science] graduate with [X years]
+at [Company/lab type]. My work covers [QA / regulatory / R&D — be specific].
+
+Interested in opportunities at [Company] where my background
+in [specific area] could contribute.
+
+Happy to share my CV. Open to relocation.
+
+[Your name]</pre>
+  </div>
+
+  <div class="reality-box">
+    <h4>⚠️ Honest note on language</h4>
+    <p>Several people in comments will say "you need German for everything in Germany." They're partly right. Outside tech startups and international companies, German is important — especially for pharma, food production, and non-research roles. Learning A1–B1 German before you apply will improve your response rate significantly. It signals commitment and gets you shortlisted faster.</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Built by <a href="https://instagram.com/vamshi.indianabroad">@vamshi.indianabroad</a> | Free resource by <a href="https://kogos.co">KOGOS</a></p>
+  <p style="margin-top:8px;">Always verify open roles directly on company career pages. Job market conditions change. This list was last updated June 2026.</p>
+</div>
+
+<script>
+function filterCards(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.company-card').forEach(card => {
+    if (type === 'all') {
+      card.style.display = '';
+    } else {
+      const types = card.dataset.type || '';
+      card.style.display = types.includes(type) ? '' : 'none';
+    }
+  });
+}
+
+function submitEmail() {
+  const email = document.getElementById('emailInput').value.trim();
+  if (!email || !email.includes('@')) {
+    alert('Please enter a valid email.');
+    return;
+  }
+  document.getElementById('successMsg').classList.remove('hidden');
+  document.getElementById('emailInput').value = '';
+  // Connect to your KOGOS backend / Google Apps Script here
+  fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, source: 'germany-jobs-page', date: new Date().toISOString() })
+  }).catch(() => {});
+}
+</script>
+</body>
+</html>
