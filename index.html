@@ -37,7 +37,7 @@ nav.dark{background:rgba(5,6,10,.97)}
   letter-spacing:4px;text-transform:uppercase;cursor:pointer}
 .logo b{color:var(--gold2);font-weight:600}
 .nav-links{display:flex;gap:2px;align-items:center}
-.nav-links a{color:var(--muted);font-size:13px;padding:7px 12px;border-radius:5px;
+.nav-links a{color:rgba(237,232,220,.82);font-size:13px;padding:7px 12px;border-radius:5px;
   cursor:pointer;transition:color .2s,background .2s;text-decoration:none}
 .nav-links a:hover{color:var(--white);background:rgba(255,255,255,.05)}
 .nav-cta{background:var(--gold2)!important;color:var(--bg)!important;
@@ -328,7 +328,7 @@ textarea.ff{resize:vertical;min-height:120px}
 @media(max-width:540px){.fr2{grid-template-columns:1fr}}
 
 /* Brands */
-.bsg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+.bsg{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
   background:var(--ring);border:1px solid var(--ring);border-radius:7px;overflow:hidden;margin-bottom:36px}
 @media(max-width:600px){.bsg{grid-template-columns:1fr}}
 .bsc{background:var(--s1);padding:32px;text-align:center}
@@ -419,6 +419,253 @@ textarea.ff{resize:vertical;min-height:120px}
 .kf-done-icon{font-size:52px;margin-bottom:16px;display:block}
 .kf-done h3{font-family:var(--serif);font-size:28px;color:var(--white);margin-bottom:8px;font-weight:600}
 .kf-done p{font-size:14px;color:var(--text);line-height:1.72;margin-bottom:24px}
+
+/* =================================================================
+   POLISH LAYER  — color, depth & readability (overrides above)
+   ================================================================= */
+html{scroll-behavior:smooth}
+
+/* --- NAV: guaranteed readability over the globe --- */
+nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%);
+  backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%)}
+.nav-links a{font-weight:500;text-shadow:0 1px 10px rgba(0,0,0,.75)}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:linear-gradient(135deg,var(--gold2),var(--gold))!important;
+  box-shadow:0 4px 16px -6px rgba(232,176,64,.55);text-shadow:none!important}
+#mob a{color:rgba(237,232,220,.9)}
+
+/* --- HERO: soften the darkness, add a color aurora --- */
+.vig{background:radial-gradient(ellipse 68% 68% at 50% 50%,transparent 24%,rgba(5,6,10,.82) 100%)}
+.hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(55% 45% at 14% 22%,rgba(24,170,200,.14),transparent 62%),
+             radial-gradient(50% 45% at 86% 78%,rgba(232,176,64,.13),transparent 62%),
+             radial-gradient(40% 40% at 78% 12%,rgba(14,184,122,.08),transparent 60%)}
+.hey{box-shadow:0 0 30px -8px rgba(232,176,64,.35)}
+
+/* --- COLOR GLOWS behind alternating sections --- */
+.prob,.cs,.svs,.fou{position:relative;overflow:hidden}
+.prob::before{content:'';position:absolute;top:-120px;left:-80px;width:460px;height:460px;
+  border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(232,176,64,.08),transparent 70%)}
+.cs::before{content:'';position:absolute;top:40px;right:-100px;width:480px;height:480px;
+  border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(24,170,200,.09),transparent 70%)}
+.svs::before{content:'';position:absolute;bottom:-140px;left:30%;width:520px;height:520px;
+  border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(14,184,122,.07),transparent 70%)}
+.fou::before{content:'';position:absolute;top:20px;right:-120px;width:440px;height:440px;
+  border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(232,69,96,.06),transparent 70%)}
+
+/* --- big serif numerals get a warm gradient instead of flat gray --- */
+.pn,.sn{background:linear-gradient(135deg,var(--gold2) 10%,rgba(24,170,200,.75) 90%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  color:transparent;opacity:.92}
+
+/* --- PROBLEM cards: distinct accent color per card --- */
+.pi{transition:background .25s,box-shadow .25s}
+.pi:hover{box-shadow:inset 0 0 60px -30px rgba(232,176,64,.4)}
+.pg .pi:nth-child(1)::after{background:var(--gold2)}
+.pg .pi:nth-child(2)::after{background:var(--teal)}
+.pg .pi:nth-child(3)::after{background:var(--green)}
+
+/* --- SERVICE cards: colored left accent + price color per card --- */
+.sv{position:relative;transition:background .25s,box-shadow .25s}
+.sv::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  transform:scaleY(0);transform-origin:top;transition:transform .3s}
+.sv:hover::before{transform:scaleY(1)}
+.svg .sv:nth-child(1)::before{background:var(--green)}
+.svg .sv:nth-child(2)::before{background:var(--gold2)}
+.svg .sv:nth-child(3)::before{background:var(--teal)}
+.svg .sv:nth-child(4)::before{background:var(--rose)}
+.sv:hover{box-shadow:inset 0 0 80px -40px rgba(24,170,200,.35)}
+.svl{transition:letter-spacing .25s,color .2s}
+.sv:hover .svl{letter-spacing:2px;color:var(--white)}
+
+/* --- PREMIUM buttons --- */
+.bg{background:linear-gradient(135deg,var(--gold2),var(--gold));
+  box-shadow:0 8px 24px -12px rgba(232,176,64,.55)}
+.bg:hover{box-shadow:0 14px 32px -10px rgba(232,176,64,.7);transform:translateY(-2px)}
+.esb{background:linear-gradient(135deg,var(--gold2),var(--gold));
+  box-shadow:0 8px 22px -12px rgba(232,176,64,.5)}
+
+/* --- scrollbar --- */
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--ring2);border-radius:6px;border:2px solid var(--bg)}
+::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+
+/* --- COUNTRY CARDS: make caption + visa/salary chips readable --- */
+.ct{color:var(--gold2)!important;opacity:.92}
+.cbody{color:rgba(237,232,220,.64)}
+.cst{gap:7px}
+.csp{color:rgba(237,232,220,.82)!important;background:rgba(255,255,255,.05)!important;
+  border:1px solid var(--ring2)!important;border-radius:5px!important;padding:5px 10px!important;
+  font-size:10px!important}
+.cc{transition:background .2s,box-shadow .2s}
+.cc:hover{box-shadow:inset 0 0 0 1px var(--ring2)}
+
+/* ===== SALARY REALITY CHECK ===== */
+.sal-sec{padding:24px 0 88px;position:relative;overflow:hidden}
+.sal-sec::before{content:'';position:absolute;bottom:-160px;right:-100px;width:520px;height:520px;
+  border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(14,184,122,.09),transparent 70%)}
+.sal-card{display:grid;grid-template-columns:1fr 1fr;
+  background:linear-gradient(135deg,rgba(14,184,122,.06),rgba(24,170,200,.045));
+  border:1px solid var(--ring2);border-radius:14px;overflow:hidden;margin-top:10px}
+@media(max-width:760px){.sal-card{grid-template-columns:1fr}}
+.sal-ctrl{padding:34px 32px;border-right:1px solid var(--ring)}
+@media(max-width:760px){.sal-ctrl{border-right:none;border-bottom:1px solid var(--ring)}}
+.sal-field{margin-bottom:22px}
+.sal-field:last-child{margin-bottom:0}
+.sal-field label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+#salRole{width:100%;background:var(--s1);border:1px solid var(--ring2);border-radius:7px;
+  padding:12px 14px;color:var(--white);font-family:var(--sans);font-size:14px;outline:none;cursor:pointer}
+#salRole:focus{border-color:var(--green)}
+.sal-chips,.sal-flags{display:flex;flex-wrap:wrap;gap:8px}
+.sal-chip{background:var(--s1);border:1px solid var(--ring2);border-radius:20px;padding:8px 15px;
+  color:var(--text);font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;transition:all .18s}
+.sal-chip:hover{border-color:var(--green);color:var(--white)}
+.sal-chip.on{background:var(--green);border-color:var(--green);color:#04140d}
+.sal-flag{background:var(--s1);border:1px solid var(--ring2);border-radius:10px;width:46px;height:40px;
+  font-size:20px;cursor:pointer;transition:all .18s;display:flex;align-items:center;justify-content:center;line-height:1}
+.sal-flag:hover{border-color:var(--teal);transform:translateY(-2px)}
+.sal-flag.on{border-color:var(--teal);background:rgba(24,170,200,.15);
+  box-shadow:0 0 0 1px var(--teal),0 6px 18px -8px rgba(24,170,200,.6);transform:translateY(-2px)}
+.sal-res{padding:34px 32px;display:flex;flex-direction:column;text-align:center;justify-content:center}
+.sal-reslabel{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px}
+.sal-big{font-family:var(--serif);font-size:clamp(28px,4.6vw,44px);font-weight:600;color:var(--white);line-height:1.05}
+.sal-inr{font-family:var(--serif);font-size:clamp(20px,3.4vw,30px);font-weight:600;margin-top:4px;
+  background:linear-gradient(135deg,var(--green),var(--teal));-webkit-background-clip:text;
+  background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.sal-mult{align-self:center;font-family:var(--mono);font-size:13px;font-weight:600;margin-top:15px;
+  padding:6px 16px;border:1px solid var(--ring2);border-radius:20px;background:var(--s1);
+  animation:salpulse 2.6s ease-in-out infinite}
+@keyframes salpulse{0%,100%{box-shadow:0 0 0 0 rgba(14,184,122,0)}50%{box-shadow:0 0 26px -6px rgba(14,184,122,.55)}}
+.sal-note{font-size:12px;color:var(--text);line-height:1.6;margin-top:16px;max-width:340px;align-self:center}
+.sal-cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.sal-cta .btn{font-size:12.5px;padding:11px 20px}
+.sal-share{margin-top:14px;background:transparent;border:1px dashed var(--ring2);color:var(--text);
+  border-radius:8px;padding:10px 16px;font-family:var(--sans);font-size:12.5px;font-weight:600;
+  cursor:pointer;transition:all .2s;align-self:center}
+.sal-share:hover{border-color:var(--green);color:var(--white)}
+.sal-disc{font-size:11px;color:var(--muted);line-height:1.7;margin-top:20px;max-width:770px}
+
+/* ===== COMPARE COUNTRIES ===== */
+.cmp-sec{padding:80px 0;position:relative;overflow:hidden}
+.cmp-sec::before{content:'';position:absolute;top:-120px;left:-100px;width:520px;height:520px;
+  border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(232,176,64,.08),transparent 70%)}
+.cmp-fx{font-family:var(--mono);font-size:11px;color:var(--green)}
+.cmp-pick{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 28px}
+.cmp-chip{display:flex;align-items:center;gap:8px;background:var(--s1);border:1px solid var(--ring2);
+  border-radius:30px;padding:7px 15px 7px 8px;cursor:pointer;transition:all .18s;color:var(--text);
+  font-family:var(--sans);font-size:12.5px;font-weight:600}
+.cmp-chip img{width:22px;height:15px;border-radius:2px;object-fit:cover;display:block}
+.cmp-chip:hover{border-color:var(--gold2);color:var(--white);transform:translateY(-1px)}
+.cmp-chip.on{background:rgba(232,176,64,.14);border-color:var(--gold2);color:var(--white);
+  box-shadow:0 5px 16px -7px rgba(232,176,64,.6)}
+.cmp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.cmp-empty{color:var(--muted);font-size:13px;padding:30px 0}
+.cmp-card{background:linear-gradient(180deg,var(--s2),var(--s1));border:1px solid var(--ring2);
+  border-radius:14px;overflow:hidden;position:relative;animation:cmpin .45s both}
+@keyframes cmpin{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.cmp-flag{width:100%;height:92px;object-fit:cover;display:block;filter:saturate(1.12)}
+.cmp-head{padding:15px 18px 12px;border-bottom:1px solid var(--ring)}
+.cmp-name{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--white)}
+.cmp-brief{font-size:11.5px;color:var(--text);line-height:1.5;margin-top:5px}
+.cmp-rows{padding:4px 18px 14px}
+.cmp-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:9px 0;
+  border-bottom:1px solid rgba(255,255,255,.045)}
+.cmp-row:last-child{border-bottom:none}
+.cmp-rl{color:var(--muted);font-family:var(--mono);font-size:9.5px;letter-spacing:.5px;
+  text-transform:uppercase;padding-top:2px;white-space:nowrap}
+.cmp-rv{color:rgba(237,232,220,.92);font-weight:600;font-size:12.5px;text-align:right;line-height:1.35}
+.cmp-sub{display:block;font-family:var(--mono);font-size:10.5px;font-weight:500;
+  background:linear-gradient(135deg,var(--green),var(--teal));-webkit-background-clip:text;
+  background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin-top:1px}
+.cmp-hi{color:var(--green)}
+.cmp-cta{display:block;margin:2px 16px 16px;text-align:center;background:rgba(255,255,255,.04);
+  border:1px solid var(--ring2);border-radius:8px;padding:10px;color:var(--gold2);font-family:var(--sans);
+  font-size:11.5px;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s}
+.cmp-cta:hover{background:var(--gold2);color:var(--bg);border-color:var(--gold2)}
+
+/* ===== VISUAL CHAPTERS: tonal rhythm + stronger color ===== */
+.sal-sec{background:linear-gradient(180deg,var(--bg),#07100c)}
+.cmp-sec{background:linear-gradient(180deg,#080b14,#0a0d18)}
+.how{background:linear-gradient(180deg,#0b0d16,#0d1020)}
+.fou{background:linear-gradient(180deg,#0b0c14,var(--bg))}
+.prob::before{background:radial-gradient(circle,rgba(232,176,64,.11),transparent 70%)}
+.cs::before{background:radial-gradient(circle,rgba(24,170,200,.12),transparent 70%)}
+.svs::before{background:radial-gradient(circle,rgba(14,184,122,.10),transparent 70%)}
+.fou::before{background:radial-gradient(circle,rgba(232,69,96,.09),transparent 70%)}
+.cmp-sec::before{background:radial-gradient(circle,rgba(232,176,64,.11),transparent 70%)}
+.sal-sec::before{background:radial-gradient(circle,rgba(14,184,122,.12),transparent 70%)}
+
+/* ===== FOLLOW / SOCIAL ===== */
+.soc{padding:82px 0;position:relative;overflow:hidden;background:var(--bg)}
+.soc::before{content:'';position:absolute;top:-150px;left:50%;transform:translateX(-50%);
+  width:640px;height:400px;pointer-events:none;
+  background:radial-gradient(circle,rgba(24,170,200,.09),transparent 70%)}
+.soc-eyy{font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--teal);margin-bottom:12px}
+.soc-head{text-align:center;margin-bottom:36px}
+.soc-head h2{margin-bottom:14px}
+.soc-head .lead{margin:0 auto;text-align:center}
+.soc-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:900px;margin:0 auto}
+@media(max-width:640px){.soc-cards{grid-template-columns:1fr}}
+.soc-card{position:relative;border-radius:16px;padding:30px 28px;overflow:hidden;
+  border:1px solid var(--ring2);text-decoration:none;display:block;transition:transform .25s,box-shadow .25s}
+.soc-card:hover{transform:translateY(-4px)}
+.soc-ig{background:linear-gradient(135deg,rgba(244,114,182,.16),rgba(168,85,247,.12))}
+.soc-ig:hover{box-shadow:0 22px 46px -20px rgba(217,70,160,.6)}
+.soc-yt{background:linear-gradient(135deg,rgba(255,32,32,.15),rgba(204,0,0,.08))}
+.soc-yt:hover{box-shadow:0 22px 46px -20px rgba(255,32,32,.55)}
+.soc-ico{font-size:30px;margin-bottom:14px;display:block}
+.soc-plat{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:6px}
+.soc-big{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--white);margin-bottom:6px}
+.soc-desc{font-size:13px;color:var(--text);line-height:1.62;margin-bottom:20px}
+.soc-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:13px;
+  font-weight:700;padding:11px 22px;border-radius:8px;color:#fff}
+.soc-ig .soc-btn{background:linear-gradient(135deg,#f472b6,#a855f7)}
+.soc-yt .soc-btn{background:linear-gradient(135deg,#ff2020,#cc0000)}
+.soc-stats{display:flex;justify-content:center;flex-wrap:wrap;gap:34px;margin-top:40px}
+.soc-stat{text-align:center}
+.soc-sv{font-family:var(--serif);font-size:32px;font-weight:600;
+  background:linear-gradient(135deg,var(--gold2),var(--teal));-webkit-background-clip:text;
+  background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.soc-sl{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--muted);margin-top:4px}
+
+/* ===== SEGMENTED JOURNEYS ===== */
+.jp-sec{padding:66px 0 18px;position:relative}
+.jp-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:8px 0 16px}
+@media(max-width:720px){.jp-tabs{grid-template-columns:1fr}}
+.jp-tab{display:flex;align-items:center;gap:12px;text-align:left;background:var(--s1);
+  border:1px solid var(--ring2);border-radius:12px;padding:15px 18px;cursor:pointer;transition:all .2s;color:var(--text)}
+.jp-tab:hover{border-color:var(--gold2);transform:translateY(-2px)}
+.jp-tab.on{border-color:var(--gold2);background:rgba(232,176,64,.1);box-shadow:0 8px 24px -12px rgba(232,176,64,.5)}
+.jp-flag{font-size:27px;line-height:1;flex-shrink:0}
+.jp-tt{display:flex;flex-direction:column;gap:2px}
+.jp-tt b{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--white)}
+.jp-tt i{font-style:normal;font-size:11.5px;color:var(--text);line-height:1.4}
+.jp-panel{background:linear-gradient(180deg,var(--s2),var(--s1));border:1px solid var(--ring2);
+  border-radius:14px;padding:28px}
+.jp-panel.jp-in{animation:cmpin .4s both}
+.jp-intro{font-size:14px;color:rgba(237,232,220,.82);line-height:1.7;margin-bottom:20px;max-width:680px}
+.jp-steps{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+@media(max-width:640px){.jp-steps{grid-template-columns:1fr}}
+.jp-step{display:flex;align-items:center;gap:14px;text-align:left;background:var(--s1);
+  border:1px solid var(--ring);border-radius:10px;padding:14px 16px;cursor:pointer;transition:all .2s;width:100%}
+.jp-step:hover{border-color:var(--gold2);background:var(--s2)}
+.jp-si{font-size:22px;line-height:1;flex-shrink:0}
+.jp-sx{display:flex;flex-direction:column;gap:2px;flex:1}
+.jp-sx b{font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--white)}
+.jp-sx i{font-style:normal;font-size:12px;color:var(--text);line-height:1.5}
+.jp-sar{color:var(--gold2);font-size:16px;transition:transform .2s;flex-shrink:0}
+.jp-step:hover .jp-sar{transform:translateX(4px)}
+.jp-cta{font-size:14px}
 </style>
 </head>
 <body>
@@ -428,7 +675,6 @@ textarea.ff{resize:vertical;min-height:120px}
   <div class="nav-links">
     <a onclick="go('about')">About</a>
     <a onclick="go('resources')">Free Guides</a>
-    <a onclick="go('services')">Services</a>
     <a onclick="go('content')">Content</a>
     <a onclick="go('faq')">FAQ</a>
     <a onclick="go('brands')">For Brands</a>
@@ -440,7 +686,6 @@ textarea.ff{resize:vertical;min-height:120px}
 <div id="mob">
   <a onclick="go('about');toggleMob()">About</a>
   <a onclick="go('resources');toggleMob()">Free Guides</a>
-  <a onclick="go('services');toggleMob()">Services</a>
   <a onclick="go('content');toggleMob()">Content</a>
   <a onclick="go('faq');toggleMob()">FAQ</a>
   <a onclick="go('brands');toggleMob()">For Brands</a>
@@ -495,6 +740,16 @@ textarea.ff{resize:vertical;min-height:120px}
     <span class="ts">New Zealand</span><span class="tp">·</span>
   </div></div>
 
+  <section class="jp-sec" id="start">
+    <div class="w">
+      <div class="ey" style="color:var(--gold2)">Start Here</div>
+      <h2>Where Are You <em style="font-style:italic;color:var(--gold2)">Right Now</em>?</h2>
+      <p class="lead">Everyone's path is different. Tell us where you're starting from and we'll point you straight to the resources that apply to you - no scrolling through things that don't.</p>
+      <div class="jp-tabs" id="jpTabs"></div>
+      <div class="jp-panel" id="jpPanel"></div>
+    </div>
+  </section>
+
   <section class="prob">
     <div class="w">
       <div class="ey" style="color:var(--gold2)">The Reality</div>
@@ -520,6 +775,90 @@ textarea.ff{resize:vertical;min-height:120px}
     </div>
   </section>
 
+  <section class="sal-sec">
+    <div class="w">
+      <div class="ey" style="color:var(--green)">Salary Reality Check</div>
+      <h2>See What You'd <em style="font-style:italic;color:var(--green)">Actually</em> Earn Abroad</h2>
+      <p class="lead">Pick your field and your current pay. We'll show you what the same work earns overseas - in real numbers. No fluff, no false promises.</p>
+      <div class="sal-card">
+        <div class="sal-ctrl">
+          <div class="sal-field">
+            <label>Your field</label>
+            <select id="salRole"></select>
+          </div>
+          <div class="sal-field">
+            <label>Your current salary in India (per year)</label>
+            <div class="sal-chips" id="salInrChips"></div>
+          </div>
+          <div class="sal-field">
+            <label>Target country</label>
+            <div class="sal-flags" id="salCountry"></div>
+          </div>
+        </div>
+        <div class="sal-res">
+          <div class="sal-reslabel">You could earn</div>
+          <div class="sal-big" id="salLocal"></div>
+          <div class="sal-inr">≈ <span id="salInr"></span> per year</div>
+          <div class="sal-mult" id="salMult"></div>
+          <div class="sal-note" id="salNote"></div>
+          <div class="sal-cta">
+            <button class="btn bg" id="salGuide">See the full guide</button>
+            <button class="btn bo" onclick="go('book')">Book a strategy call</button>
+          </div>
+          <button class="sal-share" id="salShare">📸 Share my number</button>
+        </div>
+      </div>
+      <div class="sal-disc">Figures are typical gross annual salaries for entry-to-mid roles - approximate and before tax. Actual pay varies by experience, city, and employer. Cost of living differs by country; we break that down on your strategy call.</div>
+    </div>
+  </section>
+
+  <section class="wgs" id="worldmap">
+    <style>
+    .wgs{position:relative;overflow:hidden;padding:74px 0 82px;
+      background:radial-gradient(120% 90% at 50% 0%,#eef5fd 0%,#ffffff 46%,#f3f8ff 100%)}
+    .wgs .stars{position:absolute;inset:0;pointer-events:none;opacity:.7;
+      background-image:
+        radial-gradient(1.6px 1.6px at 10% 16%,rgba(71,105,160,.4),transparent),
+        radial-gradient(1.4px 1.4px at 22% 40%,rgba(71,105,160,.28),transparent),
+        radial-gradient(1.8px 1.8px at 34% 12%,rgba(245,158,11,.45),transparent),
+        radial-gradient(1.5px 1.5px at 48% 30%,rgba(71,105,160,.3),transparent),
+        radial-gradient(1.4px 1.4px at 63% 10%,rgba(71,105,160,.32),transparent),
+        radial-gradient(1.7px 1.7px at 78% 26%,rgba(37,99,235,.35),transparent),
+        radial-gradient(1.5px 1.5px at 88% 14%,rgba(71,105,160,.3),transparent),
+        radial-gradient(1.4px 1.4px at 92% 42%,rgba(245,158,11,.4),transparent),
+        radial-gradient(1.5px 1.5px at 16% 66%,rgba(71,105,160,.26),transparent),
+        radial-gradient(1.4px 1.4px at 82% 72%,rgba(71,105,160,.26),transparent);
+      background-repeat:no-repeat}
+    .wgs .w{position:relative;z-index:2}
+    .wg-head{text-align:center;max-width:660px;margin:0 auto 18px}
+    .wg-ey{font-family:var(--mono);font-size:11px;letter-spacing:3px;text-transform:uppercase;
+      color:#2563eb;font-weight:600;margin-bottom:12px}
+    .wg-h2{font-family:var(--serif);font-size:clamp(28px,4vw,44px);font-weight:600;color:#0f172a;line-height:1.12;letter-spacing:-.01em}
+    .wg-h2 span{background:linear-gradient(120deg,#2563eb,#14b8a6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+    .wg-p{color:#51617a;font-size:clamp(14px,1.5vw,16px);line-height:1.7;margin:16px auto 0;max-width:600px}
+    .wg-stage{position:relative;max-width:620px;margin:6px auto 0}
+    .wg-stage::after{content:'';position:absolute;left:50%;bottom:8px;transform:translateX(-50%);
+      width:60%;height:26px;border-radius:50%;background:radial-gradient(ellipse,rgba(37,99,235,.16),transparent 70%);filter:blur(4px)}
+    #wgc{width:100%;height:480px;display:block;cursor:grab}
+    @media(max-width:640px){#wgc{height:360px}}
+    .wg-legend{display:flex;justify-content:center;gap:8px;align-items:center;margin-top:6px;
+      font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#64748b}
+    .wg-dot{width:9px;height:9px;border-radius:50%;background:#ff6b35;box-shadow:0 0 0 4px rgba(255,107,53,.18)}
+    </style>
+    <div class="stars"></div>
+    <div class="w">
+      <div class="wg-head">
+        <div class="wg-ey">From India to the World</div>
+        <h2 class="wg-h2">Your Journey, <span>Across the Globe</span></h2>
+        <p class="wg-p">Every day, Indians take off for new lives around the world. Watch the routes light up — from India to the countries actively hiring and welcoming global talent.</p>
+      </div>
+      <div class="wg-stage">
+        <canvas id="wgc"></canvas>
+        <div class="wg-legend"><span class="wg-dot"></span> Live routes from India ✈️</div>
+      </div>
+    </div>
+  </section>
+
   <section class="cs" id="cgsec">
     <div class="w">
       <div class="ey" style="color:var(--teal)">Where Will You Go?</div>
@@ -529,25 +868,36 @@ textarea.ff{resize:vertical;min-height:120px}
     </div>
   </section>
 
+  <section class="cmp-sec" id="compare">
+    <div class="w">
+      <div class="ey" style="color:var(--gold2)">Compare Countries</div>
+      <h2>Where Will You <em style="font-style:italic;color:var(--gold2)">Thrive</em>?</h2>
+      <p class="lead">Pick up to 3 countries and see them side by side - real salaries converted live to rupees, cost of living, how hard the language is, visa speed, and how big the Indian community already is. <span class="cmp-fx" id="cmpFxNote"></span></p>
+      <div class="cmp-pick" id="cmpPick"></div>
+      <div class="cmp-grid" id="cmpGrid"></div>
+    </div>
+  </section>
+
   <section class="how">
     <div class="w">
       <div class="ey" style="color:var(--gold2)">The Process</div>
       <h2>How KOGOS Works</h2>
+      <p class="lead">KOGOS is not a recruiter or a placement agency. We're your research and strategy partner - we track the global job market, show you which countries are actually approving visas, and prepare you to apply. You stay in control of every application.</p>
       <div class="sg">
         <div class="si">
           <div class="sn">01</div>
-          <div class="st">Choose Your Country</div>
-          <div class="sb">Browse 13 country guides and free resources. Understand the visa process, salary ranges, and which companies actively hire Indians in your field.</div>
+          <div class="st">We Analyze the Market</div>
+          <div class="sb">We track the live job market for you - which countries are approving the most visas, where Indians are actually getting hired, and which scholarships and apprenticeships are open right now. You choose your target with clarity, not guesswork.</div>
         </div>
         <div class="si">
           <div class="sn">02</div>
-          <div class="st">Prepare Your Application</div>
-          <div class="sb">We optimize your resume for European standards, rewrite your LinkedIn profile so recruiters find you, and give you the cold email template that actually gets replies.</div>
+          <div class="st">We Prepare Your Profile</div>
+          <div class="sb">We optimize your resume for the country you're targeting, rewrite your LinkedIn so recruiters find you, and hand you the outreach templates that actually get replies. Our free guides do most of the heavy lifting.</div>
         </div>
         <div class="si">
           <div class="sn">03</div>
-          <div class="st">Land the Role</div>
-          <div class="sb">With a strategy call, a properly positioned profile, and a targeted application approach - you apply with confidence and convert interviews into offers.</div>
+          <div class="st">You Apply With Confidence</div>
+          <div class="sb">With a clear roadmap and a properly positioned profile, you apply directly to companies yourself. We guide the strategy - we don't do the hiring, and we never charge for a job. The offer is yours to earn.</div>
         </div>
       </div>
     </div>
@@ -566,29 +916,21 @@ textarea.ff{resize:vertical;min-height:120px}
           <div class="svps">Always. No signup required.</div>
           <div class="svl">Browse Guides --></div>
         </div>
-        <div class="sv" onclick="go('services')">
+        <div class="sv" onclick="go('book')">
           <div class="svi">📄</div>
-          <div class="svn">Resume and LinkedIn</div>
-          <div class="svd">Your resume rewritten for European ATS. Your LinkedIn set so Dutch and German recruiters find you first.</div>
-          <div class="svp">From $39</div>
-          <div class="svps">48-hour turnaround</div>
-          <div class="svl">See Services --></div>
+          <div class="svn">Resume &amp; Profile Direction</div>
+          <div class="svd">Get your resume and LinkedIn pointed the right way for your target country - built into your 1:1 guidance session.</div>
+          <div class="svp" style="font-size:19px">In your session</div>
+          <div class="svps">Part of every roadmap plan</div>
+          <div class="svl">See Plans --></div>
         </div>
         <div class="sv" onclick="go('book')">
           <div class="svi">📅</div>
           <div class="svn">1:1 Strategy Call</div>
           <div class="svd">15 minutes of direct, personalized guidance. Your profile. Your target country. Your exact roadmap.</div>
-          <div class="svp">$10</div>
+          <div class="svp" style="font-size:19px">From ₹499 · $12</div>
           <div class="svps">Per 15-minute session</div>
           <div class="svl">Book a Call --></div>
-        </div>
-        <div class="sv" onclick="go('subscribe')">
-          <div class="svi">⭐</div>
-          <div class="svn">Weekly Members List</div>
-          <div class="svd">20 companies actively hiring Indians every week - recruiter names, direct links, and roles nobody else covers.</div>
-          <div class="svp">$5/mo</div>
-          <div class="svps">Cancel anytime</div>
-          <div class="svl">Join the Community --></div>
         </div>
       </div>
     </div>
@@ -629,6 +971,38 @@ textarea.ff{resize:vertical;min-height:120px}
     </div>
   </section>
 
+  <section class="soc">
+    <div class="w">
+      <div class="soc-head">
+        <div class="soc-eyy">Join the Movement</div>
+        <h2>Follow the Journey</h2>
+        <p class="lead">Real job drops, visa updates, country breakdowns, and the honest stories nobody else shares. Come for the free guides - stay for the roadmap.</p>
+      </div>
+      <div class="soc-cards">
+        <a class="soc-card soc-ig" href="https://instagram.com/vamshi.indianabroad" target="_blank" rel="noopener">
+          <span class="soc-ico">📸</span>
+          <div class="soc-plat">Instagram</div>
+          <div class="soc-big">32,000+ strong</div>
+          <div class="soc-desc">Daily job drops, visa changes, and real abroad stories. This is where the community lives.</div>
+          <span class="soc-btn">Follow @vamshi.indianabroad →</span>
+        </a>
+        <a class="soc-card soc-yt" href="https://www.youtube.com/@Vamshicreate_s" target="_blank" rel="noopener">
+          <span class="soc-ico">▶️</span>
+          <div class="soc-plat">YouTube</div>
+          <div class="soc-big">Just getting started</div>
+          <div class="soc-desc">Deep country breakdowns, resume teardowns, and full strategy videos. Be an early subscriber and grow with us.</div>
+          <span class="soc-btn">Subscribe on YouTube →</span>
+        </a>
+      </div>
+      <div class="soc-stats">
+        <div class="soc-stat"><div class="soc-sv">32K+</div><div class="soc-sl">Instagram Followers</div></div>
+        <div class="soc-stat"><div class="soc-sv">3M+</div><div class="soc-sl">Profile Views</div></div>
+        <div class="soc-stat"><div class="soc-sv">280+</div><div class="soc-sl">Students Guided</div></div>
+        <div class="soc-stat"><div class="soc-sv">20+</div><div class="soc-sl">Countries Mapped</div></div>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="w">
       <div class="fg2">
@@ -648,14 +1022,12 @@ textarea.ff{resize:vertical;min-height:120px}
         <div class="fc">
           <h4>Services</h4>
           <a onclick="go('resources')">Free Guides</a>
-          <a onclick="go('services')">Resume and LinkedIn</a>
-          <a onclick="go('book')">Book a Call</a>
-          <a onclick="go('subscribe')">Membership</a>
+          <a onclick="go('book')">Plans &amp; Booking</a>
         </div>
         <div class="fc">
           <h4>Connect</h4>
           <a href="https://instagram.com/vamshi.indianabroad" target="_blank">Instagram</a>
-          <a href="https://youtube.com" target="_blank">YouTube</a>
+          <a href="https://www.youtube.com/@Vamshicreate_s" target="_blank">YouTube</a>
           <a onclick="go('brands')">Brand Partnerships</a>
           <a onclick="go('contact')">Contact</a>
         </div>
@@ -664,7 +1036,7 @@ textarea.ff{resize:vertical;min-height:120px}
         <div class="fc2">2026 KOGOS - vamshi.indianabroad@gmail.com | kogos.co@gmail.com</div>
         <div class="fs">
           <a href="https://instagram.com/vamshi.indianabroad" target="_blank">Instagram</a>
-          <a href="https://youtube.com" target="_blank">YouTube</a>
+          <a href="https://www.youtube.com/@Vamshicreate_s" target="_blank">YouTube</a>
           <a href="mailto:vamshi.indianabroad@gmail.com">Email</a>
         </div>
       </div>
@@ -712,16 +1084,15 @@ textarea.ff{resize:vertical;min-height:120px}
   </div>
   <div class="w pt72 pb72">
     <div class="rg">
-     <a class="rc" href="netherlands_pharma_jobs (1).html" target="_blank"><span class="rf">🇳🇱</span><div class="rn">Netherlands - Top 30 Pharma</div><div class="rs">30 pharma companies hiring Indians. HSM Visa in 2 weeks. Salary data per role. Direct career page links.</div><span class="rb rbf">Free Guide</span></a>
-<a class="rc" href="germany_phd_research_guide_2026 (1).html" target="_blank"><span class="rf">🇩🇪</span><div class="rn">Germany PhD and Research</div><div class="rs">Max Planck, Fraunhofer, Helmholtz, Leibniz. Fully funded PhD positions. Zero tuition. EUR 1,500-2,800/month.</div><span class="rb rbf">Free Guide</span></a>
-<a class="rc" href="finland_jobs_guide_2026 (1).html" target="_blank"><span class="rf">🇫🇮</span><div class="rn">Finland - Top 20 Companies</div><div class="rs">Nokia, KONE, Supercell, Wolt. Visa in 9-14 days. World's happiest country. English everywhere.</div><span class="rb rbn">New 2026</span></a>
-<a class="rc" href="h1b_escape_europe_guide_2026 (1).html" target="_blank"><span class="rf">🇺🇸</span><div class="rn">H-1B Escape Plan - Europe</div><div class="rs">For engineers trapped in the H-1B lottery. 4 escape paths. No lottery countries. Full salary comparison.</div><span class="rb rbf">Free Guide</span></a>
-<a class="rc" href="pharmacovigilance_europe_guide_2026 (1).html" target="_blank"><span class="rf">💊</span><div class="rn">Pharmacovigilance in Europe</div><div class="rs">B.Pharm, M.Pharm, MBBS - PV is the most in-demand pharma role. 12 companies. 5 free certifications.</div><span class="rb rbf">Free Guide</span></a>
-<a class="rc" href="qaqc_europe_career_guide_2026 (1).html" target="_blank"><span class="rf">🔬</span><div class="rn">QA/QC Europe Career Guide</div><div class="rs">For pharmaceutical quality professionals. Salary by experience level. European CV format. Cold email template.</div><span class="rb rbf">Free Guide</span></a>
-<a class="rc" href="sap_jobs_europe (1).html" target="_blank"><span class="rf">💻</span><div class="rn">SAP Jobs in Europe</div><div class="rs">All modules - FICO, MM, SD, ABAP, S/4HANA. Best portals, salary by module, XING profile tip.</div><span class="rb rbf">Free Guide</span></a>
-<a class="rc" href="dubai_guide.html" target="_blank"><span class="rf">🇦🇪</span><div class="rn">Dubai Jobs for Indians</div><div class="rs">20 top companies, zero income tax, visa in 2-4 weeks. Tech, finance, engineering, healthcare - complete guide.</div><span class="rb rbn">New 2026</span></a>
-<a class="rc" href="canada_guide.html" target="_blank"><span class="rf">🇨🇦</span><div class="rn">Canada Immigration Guide</div><div class="rs">Express Entry, PNP, PGWP explained. CRS score tips, top companies, best cities for Indians. Full PR roadmap.</div><span class="rb rbn">New 2026</span></a>
-<div class="rc" style="background:linear-gradient(135deg,rgba(212,154,16,.07),transparent);border-right:2px solid var(--gold2);cursor:pointer" onclick="go('subscribe')"><span class="rf">⭐</span><div class="rn">Weekly Members List</div><div class="rs">20 companies actively hiring Indians - updated every week with recruiter names and direct links. Subscribers only.</div><span class="rb rbn">$5/month</span></div>
+     <a class="rc" href="netherlands_pharma_jobs (1).html" target="_blank" rel="noopener"><span class="rf">🇳🇱</span><div class="rn">Netherlands - Top 30 Pharma</div><div class="rs">30 pharma companies hiring Indians. HSM Visa in 2 weeks. Salary data per role. Direct career page links.</div><span class="rb rbf">Free Guide</span></a>
+<a class="rc" href="germany_phd_research_guide_2026 (1).html" target="_blank" rel="noopener"><span class="rf">🇩🇪</span><div class="rn">Germany PhD and Research</div><div class="rs">Max Planck, Fraunhofer, Helmholtz, Leibniz. Fully funded PhD positions. Zero tuition. EUR 1,500-2,800/month.</div><span class="rb rbf">Free Guide</span></a>
+<a class="rc" href="finland_jobs_guide_2026 (1).html" target="_blank" rel="noopener"><span class="rf">🇫🇮</span><div class="rn">Finland - Top 20 Companies</div><div class="rs">Nokia, KONE, Supercell, Wolt. Visa in 9-14 days. World's happiest country. English everywhere.</div><span class="rb rbn">New 2026</span></a>
+<a class="rc" href="h1b_escape_europe_guide_2026 (1).html" target="_blank" rel="noopener"><span class="rf">🇺🇸</span><div class="rn">H-1B Escape Plan - Europe</div><div class="rs">For engineers trapped in the H-1B lottery. 4 escape paths. No lottery countries. Full salary comparison.</div><span class="rb rbf">Free Guide</span></a>
+<a class="rc" href="pharmacovigilance_europe_guide_2026 (1).html" target="_blank" rel="noopener"><span class="rf">💊</span><div class="rn">Pharmacovigilance in Europe</div><div class="rs">B.Pharm, M.Pharm, MBBS - PV is the most in-demand pharma role. 12 companies. 5 free certifications.</div><span class="rb rbf">Free Guide</span></a>
+<a class="rc" href="qaqc_europe_career_guide_2026 (1).html" target="_blank" rel="noopener"><span class="rf">🔬</span><div class="rn">QA/QC Europe Career Guide</div><div class="rs">For pharmaceutical quality professionals. Salary by experience level. European CV format. Cold email template.</div><span class="rb rbf">Free Guide</span></a>
+<a class="rc" href="sap_jobs_europe (1).html" target="_blank" rel="noopener"><span class="rf">💻</span><div class="rn">SAP Jobs in Europe</div><div class="rs">All modules - FICO, MM, SD, ABAP, S/4HANA. Best portals, salary by module, XING profile tip.</div><span class="rb rbf">Free Guide</span></a>
+<a class="rc" href="dubai_guide.html" target="_blank" rel="noopener"><span class="rf">🇦🇪</span><div class="rn">Dubai Jobs for Indians</div><div class="rs">20 top companies, zero income tax, visa in 2-4 weeks. Tech, finance, engineering, healthcare - complete guide.</div><span class="rb rbn">New 2026</span></a>
+<a class="rc" href="canada_guide.html" target="_blank" rel="noopener"><span class="rf">🇨🇦</span><div class="rn">Canada Immigration Guide</div><div class="rs">Express Entry, PNP, PGWP explained. CRS score tips, top companies, best cities for Indians. Full PR roadmap.</div><span class="rb rbn">New 2026</span></a>
       </div>
     <div style="margin-top:44px;text-align:center;padding:44px;background:var(--s1);border:1px solid var(--ring);border-radius:7px">
       <h3 style="font-family:var(--serif);font-size:26px;font-weight:600;color:var(--white);margin-bottom:8px">Get All Guides by Email</h3>
@@ -737,164 +1108,746 @@ textarea.ff{resize:vertical;min-height:120px}
 </div>
 
 <!-- SERVICES -->
-<div id="services" class="page">
-  <div class="ih w">
-    <div class="ey" style="color:var(--teal)">Work With Us</div>
-    <h1>Services</h1>
-    <p>From resume rewrites to personalized strategy - everything you need to land a European role.</p>
-  </div>
-  <div class="w pt72 pb72">
-    <div class="sb2">
-      <div style="height:3px;background:linear-gradient(90deg,#667eea,#764ba2)"></div>
-      <div class="sb2b">
-        <div>
-          <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:9px">Most Popular</div>
-          <div class="sb2t">European Resume Rewrite</div>
-          <div class="sb2d">Your resume rewritten in European format - no photo, no DOB, ATS-optimized, visa eligibility highlighted, tailored for your target country and role type.</div>
-          <div class="sff">
-            <div class="sfx">European CV format</div>
-            <div class="sfx">ATS keyword optimization for your target role</div>
-            <div class="sfx">Visa eligibility section removes employer hesitation</div>
-            <div class="sfx">Country-specific customization (NL, DE, IE, FI)</div>
-            <div class="sfx">1 round of revisions included</div>
-          </div>
-        </div>
-        <div class="spb">
-          <div class="spp">$49</div>
-          <div class="spn">One-time - 48hr turnaround</div>
-          <a class="btn bg" href="mailto:vamshi.indianabroad@gmail.com?subject=Resume Rewrite">Order Now</a>
-        </div>
-      </div>
-    </div>
-    <div class="sb2">
-      <div style="height:3px;background:linear-gradient(90deg,#4facfe,#00f2fe)"></div>
-      <div class="sb2b">
-        <div>
-          <div class="sb2t">LinkedIn Profile Optimization</div>
-          <div class="sb2d">Your LinkedIn profile rewritten to attract Dutch, German, and Irish recruiters. The headline formula that gets you found in European job searches.</div>
-          <div class="sff">
-            <div class="sfx">Headline with visa status and open-to-relocation signal</div>
-            <div class="sfx">About section rewrite in European recruiter tone</div>
-            <div class="sfx">Skills section optimization for EU searches</div>
-            <div class="sfx">XING profile setup guidance for Germany</div>
-          </div>
-        </div>
-        <div class="spb">
-          <div class="spp">$39</div>
-          <div class="spn">One-time - 24hr turnaround</div>
-          <a class="btn bg" href="mailto:vamshi.indianabroad@gmail.com?subject=LinkedIn Optimization">Order Now</a>
-        </div>
-      </div>
-    </div>
-    <div class="sb2">
-      <div style="height:3px;background:linear-gradient(90deg,#c8900a,#e8b040)"></div>
-      <div class="sb2b">
-        <div>
-          <div class="sb2t">Complete Abroad Package</div>
-          <div class="sb2d">Resume + LinkedIn + strategy call + cold email template + 30-day WhatsApp support. Everything from zero to offer letter.</div>
-          <div class="sff">
-            <div class="sfx">Everything in Resume Rewrite</div>
-            <div class="sfx">Everything in LinkedIn Optimization</div>
-            <div class="sfx">1:1 strategy call 15 minutes</div>
-            <div class="sfx">Custom cold email template for your role</div>
-            <div class="sfx">30-day WhatsApp support</div>
-          </div>
-        </div>
-        <div class="spb">
-          <div class="spp">$99</div>
-          <div class="spn">Save $8 vs individual</div>
-          <a class="btn bg" href="mailto:vamshi.indianabroad@gmail.com?subject=Complete Abroad Package">Order Now</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <footer><div class="w"><div class="fbot"><div class="fc2">2026 KOGOS - vamshi.indianabroad@gmail.com | kogos.co@gmail.com</div></div></div></footer>
-</div>
-
-<!-- BOOK -->
+<!-- ============================================================
+     BOOK / PRICING  (merged Services + Book — light, scoped)
+     All CSS scoped under .bkv so it never touches the dark site.
+     ============================================================ -->
 <div id="book" class="page">
-  <div class="ih w">
-    <div class="ey" style="color:var(--gold2)">Limited Slots</div>
-    <h1>Book a Strategy Call</h1>
-    <p>15 minutes of direct, personalized guidance - your profile, your target country, your exact roadmap.</p>
-  </div>
-  <div class="w">
-    <div class="bkspl">
-      <div>
-        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--muted);margin-bottom:7px">PER SESSION</div>
-        <div class="bkp">$10</div>
-        <div class="bkps">15 minutes - 1 on 1 - Video or Voice</div>
-        <div class="bkl">
-          <div class="bki">Which country fits your exact profile and background</div>
-          <div class="bki">Top 3 companies to apply to first - and why</div>
-          <div class="bki">Your visa eligibility explained clearly</div>
-          <div class="bki">Quick resume feedback against European standards</div>
-          <div class="bki">LinkedIn headline formula for your role</div>
-          <div class="bki">Outreach strategy for your specific background</div>
-        </div>
-        <a class="btn bg" href="https://calendar.app.google/3YxqkgjiNXxYtqGP9?subject=Book a Call - $10&body=Hi,%0A%0AI'd like to book a 15-minute strategy call.%0A%0AMy background: %0ATarget country/role: %0APreferred time (CST): ">Book via Calender</a>
-        <p style="font-size:11.5px;color:var(--muted);margin-top:10px">Stripe / PayPal link sent after scheduling confirmation.</p>
+<style>
+.bkv{
+  --bg:#F8FAFC;--ink:#0F172A;--sub:#64748B;--indigo:#4F46E5;--indigo2:#6366F1;
+  --teal2:#14B8A6;--amber:#F59E0B;--card:#FFFFFF;--line:#E2E8F0;--line2:#EEF2F7;
+  --in1:#FF9933;--in2:#FF6B6B;
+  background:var(--bg);color:var(--ink);min-height:100vh;
+  font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;padding-bottom:0}
+.bkv *{box-sizing:border-box}
+.bkv .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+.bkv h1,.bkv h2,.bkv h3{margin:0;color:var(--ink);line-height:1.15;letter-spacing:-.02em;font-weight:800}
+.bkv p{margin:0}
+.bkv a{color:inherit;text-decoration:none}
+.bkv button{font-family:inherit;cursor:pointer;border:none;background:none}
+.bkv .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--indigo);font-weight:600;margin-bottom:16px}
+.bkv .lead2{color:var(--sub);font-size:clamp(15px,1.5vw,17px);line-height:1.7;max-width:640px}
+
+/* --- reveal animation --- */
+.bkv .rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.bkv .rv.in{opacity:1;transform:none}
+
+/* --- buttons --- */
+.bkv .b{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-weight:700;font-size:15px;border-radius:14px;padding:15px 26px;min-height:52px;
+  transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .25s,filter .2s;white-space:nowrap}
+.bkv .b:active{transform:scale(.97)}
+.bkv .b-primary{background:linear-gradient(135deg,var(--indigo),var(--indigo2));color:#fff;
+  box-shadow:0 12px 26px -12px rgba(79,70,229,.65)}
+.bkv .b-primary:hover{transform:translateY(-2px);box-shadow:0 18px 34px -12px rgba(79,70,229,.7)}
+.bkv .b-ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+.bkv .b-ghost:hover{border-color:var(--indigo);color:var(--indigo);transform:translateY(-2px)}
+.bkv .b-yt{background:linear-gradient(135deg,#FF3B3B,#CC0000);color:#fff;box-shadow:0 12px 26px -12px rgba(220,0,0,.6)}
+.bkv .b-yt:hover{transform:translateY(-2px);box-shadow:0 18px 34px -12px rgba(220,0,0,.65)}
+.bkv .b-lg{font-size:16px;padding:17px 30px;min-height:58px}
+.bkv .b-block{width:100%}
+
+/* --- HERO --- */
+.bkv-hero{position:relative;padding:132px 0 70px;text-align:center;overflow:hidden}
+.bkv-hero::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 55% at 20% 0%,rgba(79,70,229,.10),transparent 60%),
+             radial-gradient(55% 50% at 85% 8%,rgba(20,184,166,.10),transparent 60%),
+             radial-gradient(50% 40% at 55% 100%,rgba(245,158,11,.07),transparent 60%)}
+.bkv-hero .wrap{position:relative}
+.bkv-hero h1{font-size:clamp(34px,5.4vw,60px);letter-spacing:-.03em}
+.bkv-hero .grad{background:linear-gradient(120deg,var(--indigo),var(--teal2));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.bkv-hero .lead2{margin:22px auto 0;text-align:center}
+.bkv-hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.bkv-trustline{margin-top:22px;color:var(--sub);font-size:13.5px;display:inline-flex;align-items:center;gap:8px}
+.bkv-trustline::before{content:'✓';color:var(--teal2);font-weight:800}
+
+/* --- TRUST COUNTERS --- */
+.bkv-counters{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
+.bkv-count{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 18px;text-align:center;
+  box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.bkv-count b{display:block;font-size:clamp(26px,3.4vw,38px);font-weight:800;
+  background:linear-gradient(120deg,var(--indigo),var(--teal2));-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent}
+.bkv-count span{display:block;color:var(--sub);font-size:12.5px;font-weight:600;margin-top:6px;letter-spacing:.2px}
+
+/* --- SECTION shell --- */
+.bkv-sec{padding:64px 0}
+.bkv-sec-head{text-align:center;max-width:680px;margin:0 auto 40px}
+.bkv-sec-head h2{font-size:clamp(26px,3.6vw,40px)}
+.bkv-sec-head .lead2{margin:16px auto 0;text-align:center}
+
+/* --- REGION SELECTOR --- */
+.bkv-region{text-align:center}
+.bkv-region h2{font-size:clamp(22px,3vw,30px)}
+.bkv-toggle{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:18px;padding:6px;
+  margin:22px auto 0;position:relative;box-shadow:0 6px 20px -12px rgba(15,23,42,.18);gap:4px}
+.bkv-toggle button{position:relative;z-index:2;display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;
+  color:var(--sub);padding:13px 26px;border-radius:13px;transition:color .25s;min-height:50px}
+.bkv-toggle button .fl{font-size:19px}
+.bkv-toggle button.on{color:#fff}
+.bkv-pill{position:absolute;top:6px;bottom:6px;border-radius:13px;transition:transform .38s cubic-bezier(.16,1,.3,1),width .38s cubic-bezier(.16,1,.3,1),background .38s;z-index:1}
+.bkv-region .note{margin:18px auto 0;color:var(--sub);font-size:13.5px;max-width:560px;line-height:1.6}
+.bkv-region .note.small{font-size:12px;margin-top:9px;color:#94A3B8}
+
+/* --- FREE / YOUTUBE ENTRY --- */
+.bkv-free{background:linear-gradient(135deg,#0F172A,#1E293B);border-radius:24px;padding:30px 34px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  box-shadow:0 24px 48px -28px rgba(15,23,42,.6);margin-top:8px}
+.bkv-free h3{color:#fff;font-size:21px}
+.bkv-free p{color:#CBD5E1;font-size:14px;margin-top:6px;max-width:440px}
+.bkv-free-cta{display:flex;gap:12px;flex-wrap:wrap}
+
+/* --- PRICING --- */
+.bkv-price-head{text-align:center;margin-bottom:8px}
+.bkv-price-head .badge-reg{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;
+  letter-spacing:2px;text-transform:uppercase;font-weight:600;padding:8px 16px;border-radius:100px;margin-bottom:14px}
+.bkv-price-head h2{font-size:clamp(24px,3.4vw,36px)}
+.bkv-price-head .sup{color:var(--sub);font-size:15px;margin-top:10px}
+.bkv-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;margin-top:34px}
+.bkv-card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:30px 26px;
+  display:flex;flex-direction:column;position:relative;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s;
+  box-shadow:0 2px 6px rgba(15,23,42,.05)}
+.bkv-card:hover{transform:translateY(-6px);box-shadow:0 30px 50px -26px rgba(15,23,42,.28)}
+.bkv-card .pname{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--sub)}
+.bkv-card .pprice{font-size:44px;font-weight:800;margin-top:12px;letter-spacing:-.03em}
+.bkv-card .pdur{color:var(--sub);font-size:13.5px;font-weight:600;margin-top:2px}
+.bkv-card .ptag{color:var(--ink);font-size:15px;font-weight:600;margin-top:16px;line-height:1.5}
+.bkv-card .pbest{color:var(--indigo);font-size:12.5px;font-weight:700;margin-top:8px}
+.bkv-card ul{list-style:none;padding:0;margin:20px 0 24px;display:grid;gap:11px}
+.bkv-card li{display:flex;gap:11px;font-size:14px;color:#334155;line-height:1.5}
+.bkv-card li .ck{flex-shrink:0;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;
+  font-size:11px;font-weight:800;color:#fff;margin-top:1px}
+.bkv-card .pcta{margin-top:auto}
+/* popular card */
+.bkv-card.pop{border:1.5px solid transparent}
+.bkv-card.pop::before{content:'';position:absolute;inset:-1.5px;border-radius:24px;padding:1.5px;z-index:0;
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.bkv-card.pop>*{position:relative;z-index:1}
+.bkv-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);z-index:3;
+  font-size:11.5px;font-weight:800;letter-spacing:.6px;color:#fff;padding:7px 18px;border-radius:100px;white-space:nowrap;
+  box-shadow:0 10px 22px -10px rgba(15,23,42,.5)}
+.bkv-motiv{text-align:center;color:var(--sub);font-size:15px;font-style:italic;margin-top:30px}
+
+/* region theming for cards / accents */
+.bkv[data-region="india"] .bkv-toggle button.on{color:#fff}
+.bkv[data-region="india"] .bkv-pill{background:linear-gradient(135deg,var(--in1),var(--in2))}
+.bkv[data-region="global"] .bkv-pill{background:linear-gradient(135deg,var(--indigo),var(--teal2))}
+
+.reg-india .badge-reg{background:linear-gradient(135deg,rgba(255,153,51,.14),rgba(255,107,107,.14));color:#E85D3D}
+.reg-india .bkv-card .ck{background:linear-gradient(135deg,var(--in1),var(--in2))}
+.reg-india .bkv-card .pprice{color:#0F172A}
+.reg-india .bkv-card.pop::before{background:linear-gradient(135deg,var(--in1),var(--in2))}
+.reg-india .bkv-card.pop{box-shadow:0 30px 60px -26px rgba(255,107,107,.5)}
+.reg-india .bkv-card .pcta .b-primary{background:linear-gradient(135deg,var(--in1),var(--in2));box-shadow:0 12px 26px -12px rgba(255,107,107,.6)}
+.reg-india .bkv-card .pbest{color:#E85D3D}
+.reg-india .bkv-badge{background:linear-gradient(135deg,var(--in1),var(--in2))}
+
+.reg-global .badge-reg{background:linear-gradient(135deg,rgba(79,70,229,.12),rgba(20,184,166,.12));color:var(--indigo)}
+.reg-global .bkv-card .ck{background:linear-gradient(135deg,var(--indigo),var(--teal2))}
+.reg-global .bkv-card.pop::before{background:linear-gradient(135deg,var(--indigo),var(--teal2))}
+.reg-global .bkv-card.pop{box-shadow:0 30px 60px -26px rgba(79,70,229,.45)}
+.reg-global .bkv-card .pcta .b-primary{background:linear-gradient(135deg,var(--indigo),var(--teal2));box-shadow:0 12px 26px -12px rgba(79,70,229,.6)}
+.reg-global .bkv-badge{background:linear-gradient(135deg,var(--indigo),var(--teal2))}
+
+/* --- WHAT I HELP WITH --- */
+.bkv-help{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.bkv-help .hc{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 24px;
+  transition:transform .3s,box-shadow .3s,border-color .3s}
+.bkv-help .hc:hover{transform:translateY(-5px);box-shadow:0 24px 40px -26px rgba(15,23,42,.25);border-color:transparent}
+.bkv-help .hc .ic{font-size:26px;width:54px;height:54px;border-radius:15px;display:grid;place-items:center;margin-bottom:16px;
+  background:linear-gradient(135deg,rgba(79,70,229,.1),rgba(20,184,166,.12))}
+.bkv-help .hc h3{font-size:17px}
+.bkv-help .hc p{color:var(--sub);font-size:13.5px;margin-top:7px;line-height:1.6}
+
+/* --- HOW IT WORKS --- */
+.bkv-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:st}
+.bkv-step{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 22px;position:relative}
+.bkv-step .num{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-weight:800;color:#fff;font-size:17px;
+  background:linear-gradient(135deg,var(--indigo),var(--teal2));margin-bottom:15px}
+.bkv-step h3{font-size:16px}
+.bkv-step p{color:var(--sub);font-size:13.5px;margin-top:7px;line-height:1.6}
+
+/* --- CREDIBILITY --- */
+.bkv-cred{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:44px 40px;text-align:center;
+  box-shadow:0 24px 50px -34px rgba(15,23,42,.3)}
+.bkv-cred h2{font-size:clamp(23px,3vw,32px);max-width:640px;margin:0 auto}
+.bkv-cred .body{color:var(--sub);font-size:15.5px;line-height:1.75;max-width:640px;margin:18px auto 0}
+.bkv-cred .cr{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px;max-width:720px;margin-left:auto;margin-right:auto}
+.bkv-cred .cr div{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:20px 14px}
+.bkv-cred .cr b{display:block;font-size:22px;font-weight:800;color:var(--indigo)}
+.bkv-cred .cr span{display:block;color:var(--sub);font-size:12.5px;margin-top:5px;font-weight:600}
+.bkv-testi{margin-top:26px;color:#94A3B8;font-size:13px;font-style:italic}
+
+/* --- BOUNDARIES --- */
+.bkv-bound{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.bkv-bcol{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px 28px}
+.bkv-bcol.yes{border-top:4px solid var(--teal2)}
+.bkv-bcol.no{border-top:4px solid #F87171}
+.bkv-bcol h3{font-size:18px;margin-bottom:16px}
+.bkv-bcol ul{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.bkv-bcol li{display:flex;gap:11px;font-size:14.5px;color:#334155;line-height:1.5}
+.bkv-bcol li .m{flex-shrink:0;font-weight:800}
+.bkv-bcol.yes li .m{color:var(--teal2)}
+.bkv-bcol.no li .m{color:#EF4444}
+
+/* --- FAQ --- */
+.bkv-faq{max-width:760px;margin:0 auto;display:grid;gap:12px}
+.bkv-q{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.bkv-q.open{border-color:var(--indigo);box-shadow:0 14px 30px -22px rgba(79,70,229,.5)}
+.bkv-q button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;
+  padding:19px 22px;font-weight:700;font-size:15.5px;color:var(--ink)}
+.bkv-q .ar{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--bg);display:grid;place-items:center;
+  color:var(--indigo);font-size:16px;transition:transform .3s,background .25s}
+.bkv-q.open .ar{transform:rotate(45deg);background:var(--indigo);color:#fff}
+.bkv-q .ans{max-height:0;overflow:hidden;transition:max-height .38s cubic-bezier(.16,1,.3,1)}
+.bkv-q .ans p{padding:0 22px 20px;color:var(--sub);font-size:14.5px;line-height:1.7}
+
+/* --- FINAL CTA --- */
+.bkv-final{background:linear-gradient(135deg,var(--indigo),#4338CA 55%,var(--teal2));border-radius:28px;padding:56px 40px;text-align:center;
+  position:relative;overflow:hidden}
+.bkv-final::after{content:'';position:absolute;inset:0;background:radial-gradient(50% 60% at 50% 0%,rgba(255,255,255,.16),transparent 60%);pointer-events:none}
+.bkv-final h2{color:#fff;font-size:clamp(26px,3.6vw,40px);position:relative}
+.bkv-final p{color:rgba(255,255,255,.9);font-size:16px;margin:16px auto 0;max-width:520px;position:relative}
+.bkv-final .fcta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px;position:relative}
+.bkv-final .fcta .b{background:#fff;color:var(--indigo)}
+.bkv-final .fcta .b:hover{transform:translateY(-2px);box-shadow:0 18px 34px -14px rgba(0,0,0,.4)}
+
+/* --- DISCLAIMER + FOOTER --- */
+.bkv-disc{background:#F1F5F9;border:1px solid var(--line);border-radius:16px;padding:22px 24px;
+  color:#64748B;font-size:12.5px;line-height:1.75;max-width:900px;margin:0 auto}
+.bkv-disc b{color:#475569}
+.bkv-policies{max-width:900px;margin:22px auto 0;color:#94A3B8;font-size:12px;line-height:1.8}
+.bkv-foot{text-align:center;padding:40px 0 60px;color:#94A3B8;font-size:12.5px}
+
+/* --- MODAL / PRE-BOOKING FORM --- */
+.bkv-modal{position:fixed;inset:0;z-index:1000;display:none;align-items:flex-start;justify-content:center;
+  padding:24px;overflow-y:auto;background:rgba(15,23,42,.55);backdrop-filter:blur(6px)}
+.bkv-modal.on{display:flex;animation:bkvfade .25s ease}
+@keyframes bkvfade{from{opacity:0}to{opacity:1}}
+.bkv-sheet{background:#fff;border-radius:24px;max-width:560px;width:100%;margin:auto;padding:0;overflow:hidden;
+  box-shadow:0 40px 80px -30px rgba(15,23,42,.6);animation:bkvup .35s cubic-bezier(.16,1,.3,1)}
+@keyframes bkvup{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+.bkv-sheet-head{padding:24px 26px;color:#fff;position:relative}
+.reg-india .bkv-sheet-head{background:linear-gradient(135deg,var(--in1),var(--in2))}
+.reg-global .bkv-sheet-head{background:linear-gradient(135deg,var(--indigo),var(--teal2))}
+.bkv-sheet-head .k{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:.9}
+.bkv-sheet-head h3{color:#fff;font-size:22px;margin-top:6px}
+.bkv-sheet-head .pr{font-size:14px;margin-top:4px;opacity:.95;font-weight:600}
+.bkv-x{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.2);
+  color:#fff;font-size:18px;display:grid;place-items:center;transition:background .2s}
+.bkv-x:hover{background:rgba(255,255,255,.35)}
+.bkv-form{padding:26px}
+.bkv-form .fld{margin-bottom:16px}
+.bkv-form label{display:block;font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:7px}
+.bkv-form label .req{color:#EF4444}
+.bkv-form input,.bkv-form select,.bkv-form textarea{width:100%;background:#F8FAFC;border:1.5px solid var(--line);
+  border-radius:12px;padding:13px 15px;font-size:14.5px;color:var(--ink);font-family:inherit;transition:border-color .2s,background .2s}
+.bkv-form input:focus,.bkv-form select:focus,.bkv-form textarea:focus{outline:none;border-color:var(--indigo);background:#fff}
+.bkv-form textarea{resize:vertical;min-height:84px}
+.bkv-form .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.bkv-check{display:flex;gap:11px;align-items:flex-start;background:#F8FAFC;border:1px solid var(--line);border-radius:12px;padding:14px}
+.bkv-check input{width:auto;margin-top:2px;flex-shrink:0}
+.bkv-check span{font-size:12.5px;color:var(--sub);line-height:1.6}
+.bkv-form .err{color:#EF4444;font-size:12.5px;margin-top:8px;display:none}
+.bkv-success{padding:44px 30px;text-align:center;display:none}
+.bkv-success .em{font-size:52px;display:block;margin-bottom:14px}
+.bkv-success h3{font-size:24px}
+.bkv-success p{color:var(--sub);font-size:14.5px;margin:12px auto 0;max-width:380px;line-height:1.7}
+.bkv-spin{display:inline-block;width:17px;height:17px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;
+  border-radius:50%;animation:bkvspin .7s linear infinite}
+@keyframes bkvspin{to{transform:rotate(360deg)}}
+
+/* --- RESPONSIVE --- */
+@media(max-width:900px){
+  .bkv-cards,.bkv-help,.bkv-steps{grid-template-columns:1fr 1fr}
+  .bkv-step:nth-child(n){grid-column:auto}
+}
+@media(max-width:720px){
+  .bkv-hero{padding:118px 0 54px}
+  .bkv-counters,.bkv-cards,.bkv-help,.bkv-steps,.bkv-bound,.bkv-cred .cr{grid-template-columns:1fr}
+  .bkv-card.pop{order:-1}
+  .bkv-free{flex-direction:column;align-items:flex-start;text-align:left;padding:26px 24px}
+  .bkv-free-cta{width:100%}.bkv-free-cta .b{flex:1}
+  .bkv-form .row2{grid-template-columns:1fr}
+  .bkv-cred{padding:34px 24px}
+  .bkv-final{padding:44px 26px}
+}
+@media(min-width:721px){
+  .reg-global .bkv-card.pop,.reg-india .bkv-card.pop{transform:scale(1.04)}
+  .reg-global .bkv-card.pop:hover,.reg-india .bkv-card.pop:hover{transform:scale(1.04) translateY(-6px)}
+}
+</style>
+
+<div class="bkv" data-region="india">
+
+  <!-- 1. HERO -->
+  <section class="bkv-hero">
+    <div class="wrap">
+      <div class="eyebrow rv">Careers • Opportunities • Global Direction</div>
+      <h1 class="rv">Build Your Career <span class="grad">Beyond Borders</span></h1>
+      <p class="lead2 rv">Get practical, independent guidance for global careers, internships, education, and international opportunities — without confusing promises or expensive agency pressure.</p>
+      <div class="bkv-hero-cta rv">
+        <button class="b b-primary b-lg" onclick="bkvScrollTo('bkvPricing')">Choose Your Guidance Plan</button>
+        <button class="b b-ghost b-lg" onclick="go('resources')">Explore Free Resources</button>
       </div>
-      <div>
-        <div style="background:var(--s1);border:1px solid var(--ring);border-radius:7px;padding:32px;margin-bottom:14px">
-          <div style="font-family:var(--serif);font-size:19px;color:var(--white);font-weight:600;margin-bottom:14px">What happens next</div>
-          <div style="display:grid;gap:12px;font-size:14px;color:var(--text);line-height:1.65">
-            <div style="display:flex;gap:11px"><span style="color:var(--gold2);font-weight:700;flex-shrink:0">1.</span><span>Email with your background and preferred time (CST timezone)</span></div>
-            <div style="display:flex;gap:11px"><span style="color:var(--gold2);font-weight:700;flex-shrink:0">2.</span><span>Receive confirmation and payment link within a few hours</span></div>
-            <div style="display:flex;gap:11px"><span style="color:var(--gold2);font-weight:700;flex-shrink:0">3.</span><span>Google Meet link sent for your session</span></div>
-            <div style="display:flex;gap:11px"><span style="color:var(--gold2);font-weight:700;flex-shrink:0">4.</span><span>15-minute call and written summary emailed after</span></div>
+      <div class="rv"><span class="bkv-trustline">Clear information. Practical next steps. No guaranteed-outcome claims.</span></div>
+
+      <!-- 2. TRUST COUNTERS -->
+      <div class="bkv-counters rv">
+        <div class="bkv-count"><b data-count="32" data-suffix="K+">32K+</b><span>Instagram Followers</span></div>
+        <div class="bkv-count"><b data-count="3" data-suffix="M+">3M+</b><span>Profile Views</span></div>
+        <div class="bkv-count"><b>Global</b><span>Student Audience</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. REGION SELECTOR -->
+  <section class="bkv-sec bkv-region">
+    <div class="wrap">
+      <h2 class="rv">Where are you currently based?</h2>
+      <div class="bkv-toggle rv" id="bkvToggle">
+        <span class="bkv-pill" id="bkvPill"></span>
+        <button data-region="india" class="on" onclick="bkvSetRegion('india')"><span class="fl">🇮🇳</span> India</button>
+        <button data-region="global" onclick="bkvSetRegion('global')"><span class="fl">🌍</span> Outside India</button>
+      </div>
+      <p class="note rv">We use region-based pricing to make guidance accessible while providing services relevant to your current location.</p>
+      <p class="note small rv">Please select your current country of residence. Currency conversion may be handled by your payment provider.</p>
+    </div>
+  </section>
+
+  <!-- 4. FREE / YOUTUBE ENTRY -->
+  <section class="bkv-sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="bkv-free rv">
+        <div>
+          <h3>Not Ready to Book Yet?</h3>
+          <p>Start with free opportunities, internship updates, and global career resources on YouTube.</p>
+        </div>
+        <div class="bkv-free-cta">
+          <a class="b b-yt" href="https://www.youtube.com/@Vamshicreate_s" target="_blank" rel="noopener" onclick="bkvTrack('youtube_clicked',{source:'free_entry'})">▶ Subscribe on YouTube</a>
+          <button class="b b-ghost" onclick="go('resources')">Explore Free Resources</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. PRICING -->
+  <section class="bkv-sec" id="bkvPricing">
+    <div class="wrap">
+      <div class="bkv-price-head rv">
+        <span class="badge-reg" id="bkvRegBadge"></span>
+        <h2 id="bkvPriceTitle"></h2>
+        <p class="sup" id="bkvPriceSup"></p>
+      </div>
+      <div class="bkv-cards" id="bkvCards"></div>
+      <p class="bkv-motiv rv" id="bkvMotiv"></p>
+    </div>
+  </section>
+
+  <!-- 6. WHAT I HELP WITH -->
+  <section class="bkv-sec">
+    <div class="wrap">
+      <div class="bkv-sec-head rv">
+        <h2>Get Clarity. Build Your Next Move.</h2>
+        <p class="lead2">Whether you are exploring internships, international education, career opportunities, or your next country, I will help you organize the information and identify practical next steps.</p>
+      </div>
+      <div class="bkv-help">
+        <div class="hc rv"><div class="ic">🌐</div><h3>Global Internships &amp; Fellowships</h3><p>Discover live internship and fellowship opportunities and how to position yourself for them.</p></div>
+        <div class="hc rv"><div class="ic">🎓</div><h3>Study-Abroad Pathways</h3><p>Explore study-abroad routes, countries, and timelines that fit your goals and budget.</p></div>
+        <div class="hc rv"><div class="ic">🧭</div><h3>International Career Planning</h3><p>Map a realistic step-by-step plan for building your career across borders.</p></div>
+        <div class="hc rv"><div class="ic">⚖️</div><h3>Country &amp; Opportunity Comparisons</h3><p>Compare countries and options side by side — salary, cost, visa routes, and community.</p></div>
+        <div class="hc rv"><div class="ic">📄</div><h3>Resume &amp; Profile Direction</h3><p>Get clear direction on shaping your resume and profile for international opportunities.</p></div>
+        <div class="hc rv"><div class="ic">🛂</div><h3>Public Visa &amp; Work-Route Info</h3><p>Understand publicly available visa and work-route information for your situation.</p></div>
+      </div>
+      <p class="note small" style="text-align:center;color:#94A3B8;font-size:12.5px;margin-top:24px;max-width:720px;margin-left:auto;margin-right:auto;line-height:1.6">Independent educational guidance, opportunity research, and practical direction based on public information and personal experience. Not immigration, admissions, or recruitment services.</p>
+    </div>
+  </section>
+
+  <!-- 7. HOW IT WORKS -->
+  <section class="bkv-sec">
+    <div class="wrap">
+      <div class="bkv-sec-head rv"><h2>How It Works</h2></div>
+      <div class="bkv-steps">
+        <div class="bkv-step rv"><div class="num">1</div><h3>Choose your region</h3><p>Select India or Outside India based on your current residence.</p></div>
+        <div class="bkv-step rv"><div class="num">2</div><h3>Select your session</h3><p>Choose the time and level of guidance that fit your question.</p></div>
+        <div class="bkv-step rv"><div class="num">3</div><h3>Share your question</h3><p>Complete a short form before the call so we can use the time effectively.</p></div>
+        <div class="bkv-step rv"><div class="num">4</div><h3>Leave with direction</h3><p>Receive clear next steps and relevant resources after the discussion.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. CREDIBILITY -->
+  <section class="bkv-sec">
+    <div class="wrap">
+      <div class="bkv-cred rv">
+        <h2>Practical Guidance From Someone Who Understands the Journey</h2>
+        <p class="body">Vamshi is a data analytics graduate and global-career content creator who shares researched opportunities, career resources, and practical insights with a growing community of more than 32,000 Instagram followers.</p>
+        <div class="cr">
+          <div><b>32K+</b><span>Instagram Followers</span></div>
+          <div><b>3M+</b><span>Profile Views</span></div>
+          <div><b>Research-Driven</b><span>Guidance</span></div>
+        </div>
+        <p class="bkv-testi">Verified testimonials from students will appear here soon.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. BOUNDARIES -->
+  <section class="bkv-sec">
+    <div class="wrap">
+      <div class="bkv-sec-head rv"><h2>What This Guidance Includes — and What It Does Not</h2></div>
+      <div class="bkv-bound">
+        <div class="bkv-bcol yes rv">
+          <h3>✅ What I Can Help With</h3>
+          <ul>
+            <li><span class="m">✓</span> Explaining publicly available information</li>
+            <li><span class="m">✓</span> Comparing opportunities and pathways</li>
+            <li><span class="m">✓</span> Organizing your options</li>
+            <li><span class="m">✓</span> Sharing practical resources</li>
+            <li><span class="m">✓</span> Helping you create an action plan</li>
+          </ul>
+        </div>
+        <div class="bkv-bcol no rv">
+          <h3>⛔ What I Do Not Provide</h3>
+          <ul>
+            <li><span class="m">✕</span> Legal or immigration representation</li>
+            <li><span class="m">✕</span> Guaranteed admissions, visas, internships, or jobs</li>
+            <li><span class="m">✕</span> Application submission on your behalf</li>
+            <li><span class="m">✕</span> Personalized legal conclusions</li>
+            <li><span class="m">✕</span> Recruitment or job placement</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. FAQ -->
+  <section class="bkv-sec">
+    <div class="wrap">
+      <div class="bkv-sec-head rv"><h2>Frequently Asked Questions</h2></div>
+      <div class="bkv-faq" id="bkvFaq"></div>
+    </div>
+  </section>
+
+  <!-- 11. FINAL CTA -->
+  <section class="bkv-sec">
+    <div class="wrap">
+      <div class="bkv-final rv">
+        <h2>You Don't Need Every Answer Today.</h2>
+        <p>You only need enough clarity to take the right next step.</p>
+        <div class="fcta">
+          <button class="b b-lg" onclick="bkvSetRegion('india');bkvScrollTo('bkvPricing')">View India Plans</button>
+          <button class="b b-lg" onclick="bkvSetRegion('global');bkvScrollTo('bkvPricing')">View Global Plans</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. DISCLAIMER + FOOTER -->
+  <section class="bkv-sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="bkv-disc rv">
+        <b>Disclaimer:</b> This service provides general educational information, independent research, and personal guidance. It is not legal, immigration, financial, admissions, or employment advice. KOGOS does not guarantee any visa, admission, internship, sponsorship, interview, or job outcome. Immigration and employment decisions should be verified through official government sources or qualified professionals.
+      </div>
+      <div class="bkv-policies rv">
+        <b style="color:#64748B">Booking policies:</b> Bookings may be rescheduled once with at least 12 hours' notice. Missed sessions and late cancellations are generally non-refundable. Late arrivals reduce available session time. Sessions will not be recorded without permission. Follow-up support is limited to what is specifically included in the selected plan. <em>(Policies are editable placeholders and may be updated.)</em>
+      </div>
+      <div class="bkv-foot">© 2026 KOGOS · Founded by Vamshi Krishna Korutla · vamshi.indianabroad@gmail.com · kogos.co@gmail.com</div>
+    </div>
+  </section>
+
+  <!-- PRE-BOOKING MODAL -->
+  <div class="bkv-modal" id="bkvModal" onclick="if(event.target===this)bkvCloseModal()">
+    <div class="bkv-sheet" role="dialog" aria-modal="true" aria-labelledby="bkvSheetTitle">
+      <div class="bkv-sheet-head">
+        <button class="bkv-x" onclick="bkvCloseModal()" aria-label="Close">✕</button>
+        <div class="k">Pre-Booking Details</div>
+        <h3 id="bkvSheetTitle">Book Your Session</h3>
+        <div class="pr" id="bkvSheetPrice"></div>
+      </div>
+      <form class="bkv-form" id="bkvForm">
+        <input type="hidden" name="_subject" id="bkvHiddenSubject" value="New KOGOS Booking Request">
+        <input type="hidden" name="Plan" id="bkvHiddenPlan">
+        <input type="hidden" name="Region" id="bkvHiddenRegion">
+        <input type="hidden" name="Price" id="bkvHiddenPriceField">
+        <div class="fld"><label>Full name <span class="req">*</span></label><input name="Full name" required placeholder="Your name"></div>
+        <div class="fld"><label>Email address <span class="req">*</span></label><input type="email" name="Email" required placeholder="you@email.com"></div>
+        <div class="fld"><label>Current country of residence <span class="req">*</span></label><input name="Country of residence" required placeholder="e.g. India, United States, Germany"></div>
+        <div class="row2">
+          <div class="fld"><label>Current status <span class="req">*</span></label>
+            <select name="Current status" required>
+              <option value="">Select…</option><option>Student</option><option>Recent Graduate</option><option>Working Professional</option><option>Other</option>
+            </select>
+          </div>
+          <div class="fld"><label>Main topic <span class="req">*</span></label>
+            <select name="Main topic" required>
+              <option value="">Select…</option><option>Career</option><option>Internship</option><option>Fellowship</option><option>Study Abroad</option><option>Country Comparison</option><option>Resume/Profile</option><option>General Guidance</option>
+            </select>
           </div>
         </div>
-        <div style="background:linear-gradient(135deg,rgba(212,154,16,.06),transparent);border:1px solid rgba(212,154,16,.18);border-radius:7px;padding:26px">
-          <p style="font-family:var(--serif);font-size:17px;color:var(--white);font-weight:600;margin-bottom:7px">Want ongoing support?</p>
-          <p style="font-size:13px;color:var(--text);margin-bottom:14px">Get monthly Q&A access and exclusive weekly job lists for $5/month.</p>
-          <button class="btn bgh" onclick="go('subscribe')">View Membership</button>
+        <div class="fld"><label>Your one primary question <span class="req">*</span></label><textarea name="Primary question" required placeholder="What is the single most important thing you want clarity on?"></textarea></div>
+        <div class="row2">
+          <div class="fld"><label>Preferred language <span class="req">*</span></label>
+            <select name="Preferred language" required><option>English</option><option>Telugu</option></select>
+          </div>
+          <div class="fld"><label>LinkedIn (optional)</label><input name="LinkedIn" placeholder="linkedin.com/in/…"></div>
         </div>
+        <div class="fld">
+          <label class="bkv-check"><input type="checkbox" name="Disclaimer accepted" value="Yes" required>
+            <span>I understand this is independent educational guidance — not legal, immigration, admissions, or job-placement advice — and that no visa, admission, or job outcome is guaranteed.</span></label>
+        </div>
+        <div class="err" id="bkvErr">Something went wrong. Please email vamshi.indianabroad@gmail.com and we'll sort it out.</div>
+        <button type="submit" class="b b-primary b-block b-lg" id="bkvSubmit">Request This Session</button>
+      </form>
+      <div class="bkv-success" id="bkvSuccess">
+        <span class="em">🎉</span>
+        <h3>Request received!</h3>
+        <p>Thanks — I've got your details. You'll receive a secure payment link and booking confirmation by email within a few hours. Check your inbox (and spam, just in case).</p>
+        <button class="b b-ghost b-lg" style="margin-top:22px" onclick="bkvCloseModal()">Done</button>
       </div>
     </div>
   </div>
-  <footer><div class="w"><div class="fbot"><div class="fc2">2026 KOGOS</div></div></div></footer>
-</div>
 
-<!-- SUBSCRIBE -->
-<div id="subscribe" class="page">
-  <div class="ih w">
-    <div class="ey" style="color:var(--gold2)">Community</div>
-    <h1>KOGOS Membership</h1>
-    <p>The weekly list of companies actively hiring Indians - plus monthly Q&A, priority access, and exclusive content.</p>
-  </div>
-  <div class="w pt72 pb72" style="max-width:800px">
-    <div class="sub2">
-      <div class="stc">
-        <div class="str">Free</div>
-        <div class="stp">$0</div>
-        <div class="stpe">forever - no card needed</div>
-        <div class="stps">
-          <div class="stpx"><span class="stck">+</span> All 10+ free country guides</div>
-          <div class="stpx"><span class="stck">+</span> Instagram and YouTube content</div>
-          <div class="stpx"><span class="stck">+</span> DM responses when possible</div>
-          <div class="stpx"><span class="stcno">-</span> Weekly exclusive job lists</div>
-          <div class="stpx"><span class="stcno">-</span> Monthly live Q&A sessions</div>
-          <div class="stpx"><span class="stcno">-</span> Priority DM replies</div>
-        </div>
-        <a class="btn bo" href="https://instagram.com/vamshi.indianabroad" target="_blank" style="width:100%;justify-content:center">Follow on Instagram</a>
-      </div>
-      <div class="stc stcf">
-        <div class="str">Premium Member</div>
-        <div class="stp">$5</div>
-        <div class="stpe">per month - cancel anytime</div>
-        <div class="stps">
-          <div class="stpx"><span class="stck">+</span> Everything in Free</div>
-          <div class="stpx"><span class="stck">+</span><strong style="color:var(--white)"> Weekly job list</strong> - 20 companies with recruiter names and direct links</div>
-          <div class="stpx"><span class="stck">+</span><strong style="color:var(--white)"> Monthly live Q&A</strong> - ask anything directly</div>
-          <div class="stpx"><span class="stck">+</span> Priority DM replies - 24hr guarantee</div>
-          <div class="stpx"><span class="stck">+</span> Early access to all new guides</div>
-        </div>
-        <a class="btn bg" href="https://instagram.com/vamshi.indianabroad" target="_blank" style="width:100%;justify-content:center">Subscribe on Instagram</a>
-      </div>
-    </div>
-  </div>
-  <footer><div class="w"><div class="fbot"><div class="fc2">2026 KOGOS</div></div></div></footer>
+</div><!-- /.bkv -->
+
+<script>
+/* =========================================================
+   KOGOS BOOKING / PRICING  — data-driven, region-aware
+   ========================================================= */
+(function(){
+  const root = document.querySelector('#book .bkv');
+  if(!root) return;
+
+  /* ---- analytics placeholder ---- */
+  window.bkvTrack = function(evt, data){
+    data = data || {};
+    try{ if(window.gtag) gtag('event', evt, data); }catch(e){}
+    try{ if(window.dataLayer) window.dataLayer.push(Object.assign({event:evt}, data)); }catch(e){}
+    if(window.console) console.debug('[KOGOS analytics]', evt, data);
+  };
+
+  /* ---- CONFIG: prices, plans, checkout placeholders ----
+     Replace the checkout URLs when payment accounts are ready.
+     India = INR (Indian payment setup) · Global = USD (Kogos LLC US bank). */
+  const CHECKOUT = {
+    india:  { quick:'REPLACE_INDIA_QUICK_CHECKOUT_URL', roadmap:'REPLACE_INDIA_ROADMAP_CHECKOUT_URL', deep:'REPLACE_INDIA_DEEPDIVE_CHECKOUT_URL' },
+    global: { quick:'REPLACE_GLOBAL_QUICK_CHECKOUT_URL', roadmap:'REPLACE_GLOBAL_ROADMAP_CHECKOUT_URL', deep:'REPLACE_GLOBAL_DEEPDIVE_CHECKOUT_URL' }
+  };
+  const FORM_ENDPOINT = 'https://formspree.io/f/xkgwpbqv';
+
+  const DATA = {
+    india: {
+      label:'For People in India', flag:'🇮🇳',
+      badge:'For People in India',
+      title:'India Guidance Plans 🇮🇳',
+      sup:'Clear guidance without expensive agency packages.',
+      motiv:'Your global journey can begin with one clear conversation.',
+      cur:'₹',
+      plans:[
+        {id:'quick', name:'Quick Clarity', price:'₹499', dur:'15 minutes', tag:'One question. One focused direction.', cta:'Book Quick Clarity',
+          features:['Discussion of one specific question','Clear explanation of available options','Practical next steps','Relevant official resources when available'] },
+        {id:'roadmap', name:'Personal Roadmap', price:'₹899', dur:'30 minutes', tag:'Turn your confusion into a plan.', cta:'Build My Roadmap',
+          features:['Discussion of your background and goal','Career, study, or opportunity direction','Up to three recommended next actions','Relevant links and resources','Short written summary after the call'] },
+        {id:'deep', name:'Deep-Dive Roadmap', price:'₹1,199', dur:'45 minutes', tag:'More time. Deeper clarity. A stronger plan.', cta:'Book the Deep Dive',
+          popular:true, badge:'Most Popular • Best Value', best:'Best for personalized planning',
+          features:['Detailed profile and goal discussion','Country or opportunity comparison','Personalized five-step action plan','Recommended platforms and resources','One follow-up clarification by message within 48 hours'] }
+      ]
+    },
+    global: {
+      label:'For People Outside India', flag:'🌍',
+      badge:'For People Outside India',
+      title:'Global Guidance Plans 🌍',
+      sup:'For international students and professionals navigating opportunities across borders.',
+      motiv:'Borders may change the path — not the potential.',
+      cur:'$',
+      plans:[
+        {id:'quick', name:'Quick Clarity', price:'$12', dur:'15 minutes', tag:'Resolve one important question quickly.', cta:'Book Quick Clarity',
+          features:['One focused career, education, or opportunity question','Clear next-step recommendation','Relevant official resources when available'] },
+        {id:'roadmap', name:'Personal Roadmap', price:'$20', dur:'30 minutes', tag:'Get direction for your next international move.', cta:'Build My Roadmap',
+          features:['Discussion of your current situation','Career, country, or opportunity direction','Up to three recommended next actions','Relevant links and resources','Short written summary after the call'] },
+        {id:'deep', name:'Global Deep Dive', price:'$25', dur:'45 minutes', tag:'Your personalized strategy for moving forward.', cta:'Book the Global Deep Dive',
+          popular:true, badge:'Most Popular • Best Value', best:'Best for personalized planning',
+          features:['Detailed profile and goal review','Country or international opportunity comparison','Personalized five-step action plan','Recommended platforms and official resources','One follow-up clarification by message within 48 hours'] }
+      ]
+    }
+  };
+
+  const $ = s => root.querySelector(s);
+  let region = localStorage.getItem('kogos_region') || 'india';
+  const viewed = {};
+
+  /* ---- region toggle pill position ---- */
+  function movePill(){
+    const t = $('#bkvToggle'), pill = $('#bkvPill');
+    const active = t.querySelector('button[data-region="'+region+'"]');
+    if(!active || !pill) return;
+    pill.style.width = active.offsetWidth + 'px';
+    pill.style.transform = 'translateX(' + (active.offsetLeft - 6) + 'px)';
+    t.querySelectorAll('button').forEach(b=>b.classList.toggle('on', b.dataset.region===region));
+  }
+
+  function renderPricing(){
+    const d = DATA[region];
+    root.setAttribute('data-region', region);
+    root.classList.remove('reg-india','reg-global');
+    root.classList.add('reg-'+region);
+    $('#bkvRegBadge').textContent = (region==='india'?'🇮🇳 ':'🌍 ') + d.badge;
+    $('#bkvPriceTitle').textContent = d.title;
+    $('#bkvPriceSup').textContent = d.sup;
+    $('#bkvMotiv').textContent = d.motiv;
+
+    $('#bkvCards').innerHTML = d.plans.map(p=>`
+      <div class="bkv-card${p.popular?' pop':''}">
+        ${p.badge?`<div class="bkv-badge">${p.badge}</div>`:''}
+        <div class="pname">${p.name}</div>
+        <div class="pprice">${p.price}</div>
+        <div class="pdur">${p.dur} · 1-on-1 · video or voice</div>
+        <div class="ptag">${p.tag}</div>
+        ${p.best?`<div class="pbest">${p.best}</div>`:''}
+        <ul>${p.features.map(f=>`<li><span class="ck">✓</span>${f}</li>`).join('')}</ul>
+        <div class="pcta"><button class="b ${p.popular?'b-primary':'b-ghost'} b-block" data-plan="${p.id}">${p.cta}</button></div>
+      </div>`).join('');
+
+    $('#bkvCards').querySelectorAll('[data-plan]').forEach(btn=>{
+      btn.onclick = ()=> openModal(region, btn.dataset.plan);
+    });
+
+    if(!viewed[region]){ viewed[region]=true; bkvTrack('plan_viewed', {region}); }
+    revealScan();
+  }
+
+  window.bkvSetRegion = function(r){
+    if(!DATA[r]) return;
+    region = r;
+    localStorage.setItem('kogos_region', r);
+    bkvTrack('region_selected', {region:r});
+    movePill();
+    renderPricing();
+  };
+
+  /* ---- smooth scroll helper (accounts for fixed nav) ---- */
+  window.bkvScrollTo = function(id){
+    const el = document.getElementById(id);
+    if(el) window.scrollTo({top: el.getBoundingClientRect().top + window.scrollY - 74, behavior:'smooth'});
+  };
+
+  /* ---- MODAL ---- */
+  let curPlan = null;
+  function openModal(r, planId){
+    const d = DATA[r], p = d.plans.find(x=>x.id===planId);
+    curPlan = {r, p};
+    root.classList.remove('reg-india','reg-global'); root.classList.add('reg-'+r);
+    $('#bkvSheetTitle').textContent = p.name;
+    $('#bkvSheetPrice').textContent = p.price + ' · ' + p.dur + ' · ' + d.label;
+    $('#bkvHiddenPlan').value = p.name + ' (' + p.dur + ')';
+    $('#bkvHiddenRegion').value = d.label;
+    $('#bkvHiddenPriceField').value = p.price;
+    $('#bkvHiddenSubject').value = 'New KOGOS Booking — ' + p.name + ' ' + p.price;
+    $('#bkvForm').style.display='block'; $('#bkvSuccess').style.display='none';
+    $('#bkvErr').style.display='none';
+    $('#bkvModal').classList.add('on');
+    document.body.style.overflow='hidden';
+    bkvTrack('booking_started', {region:r, plan:p.name, price:p.price});
+  }
+  window.bkvCloseModal = function(){
+    $('#bkvModal').classList.remove('on');
+    document.body.style.overflow='';
+    renderPricing(); // restore browsing region theme
+  };
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape' && $('#bkvModal').classList.contains('on')) bkvCloseModal(); });
+
+  $('#bkvForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const btn = $('#bkvSubmit'), err = $('#bkvErr');
+    err.style.display='none';
+    btn.innerHTML = '<span class="bkv-spin"></span> Sending…'; btn.disabled=true;
+    try{
+      const res = await fetch(FORM_ENDPOINT, {
+        method:'POST', headers:{'Accept':'application/json'}, body:new FormData(this)
+      });
+      if(res.ok){
+        $('#bkvForm').style.display='none';
+        $('#bkvSuccess').style.display='block';
+        if(curPlan) bkvTrack('booking_completed', {region:curPlan.r, plan:curPlan.p.name, price:curPlan.p.price});
+        this.reset();
+      } else { throw new Error('bad response'); }
+    }catch(ex){
+      err.style.display='block';
+    }finally{
+      btn.innerHTML='Request This Session'; btn.disabled=false;
+    }
+  });
+
+  /* ---- FAQ ---- */
+  const FAQ = [
+    ['Which pricing section should I choose?','Choose India if you currently reside in India and will pay using the India checkout. Choose Outside India if you currently live in another country, including Indian citizens studying or working abroad.'],
+    ['Is the selection based on citizenship or residence?','It is based purely on your current country of residence and the service context — not your citizenship. An Indian citizen living in the US should choose “Outside India.”'],
+    ['Can you guarantee a visa, admission, internship, or job?','No. This is independent educational guidance. No visa, admission, internship, sponsorship, or job outcome is ever guaranteed — anyone promising that is not being honest with you.'],
+    ['Are you an immigration lawyer or recruitment agency?','No. I am not an immigration lawyer, visa consultant, admissions counselor, or recruitment agency. I provide independent guidance, research, and practical direction based on public information and personal experience.'],
+    ['Can I ask more than one question?','The shorter plans focus on one clear question so we use the time well. The 30- and 45-minute plans cover your broader situation and multiple next actions.'],
+    ['What happens after I book?','You share your details in a short form, receive a payment link and confirmation by email, get a meeting link for your session, and leave with clear next steps (plus a written summary on the roadmap plans).'],
+    ['Can I reschedule my session?','Yes — bookings may be rescheduled once with at least 12 hours’ notice. Missed sessions and late cancellations are generally non-refundable.'],
+    ['Will I receive resources after the call?','Yes. On the roadmap and deep-dive plans you receive relevant links, recommended platforms, and a short written summary. Follow-up support is limited to what your plan includes.'],
+    ['What languages are available?','Sessions are available in English or Telugu — just pick your preference in the booking form.'],
+    ['What if I only want free resources?','That’s completely fine. Subscribe on YouTube and explore the free guides — no booking required. Come back whenever you want personalized direction.']
+  ];
+  $('#bkvFaq').innerHTML = FAQ.map(([q,a])=>`
+    <div class="bkv-q">
+      <button aria-expanded="false"><span>${q}</span><span class="ar">+</span></button>
+      <div class="ans"><p>${a}</p></div>
+    </div>`).join('');
+  $('#bkvFaq').querySelectorAll('.bkv-q').forEach(item=>{
+    const btn = item.querySelector('button'), ans = item.querySelector('.ans');
+    btn.onclick = ()=>{
+      const open = item.classList.contains('open');
+      $('#bkvFaq').querySelectorAll('.bkv-q').forEach(o=>{o.classList.remove('open');o.querySelector('.ans').style.maxHeight=null;o.querySelector('button').setAttribute('aria-expanded','false');});
+      if(!open){ item.classList.add('open'); ans.style.maxHeight = ans.scrollHeight+'px'; btn.setAttribute('aria-expanded','true'); }
+    };
+  });
+
+  /* ---- reveal-on-scroll + count-up ---- */
+  let io;
+  function revealScan(){
+    const els = root.querySelectorAll('.rv:not(.in)');
+    if(!io){
+      io = new IntersectionObserver(entries=>{
+        entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); if(en.target.dataset.count) countUp(en.target); } });
+      }, {threshold:.12});
+    }
+    els.forEach(el=>io.observe(el));
+    root.querySelectorAll('[data-count]').forEach(el=>{ if(!el._done) io.observe(el); });
+  }
+  function countUp(el){
+    if(el._done) return; el._done=true;
+    const target = +el.dataset.count, suf = el.dataset.suffix||'';
+    let cur=0; const step = Math.max(1, Math.round(target/38));
+    (function tick(){ cur=Math.min(target,cur+step); el.textContent=cur+suf; if(cur<target) requestAnimationFrame(tick); })();
+  }
+
+  /* ---- init ---- */
+  function init(){ movePill(); renderPricing(); revealScan(); }
+  init();
+  window.addEventListener('resize', movePill);
+
+  /* The region pill is sized from offsetWidth, which is 0 while the book
+     page is display:none. Recompute it (and re-scan reveals) whenever the
+     page is shown. go() is defined later in the document, so defer hooking
+     it until it exists. */
+  function hookGo(){
+    if(typeof window.go==='function' && !window.go._bkvWrapped){
+      const _go = window.go;
+      window.go = function(id){ _go(id); if(id==='book'){ setTimeout(()=>{movePill();revealScan();},40); } };
+      window.go._bkvWrapped = true;
+    }
+  }
+  window.addEventListener('load', hookGo);
+  setTimeout(hookGo, 0);
+})();
+</script>
 </div>
 
 <!-- CONTENT -->
@@ -909,7 +1862,7 @@ textarea.ff{resize:vertical;min-height:120px}
       <div style="font-size:50px;margin-bottom:14px">▶</div>
       <h3 style="font-family:var(--serif);font-size:30px;font-weight:600;color:var(--white);margin-bottom:9px">YouTube - KOGOS</h3>
       <p style="font-size:14px;color:var(--text);margin-bottom:26px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.72">Deep-dive country guides, visa walkthroughs, and real stories from Indians who made the move.</p>
-      <a class="btn" href="https://youtube.com" target="_blank" style="background:linear-gradient(135deg,#ff2020,#cc0000);color:white;display:inline-flex;justify-content:center">Subscribe on YouTube</a>
+      <a class="btn" href="https://www.youtube.com/@Vamshicreate_s" target="_blank" style="background:linear-gradient(135deg,#ff2020,#cc0000);color:white;display:inline-flex;justify-content:center">Subscribe on YouTube</a>
     </div>
     <div class="igb">
       <div style="font-size:50px;margin-bottom:14px">📱</div>
@@ -930,9 +1883,8 @@ textarea.ff{resize:vertical;min-height:120px}
   </div>
   <div class="w pt72 pb72">
     <div class="bsg">
-      <div class="bsc"><div class="bsv">13K+</div><div class="bsl">Followers</div></div>
-      <div class="bsc"><div class="bsv">2.3M</div><div class="bsl">Monthly Views</div></div>
-      <div class="bsc"><div class="bsv">385K</div><div class="bsl">Top Reel</div></div>
+      <div class="bsc"><div class="bsv">32K+</div><div class="bsl">Instagram Followers</div></div>
+      <div class="bsc"><div class="bsv">3M+</div><div class="bsl">Profile Views</div></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:44px">
       <div style="background:var(--s1);border:1px solid var(--ring);border-radius:7px;padding:26px">
@@ -958,7 +1910,8 @@ textarea.ff{resize:vertical;min-height:120px}
     <div style="background:linear-gradient(135deg,rgba(232,74,95,.06),transparent);border:1px solid rgba(232,74,95,.14);border-radius:7px;padding:44px">
       <h3 style="font-family:var(--serif);font-size:30px;color:var(--white);font-weight:600;margin-bottom:7px">Send a Collaboration Inquiry</h3>
       <p style="font-size:13.5px;color:var(--text);margin-bottom:26px">Reply within 48 hours.</p>
-      <form onsubmit="handleForm(event,'bs1')" style="display:grid;gap:11px">
+      <form onsubmit="handleForm(event,'bs1','mwvgwrvy')" style="display:grid;gap:11px">
+        <input type="hidden" name="_subject" value="New KOGOS Collaboration Inquiry"/>
         <div class="fr2">
           <input class="ff" type="text" name="brand" placeholder="Brand / Company Name" required/>
           <input class="ff" type="email" name="email" placeholder="Your Email" required/>
@@ -993,7 +1946,6 @@ textarea.ff{resize:vertical;min-height:120px}
       <div>
         <a class="clnk" href="mailto:vamshi.indianabroad@gmail.com"><span class="cli">📧</span><div><div class="cll">Email</div><div class="clv">vamshi.indianabroad@gmail.com</div></div></a>
         <a class="clnk" href="https://instagram.com/vamshi.indianabroad" target="_blank"><span class="cli">📱</span><div><div class="cll">Instagram</div><div class="clv">@vamshi.indianabroad</div></div></a>
-        <a class="clnk" href="https://linkedin.com/in/vamshi-korutla" target="_blank"><span class="cli">💼</span><div><div class="cll">LinkedIn</div><div class="clv">linkedin.com/in/vamshi-korutla</div></div></a>
         <div style="margin-top:28px;padding:22px;background:var(--s1);border:1px solid var(--ring);border-radius:7px">
           <p style="font-family:var(--serif);font-size:17px;color:var(--white);font-weight:600;margin-bottom:7px">Response Time</p>
           <p style="font-size:13px;color:var(--text);line-height:1.72">Email - within 48 hours<br/>Instagram DM - priority for subscribers<br/>Brand inquiries - within 24 hours</p>
@@ -1001,6 +1953,7 @@ textarea.ff{resize:vertical;min-height:120px}
       </div>
       <div>
         <form onsubmit="handleForm(event,'cs1')" style="display:grid;gap:11px">
+          <input type="hidden" name="_subject" value="New KOGOS Contact Message"/>
           <div class="fr2">
             <input class="ff" type="text" name="name" placeholder="Your Name" required/>
             <input class="ff" type="email" name="email" placeholder="Your Email" required/>
@@ -1512,16 +2465,26 @@ function handleEmail(ev,sid){
     f.reset();
   });
 }
-function handleForm(ev,sid){
+async function handleForm(ev,sid,formId){
   ev.preventDefault();
   const f=ev.target;
-  fetch('https://formspree.io/f/xkgwpbqv',{
-    method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}
-  }).catch(()=>{}).finally(()=>{
+  const endpoint='https://formspree.io/f/'+(formId||'xkgwpbqv');
+  const btn=f.querySelector('button[type="submit"]');
+  const orig=btn?btn.innerHTML:'';
+  if(btn){btn.disabled=true;btn.innerHTML='Sending…';}
+  try{
+    const res=await fetch(endpoint,{
+      method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}
+    });
+    if(!res.ok) throw new Error('send failed');
     const el=document.getElementById(sid);
     if(el)el.style.display='block';
     f.reset();
-  });
+  }catch(e){
+    alert("Sorry — that didn't send. Please email vamshi.indianabroad@gmail.com directly and I'll get right back to you.");
+  }finally{
+    if(btn){btn.disabled=false;btn.innerHTML=orig;}
+  }
 }
 /* ====== KOGOS SIGNUP SYSTEM — paste inside your existing <script> block ====== */
 const KOV_URL = "https://script.google.com/macros/s/AKfycbwgh3PxX9_lbEJuN5uoGVbmPpIkW_paxFKdhVk4wtWBsKKqohQFG7vX618keGrnlSV0/exec";
@@ -1620,7 +2583,7 @@ kovShow();
 
     <div style="background:linear-gradient(135deg,rgba(212,154,16,.07),transparent);border:1px solid rgba(212,154,16,.18);border-radius:7px;padding:44px;text-align:center">
       <h3 style="font-family:var(--serif);font-size:28px;color:var(--white);font-weight:600;margin-bottom:8px">Still have a specific question?</h3>
-      <p style="font-size:14px;color:var(--text);margin-bottom:26px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.72">Submit it below. I read every single one and reply within 48 hours. For priority replies - subscribe for $5/month.</p>
+      <p style="font-size:14px;color:var(--text);margin-bottom:26px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.72">Submit it below. I read every single one and reply within 48 hours.</p>
       <form onsubmit="handleForm(event,'fq1')" style="display:grid;gap:10px;max-width:500px;margin:0 auto">
         <input class="ff" type="text" name="name" placeholder="Your Name" required/>
         <input class="ff" type="email" name="email" placeholder="Your Email" required/>
@@ -1822,11 +2785,398 @@ kovShow();
         <h3>You're in, <span id="kDoneName">friend</span>!</h3>
         <p>Your free guides are ready. Explore the 13 country guides, visa breakdowns, salary data, and cold email templates — all waiting for you right now.</p>
         <button class="kf-next" onclick="kovClose();go('resources')" style="max-width:320px;margin:0 auto 12px;display:block">Browse Free Guides →</button>
-        <p style="font-size:12.5px;color:var(--muted)">Want weekly hiring lists + priority support? Upgrade for $5/month.</p>
-        <button onclick="kovClose();go('subscribe')" style="background:none;border:none;color:var(--gold2);font-size:12.5px;cursor:pointer;text-decoration:underline;text-underline-offset:3px">See Premium →</button>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+/* ===== LIVE EXCHANGE RATES (shared) ===== */
+window.KOGOS_FX=(function(){
+  const FB={INR:96,USD:1,EUR:0.8745,GBP:0.7438,CAD:1.402,AUD:1.432,SEK:9.65,DKK:6.525,NOK:9.652,CHF:0.8075,NZD:1.712,SGD:1.291,AED:3.672,SAR:3.75,QAR:3.64,KWD:0.3089,OMR:0.3845,BHD:0.376};
+  let rates=Object.assign({},FB),live=false;const subs=[];
+  function ping(){subs.forEach(f=>{try{f(rates,live);}catch(e){}});}
+  fetch('https://open.er-api.com/v6/latest/USD').then(r=>r.json()).then(d=>{
+    if(d&&d.rates&&d.rates.INR){rates=Object.assign({},FB,d.rates);live=true;ping();}
+  }).catch(()=>{});
+  return{
+    localToINR:cur=>(rates.INR||83)/(rates[cur]||FB[cur]||1),
+    isLive:()=>live,
+    onReady:f=>{f(rates,live);subs.push(f);}
+  };
+})();
+</script>
+<script>
+/* ===== SALARY REALITY CHECK ===== */
+(function(){
+  const $=id=>document.getElementById(id);
+  if(!$('salRole')) return;
+
+  const FB={EUR:110.2,GBP:129.6,CAD:68.7,AUD:67.3,AED:26.2,USD:96};
+  const FX=window.KOGOS_FX;
+  const rate=cur=>FX?FX.localToINR(cur):(FB[cur]||1);
+  const SYM={EUR:'€',GBP:'£',CAD:'C$',AUD:'A$',AED:'AED ',USD:'$'};
+  const CTRY=[
+    {k:'de',flag:'🇩🇪',name:'Germany',cur:'EUR'},
+    {k:'nl',flag:'🇳🇱',name:'Netherlands',cur:'EUR'},
+    {k:'ie',flag:'🇮🇪',name:'Ireland',cur:'EUR'},
+    {k:'fi',flag:'🇫🇮',name:'Finland',cur:'EUR'},
+    {k:'gb',flag:'🇬🇧',name:'United Kingdom',cur:'GBP'},
+    {k:'ca',flag:'🇨🇦',name:'Canada',cur:'CAD'},
+    {k:'au',flag:'🇦🇺',name:'Australia',cur:'AUD'},
+    {k:'ae',flag:'🇦🇪',name:'UAE / Dubai',cur:'AED'},
+    {k:'us',flag:'🇺🇸',name:'United States',cur:'USD'}
+  ];
+  const ROLES=[
+    {id:'swe',label:'Software / IT Engineer',pay:{de:60000,nl:58000,ie:62000,fi:55000,gb:52000,ca:90000,au:100000,ae:180000,us:120000}},
+    {id:'data',label:'Data Analyst / Scientist',pay:{de:58000,nl:56000,ie:58000,fi:52000,gb:48000,ca:85000,au:95000,ae:170000,us:110000}},
+    {id:'sap',label:'SAP Consultant',pay:{de:70000,nl:68000,ie:65000,fi:62000,gb:60000,ca:95000,au:110000,ae:220000,us:130000}},
+    {id:'pharma',label:'Pharmacist / Pharma',pay:{de:55000,nl:54000,ie:58000,fi:50000,gb:45000,ca:95000,au:95000,ae:150000,us:115000}},
+    {id:'pv',label:'Pharmacovigilance',pay:{de:52000,nl:52000,ie:55000,fi:48000,gb:42000,ca:80000,au:90000,ae:140000,us:95000}},
+    {id:'qaqc',label:'QA / QC (Pharma)',pay:{de:50000,nl:50000,ie:52000,fi:46000,gb:40000,ca:75000,au:85000,ae:130000,us:85000}},
+    {id:'eng',label:'Mechanical / Civil Engineer',pay:{de:55000,nl:54000,ie:52000,fi:50000,gb:42000,ca:80000,au:95000,ae:156000,us:90000}},
+    {id:'nurse',label:'Nurse / Healthcare',pay:{de:42000,nl:40000,ie:45000,fi:40000,gb:35000,ca:80000,au:80000,ae:120000,us:90000}},
+    {id:'research',label:'Researcher / PhD',pay:{de:50000,nl:48000,ie:45000,fi:45000,gb:38000,ca:60000,au:95000,ae:150000,us:60000}}
+  ];
+  const INRS=[300000,600000,1200000,1800000,2500000];
+  const NOTE={de:'Germany: strong pay, reasonable cost of living outside the big cities.',nl:'Netherlands: high pay; Amsterdam rent is steep, other cities cheaper.',ie:'Ireland: high salaries, but Dublin housing is expensive.',fi:'Finland: great work-life balance; higher tax, but services are free.',gb:'UK: strong pay; London is pricey, the North is far cheaper.',ca:'Canada: solid pay and a clear PR pathway - a big long-term win.',au:'Australia: high pay and quality of life; cities can be pricey.',ae:'UAE / Dubai: tax-free salary - you keep almost all of it.',us:'USA: highest ceiling, but the H-1B visa is a lottery.'};
+  let sel={role:'swe',inr:600000,ctry:'de'};
+
+  $('salRole').innerHTML=ROLES.map(r=>`<option value="${r.id}">${r.label}</option>`).join('');
+  $('salRole').value=sel.role;
+  $('salRole').onchange=e=>{sel.role=e.target.value;render();};
+
+  $('salInrChips').innerHTML=INRS.map(v=>`<button class="sal-chip" data-v="${v}">${fmtShort(v)}</button>`).join('');
+  $('salInrChips').querySelectorAll('.sal-chip').forEach(b=>b.onclick=()=>{sel.inr=+b.dataset.v;mark();render();});
+
+  $('salCountry').innerHTML=CTRY.map(c=>`<button class="sal-flag" data-k="${c.k}" title="${c.name}">${c.flag}</button>`).join('');
+  $('salCountry').querySelectorAll('.sal-flag').forEach(b=>b.onclick=()=>{sel.ctry=b.dataset.k;mark();render();});
+
+  function mark(){
+    $('salInrChips').querySelectorAll('.sal-chip').forEach(b=>b.classList.toggle('on',+b.dataset.v===sel.inr));
+    $('salCountry').querySelectorAll('.sal-flag').forEach(b=>b.classList.toggle('on',b.dataset.k===sel.ctry));
+  }
+  function fmtShort(v){return v>=10000000?'₹'+(v/10000000).toFixed(v%10000000?1:0)+'Cr':'₹'+Math.round(v/100000)+'L';}
+  function fmtInr(v){v=Math.round(v);let s=''+v,last3=s.slice(-3),rest=s.slice(0,-3);if(rest){last3=','+last3;rest=rest.replace(/\B(?=(\d{2})+(?!\d))/g,',');}return '₹'+rest+last3;}
+  function fmtLocal(cur,v){return SYM[cur]+Math.round(v).toLocaleString('en-US');}
+
+  let raf;
+  function animate(el,from,to,dur){
+    cancelAnimationFrame(raf);const t0=performance.now();
+    (function step(now){let t=Math.min(1,(now-t0)/dur);t=1-Math.pow(1-t,3);el.textContent=fmtInr(from+(to-from)*t);if(t<1)raf=requestAnimationFrame(step);})(t0);
+  }
+
+  function render(){
+    const role=ROLES.find(r=>r.id===sel.role),c=CTRY.find(x=>x.k===sel.ctry);
+    const local=role.pay[sel.ctry],inrEq=local*rate(c.cur),mult=inrEq/sel.inr;
+    $('salLocal').textContent=fmtLocal(c.cur,local)+' /yr';
+    animate($('salInr'),inrEq*0.35,inrEq,950);
+    $('salMult').textContent=mult>=1.2?mult.toFixed(1)+'× your current pay':'similar to your current pay';
+    $('salMult').style.color=mult>=3?'var(--green)':mult>=1.5?'var(--gold2)':'var(--text)';
+    $('salNote').textContent=NOTE[sel.ctry]||'';
+    $('salGuide').textContent='See the '+c.name+' guide';
+    $('salGuide').onclick=()=>{if(window.openC)openC(sel.ctry);};
+    sel._share=`I'm a ${role.label} - abroad I could earn ${fmtLocal(c.cur,local)}/yr (~${fmtInr(inrEq)}), about ${mult.toFixed(1)}× my India salary. Found this on KOGOS 🌍`;
+  }
+
+  $('salShare').onclick=async()=>{
+    const text=sel._share+' '+location.href;
+    if(navigator.share){try{await navigator.share({title:'KOGOS Salary Reality Check',text:sel._share,url:location.href});}catch(e){}}
+    else{try{await navigator.clipboard.writeText(text);const b=$('salShare');b.textContent='✓ Copied - paste it anywhere!';setTimeout(()=>b.textContent='📸 Share my number',2200);}catch(e){}}
+  };
+
+  mark();render();
+  if(FX)FX.onReady(()=>render());
+})();
+</script>
+
+<script>
+/* ===== COMPARE COUNTRIES ===== */
+(function(){
+  const host=document.getElementById('cmpPick'); if(!host) return;
+  const FX=window.KOGOS_FX;
+  const SYM={USD:'$',CAD:'C$',GBP:'£',AUD:'A$',EUR:'€',SEK:'kr ',DKK:'kr ',NOK:'kr ',CHF:'CHF ',NZD:'NZ$',SGD:'S$',AED:'AED ',SAR:'SAR ',QAR:'QAR ',KWD:'KWD ',OMR:'OMR ',BHD:'BHD '};
+  const FB={USD:96,EUR:110.2,GBP:129.6,CAD:68.7,AUD:67.3,SEK:10.0,DKK:14.8,NOK:10.0,CHF:119.4,NZD:56.3,SGD:74.6,AED:26.2,SAR:25.7,QAR:26.5,KWD:312.1,OMR:250.7,BHD:256.3};
+  const HASMODAL={us:1,ca:1,gb:1,au:1,de:1,nl:1,ie:1,fi:1,se:1,dk:1,nz:1,sg:1,ae:1};
+  const D=[
+    {k:'us',n:'United States',iso:'us',cur:'USD',sal:110000,col:2500,eng:'Native',lang:'English',ld:'None',visa:'H-1B lottery · slow',dia:4.8,tf:0,brief:'The biggest, highest-paying market and the largest Indian diaspora - but the H-1B visa is a lottery.'},
+    {k:'ca',n:'Canada',iso:'ca',cur:'CAD',sal:80000,col:2000,eng:'Native',lang:'English/French',ld:'None',visa:'Express Entry · 6-12mo',dia:1.7,tf:0,brief:'The clearest path to permanent residency, welcoming immigration, and a huge Indian community.'},
+    {k:'gb',n:'United Kingdom',iso:'gb',cur:'GBP',sal:55000,col:2300,eng:'Native',lang:'English',ld:'None',visa:'Skilled Worker · 3-8wk',dia:1.9,tf:0,brief:'English-speaking, a fast skilled visa, and deep historical ties with India.'},
+    {k:'au',n:'Australia',iso:'au',cur:'AUD',sal:95000,col:2200,eng:'Native',lang:'English',ld:'None',visa:'Skilled visa · 3-6mo',dia:1.0,tf:0,brief:'High pay, great quality of life, and a clear points-based skilled migration system.'},
+    {k:'de',n:'Germany',iso:'de',cur:'EUR',sal:65000,col:1800,eng:'High',lang:'German',ld:'Moderate',visa:'EU Blue Card · 2-8wk',dia:0.25,tf:0,brief:'Europe runs on its economy - strong salaries, low unemployment, and a fast Blue Card for skilled workers.'},
+    {k:'nl',n:'Netherlands',iso:'nl',cur:'EUR',sal:62000,col:2000,eng:'Very High',lang:'Dutch',ld:'Moderate',visa:'HSM permit · 2-4wk',dia:0.25,tf:0,brief:'Almost everyone speaks English, the visa is quick, and the work-life balance is excellent.'},
+    {k:'ie',n:'Ireland',iso:'ie',cur:'EUR',sal:65000,col:2200,eng:'Native',lang:'English',ld:'None',visa:'Critical Skills · 4-8wk',dia:0.09,tf:0,brief:'An English-speaking EU tech hub - home to the European offices of Google, Meta and Pfizer.'},
+    {k:'fi',n:'Finland',iso:'fi',cur:'EUR',sal:52000,col:1700,eng:'High',lang:'Finnish',ld:'Hard',visa:'Specialist · 9-14 days',dia:0.02,tf:0,brief:'One of the fastest work visas on earth and the happiest country in the world - though the language is tough.'},
+    {k:'se',n:'Sweden',iso:'se',cur:'SEK',sal:540000,col:1700,eng:'Very High',lang:'Swedish',ld:'Moderate',visa:'Work permit · 1-4mo',dia:0.05,tf:0,brief:'English-friendly, a strong tech scene, and generous family and parental benefits.'},
+    {k:'dk',n:'Denmark',iso:'dk',cur:'DKK',sal:560000,col:2000,eng:'Very High',lang:'Danish',ld:'Moderate',visa:'Fast-track · 1-4wk',dia:0.02,tf:0,brief:'High salaries, short work weeks, and a fast-track scheme for skilled hires.'},
+    {k:'no',n:'Norway',iso:'no',cur:'NOK',sal:700000,col:2100,eng:'High',lang:'Norwegian',ld:'Moderate',visa:'Skilled worker · 1-3mo',dia:0.02,tf:0,brief:'Some of the highest wages in Europe and an outstanding quality of life.'},
+    {k:'ch',n:'Switzerland',iso:'ch',cur:'CHF',sal:110000,col:3000,eng:'High',lang:'German/French',ld:'Moderate',visa:'Work permit · quota',dia:0.03,tf:0,brief:'The highest salaries in the world, offset by an equally high cost of living.'},
+    {k:'nz',n:'New Zealand',iso:'nz',cur:'NZD',sal:90000,col:2000,eng:'Native',lang:'English',ld:'None',visa:'Skilled Migrant · 3-6mo',dia:0.25,tf:0,brief:'English-speaking, safe, and a straightforward skilled migrant pathway.'},
+    {k:'sg',n:'Singapore',iso:'sg',cur:'SGD',sal:84000,col:2200,eng:'Native',lang:'English',ld:'None',visa:'Employment Pass · 3-8wk',dia:0.65,tf:0,brief:'Asia business hub - English-speaking, low tax, and just a short flight from home.'},
+    {k:'ae',n:'UAE / Dubai',iso:'ae',cur:'AED',sal:180000,col:1800,eng:'High',lang:'Arabic/English',ld:'None',visa:'Work visa · 2-4wk',dia:3.5,tf:1,brief:'Zero income tax means you keep almost everything you earn, with a massive Indian community.'},
+    {k:'sa',n:'Saudi Arabia',iso:'sa',cur:'SAR',sal:150000,col:1300,eng:'Medium',lang:'Arabic',ld:'None',visa:'Work visa · tax-free',dia:2.6,tf:1,brief:'Tax-free pay and booming Vision 2030 projects hiring skilled Indians by the thousand.'},
+    {k:'qa',n:'Qatar',iso:'qa',cur:'QAR',sal:175000,col:1600,eng:'High',lang:'Arabic/English',ld:'None',visa:'Work visa · tax-free',dia:0.75,tf:1,brief:'One of the richest countries per person, tax-free, with strong demand for professionals.'},
+    {k:'kw',n:'Kuwait',iso:'kw',cur:'KWD',sal:14000,col:1400,eng:'Medium',lang:'Arabic',ld:'None',visa:'Work visa · tax-free',dia:1.0,tf:1,brief:'Tax-free salaries and a long-established Indian workforce.'},
+    {k:'om',n:'Oman',iso:'om',cur:'OMR',sal:15000,col:1200,eng:'Medium',lang:'Arabic',ld:'None',visa:'Work visa · tax-free',dia:0.69,tf:1,brief:'Tax-free, safe, and a lower cost of living than the bigger Gulf hubs.'},
+    {k:'bh',n:'Bahrain',iso:'bh',cur:'BHD',sal:16000,col:1300,eng:'High',lang:'Arabic/English',ld:'None',visa:'Work visa · tax-free',dia:0.32,tf:1,brief:'Tax-free, English-friendly, and often the easiest Gulf state for newcomers.'}
+  ];
+  let sel=['us','de','ae'];
+
+  const flag=(iso,w)=>`https://flagcdn.com/w${w}/${iso}.png`;
+  const rate=cur=>FX?FX.localToINR(cur):(FB[cur]||1);
+  const usdINR=()=>rate('USD');
+  const short=inr=>inr>=1e7?'₹'+(inr/1e7).toFixed(1)+'Cr':'₹'+(inr/1e5).toFixed(1)+'L';
+  const engC=e=>/Native|Very High/.test(e)?'var(--green)':/High/.test(e)?'var(--gold2)':'var(--rose)';
+
+  function drawPick(){
+    host.innerHTML=D.map(c=>`<button class="cmp-chip${sel.includes(c.k)?' on':''}" data-k="${c.k}"><img src="${flag(c.iso,40)}" alt=""/>${c.n}</button>`).join('');
+    host.querySelectorAll('.cmp-chip').forEach(b=>b.onclick=()=>{
+      const k=b.dataset.k;
+      if(sel.includes(k)) sel=sel.filter(x=>x!==k);
+      else{ sel.push(k); if(sel.length>3) sel.shift(); }
+      drawPick(); drawGrid();
+    });
+  }
+  const R=(l,v,cls)=>`<div class="cmp-row"><span class="cmp-rl">${l}</span><span class="cmp-rv ${cls||''}">${v}</span></div>`;
+  function drawGrid(){
+    const g=document.getElementById('cmpGrid'); if(!g) return;
+    if(!sel.length){g.innerHTML='<div class="cmp-empty">Pick a country above to start comparing.</div>';return;}
+    g.innerHTML=sel.map(k=>{
+      const c=D.find(x=>x.k===k);
+      const salINR=c.sal*rate(c.cur), colMoINR=c.col*usdINR(), left=Math.max(0,salINR-colMoINR*12);
+      return `<div class="cmp-card">
+        <img class="cmp-flag" src="${flag(c.iso,320)}" alt="${c.n}" loading="lazy"/>
+        <div class="cmp-head"><div class="cmp-name">${c.n}</div><div class="cmp-brief">${c.brief}</div></div>
+        <div class="cmp-rows">
+          ${R('Salary / yr',`${SYM[c.cur]}${c.sal.toLocaleString('en-US')}<span class="cmp-sub">≈ ${short(salINR)}/yr</span>`)}
+          ${R('Cost / month',`${short(colMoINR)}`)}
+          ${R('Left after costs',`${short(left)}/yr`,'cmp-hi')}
+          ${R('Income tax',c.tf?'Tax-free ✓':'Taxed',c.tf?'cmp-hi':'')}
+          ${R('English',`<span style="color:${engC(c.eng)}">${c.eng}</span>`)}
+          ${R('Language',`${c.lang} · ${c.ld}`)}
+          ${R('Visa',c.visa)}
+          ${R('Indian community','~'+c.dia+'M')}
+        </div>
+        <a class="cmp-cta" data-k="${c.k}">Full ${c.n} guide →</a>
+      </div>`;
+    }).join('');
+    g.querySelectorAll('.cmp-cta').forEach(a=>a.onclick=()=>{const k=a.dataset.k; if(HASMODAL[k]&&window.openC)openC(k); else if(window.go)go('resources');});
+  }
+  function fxNote(){const n=document.getElementById('cmpFxNote'); if(n) n.textContent=(FX&&FX.isLive())?'· live exchange rates':'· approx rates';}
+
+  drawPick(); drawGrid(); fxNote();
+  if(FX) FX.onReady(()=>{drawGrid(); fxNote();});
+})();
+</script>
+
+<script>
+/* ===== SEGMENTED JOURNEYS ===== */
+(function(){
+  const tabsEl=document.getElementById('jpTabs'); if(!tabsEl) return;
+  const panelEl=document.getElementById('jpPanel');
+  const J=[
+    {flag:'🇮🇳',t:'In India',sub:'Planning to study or work abroad',
+      intro:'You are where most of our community starts. This is your exact roadmap from India to an offer letter abroad.',
+      steps:[
+        {i:'🌍',t:'Find your best-fit country',d:'Compare 20 countries on salary, cost, language and visa speed.',a:'compare'},
+        {i:'💰',t:'See what you would actually earn',d:'Your field, your salary, converted live to rupees.',a:'salary'},
+        {i:'📚',t:'Download the free country guides',d:'Visa steps, company lists and salary data - all free.',a:'resources'},
+        {i:'📄',t:'Make your resume abroad-ready',d:'European / ATS format, LinkedIn rewrite, outreach templates.',a:'services'}
+      ],cta:'Book a 1:1 strategy call'},
+    {flag:'🇺🇸',t:'In the US',sub:'On F-1 / OPT, or facing the H-1B lottery',
+      intro:'Already in the US? Whether you are chasing OPT roles or planning your H-1B escape, here is what matters most.',
+      steps:[
+        {i:'💼',t:'Stable OPT & STEM-OPT roles',d:'Which employers actually sponsor and hire OPT talent.',a:'resources'},
+        {i:'🪂',t:'The H-1B escape plan',d:'No-lottery countries in Europe that want your skills.',a:'resources'},
+        {i:'⚖️',t:'Compare US vs Europe pay',d:'See the real trade-off, side by side.',a:'compare'},
+        {i:'📄',t:'Sharpen your US resume & LinkedIn',d:'A recruiter-ready profile for the US market.',a:'services'}
+      ],cta:'Book a 1:1 strategy call'},
+    {flag:'🌍',t:'Already abroad',sub:'Switching countries or leveling up',
+      intro:'Already made the jump? Let us find your next move - a better-paying country, PR, or a stronger role.',
+      steps:[
+        {i:'🔁',t:'Compare your next country',d:'Salary, tax, PR pathway and cost, side by side.',a:'compare'},
+        {i:'📚',t:'Country-specific playbooks',d:'Deep guides for Germany, Netherlands, Canada, UAE and more.',a:'resources'},
+        {i:'📈',t:'Benchmark your salary',d:'Are you underpaid? Check against live market data.',a:'salary'}
+      ],cta:'Book a 1:1 strategy call'}
+  ];
+  let cur=0;
+  function act(a){
+    if(a==='compare'){const el=document.getElementById('compare'); if(el)el.scrollIntoView({behavior:'smooth'});}
+    else if(a==='salary'){const el=document.querySelector('.sal-sec'); if(el)el.scrollIntoView({behavior:'smooth'});}
+    else if(window.go) go(a);
+  }
+  function tabs(){
+    tabsEl.innerHTML=J.map((j,i)=>`<button class="jp-tab${i===cur?' on':''}" data-i="${i}"><span class="jp-flag">${j.flag}</span><span class="jp-tt"><b>${j.t}</b><i>${j.sub}</i></span></button>`).join('');
+    tabsEl.querySelectorAll('.jp-tab').forEach(b=>b.onclick=()=>{cur=+b.dataset.i;tabs();panel();});
+  }
+  function panel(){
+    const j=J[cur];
+    panelEl.innerHTML=`<div class="jp-intro">${j.intro}</div>
+      <div class="jp-steps">${j.steps.map(s=>`<button class="jp-step" data-a="${s.a}"><span class="jp-si">${s.i}</span><span class="jp-sx"><b>${s.t}</b><i>${s.d}</i></span><span class="jp-sar">→</span></button>`).join('')}</div>
+      <button class="btn bg jp-cta" data-a="book">${j.cta} →</button>`;
+    panelEl.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>act(b.dataset.a==='book'?'book':b.dataset.a));
+    panelEl.classList.remove('jp-in'); void panelEl.offsetWidth; panelEl.classList.add('jp-in');
+  }
+  tabs(); panel();
+})();
+</script>
+
+<script>
+/* =========================================================
+   WORLD MAP GLOBE — natural-colour Earth, light bg, a plane
+   flying from India to countries. Lazy-inits when scrolled
+   into view and pauses when off-screen.
+   ========================================================= */
+(function(){
+  const canvas=document.getElementById('wgc');
+  if(!canvas) return;
+  let started=false, running=false, raf;
+
+  function boot(){
+    if(started||typeof THREE==='undefined') return;
+    started=true;
+
+    const R=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+    R.setPixelRatio(Math.min(window.devicePixelRatio,2));
+    const scene=new THREE.Scene();
+    const cam=new THREE.PerspectiveCamera(42,1,.1,100);
+    cam.position.set(0,.35,3.25);
+    const group=new THREE.Group(); scene.add(group);
+
+    function fit(){
+      const w=canvas.clientWidth||620, h=canvas.clientHeight||480;
+      R.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix();
+    }
+
+    /* ---- natural Earth texture (same continents, daylight colours) ---- */
+    function makeEarth(){
+      const W=2048,H=1024,cv=document.createElement('canvas');
+      cv.width=W;cv.height=H;const c=cv.getContext('2d');
+      const og=c.createLinearGradient(0,0,0,H);
+      og.addColorStop(0,'#2f7fbf');og.addColorStop(.5,'#2472ad');og.addColorStop(1,'#2f7fbf');
+      c.fillStyle=og;c.fillRect(0,0,W,H);
+      // ice caps
+      c.fillStyle='#eaf3fb';c.fillRect(0,0,W,H*0.045);c.fillRect(0,H*0.955,W,H*0.045);
+      // graticule
+      c.strokeStyle='rgba(255,255,255,.07)';c.lineWidth=.8;
+      for(let lat=-60;lat<=60;lat+=30){const y=(90-lat)/180*H;c.beginPath();c.moveTo(0,y);c.lineTo(W,y);c.stroke();}
+      for(let lng=-180;lng<=180;lng+=30){const x=(lng+180)/360*W;c.beginPath();c.moveTo(x,0);c.lineTo(x,H);c.stroke();}
+      const xy=(la,ln)=>[(ln+180)/360*W,(90-la)/180*H];
+      function land(pts,fill){
+        c.beginPath();const[sx,sy]=xy(...pts[0]);c.moveTo(sx,sy);
+        for(let i=1;i<pts.length;i++){const[x,y]=xy(...pts[i]);c.lineTo(x,y);}
+        c.closePath();c.fillStyle=fill;c.fill();
+        c.strokeStyle='rgba(30,86,40,.45)';c.lineWidth=1;c.stroke();
+      }
+      const LG='#4aa65b', LG2='#3f9c53';
+      land([[72,-167],[71,-140],[65,-120],[60,-125],[50,-130],[48,-125],[40,-125],[32,-117],[25,-100],[22,-97],[18,-88],[8,-77],[8,-82],[12,-84],[18,-91],[22,-98],[25,-100],[30,-98],[38,-77],[42,-70],[47,-53],[50,-57],[55,-60],[60,-65],[65,-80],[70,-80],[73,-90],[73,-110],[72,-140],[72,-167]],LG);
+      land([[76,-73],[84,-46],[83,-22],[76,-18],[70,-22],[65,-38],[64,-52],[68,-55],[72,-57],[76,-73]],LG2);
+      land([[12,-72],[10,-62],[8,-60],[3,-50],[0,-50],[-5,-36],[-15,-39],[-25,-49],[-35,-57],[-55,-68],[-55,-64],[-40,-62],[-25,-49],[-10,-37],[0,-50],[8,-60],[10,-72],[12,-72]],LG);
+      land([[36,-5],[43,-8],[44,-2],[48,-5],[50,-5],[58,-5],[60,0],[57,10],[55,10],[55,15],[58,16],[62,14],[68,18],[70,20],[71,25],[71,29],[68,32],[60,30],[55,24],[55,20],[48,22],[45,28],[40,28],[37,22],[36,-5]],LG);
+      land([[50,-5],[52,-5],[58,-5],[60,-2],[56,-6],[52,-10],[50,-5]],LG2);
+      land([[55,8],[57,8],[58,7],[58,5],[57,8],[71,26],[70,30],[68,17],[65,14],[60,5],[57,8]],LG);
+      land([[37,-5],[37,10],[30,32],[22,37],[12,42],[0,42],[-12,40],[-35,18],[-35,26],[-25,34],[-20,35],[0,40],[5,34],[12,42],[18,38],[25,35],[30,32],[35,35],[37,30],[35,22],[30,20],[20,17],[15,13],[10,5],[5,3],[0,9],[-10,15],[-20,15],[-30,17],[-35,18],[-20,15],[-10,13],[0,9],[10,0],[20,-17],[30,-10],[37,-5]],LG);
+      land([[25,55],[38,27],[44,32],[55,35],[62,50],[68,58],[70,65],[72,80],[72,100],[68,120],[60,140],[50,140],[45,140],[35,140],[30,130],[22,121],[18,110],[10,104],[1,104],[5,100],[10,98],[16,95],[22,90],[25,88],[22,75],[8,77],[22,63],[25,55]],LG);
+      land([[30,62],[34,65],[36,72],[32,78],[28,97],[22,92],[8,77],[22,63],[30,62]],LG2);
+      land([[31,130],[40,140],[45,142],[41,141],[35,137],[33,132],[31,130]],LG2);
+      land([[34,125],[38,125],[38,130],[34,130],[34,125]],LG2);
+      land([[-15,128],[-12,136],[-15,142],[-20,148],[-30,153],[-38,147],[-40,145],[-38,140],[-35,136],[-32,133],[-25,114],[-22,114],[-15,128]],LG);
+      land([[-34,172],[-38,178],[-46,170],[-46,168],[-41,172],[-34,172]],LG2);
+      land([[1,95],[5,100],[5,108],[0,115],[-8,115],[-10,110],[-8,105],[0,104],[1,95]],LG2);
+      land([[10,120],[16,120],[18,122],[14,126],[10,125],[8,124],[10,120]],LG2);
+      return new THREE.CanvasTexture(cv);
+    }
+
+    const earth=new THREE.Mesh(new THREE.SphereGeometry(1,64,64),
+      new THREE.MeshPhongMaterial({map:makeEarth(),shininess:6,specular:0x18344f}));
+    group.add(earth);
+    // soft atmosphere halo
+    group.add(new THREE.Mesh(new THREE.SphereGeometry(1.055,48,48),
+      new THREE.MeshBasicMaterial({color:0x93c9ef,transparent:true,opacity:.14,side:THREE.BackSide})));
+
+    // daylight
+    scene.add(new THREE.AmbientLight(0xffffff,.92));
+    const sun=new THREE.DirectionalLight(0xffffff,.85); sun.position.set(2,1.3,2.5); scene.add(sun);
+    const rim=new THREE.DirectionalLight(0xbfe0ff,.4); rim.position.set(-2,-1,-2); scene.add(rim);
+
+    const ll2v=(la,ln,r=1)=>{const ph=(90-la)*Math.PI/180,th=(ln+180)*Math.PI/180;
+      return new THREE.Vector3(-r*Math.sin(ph)*Math.cos(th),r*Math.cos(ph),r*Math.sin(ph)*Math.sin(th));};
+
+    const INDIA={la:20.59,ln:78.96};
+    const DEST=[
+      {la:51.17,ln:10.45,n:'Germany'},{la:39,ln:-98,n:'USA'},{la:56.13,ln:-106.35,n:'Canada'},
+      {la:51.51,ln:-0.13,n:'UK'},{la:25.20,ln:55.27,n:'UAE'},{la:-25.27,ln:133.78,n:'Australia'},
+      {la:52.37,ln:4.90,n:'Netherlands'},{la:1.35,ln:103.82,n:'Singapore'},{la:60.17,ln:24.94,n:'Finland'}
+    ];
+
+    function pin(la,ln,color,big){
+      const p=ll2v(la,ln,1.004);
+      const d=new THREE.Mesh(new THREE.SphereGeometry(big?.028:.017,14,14),
+        new THREE.MeshBasicMaterial({color}));
+      d.position.copy(p); group.add(d);
+      const ring=new THREE.Mesh(new THREE.RingGeometry(big?.036:.024,big?.05:.034,20),
+        new THREE.MeshBasicMaterial({color,transparent:true,opacity:.4,side:THREE.DoubleSide}));
+      ring.position.copy(p); ring.lookAt(0,0,0); group.add(ring);
+      return d;
+    }
+    pin(INDIA.la,INDIA.ln,0xff6b35,true);
+    DEST.forEach(d=>pin(d.la,d.ln,0x2563eb,false));
+
+    const arcCurve=(a,b,lift)=>{
+      const va=ll2v(a.la,a.ln), vb=ll2v(b.la,b.ln);
+      const m=new THREE.Vector3().addVectors(va,vb).multiplyScalar(.5).normalize().multiplyScalar(lift);
+      return new THREE.QuadraticBezierCurve3(va,m,vb);
+    };
+    // faint network of all routes
+    DEST.forEach(d=>{
+      const g=new THREE.BufferGeometry().setFromPoints(arcCurve(INDIA,d,1.34).getPoints(48));
+      group.add(new THREE.Line(g,new THREE.LineBasicMaterial({color:0xf59e0b,transparent:true,opacity:.16})));
+    });
+
+    // plane sprite (emoji)
+    function planeTex(){
+      const cv=document.createElement('canvas');cv.width=cv.height=72;
+      const x=cv.getContext('2d');x.font='54px serif';x.textAlign='center';x.textBaseline='middle';
+      x.fillText('✈️',36,38);return new THREE.CanvasTexture(cv);
+    }
+    const plane=new THREE.Sprite(new THREE.SpriteMaterial({map:planeTex(),transparent:true,depthTest:false}));
+    plane.scale.set(.17,.17,.17); group.add(plane);
+
+    // active bright route
+    let idx=0, t=0, curve=arcCurve(INDIA,DEST[0],1.5), activeLine=null;
+    function setActive(){
+      if(activeLine) group.remove(activeLine);
+      curve=arcCurve(INDIA,DEST[idx],1.5);
+      const g=new THREE.BufferGeometry().setFromPoints(curve.getPoints(60));
+      activeLine=new THREE.Line(g,new THREE.LineBasicMaterial({color:0xff6b35,transparent:true,opacity:.7}));
+      group.add(activeLine);
+    }
+    setActive();
+
+    fit();
+    function anim(){
+      raf=requestAnimationFrame(anim);
+      if(!running) return;
+      group.rotation.y+=0.0015;
+      t+=0.0045;
+      if(t>=1){ t=0; idx=(idx+1)%DEST.length; setActive(); }
+      const p=curve.getPoint(t).multiplyScalar(1.015);
+      plane.position.copy(p);
+      R.render(scene,cam);
+    }
+    anim();
+    window.addEventListener('resize',fit);
+  }
+
+  // lazy start + pause when off-screen (saves battery / GPU)
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ boot(); running=true; }
+      else running=false;
+    });
+  },{threshold:.1});
+  io.observe(canvas);
+})();
+</script>
 </body>
 </html>
