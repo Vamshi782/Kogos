@@ -1027,7 +1027,7 @@ select.ff{cursor:pointer}
         cta:'Try Talvora AI — 20% off',
         link:'https://www.talvora.ai/pricing?promo=VAMSHI20' },
 
-      { key:'det', icon:'🦉', acc:'#22c55e', badge:'Platinum DET partner',
+      { key:'det', icon:'🦉', acc:'#22c55e', badge:'DET Practice · prep portal',
         title:'Ace the Duolingo English Test',
         tag:'The DET is the cheaper, faster, take-from-home alternative to IELTS — accepted by 5,000+ universities. Walk in ready.',
         perks:['18,000+ real practice questions','Full mock exams with AI scoring','Speaking &amp; writing feedback','Exclusive 10% test discount'],
@@ -1472,20 +1472,116 @@ select.ff{cursor:pointer}
   <div class="ih w">
     <div class="ey" style="color:var(--green)">Always Free</div>
     <h1>Free Career Guides</h1>
-    <p>Every guide below is completely free. Company lists, visa processes, salary data, cold email templates - all in one place. No signup required.</p>
+    <p>Every guide below is completely free — company lists, visa processes, salary data, and cold-email templates. Filter by category and read each one right here, no downloads or leaving the site.</p>
   </div>
   <div class="w pt72 pb72">
-    <div class="rg">
-     <a class="rc" href="netherlands_pharma_jobs (1).html" target="_blank" rel="noopener"><span class="rf">🇳🇱</span><div class="rn">Netherlands - Top 30 Pharma</div><div class="rs">30 pharma companies hiring Indians. HSM Visa in 2 weeks. Salary data per role. Direct career page links.</div><span class="rb rbf">Free Guide</span></a>
-<a class="rc" href="germany_phd_research_guide_2026 (1).html" target="_blank" rel="noopener"><span class="rf">🇩🇪</span><div class="rn">Germany PhD and Research</div><div class="rs">Max Planck, Fraunhofer, Helmholtz, Leibniz. Fully funded PhD positions. Zero tuition. EUR 1,500-2,800/month.</div><span class="rb rbf">Free Guide</span></a>
-<a class="rc" href="finland_jobs_guide_2026 (1).html" target="_blank" rel="noopener"><span class="rf">🇫🇮</span><div class="rn">Finland - Top 20 Companies</div><div class="rs">Nokia, KONE, Supercell, Wolt. Visa in 9-14 days. World's happiest country. English everywhere.</div><span class="rb rbn">New 2026</span></a>
-<a class="rc" href="h1b_escape_europe_guide_2026 (1).html" target="_blank" rel="noopener"><span class="rf">🇺🇸</span><div class="rn">H-1B Escape Plan - Europe</div><div class="rs">For engineers trapped in the H-1B lottery. 4 escape paths. No lottery countries. Full salary comparison.</div><span class="rb rbf">Free Guide</span></a>
-<a class="rc" href="pharmacovigilance_europe_guide_2026 (1).html" target="_blank" rel="noopener"><span class="rf">💊</span><div class="rn">Pharmacovigilance in Europe</div><div class="rs">B.Pharm, M.Pharm, MBBS - PV is the most in-demand pharma role. 12 companies. 5 free certifications.</div><span class="rb rbf">Free Guide</span></a>
-<a class="rc" href="qaqc_europe_career_guide_2026 (1).html" target="_blank" rel="noopener"><span class="rf">🔬</span><div class="rn">QA/QC Europe Career Guide</div><div class="rs">For pharmaceutical quality professionals. Salary by experience level. European CV format. Cold email template.</div><span class="rb rbf">Free Guide</span></a>
-<a class="rc" href="sap_jobs_europe (1).html" target="_blank" rel="noopener"><span class="rf">💻</span><div class="rn">SAP Jobs in Europe</div><div class="rs">All modules - FICO, MM, SD, ABAP, S/4HANA. Best portals, salary by module, XING profile tip.</div><span class="rb rbf">Free Guide</span></a>
-<a class="rc" href="dubai_guide.html" target="_blank" rel="noopener"><span class="rf">🇦🇪</span><div class="rn">Dubai Jobs for Indians</div><div class="rs">20 top companies, zero income tax, visa in 2-4 weeks. Tech, finance, engineering, healthcare - complete guide.</div><span class="rb rbn">New 2026</span></a>
-<a class="rc" href="canada_guide.html" target="_blank" rel="noopener"><span class="rf">🇨🇦</span><div class="rn">Canada Immigration Guide</div><div class="rs">Express Entry, PNP, PGWP explained. CRS score tips, top companies, best cities for Indians. Full PR roadmap.</div><span class="rb rbn">New 2026</span></a>
+    <div class="gv-filter" id="guidesFilter"></div>
+    <div class="rg" id="guidesGrid"></div>
+
+    <!-- in-site guide reader (keeps visitors on kogos.co) -->
+    <div class="gv-modal" id="gvModal" onclick="if(event.target===this)closeGuide()">
+      <div class="gv-sheet" role="dialog" aria-modal="true" aria-labelledby="gvTitle">
+        <div class="gv-head">
+          <div class="gv-title" id="gvTitle">Guide</div>
+          <div class="gv-actions">
+            <a class="gv-tab" id="gvOpen" target="_blank" rel="noopener">Open in full tab ↗</a>
+            <button class="gv-x" onclick="closeGuide()" aria-label="Close guide">✕</button>
+          </div>
+        </div>
+        <iframe id="gvFrame" title="Guide reader" loading="lazy"></iframe>
       </div>
+    </div>
+
+    <style>
+    .gv-filter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;justify-content:center}
+    .gv-chip{font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--text);background:var(--s1);
+      border:1px solid var(--k-border-2);border-radius:var(--k-r-pill);padding:8px 16px;cursor:pointer;
+      transition:color var(--k-dur) var(--k-ease),background var(--k-dur) var(--k-ease),border-color var(--k-dur) var(--k-ease)}
+    .gv-chip:hover{border-color:var(--k-gold);color:var(--white)}
+    .gv-chip.on{background:var(--k-gold);border-color:var(--k-gold);color:var(--k-navy);font-weight:700}
+    .gv-modal{position:fixed;inset:0;z-index:var(--k-z-modal);display:none;padding:24px;
+      background:rgba(5,6,10,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+    .gv-modal.on{display:flex;animation:bkvfade .25s ease}
+    .gv-sheet{background:var(--s1);border:1px solid var(--k-border-2);border-radius:var(--k-r-lg);
+      width:min(1000px,100%);margin:auto;display:flex;flex-direction:column;overflow:hidden;
+      max-height:calc(100vh - 48px);height:calc(100vh - 48px);box-shadow:var(--k-shadow-lg)}
+    .gv-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 18px;
+      border-bottom:1px solid var(--k-border);background:var(--s2)}
+    .gv-title{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--white);
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .gv-actions{display:flex;align-items:center;gap:14px;flex-shrink:0}
+    .gv-tab{font-family:var(--mono);font-size:10.5px;letter-spacing:1px;text-transform:uppercase;
+      color:var(--k-gold);text-decoration:none;cursor:pointer;white-space:nowrap}
+    .gv-tab:hover{text-decoration:underline}
+    .gv-x{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.06);
+      border:1px solid var(--k-border-2);color:var(--white);font-size:15px;cursor:pointer;line-height:1}
+    .gv-x:hover{background:rgba(255,255,255,.12)}
+    #gvFrame{flex:1;width:100%;border:none;background:#fff}
+    </style>
+
+    <script>
+    /* ===== IN-SITE GUIDES: filter + reader (Phase — guides consolidation) ===== */
+    (function(){
+      const grid=document.getElementById('guidesGrid'); if(!grid) return;
+      const GUIDES=[
+        {icon:'🇳🇱',title:'Netherlands — Top 30 Pharma',cat:'Pharma',badge:'Free Guide',bc:'rbf',file:'netherlands_pharma_jobs (1).html',desc:'30 pharma companies hiring Indians. HSM visa in ~2 weeks. Salary data + direct career links.'},
+        {icon:'💊',title:'Pharmacovigilance in Europe',cat:'Pharma',badge:'Free Guide',bc:'rbf',file:'pharmacovigilance_europe_guide_2026 (1).html',desc:'B.Pharm, M.Pharm, MBBS — PV is the most in-demand pharma role. 12 companies, 5 free certifications.'},
+        {icon:'🔬',title:'QA / QC Europe Career Guide',cat:'Pharma',badge:'Free Guide',bc:'rbf',file:'qaqc_europe_career_guide_2026 (1).html',desc:'For pharma quality pros. Salary by experience, European CV format, cold-email template.'},
+        {icon:'💊',title:'Pharma Abroad — Getting Started',cat:'Pharma',badge:'Free Guide',bc:'rbf',file:'pharma_abroad_guide_2026 (1).html',desc:'Your first steps into pharma roles abroad: routes, resume direction, and where to apply.'},
+        {icon:'📄',title:'EU Pharma & Biotech Hiring List',cat:'Pharma',badge:'PDF',bc:'rbn',file:'EU_Pharma_Biotech_Hiring_List_2026 (1).pdf',desc:'A ready list of EU pharma & biotech companies hiring — roles, locations and links.'},
+        {icon:'📄',title:'EU Pharma Hiring 2026 (India)',cat:'Pharma',badge:'PDF',bc:'rbn',file:'EU_Pharma_Hiring_2026_India.pdf',desc:'EU pharma hiring list tailored for Indian applicants — companies and how to apply.'},
+        {icon:'🇪🇺',title:'Europe Jobs — Overview',cat:'Europe',badge:'Free Guide',bc:'rbf',file:'europe-jobs.html',desc:'Where Indians are getting hired across Europe: visa routes, sectors, and how to start.'},
+        {icon:'🇩🇪',title:'Germany Jobs Guide',cat:'Europe',badge:'Free Guide',bc:'rbf',file:'germany-jobs.html',desc:'The German job market for Indians: EU Blue Card, top employers, and application strategy.'},
+        {icon:'🇫🇮',title:'Finland — Top 20 Companies',cat:'Europe',badge:'New 2026',bc:'rbn',file:'finland_jobs_guide_2026 (1).html',desc:'Nokia, KONE, Supercell, Wolt. Visa in 9–14 days. English everywhere.'},
+        {icon:'🪂',title:'H-1B Escape Plan — Europe',cat:'Europe',badge:'Free Guide',bc:'rbf',file:'h1b_escape_europe_guide_2026 (1).html',desc:'For engineers stuck in the H-1B lottery. 4 escape paths, no-lottery countries, salary comparison.'},
+        {icon:'💻',title:'SAP Jobs in Europe',cat:'Tech',badge:'Free Guide',bc:'rbf',file:'sap_jobs_europe (1).html',desc:'All modules — FICO, MM, SD, ABAP, S/4HANA. Best portals, salary by module, XING tip.'},
+        {icon:'🇩🇪',title:'Germany PhD & Research',cat:'Study & PhD',badge:'Free Guide',bc:'rbf',file:'germany_phd_research_guide_2026 (1).html',desc:'Max Planck, Fraunhofer, Helmholtz, Leibniz. Fully funded PhDs, zero tuition, €1,500–2,800/mo.'},
+        {icon:'🇦🇪',title:'Dubai Jobs for Indians',cat:'Middle East',badge:'New 2026',bc:'rbn',file:'dubai_guide.html',desc:'20 top companies, zero income tax, visa in 2–4 weeks. Tech, finance, engineering, healthcare.'},
+        {icon:'🇨🇦',title:'Canada Immigration Guide',cat:'Americas',badge:'New 2026',bc:'rbn',file:'canada_guide.html',desc:'Express Entry, PNP, PGWP explained. CRS tips, top companies, best cities, full PR roadmap.'}
+      ];
+      const CATS=['All','Europe','Pharma','Tech','Study & PhD','Middle East','Americas'];
+      let cat='All';
+      const filt=document.getElementById('guidesFilter');
+      filt.innerHTML=CATS.map(c=>`<button class="gv-chip${c==='All'?' on':''}" data-cat="${c}">${c}</button>`).join('');
+      filt.querySelectorAll('.gv-chip').forEach(b=>b.onclick=()=>{
+        cat=b.dataset.cat;
+        filt.querySelectorAll('.gv-chip').forEach(x=>x.classList.toggle('on',x===b));
+        render();
+      });
+      function render(){
+        const list=GUIDES.filter(g=>cat==='All'||g.cat===cat);
+        grid.innerHTML=list.map(g=>`
+          <a class="rc" href="${encodeURI(g.file)}" target="_blank" rel="noopener"
+             data-file="${g.file.replace(/"/g,'&quot;')}" data-title="${g.title.replace(/"/g,'&quot;')}">
+            <span class="rf">${g.icon}</span>
+            <div class="rn">${g.title}</div>
+            <div class="rs">${g.desc}</div>
+            <span class="rb ${g.bc}">${g.badge}</span>
+          </a>`).join('');
+        grid.querySelectorAll('a[data-file]').forEach(a=>a.addEventListener('click',e=>{
+          e.preventDefault(); openGuide(a.dataset.file,a.dataset.title);
+        }));
+      }
+      window.openGuide=function(file,title){
+        const m=document.getElementById('gvModal');
+        document.getElementById('gvFrame').src=encodeURI(file);
+        document.getElementById('gvTitle').textContent=title;
+        document.getElementById('gvTitle').title=title;
+        document.getElementById('gvOpen').href=encodeURI(file);
+        m.classList.add('on'); document.body.style.overflow='hidden';
+      };
+      window.closeGuide=function(){
+        const m=document.getElementById('gvModal'); if(!m) return;
+        m.classList.remove('on'); document.getElementById('gvFrame').src='about:blank';
+        document.body.style.overflow='';
+      };
+      document.addEventListener('keydown',e=>{
+        if(e.key==='Escape'){const m=document.getElementById('gvModal'); if(m&&m.classList.contains('on'))closeGuide();}
+      });
+      render();
+    })();
+    </script>
+
     <div style="margin-top:44px;text-align:center;padding:44px;background:var(--s1);border:1px solid var(--ring);border-radius:7px">
       <h3 style="font-family:var(--serif);font-size:26px;font-weight:600;color:var(--white);margin-bottom:8px">Get All Guides by Email</h3>
       <p style="font-size:13.5px;color:var(--text);margin-bottom:22px">Free. Weekly. No spam. Unsubscribe anytime.</p>
