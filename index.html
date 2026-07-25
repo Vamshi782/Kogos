@@ -546,6 +546,24 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
 .csp{padding:4px 8px!important;font-size:9px!important}
 @media(max-width:520px){.cg{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))!important}}
 
+/* ===== PHASE A — alternating LIGHT sections (redefine theme tokens locally,
+   so var-based text/surfaces flip automatically; hard-coded off-whites overridden) ===== */
+.lightsec{--bg:#f4f7fc;--white:#111a2c;--text:#49576e;--muted:#76839a;
+  --s1:#ffffff;--s2:#eef3fa;--ring:#e6ebf3;--ring2:#dae1ec;
+  background:var(--bg)!important}
+.lightsec .lead,.lightsec .jp-intro,.lightsec .cmp-brief,.lightsec .cmp-rl,
+.lightsec .sal-note,.lightsec .sal-disc,.lightsec .sal-reslabel{color:#49576e!important}
+.lightsec .cmp-rv{color:#111a2c!important}
+.lightsec .cmp-card{background:linear-gradient(180deg,#ffffff,#f2f6fc)}
+.lightsec .sv,.lightsec .jp-panel,.lightsec .cmp-card,.lightsec .sal-card{
+  box-shadow:0 12px 34px -22px rgba(15,23,42,.28)}
+.lightsec .jp-tab.on,.lightsec .sal-chip.on,.lightsec .sal-flag.on{color:#fff}
+.lightsec .bg{color:#0a0d16}                    /* gold buttons: keep dark text */
+.lightsec .bo{color:#111a2c;border-color:rgba(15,23,42,.18)}  /* outline button visible on light */
+.lightsec .cmp-row{border-bottom-color:rgba(15,23,42,.07)}
+.lightsec .cmp-cta{background:#eff3f9;border-color:#dae1ec}
+.lightsec .csp{color:#49576e!important;background:#fff!important;border-color:#dae1ec!important}
+
 /* ===== SALARY REALITY CHECK ===== */
 .sal-sec{padding:24px 0 88px;position:relative;overflow:hidden}
 .sal-sec::before{content:'';position:absolute;bottom:-160px;right:-100px;width:520px;height:520px;
@@ -909,7 +927,7 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
   </script>
 
 
-  <section class="jp-sec" id="start">
+  <section class="jp-sec lightsec" id="start">
     <div class="w">
       <div class="ey" style="color:var(--gold2)">Start Here</div>
       <h2>Where Are You <em style="font-style:italic;color:var(--gold2)">Right Now</em>?</h2>
@@ -944,7 +962,7 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
     </div>
   </section>
 
-  <section class="sal-sec">
+  <section class="sal-sec lightsec">
     <div class="w">
       <div class="ey" style="color:var(--green)">Salary Reality Check</div>
       <h2>See What You'd <em style="font-style:italic;color:var(--green)">Actually</em> Earn Abroad</h2>
@@ -1055,7 +1073,7 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
     </div>
   </section>
 
-  <section class="cmp-sec" id="compare">
+  <section class="cmp-sec lightsec" id="compare">
     <div class="w">
       <div class="ey" style="color:var(--gold2)">Compare Countries</div>
       <h2>Where Will You <em style="font-style:italic;color:var(--gold2)">Thrive</em>?</h2>
@@ -1090,7 +1108,7 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
     </div>
   </section>
 
-  <section class="svs">
+  <section class="svs lightsec">
     <div class="w">
       <div class="ey" style="color:var(--teal)">Work With Us</div>
       <h2>How We Help You Get There</h2>
