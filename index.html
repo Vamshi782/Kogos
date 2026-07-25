@@ -646,6 +646,33 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
 .btn-sig:hover::after{width:17px;opacity:.9}
 .btn-sig:hover::before{transform:translate(3px,-50%);opacity:1}
 
+/* ============================================================
+   KOGS NAV + LINKS  (Phase C · sub-step 3)
+   One consistent aviation route-line hover + clear active page.
+   ============================================================ */
+.nav-links a{position:relative;transition:color var(--k-dur) var(--k-ease)}
+.nav-links a:not(.nav-cta),.nav-links a:not(.nav-cta):hover{background:none!important}
+.nav-links a:not(.nav-cta):hover,.nav-links a.active:not(.nav-cta){color:#fff}
+/* route line that draws left→right under the link */
+.nav-links a:not(.nav-cta)::after{content:'';position:absolute;left:12px;right:14px;bottom:2px;height:1.5px;
+  background:linear-gradient(90deg,var(--k-gold),var(--k-teal));border-radius:2px;
+  transform:scaleX(0);transform-origin:left;transition:transform var(--k-dur) var(--k-ease)}
+.nav-links a:not(.nav-cta):hover::after,.nav-links a:not(.nav-cta).active::after{transform:scaleX(1)}
+/* destination dot at the end of the route */
+.nav-links a:not(.nav-cta)::before{content:'';position:absolute;right:9px;bottom:0;width:4px;height:4px;border-radius:50%;
+  background:var(--k-gold);opacity:0;transform:scale(.3);
+  transition:opacity var(--k-dur) var(--k-ease),transform var(--k-dur) var(--k-ease-spring)}
+.nav-links a:not(.nav-cta):hover::before,.nav-links a:not(.nav-cta).active::before{opacity:1;transform:scale(1)}
+.nav-cta.active{filter:brightness(1.06)}
+/* mobile menu active state */
+#mob a.active{color:var(--k-gold)}
+#mob a.mc.active{color:var(--bg)}
+/* refined text links (footer) — animated underline, never button-like */
+.fc a{position:relative;text-decoration:none}
+.fc a::after{content:'';position:absolute;left:0;bottom:-2px;width:100%;height:1px;background:var(--k-gold);
+  transform:scaleX(0);transform-origin:left;transition:transform var(--k-dur) var(--k-ease)}
+.fc a:hover::after{transform:scaleX(1)}
+
 /* ===== SALARY REALITY CHECK ===== */
 .sal-sec{padding:24px 0 88px;position:relative;overflow:hidden}
 .sal-sec::before{content:'';position:absolute;bottom:-160px;right:-100px;width:520px;height:520px;
@@ -814,24 +841,24 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
 <nav id="nav">
   <span class="logo" onclick="go('home')">KO<b>G</b>OS</span>
   <div class="nav-links">
-    <a onclick="go('about')">About</a>
-    <a onclick="go('resources')">Free Guides</a>
-    <a onclick="go('content')">Content</a>
-    <a onclick="go('faq')">FAQ</a>
-    <a onclick="go('brands')">For Brands</a>
-    <a onclick="go('contact')">Contact</a>
-    <a onclick="go('book')" class="nav-cta">Book a Call</a>
+    <a onclick="go('about')" data-nav="about">About</a>
+    <a onclick="go('resources')" data-nav="resources">Free Guides</a>
+    <a onclick="go('content')" data-nav="content">Content</a>
+    <a onclick="go('faq')" data-nav="faq">FAQ</a>
+    <a onclick="go('brands')" data-nav="brands">For Brands</a>
+    <a onclick="go('contact')" data-nav="contact">Contact</a>
+    <a onclick="go('book')" class="nav-cta" data-nav="book">Book a Call</a>
   </div>
   <div class="nav-ham" onclick="toggleMob()"><span></span><span></span><span></span></div>
 </nav>
 <div id="mob">
-  <a onclick="go('about');toggleMob()">About</a>
-  <a onclick="go('resources');toggleMob()">Free Guides</a>
-  <a onclick="go('content');toggleMob()">Content</a>
-  <a onclick="go('faq');toggleMob()">FAQ</a>
-  <a onclick="go('brands');toggleMob()">For Brands</a>
-  <a onclick="go('contact');toggleMob()">Contact</a>
-  <a onclick="go('book');toggleMob()" class="mc">Book a Call</a>
+  <a onclick="go('about');toggleMob()" data-nav="about">About</a>
+  <a onclick="go('resources');toggleMob()" data-nav="resources">Free Guides</a>
+  <a onclick="go('content');toggleMob()" data-nav="content">Content</a>
+  <a onclick="go('faq');toggleMob()" data-nav="faq">FAQ</a>
+  <a onclick="go('brands');toggleMob()" data-nav="brands">For Brands</a>
+  <a onclick="go('contact');toggleMob()" data-nav="contact">Contact</a>
+  <a onclick="go('book');toggleMob()" class="mc" data-nav="book">Book a Call</a>
 </div>
 
 <!-- HOME -->
@@ -2479,6 +2506,7 @@ function renderPage(id){
   if(t) t.classList.add('on');
   window.scrollTo(0,0);
   const mob=document.getElementById('mob'); if(mob) mob.style.display='none';
+  document.querySelectorAll('[data-nav]').forEach(a=>a.classList.toggle('active', a.dataset.nav===id));
   document.dispatchEvent(new CustomEvent('kogospage',{detail:{id:id}}));
 }
 /* Navigation uses the URL hash so the browser Back/Forward buttons work
