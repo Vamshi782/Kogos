@@ -769,6 +769,134 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
     <span class="ts">New Zealand</span><span class="tp">·</span>
   </div></div>
 
+  <!-- ============ PARTNERS & AFFILIATE HUB (home) ============ -->
+  <section class="part" id="partners">
+    <style>
+    .part{position:relative;overflow:hidden;padding:70px 0 84px;background:linear-gradient(180deg,#0a0d16,#0b0c14)}
+    .part::before{content:'';position:absolute;top:-140px;right:-120px;width:520px;height:520px;border-radius:50%;
+      pointer-events:none;background:radial-gradient(circle,rgba(168,85,247,.10),transparent 70%)}
+    .part::after{content:'';position:absolute;bottom:-160px;left:-120px;width:520px;height:520px;border-radius:50%;
+      pointer-events:none;background:radial-gradient(circle,rgba(20,184,166,.09),transparent 70%)}
+    .part .w{position:relative;z-index:2}
+    .pt-head{text-align:center;max-width:680px;margin:0 auto 40px}
+    .pt-ey{font-family:var(--mono);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+    .pt-head h2{font-family:var(--serif);font-size:clamp(27px,3.8vw,42px);font-weight:600;color:var(--white);line-height:1.12}
+    .pt-head h2 em{font-style:italic;color:var(--gold2)}
+    .pt-head .lead{margin:16px auto 0}
+    .pt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .pt-card{position:relative;display:flex;flex-direction:column;background:linear-gradient(180deg,var(--s2),var(--s1));
+      border:1px solid var(--ring2);border-radius:18px;padding:26px 24px 24px;overflow:hidden;
+      transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s}
+    .pt-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--acc)}
+    .pt-card:hover{transform:translateY(-6px);border-color:transparent;
+      box-shadow:0 28px 50px -26px color-mix(in srgb,var(--acc) 55%,transparent),0 0 0 1px var(--acc)}
+    .pt-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:10px}
+    .pt-ico{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;font-size:26px;flex-shrink:0;
+      background:color-mix(in srgb,var(--acc) 16%,transparent);border:1px solid color-mix(in srgb,var(--acc) 35%,transparent)}
+    .pt-badge{font-family:var(--mono);font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:600;text-align:right;
+      color:var(--acc);background:color-mix(in srgb,var(--acc) 14%,transparent);
+      border:1px solid color-mix(in srgb,var(--acc) 30%,transparent);border-radius:100px;padding:5px 11px;white-space:nowrap}
+    .pt-title{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--white);line-height:1.2}
+    .pt-tag{font-size:13px;color:rgba(237,232,220,.72);line-height:1.55;margin:8px 0 16px}
+    .pt-perks{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:9px}
+    .pt-perks li{display:flex;gap:10px;font-size:13.5px;color:var(--text);line-height:1.45}
+    .pt-ck{flex-shrink:0;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:800;
+      color:#06120c;background:var(--acc);margin-top:1px}
+    .pt-cta-wrap{margin-top:auto}
+    .pt-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;text-align:center;
+      font-family:var(--sans);font-weight:700;font-size:14px;padding:13px 18px;border-radius:11px;cursor:pointer;
+      color:#0a0d16;background:var(--acc);border:none;text-decoration:none;transition:transform .2s,box-shadow .25s,filter .2s}
+    .pt-cta:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 12px 26px -12px var(--acc)}
+    .pt-soon{background:transparent;color:var(--acc);border:1px dashed color-mix(in srgb,var(--acc) 55%,transparent)}
+    .pt-soon:hover{filter:none;transform:none}
+    .pt-disc{max-width:780px;margin:34px auto 0;text-align:center;font-size:12px;line-height:1.7;color:var(--muted)}
+    .pt-disc b{color:var(--text)}
+    </style>
+    <div class="w">
+      <div class="pt-head">
+        <div class="pt-ey">Start Here — Free Tools &amp; Partner Perks</div>
+        <h2>Everything You Need to <em>Go Global</em></h2>
+        <p class="lead">The exact tools and partners we use and trust — scholarships, resume help, English-test prep, and real paid remote work. Tap in, sign up, and get moving.</p>
+      </div>
+      <div class="pt-grid" id="partGrid"></div>
+      <p class="pt-disc"><b>Honest note:</b> some links here are partner/affiliate links — if you sign up through them, KOGOS may earn a small commission at <b>no extra cost to you</b>. We only ever recommend tools and partners we genuinely rate.</p>
+    </div>
+  </section>
+
+  <script>
+  /* ===== PARTNERS & AFFILIATE HUB =====
+     To add or update a partner, edit the PARTNERS array below.
+     A card auto-renders. Put a real https link in `link` to make its
+     button live; anything else shows "Link coming soon". */
+  (function(){
+    const grid=document.getElementById('partGrid'); if(!grid) return;
+
+    const PARTNERS=[
+      { key:'origo', icon:'🎓', acc:'#a855f7', badge:'Free eligibility check',
+        title:'Study Abroad on a Scholarship',
+        tag:'Dream of studying abroad but worried about the cost? See the scholarships and support you qualify for — free.',
+        perks:['Free scholarship matching','Free application guidance','Visa interview support','Student-loan support'],
+        cta:'Check if you qualify — free',
+        link:'https://origoabroad.unisetu.com/student-registration?utm_source=REFERRAL' },
+
+      { key:'talvora', icon:'🤖', acc:'#14b8a6', badge:'20% off · code VAMSHI20',
+        title:'Talvora AI — Resume &amp; Job Search',
+        tag:'Job hunting (especially the H-1B market in the US)? Build a resume that actually beats the ATS and gets callbacks.',
+        perks:['AI resume builder tuned for the ATS','Auto-tailors your resume to each job','Tracks all your applications in one place','20% off with code VAMSHI20'],
+        cta:'Try Talvora AI — 20% off',
+        link:'https://www.talvora.ai/pricing?promo=VAMSHI20' },
+
+      { key:'det', icon:'🦉', acc:'#22c55e', badge:'Platinum DET partner',
+        title:'Ace the Duolingo English Test',
+        tag:'The DET is the cheaper, faster, take-from-home alternative to IELTS — accepted by 5,000+ universities. Walk in ready.',
+        perks:['18,000+ real practice questions','Full mock exams with AI scoring','Speaking &amp; writing feedback','Exclusive 10% test discount'],
+        cta:'Start practising free',
+        link:'https://www.detpractice.com?code=184' },
+
+      { key:'handshake', icon:'💼', acc:'#e8b040', badge:'Paid · Remote · US',
+        title:'Get Paid to Train AI',
+        tag:'In the US on F-1 / OPT? Do flexible, remote, paid AI-research work through Handshake — on your own schedule.',
+        perks:['Paid remote work training AI models','Flexible 5–20 hrs / week','Great for OPT &amp; grad students','Work from anywhere in the US'],
+        cta:'Join the Handshake AI program',
+        link:'https://joinhandshake.com/move-program/referral?referralCode=C37FB7&utm_source=referral' },
+
+      { key:'mercor', icon:'⚡', acc:'#6366f1', badge:'Weekly pay · no fees',
+        title:'Land Remote AI Jobs — Mercor',
+        tag:'One 20-minute AI interview, then get matched to well-paid remote gigs. Apply once — it’s reused across roles.',
+        perks:['One AI interview → many job matches','Review &amp; grade AI in your subject','15–20 hrs / week, fully remote','Weekly pay via Stripe, no fees'],
+        cta:'Get matched on Mercor',
+        link:'https://t.mercor.com/oKe8W' },
+
+      { key:'superprofile', icon:'🚀', acc:'#f43f6b', badge:'For creators',
+        title:'Monetise Your Audience',
+        tag:'Building your own following? Book paid 1:1 calls, sell digital products and courses, and get paid — all from one link.',
+        perks:['One link-in-bio storefront','Sell courses &amp; digital products','Take paid 1:1 bookings','Loved by Indian creators'],
+        cta:'Start earning on SuperProfile',
+        link:'https://superprofile.bio?referralCode=uuEsgj&referralType=creatorReferral&source=referralPage' }
+    ];
+
+    function track(evt,key){ try{ if(window.bkvTrack) window.bkvTrack(evt,{partner:key}); }catch(e){} }
+
+    grid.innerHTML=PARTNERS.map(p=>{
+      const ready=/^https?:\/\//.test(p.link||'');
+      const cta = ready
+        ? `<a class="pt-cta" href="${p.link}" target="_blank" rel="noopener sponsored" data-key="${p.key}">${p.cta} →</a>`
+        : `<button class="pt-cta pt-soon" data-soon="1">${p.cta}</button>`;
+      return `<div class="pt-card" style="--acc:${p.acc}">
+        <div class="pt-top"><span class="pt-ico">${p.icon}</span>${p.badge?`<span class="pt-badge">${p.badge}</span>`:''}</div>
+        <h3 class="pt-title">${p.title}</h3>
+        <p class="pt-tag">${p.tag}</p>
+        <ul class="pt-perks">${p.perks.map(x=>`<li><span class="pt-ck">✓</span>${x}</li>`).join('')}</ul>
+        <div class="pt-cta-wrap">${cta}</div>
+      </div>`;
+    }).join('');
+
+    grid.querySelectorAll('a[data-key]').forEach(a=>a.addEventListener('click',()=>track('affiliate_click',a.dataset.key)));
+    grid.querySelectorAll('[data-soon]').forEach(b=>b.onclick=function(){ const t=b.textContent; b.textContent='Link coming soon ✨'; setTimeout(()=>b.textContent=t,1800); });
+  })();
+  </script>
+
+
   <section class="jp-sec" id="start">
     <div class="w">
       <div class="ey" style="color:var(--gold2)">Start Here</div>
@@ -966,188 +1094,6 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
       </div>
     </div>
   </section>
-
-  <!-- ============ PARTNERS & AFFILIATE HUB (home) ============ -->
-  <section class="part" id="partners">
-    <style>
-    .part{position:relative;overflow:hidden;padding:78px 0 84px;background:linear-gradient(180deg,#0a0d16,#0b0c14)}
-    .part::before{content:'';position:absolute;top:-140px;right:-120px;width:520px;height:520px;border-radius:50%;
-      pointer-events:none;background:radial-gradient(circle,rgba(168,85,247,.10),transparent 70%)}
-    .part::after{content:'';position:absolute;bottom:-160px;left:-120px;width:520px;height:520px;border-radius:50%;
-      pointer-events:none;background:radial-gradient(circle,rgba(20,184,166,.09),transparent 70%)}
-    .part .w{position:relative;z-index:2}
-    .pt-head{text-align:center;max-width:660px;margin:0 auto 40px}
-    .pt-ey{font-family:var(--mono);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
-    .pt-head h2{font-family:var(--serif);font-size:clamp(27px,3.8vw,42px);font-weight:600;color:var(--white);line-height:1.12}
-    .pt-head h2 em{font-style:italic;color:var(--gold2)}
-    .pt-head .lead{margin:16px auto 0}
-    .pt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:18px}
-    .pt-card{position:relative;display:flex;flex-direction:column;background:linear-gradient(180deg,var(--s2),var(--s1));
-      border:1px solid var(--ring2);border-radius:18px;padding:26px 24px 24px;overflow:hidden;
-      transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s}
-    .pt-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--acc)}
-    .pt-card:hover{transform:translateY(-6px);border-color:transparent;
-      box-shadow:0 28px 50px -26px color-mix(in srgb,var(--acc) 55%,transparent),0 0 0 1px var(--acc)}
-    .pt-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-    .pt-ico{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;font-size:26px;
-      background:color-mix(in srgb,var(--acc) 16%,transparent);border:1px solid color-mix(in srgb,var(--acc) 35%,transparent)}
-    .pt-badge{font-family:var(--mono);font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;font-weight:600;
-      color:var(--acc);background:color-mix(in srgb,var(--acc) 14%,transparent);
-      border:1px solid color-mix(in srgb,var(--acc) 30%,transparent);border-radius:100px;padding:5px 11px;white-space:nowrap}
-    .pt-title{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--white);line-height:1.2}
-    .pt-tag{font-size:13px;color:rgba(237,232,220,.72);line-height:1.55;margin:8px 0 16px}
-    .pt-perks{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:9px}
-    .pt-perks li{display:flex;gap:10px;font-size:13.5px;color:var(--text);line-height:1.45}
-    .pt-ck{flex-shrink:0;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:800;
-      color:#06120c;background:var(--acc);margin-top:1px}
-    .pt-cta-wrap{margin-top:auto}
-    .pt-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;text-align:center;
-      font-family:var(--sans);font-weight:700;font-size:14px;padding:13px 18px;border-radius:11px;cursor:pointer;
-      color:#0a0d16;background:var(--acc);border:none;text-decoration:none;transition:transform .2s,box-shadow .25s,filter .2s}
-    .pt-cta:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 12px 26px -12px var(--acc)}
-    .pt-soon{background:transparent;color:var(--acc);border:1px dashed color-mix(in srgb,var(--acc) 55%,transparent)}
-    .pt-soon:hover{filter:none;transform:none}
-    .pt-disc{max-width:760px;margin:34px auto 0;text-align:center;font-size:12px;line-height:1.7;color:var(--muted)}
-    .pt-disc b{color:var(--text)}
-    /* eligibility modal (light) */
-    .pt-modal{position:fixed;inset:0;z-index:1500;display:none;align-items:flex-start;justify-content:center;
-      padding:24px;overflow-y:auto;background:rgba(15,23,42,.55);backdrop-filter:blur(6px)}
-    .pt-modal.on{display:flex;animation:bkvfade .25s ease}
-    .pt-sheet{background:#fff;border-radius:22px;max-width:520px;width:100%;margin:auto;overflow:hidden;
-      box-shadow:0 40px 80px -30px rgba(15,23,42,.6);animation:bkvup .35s cubic-bezier(.16,1,.3,1)}
-    .pt-shead{background:linear-gradient(135deg,#a855f7,#6d28d9);color:#fff;padding:24px 26px;position:relative}
-    .pt-shead h3{font-family:var(--sans);color:#fff;font-size:21px;font-weight:800;margin:0}
-    .pt-shead p{color:rgba(255,255,255,.9);font-size:13px;margin:6px 0 0}
-    .pt-x{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);
-      color:#fff;font-size:17px;display:grid;place-items:center;cursor:pointer;border:none}
-    .pt-x:hover{background:rgba(255,255,255,.35)}
-    .pt-form{padding:24px 26px}
-    .pt-form .pt-fld{margin-bottom:15px}
-    .pt-form label{display:block;font-size:12.5px;font-weight:700;color:#0f172a;margin-bottom:7px}
-    .pt-form label .rq{color:#ef4444}
-    .pt-form input,.pt-form select{width:100%;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:11px;
-      padding:12px 14px;font-size:14px;color:#0f172a;font-family:var(--sans);box-sizing:border-box;transition:border-color .2s}
-    .pt-form input:focus,.pt-form select:focus{outline:none;border-color:#a855f7;background:#fff}
-    .pt-need{display:flex;flex-wrap:wrap;gap:8px}
-    .pt-need label{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:12.5px;color:#334155;
-      background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:100px;padding:8px 13px;margin:0;cursor:pointer}
-    .pt-need input{width:auto;margin:0}
-    .pt-submit{width:100%;padding:14px;border-radius:12px;border:none;cursor:pointer;font-family:var(--sans);
-      font-size:15px;font-weight:700;color:#fff;background:linear-gradient(135deg,#a855f7,#6d28d9);
-      box-shadow:0 12px 26px -12px rgba(168,85,247,.6);transition:transform .2s}
-    .pt-submit:hover{transform:translateY(-2px)}
-    .pt-ok{display:none;text-align:center;color:#16a34a;font-weight:700;font-size:14px;margin-top:14px;line-height:1.6}
-    @media(max-width:520px){.pt-shead h3{font-size:19px}}
-    </style>
-    <div class="w">
-      <div class="pt-head">
-        <div class="pt-ey">Free Resources &amp; Partner Perks</div>
-        <h2>Everything You Need — <em>In One Place</em></h2>
-        <p class="lead">Real tools and partners we use and trust — from free scholarship help to the exact resume tool that beats the ATS. Start with whichever fits where you are right now.</p>
-      </div>
-      <div class="pt-grid" id="partGrid"></div>
-      <p class="pt-disc"><b>Honest note:</b> some links below are partner/affiliate links. If you use them, KOGOS may earn a small commission — at <b>no extra cost to you</b>. We only ever recommend tools and partners we actually rate.</p>
-    </div>
-
-    <!-- Free eligibility inquiry modal -->
-    <div class="pt-modal" id="partModal" onclick="if(event.target===this)ptClose()">
-      <div class="pt-sheet" role="dialog" aria-modal="true" aria-label="Free eligibility check">
-        <div class="pt-shead">
-          <button class="pt-x" onclick="ptClose()" aria-label="Close">✕</button>
-          <h3>Check if you qualify — free</h3>
-          <p>Free scholarships, guidance, visa interview support &amp; student-loan help. Tell us a little about you and we'll see what you're eligible for.</p>
-        </div>
-        <form class="pt-form" onsubmit="handleForm(event,'ptOk','mwvgwrvy')">
-          <input type="hidden" name="_subject" value="Free Scholarship / Study Abroad Eligibility Inquiry"/>
-          <input type="hidden" name="Inquiry type" value="Study abroad / scholarship eligibility"/>
-          <div class="pt-fld"><label>Full name <span class="rq">*</span></label><input name="Full name" required placeholder="Your name"/></div>
-          <div class="pt-fld"><label>Email <span class="rq">*</span></label><input type="email" name="Email" required placeholder="you@email.com"/></div>
-          <div class="pt-fld"><label>WhatsApp / phone (optional)</label><input name="WhatsApp" placeholder="+91 …"/></div>
-          <div class="pt-fld"><label>Highest qualification <span class="rq">*</span></label>
-            <select name="Highest qualification" required>
-              <option value="">Select…</option><option>12th / Diploma</option><option>Bachelor's</option><option>Master's</option><option>Other</option>
-            </select>
-          </div>
-          <div class="pt-fld"><label>Which country do you want to study in? <span class="rq">*</span></label><input name="Target country" required placeholder="e.g. Germany, Canada, UK…"/></div>
-          <div class="pt-fld"><label>What do you need help with?</label>
-            <div class="pt-need">
-              <label><input type="checkbox" name="Needs" value="Scholarship"/> Scholarship</label>
-              <label><input type="checkbox" name="Needs" value="Student loan"/> Student loan</label>
-              <label><input type="checkbox" name="Needs" value="Visa / interview support"/> Visa / interview</label>
-              <label><input type="checkbox" name="Needs" value="General guidance"/> General guidance</label>
-            </div>
-          </div>
-          <button type="submit" class="pt-submit">Check my eligibility →</button>
-          <div class="pt-ok" id="ptOk">🎉 Got it! I'll review your details and reply about what you're eligible for — usually within 48 hours.</div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <script>
-  /* ===== PARTNERS & AFFILIATE HUB ===== */
-  (function(){
-    const grid=document.getElementById('partGrid'); if(!grid) return;
-
-    /* ---- EDIT HERE: paste your real affiliate links in place of the
-       PASTE_..._LINK placeholders. Until then the button shows "coming soon". ---- */
-    const PARTNERS=[
-      { key:'study', icon:'🎓', acc:'#a855f7', badge:'Free eligibility check',
-        title:'Study Abroad on a Scholarship',
-        tag:'Dream of studying abroad but worried about the cost? Let’s see what you qualify for.',
-        perks:['Free scholarship matching','Free application guidance','Visa interview support','Student-loan support'],
-        cta:'Check if you qualify — free', action:'inquiry' },
-
-      { key:'talvora', icon:'🤖', acc:'#14b8a6', badge:'Resume / ATS tool',
-        title:'Talvora AI — Resume &amp; Job Search',
-        tag:'Job hunting (especially H-1B in the US)? Build a resume that actually beats the ATS.',
-        perks:['AI resume builder tuned for ATS','Auto-tailors your resume to each job','Tracks all your applications','Made for international job seekers'],
-        cta:'Try Talvora AI', action:'link', link:'PASTE_TALVORA_LINK' },
-
-      { key:'duolingo', icon:'🦉', acc:'#22c55e', badge:'Accepted by 5,000+ unis',
-        title:'Duolingo English Test',
-        tag:'A faster, cheaper, take-from-home alternative to IELTS for university applications.',
-        perks:['Take it at home — results in ~2 days','Accepted by most universities','About 1 hour, far cheaper than IELTS'],
-        cta:'Register for the test', action:'link', link:'PASTE_DUOLINGO_LINK' },
-
-      { key:'ielts', icon:'🌍', acc:'#e8b040', badge:'Most widely accepted',
-        title:'IELTS (via IDP)',
-        tag:'The gold-standard English test accepted for study and work visas worldwide.',
-        perks:['Accepted for study + work visas globally','Book a test date near you','Official prep resources included'],
-        cta:'Book your IELTS date', action:'link', link:'PASTE_IDP_IELTS_LINK' }
-    ];
-
-    function track(evt,key){ try{ if(window.bkvTrack) window.bkvTrack(evt,{partner:key}); }catch(e){} }
-
-    grid.innerHTML=PARTNERS.map(p=>{
-      const isLink=p.action==='link';
-      const ready=isLink && /^https?:\/\//.test(p.link||'');
-      let cta;
-      if(p.action==='inquiry') cta=`<button class="pt-cta" data-act="inquiry">${p.cta}</button>`;
-      else if(ready) cta=`<a class="pt-cta" href="${p.link}" target="_blank" rel="noopener sponsored" data-act="link" data-key="${p.key}">${p.cta} →</a>`;
-      else cta=`<button class="pt-cta pt-soon" data-act="soon">${p.cta}</button>`;
-      return `<div class="pt-card" style="--acc:${p.acc}">
-        <div class="pt-top"><span class="pt-ico">${p.icon}</span>${p.badge?`<span class="pt-badge">${p.badge}</span>`:''}</div>
-        <h3 class="pt-title">${p.title}</h3>
-        <p class="pt-tag">${p.tag}</p>
-        <ul class="pt-perks">${p.perks.map(x=>`<li><span class="pt-ck">✓</span>${x}</li>`).join('')}</ul>
-        <div class="pt-cta-wrap">${cta}</div>
-      </div>`;
-    }).join('');
-
-    grid.querySelectorAll('[data-act]').forEach(el=>{
-      const act=el.dataset.act;
-      if(act==='inquiry') el.onclick=ptOpen;
-      else if(act==='link') el.addEventListener('click',()=>track('affiliate_click',el.dataset.key));
-      else if(act==='soon') el.onclick=function(){ const t=el.textContent; el.textContent='Link coming soon ✨'; setTimeout(()=>el.textContent=t,1800); };
-    });
-
-    window.ptOpen=function(){ const m=document.getElementById('partModal'); if(m){ m.classList.add('on'); document.body.style.overflow='hidden'; track('scholarship_inquiry_open','study'); } };
-    window.ptClose=function(){ const m=document.getElementById('partModal'); if(m){ m.classList.remove('on'); document.body.style.overflow=''; } };
-    document.addEventListener('keydown',e=>{ if(e.key==='Escape') ptClose(); });
-  })();
-  </script>
-
 
   <section class="fou">
     <div class="w">
@@ -2114,10 +2060,10 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
       </div>
     </div>
     <div style="background:linear-gradient(135deg,rgba(232,74,95,.06),transparent);border:1px solid rgba(232,74,95,.14);border-radius:7px;padding:44px">
-      <h3 style="font-family:var(--serif);font-size:30px;color:var(--white);font-weight:600;margin-bottom:7px">Send a Collaboration Inquiry</h3>
+      <h3 style="font-family:var(--serif);font-size:30px;color:var(--white);font-weight:600;margin-bottom:7px">Send a Collaboration Enquiry</h3>
       <p style="font-size:13.5px;color:var(--text);margin-bottom:26px">Reply within 48 hours.</p>
       <form onsubmit="handleForm(event,'bs1','mwvgwrvy')" style="display:grid;gap:11px">
-        <input type="hidden" name="_subject" value="New KOGOS Collaboration Inquiry"/>
+        <input type="hidden" name="_subject" value="New KOGOS Collaboration Enquiry"/>
         <div class="fr2">
           <input class="ff" type="text" name="brand" placeholder="Brand / Company Name" required/>
           <input class="ff" type="email" name="email" placeholder="Your Email" required/>
@@ -2132,7 +2078,7 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
           <option>Ambassador Program</option>
         </select>
         <textarea class="ff" name="message" placeholder="Describe your product and what success looks like" rows="4"></textarea>
-        <button type="submit" class="btn bg" style="justify-content:center">Send Inquiry</button>
+        <button type="submit" class="btn bg" style="justify-content:center">Send Enquiry</button>
         <div id="bs1" style="display:none;color:var(--green);text-align:center;font-size:13.5px;font-weight:600">Received. Reply within 48 hours.</div>
       </form>
     </div>
@@ -2154,7 +2100,7 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
         <a class="clnk" href="https://instagram.com/vamshi.indianabroad" target="_blank"><span class="cli">📱</span><div><div class="cll">Instagram</div><div class="clv">@vamshi.indianabroad</div></div></a>
         <div style="margin-top:28px;padding:22px;background:var(--s1);border:1px solid var(--ring);border-radius:7px">
           <p style="font-family:var(--serif);font-size:17px;color:var(--white);font-weight:600;margin-bottom:7px">Response Time</p>
-          <p style="font-size:13px;color:var(--text);line-height:1.72">Email - within 48 hours<br/>Instagram DM - priority for subscribers<br/>Brand inquiries - within 24 hours</p>
+          <p style="font-size:13px;color:var(--text);line-height:1.72">Email - within 48 hours<br/>Instagram DM - I read them daily<br/>Brand enquiries - within 24 hours</p>
         </div>
       </div>
       <div>
