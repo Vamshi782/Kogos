@@ -1059,7 +1059,6 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
         <canvas id="wgc"></canvas>
         <div id="wgLabels"></div>
         <div id="wgLoad">Loading the globe…</div>
-        <div class="wg-legend"><span class="wg-dot"></span> Watch the journey: India → UK → USA ✈️</div>
       </div>
     </div>
   </section>
@@ -2487,6 +2486,32 @@ window.addEventListener('scroll',()=>{
   );
   scene.add(glob);
 
+  // Upgrade to REAL Natural Earth continent shapes once the dataset loads
+  // (keeps the hand-drawn texture as an instant fallback if the fetch fails).
+  window.KOGOS_GEO = window.KOGOS_GEO || fetch('data/ne_110m_admin_0_countries.geojson').then(r=>r.json());
+  window.KOGOS_GEO.then(geo=>{
+    const W=2048,H=1024,cv=document.createElement('canvas');cv.width=W;cv.height=H;const c=cv.getContext('2d');
+    const og=c.createLinearGradient(0,0,0,H);og.addColorStop(0,'#0a1b2c');og.addColorStop(.5,'#061320');og.addColorStop(1,'#0a1b2c');
+    c.fillStyle=og;c.fillRect(0,0,W,H);
+    c.strokeStyle='rgba(90,150,190,.10)';c.lineWidth=1;
+    for(let la=-60;la<=60;la+=30){const y=(90-la)/180*H;c.beginPath();c.moveTo(0,y);c.lineTo(W,y);c.stroke();}
+    for(let ln=-150;ln<=150;ln+=30){const x=(ln+180)/360*W;c.beginPath();c.moveTo(x,0);c.lineTo(x,H);c.stroke();}
+    const pr=(ln,la)=>[(ln+180)/360*W,(90-la)/180*H];
+    (geo.features||[]).forEach(ft=>{
+      const gg=ft.geometry, ps=gg.type==='Polygon'?[gg.coordinates]:gg.coordinates;
+      c.beginPath();
+      for(const poly of ps) for(const ring of poly){ let px=null;
+        for(let i=0;i<ring.length;i++){ const p=pr(ring[i][0],ring[i][1]);
+          if(px===null||Math.abs(p[0]-px)>W/2)c.moveTo(p[0],p[1]);else c.lineTo(p[0],p[1]); px=p[0]; } }
+      c.closePath();
+      c.fillStyle='#15496a';                              // visible dark-teal land
+      c.fill('evenodd');
+      c.strokeStyle='rgba(125,205,230,.55)';c.lineWidth=1.1;c.stroke(); // glowing coastline
+    });
+    const t=new THREE.CanvasTexture(cv); try{t.anisotropy=4;}catch(e){}
+    glob.material.map=t; glob.material.needsUpdate=true;
+  }).catch(()=>{});
+
   // Clouds layer (faint)
   const cloudMat = new THREE.MeshPhongMaterial({
     color:0x445566,transparent:true,opacity:.07,
@@ -2536,16 +2561,22 @@ window.addEventListener('scroll',()=>{
   const sv=[],ss=[];
   for(let i=0;i<4000;i++){
     const th=Math.random()*2*Math.PI, ph=Math.acos(2*Math.random()-1);
-    const r=50+Math.random()*150;
+    const r=28+Math.random()*80;
     sv.push(r*Math.sin(ph)*Math.cos(th),r*Math.cos(ph),r*Math.sin(ph)*Math.sin(th));
     ss.push(Math.random());
   }
   const stGeo=new THREE.BufferGeometry();
   stGeo.setAttribute('position',new THREE.Float32BufferAttribute(sv,3));
   stGeo.setAttribute('size',new THREE.Float32BufferAttribute(ss,1));
-  const stMat = new THREE.PointsMaterial({color:0x8899cc,size:.15,sizeAttenuation:true});
+  const stMat = new THREE.PointsMaterial({color:0xdce6ff,size:.6,sizeAttenuation:true,transparent:true,opacity:.95});
   const stars = new THREE.Points(stGeo,stMat);
   scene.add(stars);
+  // a second, sparser layer of big bright stars
+  const bsv=[]; for(let i=0;i<120;i++){const th=Math.random()*2*Math.PI,ph=Math.acos(2*Math.random()-1),r=30+Math.random()*70;
+    bsv.push(r*Math.sin(ph)*Math.cos(th),r*Math.cos(ph),r*Math.sin(ph)*Math.sin(th));}
+  const bsGeo=new THREE.BufferGeometry(); bsGeo.setAttribute('position',new THREE.Float32BufferAttribute(bsv,3));
+  const bright=new THREE.Points(bsGeo,new THREE.PointsMaterial({color:0xffffff,size:1.25,sizeAttenuation:true,transparent:true,opacity:.9}));
+  scene.add(bright);
 
   // City dots
   function ll2v(la,ln,r=1.022){
@@ -2611,6 +2642,30 @@ window.addEventListener('scroll',()=>{
   sunBall.position.set(3,1.5,2).normalize().multiplyScalar(2.5);
   scene.add(sunBall);
 
+  // --- Space scene: satellites, a rocket, distant planets, a corner sun ---
+  function makeSat(){
+    const s=new THREE.Group();
+    s.add(new THREE.Mesh(new THREE.BoxGeometry(.05,.04,.06),new THREE.MeshPhongMaterial({color:0xcfd6e0,shininess:60})));
+    const panel=new THREE.MeshPhongMaterial({color:0x2f6ea0,emissive:0x0a2036,shininess:80});
+    const p1=new THREE.Mesh(new THREE.BoxGeometry(.13,.002,.05),panel); p1.position.x=.1; s.add(p1);
+    const p2=p1.clone(); p2.position.x=-.1; s.add(p2);
+    return s;
+  }
+  const sat1=makeSat(), sat2=makeSat(); scene.add(sat1); scene.add(sat2);
+  const satData=[{s:sat1,r:1.5,tilt:.5,spd:.22,ph:0},{s:sat2,r:1.85,tilt:-.9,spd:.15,ph:2.1}];
+
+  const rocket=new THREE.Group();
+  rocket.add(new THREE.Mesh(new THREE.CylinderGeometry(.02,.028,.13,16),new THREE.MeshPhongMaterial({color:0xf2f4f8,shininess:70})));
+  const rnose=new THREE.Mesh(new THREE.ConeGeometry(.02,.05,16),new THREE.MeshPhongMaterial({color:0xe24b4b})); rnose.position.y=.09; rocket.add(rnose);
+  const rflame=new THREE.Mesh(new THREE.ConeGeometry(.018,.06,12),new THREE.MeshBasicMaterial({color:0xffa63d,transparent:true,opacity:.85})); rflame.position.y=-.09; rflame.rotation.x=Math.PI; rocket.add(rflame);
+  scene.add(rocket);
+
+  const planetA=new THREE.Mesh(new THREE.SphereGeometry(.34,28,28),new THREE.MeshPhongMaterial({color:0xc9743a,emissive:0x2a1206,shininess:8})); planetA.position.set(-4.6,2.2,-7); scene.add(planetA);
+  const ringA=new THREE.Mesh(new THREE.RingGeometry(.46,.66,48),new THREE.MeshBasicMaterial({color:0xd8a066,transparent:true,opacity:.45,side:THREE.DoubleSide})); ringA.position.copy(planetA.position); ringA.rotation.set(1.1,.3,0); scene.add(ringA);
+  const planetB=new THREE.Mesh(new THREE.SphereGeometry(.2,28,28),new THREE.MeshPhongMaterial({color:0x4f86b8,emissive:0x0a1a2a,shininess:8})); planetB.position.set(5,-1.7,-8); scene.add(planetB);
+  const bigSun=new THREE.Mesh(new THREE.SphereGeometry(.6,28,28),new THREE.MeshBasicMaterial({color:0xffd27a})); bigSun.position.set(5.6,3.6,-10); scene.add(bigSun);
+  const sunGlow=new THREE.Mesh(new THREE.SphereGeometry(1.15,28,28),new THREE.MeshBasicMaterial({color:0xffc65a,transparent:true,opacity:.2})); sunGlow.position.copy(bigSun.position); scene.add(sunGlow);
+
   // Mouse
   let mx=0,my=0;
   document.addEventListener('mousemove',e=>{
@@ -2653,6 +2708,17 @@ window.addEventListener('scroll',()=>{
       const p=a.userData.p;
       a.material.opacity=p<1?p*.45:(2-p)*.45;
     });
+    // satellites orbit the globe
+    satData.forEach(d=>{ const a=t2*d.spd+d.ph;
+      d.s.position.set(Math.cos(a)*d.r, Math.sin(a*.8+d.tilt)*d.r*.4, Math.sin(a)*d.r);
+      d.s.rotation.y+=.02; d.s.rotation.x+=.004; });
+    // rocket loops on a wide arc, nose pointed along travel, flame flickers
+    { const a=t2*.12, R2=2.35;
+      const cur=new THREE.Vector3(Math.cos(a)*R2, 1.15+Math.sin(a*1.3)*.55, Math.sin(a)*R2-.3);
+      const na=a+.04, nxt=new THREE.Vector3(Math.cos(na)*R2, 1.15+Math.sin(na*1.3)*.55, Math.sin(na)*R2-.3);
+      rocket.position.copy(cur);
+      rocket.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0), nxt.sub(cur).normalize());
+      rflame.material.opacity=.6+Math.random()*.35; rflame.scale.y=.85+Math.random()*.4; }
     camera.position.y=.25+Math.sin(t2*.4)*.035;
     camera.lookAt(0,.1,0);
     R.render(scene,camera);
@@ -3263,17 +3329,18 @@ window.KOGOS_FX=(function(){
   let started=false, running=false, raf=null, R, scene, cam, group, plane, passenger, activeLine, ring, disposables=[];
   let phase='intro', introT0=0;
 
-  // India is home base; the tour visits the biggest Indian-diaspora countries.
+  // India is home base; the tour starts near India and works outward so the
+  // first hop is short (no long ocean crossing at the very start).
   const DEST=[
     {id:'india', code:'IND', name:'India',          flag:'🇮🇳', lat:20.59,   lng:78.96},
-    {id:'usa',   code:'USA', name:'United States',   flag:'🇺🇸', lat:40.7128, lng:-74.006},
     {id:'uae',   code:'UAE', name:'UAE · Dubai',     flag:'🇦🇪', lat:25.20,   lng:55.27},
     {id:'ksa',   code:'KSA', name:'Saudi Arabia',    flag:'🇸🇦', lat:24.71,   lng:46.68},
     {id:'uk',    code:'UK',  name:'United Kingdom',  flag:'🇬🇧', lat:51.5074, lng:-0.1278},
+    {id:'deu',   code:'DEU', name:'Germany',         flag:'🇩🇪', lat:52.52,   lng:13.40},
     {id:'can',   code:'CAN', name:'Canada',          flag:'🇨🇦', lat:43.65,   lng:-79.38},
-    {id:'aus',   code:'AUS', name:'Australia',       flag:'🇦🇺', lat:-33.87,  lng:151.21},
+    {id:'usa',   code:'USA', name:'United States',   flag:'🇺🇸', lat:40.7128, lng:-74.006},
     {id:'sgp',   code:'SGP', name:'Singapore',       flag:'🇸🇬', lat:1.35,    lng:103.82},
-    {id:'deu',   code:'DEU', name:'Germany',         flag:'🇩🇪', lat:52.52,   lng:13.40}
+    {id:'aus',   code:'AUS', name:'Australia',       flag:'🇦🇺', lat:-33.87,  lng:151.21}
   ];
 
   function ll2v(la,ln,r){ r=r||1; const ph=(90-la)*Math.PI/180, th=(ln+180)*Math.PI/180;
@@ -3358,6 +3425,10 @@ window.KOGOS_FX=(function(){
       const bg=new THREE.BoxGeometry(.008,.017,.05); disposables.push(bg);
       const b=new THREE.Mesh(bg,m); b.position.set(0,.014+i*.017,-.152); g.add(b);
     });
+    // Ashoka Chakra (blue wheel) on the white middle band
+    const chGeo=new THREE.CylinderGeometry(.006,.006,.0105,18); disposables.push(chGeo);
+    const chMat=new THREE.MeshPhongMaterial({color:0x0a3d91,shininess:40}); disposables.push(chMat);
+    const chakra=new THREE.Mesh(chGeo,chMat); chakra.rotation.z=Math.PI/2; chakra.position.set(0,.031,-.152); g.add(chakra);
 
     g.scale.set(1.15,1.15,1.15);
     return g;
@@ -3440,6 +3511,8 @@ window.KOGOS_FX=(function(){
     scene=new THREE.Scene();
     cam=new THREE.PerspectiveCamera(42,1,.1,100); cam.position.set(0,.3,3.15);
     group=new THREE.Group(); scene.add(group);
+    // start with India facing the camera (so the journey visibly begins at home)
+    const vI=ll2v(DEST[0].lat,DEST[0].lng,1); group.rotation.y=-Math.atan2(vI.x,vI.z);
 
     const tex=buildEarthTexture(geo); disposables.push(tex);
     const earthGeo=new THREE.SphereGeometry(1,72,72); disposables.push(earthGeo);
