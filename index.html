@@ -420,6 +420,35 @@ textarea.ff{resize:vertical;min-height:120px}
 .kf-done h3{font-family:var(--serif);font-size:28px;color:var(--white);margin-bottom:8px;font-weight:600}
 .kf-done p{font-size:14px;color:var(--text);line-height:1.72;margin-bottom:24px}
 
+/* ===== SIGNUP POPUP — light & distinct from the dark site (overrides above) ===== */
+.kov-overlay{background:rgba(15,23,42,.5)}
+.kov-modal{background:linear-gradient(160deg,#ffffff,#eef4ff);border:1px solid #e2e8f0;box-shadow:0 40px 90px -28px rgba(15,23,42,.55);overflow:hidden}
+.kov-modal::before{content:'';position:absolute;left:0;right:0;top:0;height:6px;background:linear-gradient(90deg,#4f46e5,#14b8a6,#f59e0b)}
+.kov-x{color:#94a3b8}
+.kov-x:hover{color:#0f172a}
+.kov-tag{color:#4f46e5}
+.kov-title{color:#0f172a}
+.kov-sub{color:#51617a}
+.kf-label{color:#64748b}
+.kf-inp{background:#fff;border:1px solid #e2e8f0;color:#0f172a}
+.kf-inp:focus{border-color:#4f46e5}
+.kf-inp::placeholder{color:#9aa7bd}
+.kf-chip{background:#fff;border:1px solid #e2e8f0;color:#64748b}
+.kf-chip:hover{border-color:#4f46e5;color:#0f172a}
+.kf-chip.sel-g{background:rgba(79,70,229,.1);border-color:#4f46e5;color:#4f46e5}
+.kf-chip.sel-t{background:rgba(20,184,166,.12);border-color:#14b8a6;color:#0f9488}
+.kf-chip.sel-n{background:rgba(245,158,11,.14);border-color:#f59e0b;color:#b45309}
+.kf-dot{background:#e2e8f0}
+.kf-dot.done{background:#4f46e5}
+.kf-dot.cur{background:rgba(79,70,229,.4)}
+.kf-next{background:linear-gradient(135deg,#4f46e5,#14b8a6);color:#fff}
+.kf-back{background:transparent;color:#64748b;border:1px solid #e2e8f0}
+.kf-back:hover{color:#0f172a;border-color:#cbd5e1}
+.kf-skip{color:#94a3b8}
+.kf-skip:hover{color:#475569}
+.kf-done h3{color:#0f172a}
+.kf-done p{color:#51617a}
+
 /* =================================================================
    POLISH LAYER  — color, depth & readability (overrides above)
    ================================================================= */
@@ -815,7 +844,9 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
   <section class="wgs" id="worldmap">
     <style>
     .wgs{position:relative;overflow:hidden;padding:74px 0 82px;
-      background:radial-gradient(120% 90% at 50% 0%,#eef5fd 0%,#ffffff 46%,#f3f8ff 100%)}
+      background:
+        radial-gradient(26% 26% at 84% 16%,rgba(255,214,140,.55),rgba(255,214,140,0) 70%),
+        radial-gradient(120% 90% at 50% 0%,#eef5fd 0%,#ffffff 46%,#f3f8ff 100%)}
     .wgs .stars{position:absolute;inset:0;pointer-events:none;opacity:.7;
       background-image:
         radial-gradient(1.6px 1.6px at 10% 16%,rgba(71,105,160,.4),transparent),
@@ -1637,7 +1668,7 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
     india:  { quick:'REPLACE_INDIA_QUICK_CHECKOUT_URL', roadmap:'REPLACE_INDIA_ROADMAP_CHECKOUT_URL', deep:'REPLACE_INDIA_DEEPDIVE_CHECKOUT_URL' },
     global: { quick:'REPLACE_GLOBAL_QUICK_CHECKOUT_URL', roadmap:'REPLACE_GLOBAL_ROADMAP_CHECKOUT_URL', deep:'REPLACE_GLOBAL_DEEPDIVE_CHECKOUT_URL' }
   };
-  const FORM_ENDPOINT = 'https://formspree.io/f/xkgwpbqv';
+  const FORM_ENDPOINT = 'https://formspree.io/f/mwvgwrvy';
 
   const DATA = {
     india: {
@@ -1835,17 +1866,10 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
 
   /* The region pill is sized from offsetWidth, which is 0 while the book
      page is display:none. Recompute it (and re-scan reveals) whenever the
-     page is shown. go() is defined later in the document, so defer hooking
-     it until it exists. */
-  function hookGo(){
-    if(typeof window.go==='function' && !window.go._bkvWrapped){
-      const _go = window.go;
-      window.go = function(id){ _go(id); if(id==='book'){ setTimeout(()=>{movePill();revealScan();},40); } };
-      window.go._bkvWrapped = true;
-    }
-  }
-  window.addEventListener('load', hookGo);
-  setTimeout(hookGo, 0);
+     book page becomes visible — including via the browser Back button. */
+  document.addEventListener('kogospage',function(e){
+    if(e&&e.detail&&e.detail.id==='book'){ setTimeout(function(){movePill();revealScan();},40); }
+  });
 })();
 </script>
 </div>
@@ -2156,13 +2180,24 @@ function closeModal(){
 /* ====================================================
    PAGE NAV
 ==================================================== */
-function go(id){
+function renderPage(id){
+  if(!id || !document.getElementById(id)) id='home';
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
   const t = document.getElementById(id);
   if(t) t.classList.add('on');
   window.scrollTo(0,0);
-  document.getElementById('mob').style.display='none';
+  const mob=document.getElementById('mob'); if(mob) mob.style.display='none';
+  document.dispatchEvent(new CustomEvent('kogospage',{detail:{id:id}}));
 }
+/* Navigation uses the URL hash so the browser Back/Forward buttons work
+   and pages are linkable. go() just sets the hash; hashchange renders. */
+function go(id){
+  if(('#'+id)===location.hash) renderPage(id);
+  else location.hash=id;
+}
+window.addEventListener('hashchange',function(){
+  renderPage((location.hash||'#home').slice(1)||'home');
+});
 function toggleMob(){
   const m = document.getElementById('mob');
   m.style.display = m.style.display==='block'?'none':'block';
@@ -2456,7 +2491,7 @@ window.addEventListener('scroll',()=>{
 function handleEmail(ev,sid){
   ev.preventDefault();
   const f=ev.target, em=f.querySelector('input[type="email"]').value;
-  fetch('https://formspree.io/f/xkgwpbqv',{
+  fetch('https://formspree.io/f/mwvgwrvy',{
     method:'POST',body:JSON.stringify({email:em,src:'kogos'}),
     headers:{'Content-Type':'application/json','Accept':'application/json'}
   }).catch(()=>{}).finally(()=>{
@@ -2468,9 +2503,10 @@ function handleEmail(ev,sid){
 async function handleForm(ev,sid,formId){
   ev.preventDefault();
   const f=ev.target;
-  const endpoint='https://formspree.io/f/'+(formId||'xkgwpbqv');
+  const endpoint='https://formspree.io/f/'+(formId||'mwvgwrvy');
   const btn=f.querySelector('button[type="submit"]');
   const orig=btn?btn.innerHTML:'';
+  const prevErr=f.querySelector('.form-err'); if(prevErr) prevErr.remove();
   if(btn){btn.disabled=true;btn.innerHTML='Sending…';}
   try{
     const res=await fetch(endpoint,{
@@ -2481,7 +2517,11 @@ async function handleForm(ev,sid,formId){
     if(el)el.style.display='block';
     f.reset();
   }catch(e){
-    alert("Sorry — that didn't send. Please email vamshi.indianabroad@gmail.com directly and I'll get right back to you.");
+    const er=document.createElement('div');
+    er.className='form-err';
+    er.style.cssText='color:#ff8a8a;font-size:13px;text-align:center;margin-top:8px;line-height:1.55';
+    er.textContent="Couldn't send just now — please email vamshi.indianabroad@gmail.com and I'll reply fast.";
+    (btn||f).insertAdjacentElement('afterend',er);
   }finally{
     if(btn){btn.disabled=false;btn.innerHTML=orig;}
   }
@@ -2492,7 +2532,13 @@ const _kov = { chips:{iAm:[],goTo:[],explore:[],need:[]}, step:1, done:false };
 
 function kovShow(){
   if(localStorage.getItem('kogos_v1')) return;
-  setTimeout(()=>document.getElementById('kovOverlay').classList.add('show'), 8000);
+  setTimeout(function(){
+    var home=document.getElementById('home');
+    // only pop up on the home screen — never on Brands or other pages
+    if(home && home.classList.contains('on')){
+      document.getElementById('kovOverlay').classList.add('show');
+    }
+  }, 8000);
 }
 function kovOpen(){
   if(!_kov.done) kovStep(1);
@@ -2565,7 +2611,7 @@ async function kovSubmit(){
 }
 /* ====== END KOGOS SIGNUP SYSTEM ====== */
 /* INIT */
-go('home');
+renderPage((location.hash||'#home').slice(1)||'home');
 renderCountries();
 kovShow();
 </script>
@@ -3154,14 +3200,20 @@ window.KOGOS_FX=(function(){
     setActive();
 
     fit();
+    const CAM_FAR=3.25, CAM_NEAR=2.4;
     function anim(){
       raf=requestAnimationFrame(anim);
       if(!running) return;
-      group.rotation.y+=0.0015;
-      t+=0.0045;
+      const ease=Math.sin(Math.min(t,1)*Math.PI);   // 0 at take-off/landing, 1 mid-flight
+      group.rotation.y+=0.0015-0.0007*ease;          // ease rotation while zoomed in
+      t+=0.0042;
       if(t>=1){ t=0; idx=(idx+1)%DEST.length; setActive(); }
-      const p=curve.getPoint(t).multiplyScalar(1.015);
+      const p=curve.getPoint(t).multiplyScalar(1.02);
       plane.position.copy(p);
+      // cinematic zoom: dolly toward the plane mid-flight, pull back between countries
+      cam.position.z = CAM_FAR-(CAM_FAR-CAM_NEAR)*ease;
+      cam.position.y = .35+.12*ease;
+      cam.lookAt(0,0,0);
       R.render(scene,cam);
     }
     anim();
