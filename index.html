@@ -1003,6 +1003,20 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
     .wg-legend{display:flex;justify-content:center;gap:8px;align-items:center;margin-top:6px;
       font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#64748b}
     .wg-dot{width:9px;height:9px;border-radius:50%;background:#ff6b35;box-shadow:0 0 0 4px rgba(255,107,53,.18)}
+    #wgLabels{position:absolute;inset:0;pointer-events:none;z-index:3}
+    .wg-label{position:absolute;transform:translate(-50%,-125%);display:flex;align-items:center;gap:9px;
+      padding:8px 13px;border-radius:13px;background:rgba(255,255,255,.72);backdrop-filter:blur(9px);
+      -webkit-backdrop-filter:blur(9px);border:1px solid rgba(15,23,42,.08);box-shadow:0 12px 26px -12px rgba(15,23,42,.4);
+      white-space:nowrap;opacity:0;transition:opacity .45s ease}
+    .wg-label.on{opacity:1}
+    .wg-label .fl{font-size:22px;line-height:1}
+    .wg-label .wg-code{display:block;font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:#2563eb;font-weight:700}
+    .wg-label .wg-nm{display:block;font-size:13.5px;font-weight:700;color:#0f172a;line-height:1.15}
+    .wg-label::after{content:'';position:absolute;left:50%;bottom:-5px;width:11px;height:11px;margin-left:-5px;
+      background:rgba(255,255,255,.72);border-right:1px solid rgba(15,23,42,.08);border-bottom:1px solid rgba(15,23,42,.08);transform:rotate(45deg)}
+    #wgLoad{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+      font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#64748b;z-index:4}
+    #wgLoad.hide{display:none}
     </style>
     <div class="stars"></div>
     <div class="w">
@@ -1013,7 +1027,9 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
       </div>
       <div class="wg-stage">
         <canvas id="wgc"></canvas>
-        <div class="wg-legend"><span class="wg-dot"></span> Live routes from India ✈️</div>
+        <div id="wgLabels"></div>
+        <div id="wgLoad">Loading the globe…</div>
+        <div class="wg-legend"><span class="wg-dot"></span> Watch the journey: India → UK → USA ✈️</div>
       </div>
     </div>
   </section>
@@ -3197,164 +3213,260 @@ window.KOGOS_FX=(function(){
 
 <script>
 /* =========================================================
-   WORLD MAP GLOBE — natural-colour Earth, light bg, a plane
-   flying from India to countries. Lazy-inits when scrolled
-   into view and pauses when off-screen.
+   WORLD MAP GLOBE v2 — REAL Natural Earth geography.
+   Loads /data/ne_110m_admin_0_countries.geojson and rasterises it
+   into the Earth texture (accurate continent/country shapes — no
+   invented geography), then flies a low-poly plane India -> UK ->
+   USA on great-circle arcs with glassmorphism country labels and
+   pulsing rings. Slow rotation, reduced-motion fallback, pauses
+   off-screen / on hidden tab, disposes GPU resources on cleanup.
+   The low-poly plane is swappable for a real /models/*.glb later.
    ========================================================= */
 (function(){
-  const canvas=document.getElementById('wgc');
-  if(!canvas) return;
-  let started=false, running=false, raf;
+  const canvas=document.getElementById('wgc'); if(!canvas || typeof THREE==='undefined') return;
+  const stage=canvas.closest('.wg-stage');
+  const labelsEl=document.getElementById('wgLabels');
+  const loadEl=document.getElementById('wgLoad');
+  const reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const GEO_URL='data/ne_110m_admin_0_countries.geojson';
 
-  function boot(){
-    if(started||typeof THREE==='undefined') return;
-    started=true;
+  let started=false, running=false, raf=null, R, scene, cam, group, plane, activeLine, ring, disposables=[];
 
-    const R=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
-    R.setPixelRatio(Math.min(window.devicePixelRatio,2));
-    const scene=new THREE.Scene();
-    const cam=new THREE.PerspectiveCamera(42,1,.1,100);
-    cam.position.set(0,.35,3.25);
-    const group=new THREE.Group(); scene.add(group);
+  const DEST=[
+    {id:'india', code:'IND', name:'India',          flag:'🇮🇳', lat:17.385,  lng:78.4867},
+    {id:'uk',    code:'UK',  name:'United Kingdom',  flag:'🇬🇧', lat:51.5074, lng:-0.1278},
+    {id:'usa',   code:'USA', name:'United States',   flag:'🇺🇸', lat:40.7128, lng:-74.006}
+  ];
 
-    function fit(){
-      const w=canvas.clientWidth||620, h=canvas.clientHeight||480;
-      R.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix();
+  function ll2v(la,ln,r){ r=r||1; const ph=(90-la)*Math.PI/180, th=(ln+180)*Math.PI/180;
+    return new THREE.Vector3(-r*Math.sin(ph)*Math.cos(th), r*Math.cos(ph), r*Math.sin(ph)*Math.sin(th)); }
+
+  /* --- rasterise real GeoJSON into an equirectangular Earth texture --- */
+  function buildEarthTexture(geo){
+    const W=2048,H=1024, cv=document.createElement('canvas'); cv.width=W; cv.height=H;
+    const c=cv.getContext('2d');
+    const og=c.createLinearGradient(0,0,0,H);
+    og.addColorStop(0,'#2c74b3'); og.addColorStop(.5,'#1f6099'); og.addColorStop(1,'#2c74b3');
+    c.fillStyle=og; c.fillRect(0,0,W,H);
+    c.strokeStyle='rgba(255,255,255,.06)'; c.lineWidth=1;
+    for(let lat=-60;lat<=60;lat+=30){const y=(90-lat)/180*H;c.beginPath();c.moveTo(0,y);c.lineTo(W,y);c.stroke();}
+    for(let lng=-150;lng<=150;lng+=30){const x=(lng+180)/360*W;c.beginPath();c.moveTo(x,0);c.lineTo(x,H);c.stroke();}
+    const proj=(lng,lat)=>[(lng+180)/360*W,(90-lat)/180*H];
+    function trace(ft){
+      const g=ft.geometry, polys = g.type==='Polygon'?[g.coordinates]:g.coordinates;
+      c.beginPath();
+      for(const poly of polys){ for(const ring of poly){
+        let px=null;
+        for(let i=0;i<ring.length;i++){
+          const p=proj(ring[i][0],ring[i][1]);
+          if(px===null || Math.abs(p[0]-px)>W/2){ c.moveTo(p[0],p[1]); } else { c.lineTo(p[0],p[1]); }
+          px=p[0];
+        }
+      }}
     }
+    (geo.features||[]).forEach(ft=>{
+      const nm=(ft.properties&&(ft.properties.ADMIN||ft.properties.NAME))||'';
+      const ice = nm==='Antarctica'||nm==='Greenland';
+      trace(ft);
+      c.fillStyle = ice ? '#e8f1f8' : '#3f9d55';
+      c.fill('evenodd');
+      c.strokeStyle = ice ? 'rgba(150,185,210,.6)' : 'rgba(26,72,38,.5)';
+      c.lineWidth=1; c.stroke();
+    });
+    const tex=new THREE.CanvasTexture(cv);
+    try{ tex.anisotropy=4; }catch(e){}
+    return tex;
+  }
 
-    /* ---- natural Earth texture (same continents, daylight colours) ---- */
-    function makeEarth(){
-      const W=2048,H=1024,cv=document.createElement('canvas');
-      cv.width=W;cv.height=H;const c=cv.getContext('2d');
-      const og=c.createLinearGradient(0,0,0,H);
-      og.addColorStop(0,'#2f7fbf');og.addColorStop(.5,'#2472ad');og.addColorStop(1,'#2f7fbf');
-      c.fillStyle=og;c.fillRect(0,0,W,H);
-      // ice caps
-      c.fillStyle='#eaf3fb';c.fillRect(0,0,W,H*0.045);c.fillRect(0,H*0.955,W,H*0.045);
-      // graticule
-      c.strokeStyle='rgba(255,255,255,.07)';c.lineWidth=.8;
-      for(let lat=-60;lat<=60;lat+=30){const y=(90-lat)/180*H;c.beginPath();c.moveTo(0,y);c.lineTo(W,y);c.stroke();}
-      for(let lng=-180;lng<=180;lng+=30){const x=(lng+180)/360*W;c.beginPath();c.moveTo(x,0);c.lineTo(x,H);c.stroke();}
-      const xy=(la,ln)=>[(ln+180)/360*W,(90-la)/180*H];
-      function land(pts,fill){
-        c.beginPath();const[sx,sy]=xy(...pts[0]);c.moveTo(sx,sy);
-        for(let i=1;i<pts.length;i++){const[x,y]=xy(...pts[i]);c.lineTo(x,y);}
-        c.closePath();c.fillStyle=fill;c.fill();
-        c.strokeStyle='rgba(30,86,40,.45)';c.lineWidth=1;c.stroke();
-      }
-      const LG='#4aa65b', LG2='#3f9c53';
-      land([[72,-167],[71,-140],[65,-120],[60,-125],[50,-130],[48,-125],[40,-125],[32,-117],[25,-100],[22,-97],[18,-88],[8,-77],[8,-82],[12,-84],[18,-91],[22,-98],[25,-100],[30,-98],[38,-77],[42,-70],[47,-53],[50,-57],[55,-60],[60,-65],[65,-80],[70,-80],[73,-90],[73,-110],[72,-140],[72,-167]],LG);
-      land([[76,-73],[84,-46],[83,-22],[76,-18],[70,-22],[65,-38],[64,-52],[68,-55],[72,-57],[76,-73]],LG2);
-      land([[12,-72],[10,-62],[8,-60],[3,-50],[0,-50],[-5,-36],[-15,-39],[-25,-49],[-35,-57],[-55,-68],[-55,-64],[-40,-62],[-25,-49],[-10,-37],[0,-50],[8,-60],[10,-72],[12,-72]],LG);
-      land([[36,-5],[43,-8],[44,-2],[48,-5],[50,-5],[58,-5],[60,0],[57,10],[55,10],[55,15],[58,16],[62,14],[68,18],[70,20],[71,25],[71,29],[68,32],[60,30],[55,24],[55,20],[48,22],[45,28],[40,28],[37,22],[36,-5]],LG);
-      land([[50,-5],[52,-5],[58,-5],[60,-2],[56,-6],[52,-10],[50,-5]],LG2);
-      land([[55,8],[57,8],[58,7],[58,5],[57,8],[71,26],[70,30],[68,17],[65,14],[60,5],[57,8]],LG);
-      land([[37,-5],[37,10],[30,32],[22,37],[12,42],[0,42],[-12,40],[-35,18],[-35,26],[-25,34],[-20,35],[0,40],[5,34],[12,42],[18,38],[25,35],[30,32],[35,35],[37,30],[35,22],[30,20],[20,17],[15,13],[10,5],[5,3],[0,9],[-10,15],[-20,15],[-30,17],[-35,18],[-20,15],[-10,13],[0,9],[10,0],[20,-17],[30,-10],[37,-5]],LG);
-      land([[25,55],[38,27],[44,32],[55,35],[62,50],[68,58],[70,65],[72,80],[72,100],[68,120],[60,140],[50,140],[45,140],[35,140],[30,130],[22,121],[18,110],[10,104],[1,104],[5,100],[10,98],[16,95],[22,90],[25,88],[22,75],[8,77],[22,63],[25,55]],LG);
-      land([[30,62],[34,65],[36,72],[32,78],[28,97],[22,92],[8,77],[22,63],[30,62]],LG2);
-      land([[31,130],[40,140],[45,142],[41,141],[35,137],[33,132],[31,130]],LG2);
-      land([[34,125],[38,125],[38,130],[34,130],[34,125]],LG2);
-      land([[-15,128],[-12,136],[-15,142],[-20,148],[-30,153],[-38,147],[-40,145],[-38,140],[-35,136],[-32,133],[-25,114],[-22,114],[-15,128]],LG);
-      land([[-34,172],[-38,178],[-46,170],[-46,168],[-41,172],[-34,172]],LG2);
-      land([[1,95],[5,100],[5,108],[0,115],[-8,115],[-10,110],[-8,105],[0,104],[1,95]],LG2);
-      land([[10,120],[16,120],[18,122],[14,126],[10,125],[8,124],[10,120]],LG2);
-      return new THREE.CanvasTexture(cv);
-    }
+  /* --- low-poly airplane: white body, Indian tricolour tail --- */
+  function buildPlane(){
+    const g=new THREE.Group();
+    const white=new THREE.MeshPhongMaterial({color:0xf7f9fc,shininess:45,specular:0x333333});
+    disposables.push(white);
+    const body=new THREE.Mesh(new THREE.CylinderGeometry(.02,.026,.15,14), white); body.rotation.x=Math.PI/2; g.add(body);
+    const nose=new THREE.Mesh(new THREE.ConeGeometry(.02,.05,14), white); nose.rotation.x=Math.PI/2; nose.position.z=.10; g.add(nose);
+    const wing=new THREE.Mesh(new THREE.BoxGeometry(.17,.007,.036), white); g.add(wing);
+    const tailw=new THREE.Mesh(new THREE.BoxGeometry(.07,.006,.018), white); tailw.position.z=-.066; g.add(tailw);
+    const fin=new THREE.Mesh(new THREE.BoxGeometry(.006,.028,.024), white); fin.position.set(0,.015,-.066); g.add(fin);
+    [0xff9933,0xffffff,0x138808].forEach((col,i)=>{
+      const m=new THREE.MeshBasicMaterial({color:col}); disposables.push(m);
+      const s=new THREE.Mesh(new THREE.BoxGeometry(.008,.009,.022), m); s.position.set(0,.004+i*.009,-.066); g.add(s);
+    });
+    g.traverse(o=>{ if(o.geometry) disposables.push(o.geometry); });
+    return g;
+  }
 
-    const earth=new THREE.Mesh(new THREE.SphereGeometry(1,64,64),
-      new THREE.MeshPhongMaterial({map:makeEarth(),shininess:6,specular:0x18344f}));
-    group.add(earth);
-    // soft atmosphere halo
-    group.add(new THREE.Mesh(new THREE.SphereGeometry(1.055,48,48),
-      new THREE.MeshBasicMaterial({color:0x93c9ef,transparent:true,opacity:.14,side:THREE.BackSide})));
+  /* --- great-circle helpers --- */
+  function segData(a,b){
+    const va=ll2v(a.lat,a.lng,1), vb=ll2v(b.lat,b.lng,1);
+    return { va, vb, omega:Math.max(1e-4, va.angleTo(vb)) };
+  }
+  function arcPoint(seg,t,alt){
+    const s=Math.sin(seg.omega);
+    const v=seg.va.clone().multiplyScalar(Math.sin((1-t)*seg.omega)/s)
+      .add(seg.vb.clone().multiplyScalar(Math.sin(t*seg.omega)/s));
+    v.multiplyScalar(1 + alt*Math.sin(Math.PI*t));
+    return v;
+  }
 
-    // daylight
-    scene.add(new THREE.AmbientLight(0xffffff,.92));
+  function makeArcLine(seg,alt,color,opacity){
+    const pts=[]; for(let i=0;i<=64;i++) pts.push(arcPoint(seg,i/64,alt));
+    const geo=new THREE.BufferGeometry().setFromPoints(pts); disposables.push(geo);
+    const mat=new THREE.LineBasicMaterial({color,transparent:true,opacity}); disposables.push(mat);
+    return new THREE.Line(geo,mat);
+  }
+
+  function boot(geo){
+    R=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+    R.setPixelRatio(Math.min(window.devicePixelRatio,1.5));
+    scene=new THREE.Scene();
+    cam=new THREE.PerspectiveCamera(42,1,.1,100); cam.position.set(0,.3,3.15);
+    group=new THREE.Group(); scene.add(group);
+
+    const tex=buildEarthTexture(geo); disposables.push(tex);
+    const earthGeo=new THREE.SphereGeometry(1,72,72); disposables.push(earthGeo);
+    const earthMat=new THREE.MeshPhongMaterial({map:tex,shininess:7,specular:0x14324c}); disposables.push(earthMat);
+    group.add(new THREE.Mesh(earthGeo,earthMat));
+
+    const atmoGeo=new THREE.SphereGeometry(1.055,48,48); disposables.push(atmoGeo);
+    const atmoMat=new THREE.MeshBasicMaterial({color:0x93c9ef,transparent:true,opacity:.14,side:THREE.BackSide}); disposables.push(atmoMat);
+    group.add(new THREE.Mesh(atmoGeo,atmoMat));
+
+    scene.add(new THREE.AmbientLight(0xffffff,.95));
     const sun=new THREE.DirectionalLight(0xffffff,.85); sun.position.set(2,1.3,2.5); scene.add(sun);
     const rim=new THREE.DirectionalLight(0xbfe0ff,.4); rim.position.set(-2,-1,-2); scene.add(rim);
 
-    const ll2v=(la,ln,r=1)=>{const ph=(90-la)*Math.PI/180,th=(ln+180)*Math.PI/180;
-      return new THREE.Vector3(-r*Math.sin(ph)*Math.cos(th),r*Math.cos(ph),r*Math.sin(ph)*Math.sin(th));};
-
-    const INDIA={la:20.59,ln:78.96};
-    const DEST=[
-      {la:51.17,ln:10.45,n:'Germany'},{la:39,ln:-98,n:'USA'},{la:56.13,ln:-106.35,n:'Canada'},
-      {la:51.51,ln:-0.13,n:'UK'},{la:25.20,ln:55.27,n:'UAE'},{la:-25.27,ln:133.78,n:'Australia'},
-      {la:52.37,ln:4.90,n:'Netherlands'},{la:1.35,ln:103.82,n:'Singapore'},{la:60.17,ln:24.94,n:'Finland'}
-    ];
-
-    function pin(la,ln,color,big){
-      const p=ll2v(la,ln,1.004);
-      const d=new THREE.Mesh(new THREE.SphereGeometry(big?.028:.017,14,14),
-        new THREE.MeshBasicMaterial({color}));
-      d.position.copy(p); group.add(d);
-      const ring=new THREE.Mesh(new THREE.RingGeometry(big?.036:.024,big?.05:.034,20),
-        new THREE.MeshBasicMaterial({color,transparent:true,opacity:.4,side:THREE.DoubleSide}));
-      ring.position.copy(p); ring.lookAt(0,0,0); group.add(ring);
-      return d;
-    }
-    pin(INDIA.la,INDIA.ln,0xff6b35,true);
-    DEST.forEach(d=>pin(d.la,d.ln,0x2563eb,false));
-
-    const arcCurve=(a,b,lift)=>{
-      const va=ll2v(a.la,a.ln), vb=ll2v(b.la,b.ln);
-      const m=new THREE.Vector3().addVectors(va,vb).multiplyScalar(.5).normalize().multiplyScalar(lift);
-      return new THREE.QuadraticBezierCurve3(va,m,vb);
-    };
-    // faint network of all routes
+    // static markers at every destination
     DEST.forEach(d=>{
-      const g=new THREE.BufferGeometry().setFromPoints(arcCurve(INDIA,d,1.34).getPoints(48));
-      group.add(new THREE.Line(g,new THREE.LineBasicMaterial({color:0xf59e0b,transparent:true,opacity:.16})));
+      const p=ll2v(d.lat,d.lng,1.004);
+      const dg=new THREE.SphereGeometry(.018,12,12); disposables.push(dg);
+      const dm=new THREE.MeshBasicMaterial({color:0xff6b35}); disposables.push(dm);
+      const dot=new THREE.Mesh(dg,dm); dot.position.copy(p); group.add(dot);
     });
 
-    // plane sprite (emoji)
-    function planeTex(){
-      const cv=document.createElement('canvas');cv.width=cv.height=72;
-      const x=cv.getContext('2d');x.font='54px serif';x.textAlign='center';x.textBaseline='middle';
-      x.fillText('✈️',36,38);return new THREE.CanvasTexture(cv);
+    // faint full network of all legs
+    for(let i=0;i<DEST.length;i++){
+      const seg=segData(DEST[i],DEST[(i+1)%DEST.length]);
+      group.add(makeArcLine(seg,.28,0xf59e0b,.16));
     }
-    const plane=new THREE.Sprite(new THREE.SpriteMaterial({map:planeTex(),transparent:true,depthTest:false}));
-    plane.scale.set(.17,.17,.17); group.add(plane);
 
-    // active bright route
-    let idx=0, t=0, curve=arcCurve(INDIA,DEST[0],1.5), activeLine=null;
-    function setActive(){
-      if(activeLine) group.remove(activeLine);
-      curve=arcCurve(INDIA,DEST[idx],1.5);
-      const g=new THREE.BufferGeometry().setFromPoints(curve.getPoints(60));
-      activeLine=new THREE.Line(g,new THREE.LineBasicMaterial({color:0xff6b35,transparent:true,opacity:.7}));
-      group.add(activeLine);
-    }
-    setActive();
+    // pulsing arrival ring
+    const rg=new THREE.RingGeometry(.03,.045,28); disposables.push(rg);
+    const rm=new THREE.MeshBasicMaterial({color:0xff6b35,transparent:true,opacity:0,side:THREE.DoubleSide}); disposables.push(rm);
+    ring=new THREE.Mesh(rg,rm); ring.visible=false; group.add(ring);
 
+    plane=buildPlane(); group.add(plane);
+
+    if(loadEl) loadEl.classList.add('hide');
     fit();
-    const CAM_FAR=3.25, CAM_NEAR=2.4;
-    function anim(){
-      raf=requestAnimationFrame(anim);
-      if(!running) return;
-      const ease=Math.sin(Math.min(t,1)*Math.PI);   // 0 at take-off/landing, 1 mid-flight
-      group.rotation.y+=0.0015-0.0007*ease;          // ease rotation while zoomed in
-      t+=0.0042;
-      if(t>=1){ t=0; idx=(idx+1)%DEST.length; setActive(); }
-      const p=curve.getPoint(t).multiplyScalar(1.02);
-      plane.position.copy(p);
-      // cinematic zoom: dolly toward the plane mid-flight, pull back between countries
-      cam.position.z = CAM_FAR-(CAM_FAR-CAM_NEAR)*ease;
-      cam.position.y = .35+.12*ease;
-      cam.lookAt(0,0,0);
-      R.render(scene,cam);
-    }
-    anim();
     window.addEventListener('resize',fit);
+    document.addEventListener('visibilitychange',onVis);
+
+    if(reduce){ // static, accessible fallback
+      const p=ll2v(DEST[0].lat,DEST[0].lng,1.07); plane.position.copy(p); orient(plane,p,ll2v(DEST[1].lat,DEST[1].lng,1.07));
+      R.render(scene,cam);
+      return;
+    }
+    startFlight();
+    running=true; loop();
   }
 
-  // lazy start + pause when off-screen (saves battery / GPU)
-  const io=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ boot(); running=true; }
-      else running=false;
+  /* --- flight state machine --- */
+  let seg, segIndex=0, t=0, mode='fly', pauseUntil=0, alt=.14;
+  function startFlight(){ segIndex=0; newSeg(); }
+  function newSeg(){
+    const a=DEST[segIndex], b=DEST[(segIndex+1)%DEST.length];
+    seg=segData(a,b); alt = .10 + .04*Math.min(1, seg.omega/Math.PI);
+    t=0; mode='fly';
+    if(activeLine){ group.remove(activeLine); }
+    activeLine=makeArcLine(seg,alt,0xff6b35,.7); group.add(activeLine);
+  }
+  function orient(obj,p,next){
+    const up=p.clone().normalize();
+    const z=next.clone().sub(p).normalize();
+    const x=new THREE.Vector3().crossVectors(up,z).normalize();
+    const y=new THREE.Vector3().crossVectors(z,x).normalize();
+    obj.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(x,y,z));
+  }
+
+  function showLabel(d){
+    if(!labelsEl) return;
+    labelsEl.innerHTML='<div class="wg-label" id="wgLab"><span class="fl">'+d.flag+'</span><span><span class="wg-code">'+d.code+'</span><span class="wg-nm">'+d.name+'</span></span></div>';
+    requestAnimationFrame(()=>{ const el=document.getElementById('wgLab'); if(el) el.classList.add('on'); });
+  }
+  function hideLabel(){ const el=document.getElementById('wgLab'); if(el) el.classList.remove('on'); }
+  function placeLabel(d){
+    const el=document.getElementById('wgLab'); if(!el) return;
+    const wp=ll2v(d.lat,d.lng,1.12).applyMatrix4(group.matrixWorld);
+    const ndc=wp.clone().project(cam);
+    // hide when the point is on the far side of the globe
+    const camDir=wp.clone().sub(cam.position).normalize();
+    const facing=wp.clone().normalize().dot(camDir) < 0;
+    const w=stage.clientWidth, h=stage.clientHeight;
+    el.style.left=((ndc.x*0.5+0.5)*w)+'px';
+    el.style.top=((-ndc.y*0.5+0.5)*h)+'px';
+    el.style.visibility = facing ? 'visible' : 'hidden';
+  }
+
+  function fit(){
+    if(!R) return;
+    const w=canvas.clientWidth||600, h=canvas.clientHeight||480;
+    R.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix();
+  }
+  function onVis(){ if(document.hidden){ running=false; } else if(started && !reduce){ running=true; loop(); } }
+
+  let last=performance.now();
+  function loop(){
+    if(!running){ raf=null; return; }
+    raf=requestAnimationFrame(loop);
+    const now=performance.now(), dt=Math.min(.05,(now-last)/1000); last=now;
+
+    group.rotation.y += 0.0125*dt; // ~ one turn / 84s (subtle, premium)
+
+    if(mode==='fly'){
+      t += dt/4.4; // ~4.4s per leg
+      if(t>=1){ t=1; mode='pause'; pauseUntil=now+1600; ring.visible=true;
+        showLabel(DEST[(segIndex+1)%DEST.length]); }
+      const p=arcPoint(seg,t,alt);
+      const nxt=arcPoint(seg,Math.min(1,t+0.02),alt);
+      plane.position.copy(p); orient(plane,p,nxt.equals(p)?p.clone().add(new THREE.Vector3(0,0.001,0)):nxt);
+      ring.visible=false;
+    } else { // pause / hover at destination
+      const d=DEST[(segIndex+1)%DEST.length];
+      const p=ll2v(d.lat,d.lng,1.06+0.01*Math.sin(now/300));
+      plane.position.copy(p);
+      // pulse ring
+      ring.position.copy(ll2v(d.lat,d.lng,1.005)); ring.lookAt(0,0,0);
+      const k=(now%1400)/1400; ring.scale.setScalar(1+k*1.6); ring.material.opacity=.5*(1-k);
+      placeLabel(d);
+      if(now>=pauseUntil){ ring.visible=false; hideLabel(); segIndex=(segIndex+1)%DEST.length; newSeg(); }
+    }
+    R.render(scene,cam);
+  }
+
+  function cleanup(){
+    running=false; if(raf) cancelAnimationFrame(raf);
+    window.removeEventListener('resize',fit);
+    document.removeEventListener('visibilitychange',onVis);
+    disposables.forEach(o=>{ try{ o.dispose&&o.dispose(); }catch(e){} });
+    if(R){ R.dispose(); }
+  }
+  window.addEventListener('beforeunload',cleanup);
+
+  /* --- lazy init on scroll into view --- */
+  function init(){
+    if(started) return; started=true;
+    if(loadEl) loadEl.classList.remove('hide');
+    fetch(GEO_URL).then(r=>{ if(!r.ok) throw new Error('geo '+r.status); return r.json(); })
+      .then(geo=>boot(geo))
+      .catch(err=>{ if(loadEl){ loadEl.textContent="Couldn't load the map data."; } if(window.console) console.warn('[globe]',err); });
+  }
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){ init(); if(started && R && !reduce){ running=true; loop(); } }
+      else { running=false; }
     });
-  },{threshold:.1});
+  },{threshold:.12});
   io.observe(canvas);
 })();
 </script>
