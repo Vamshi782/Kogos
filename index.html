@@ -534,6 +534,18 @@ nav{background:linear-gradient(180deg,rgba(5,6,10,.94) 0%,rgba(5,6,10,.55) 100%)
 .cc{transition:background .2s,box-shadow .2s}
 .cc:hover{box-shadow:inset 0 0 0 1px var(--ring2)}
 
+/* ===== COUNTRIES GRID — compact (≈6 per row, much shorter section;
+   full details still open in the modal on click) ===== */
+.cg{grid-template-columns:repeat(auto-fill,minmax(156px,1fr))!important}
+.cc{padding:16px 15px!important}
+.cf{font-size:25px!important;margin-bottom:7px!important}
+.cn{font-size:15px!important;margin-bottom:3px!important;line-height:1.2}
+.ct{font-size:10.5px!important;line-height:1.35}
+.cbody{display:none!important}
+.cst{gap:5px!important;margin-top:10px}
+.csp{padding:4px 8px!important;font-size:9px!important}
+@media(max-width:520px){.cg{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))!important}}
+
 /* ===== SALARY REALITY CHECK ===== */
 .sal-sec{padding:24px 0 88px;position:relative;overflow:hidden}
 .sal-sec::before{content:'';position:absolute;bottom:-160px;right:-100px;width:520px;height:520px;
@@ -3232,10 +3244,17 @@ window.KOGOS_FX=(function(){
 
   let started=false, running=false, raf=null, R, scene, cam, group, plane, activeLine, ring, disposables=[];
 
+  // India is home base; the tour visits the biggest Indian-diaspora countries.
   const DEST=[
-    {id:'india', code:'IND', name:'India',          flag:'🇮🇳', lat:17.385,  lng:78.4867},
+    {id:'india', code:'IND', name:'India',          flag:'🇮🇳', lat:20.59,   lng:78.96},
+    {id:'usa',   code:'USA', name:'United States',   flag:'🇺🇸', lat:40.7128, lng:-74.006},
+    {id:'uae',   code:'UAE', name:'UAE · Dubai',     flag:'🇦🇪', lat:25.20,   lng:55.27},
+    {id:'ksa',   code:'KSA', name:'Saudi Arabia',    flag:'🇸🇦', lat:24.71,   lng:46.68},
     {id:'uk',    code:'UK',  name:'United Kingdom',  flag:'🇬🇧', lat:51.5074, lng:-0.1278},
-    {id:'usa',   code:'USA', name:'United States',   flag:'🇺🇸', lat:40.7128, lng:-74.006}
+    {id:'can',   code:'CAN', name:'Canada',          flag:'🇨🇦', lat:43.65,   lng:-79.38},
+    {id:'aus',   code:'AUS', name:'Australia',       flag:'🇦🇺', lat:-33.87,  lng:151.21},
+    {id:'sgp',   code:'SGP', name:'Singapore',       flag:'🇸🇬', lat:1.35,    lng:103.82},
+    {id:'deu',   code:'DEU', name:'Germany',         flag:'🇩🇪', lat:52.52,   lng:13.40}
   ];
 
   function ll2v(la,ln,r){ r=r||1; const ph=(90-la)*Math.PI/180, th=(ln+180)*Math.PI/180;
@@ -3278,21 +3297,50 @@ window.KOGOS_FX=(function(){
     return tex;
   }
 
-  /* --- low-poly airplane: white body, Indian tricolour tail --- */
+  /* --- detailed airliner: smooth curved fuselage (lathe), swept wings,
+         engines, window band, Indian tricolour tail. Nose points +Z. --- */
   function buildPlane(){
     const g=new THREE.Group();
-    const white=new THREE.MeshPhongMaterial({color:0xf7f9fc,shininess:45,specular:0x333333});
-    disposables.push(white);
-    const body=new THREE.Mesh(new THREE.CylinderGeometry(.02,.026,.15,14), white); body.rotation.x=Math.PI/2; g.add(body);
-    const nose=new THREE.Mesh(new THREE.ConeGeometry(.02,.05,14), white); nose.rotation.x=Math.PI/2; nose.position.z=.10; g.add(nose);
-    const wing=new THREE.Mesh(new THREE.BoxGeometry(.17,.007,.036), white); g.add(wing);
-    const tailw=new THREE.Mesh(new THREE.BoxGeometry(.07,.006,.018), white); tailw.position.z=-.066; g.add(tailw);
-    const fin=new THREE.Mesh(new THREE.BoxGeometry(.006,.028,.024), white); fin.position.set(0,.015,-.066); g.add(fin);
+    const body =new THREE.MeshPhongMaterial({color:0xeef3fb,shininess:70,specular:0x9fb4d4});
+    const trim =new THREE.MeshPhongMaterial({color:0x27324c,shininess:50,specular:0x556688});
+    const glass=new THREE.MeshPhongMaterial({color:0x8fc6ff,shininess:100,specular:0xffffff,emissive:0x0b1c38});
+    disposables.push(body,trim,glass);
+
+    // smooth fuselage via lathe profile (pointed nose, fat middle, tapered tail)
+    const prof=[], N=22, L=.36;
+    for(let i=0;i<=N;i++){ const u=i/N; const r=.038*Math.pow(Math.sin(Math.PI*u),.62);
+      prof.push(new THREE.Vector2(Math.max(.0015,r),(u-.5)*L)); }
+    const fuseGeo=new THREE.LatheGeometry(prof,30); disposables.push(fuseGeo);
+    const fuse=new THREE.Mesh(fuseGeo,body); fuse.rotation.x=Math.PI/2; g.add(fuse);
+
+    // window band (both sides)
+    const winGeo=new THREE.BoxGeometry(.004,.011,.19); disposables.push(winGeo);
+    [.034,-.034].forEach(x=>{ const s=new THREE.Mesh(winGeo,glass); s.position.set(x,.006,.01); g.add(s); });
+
+    // swept main wings
+    const wingGeo=new THREE.BoxGeometry(.2,.006,.06); disposables.push(wingGeo);
+    [1,-1].forEach(d=>{ const w=new THREE.Mesh(wingGeo,body);
+      w.position.set(d*.11,-.004,.015); w.rotation.y=d*0.34; w.rotation.z=d*-0.05; g.add(w); });
+
+    // under-wing engines
+    const engGeo=new THREE.CylinderGeometry(.013,.011,.05,16); disposables.push(engGeo);
+    [1,-1].forEach(d=>{ const e=new THREE.Mesh(engGeo,trim); e.rotation.x=Math.PI/2;
+      e.position.set(d*.11,-.022,.04); g.add(e); });
+
+    // horizontal stabilisers
+    const stabGeo=new THREE.BoxGeometry(.1,.005,.032); disposables.push(stabGeo);
+    const stab=new THREE.Mesh(stabGeo,body); stab.position.set(0,0,-.155); g.add(stab);
+
+    // vertical tail fin + Indian tricolour bands
+    const finGeo=new THREE.BoxGeometry(.006,.052,.05); disposables.push(finGeo);
+    const fin=new THREE.Mesh(finGeo,body); fin.position.set(0,.03,-.152); g.add(fin);
     [0xff9933,0xffffff,0x138808].forEach((col,i)=>{
-      const m=new THREE.MeshBasicMaterial({color:col}); disposables.push(m);
-      const s=new THREE.Mesh(new THREE.BoxGeometry(.008,.009,.022), m); s.position.set(0,.004+i*.009,-.066); g.add(s);
+      const m=new THREE.MeshPhongMaterial({color:col,shininess:30}); disposables.push(m);
+      const bg=new THREE.BoxGeometry(.008,.017,.05); disposables.push(bg);
+      const b=new THREE.Mesh(bg,m); b.position.set(0,.014+i*.017,-.152); g.add(b);
     });
-    g.traverse(o=>{ if(o.geometry) disposables.push(o.geometry); });
+
+    g.scale.set(1.15,1.15,1.15);
     return g;
   }
 
@@ -3421,10 +3469,10 @@ window.KOGOS_FX=(function(){
     raf=requestAnimationFrame(loop);
     const now=performance.now(), dt=Math.min(.05,(now-last)/1000); last=now;
 
-    group.rotation.y += 0.0125*dt; // ~ one turn / 84s (subtle, premium)
+    group.rotation.y += 0.022*dt; // ~ one turn / 48s (a touch faster)
 
     if(mode==='fly'){
-      t += dt/4.4; // ~4.4s per leg
+      t += dt/3.2; // ~3.2s per leg (a touch faster)
       if(t>=1){ t=1; mode='pause'; pauseUntil=now+1600; ring.visible=true;
         showLabel(DEST[(segIndex+1)%DEST.length]); }
       const p=arcPoint(seg,t,alt);
