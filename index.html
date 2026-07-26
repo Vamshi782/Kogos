@@ -715,6 +715,30 @@ select.ff{cursor:pointer}
   background:linear-gradient(90deg,var(--k-gold),var(--k-teal),var(--k-green));
   z-index:var(--k-z-overlay);pointer-events:none;will-change:transform}
 
+/* ============================================================
+   KOGS CARD POLISH — problem + compare cards onto the system
+   ============================================================ */
+/* Problem cards → individual cards, route accent, gradient numerals */
+.pg{background:none!important;border:none!important;border-radius:0!important;overflow:visible!important;gap:16px!important}
+.pi{background:linear-gradient(180deg,var(--s2),var(--s1))!important;border:1px solid var(--k-border-2);
+  border-radius:var(--k-r-lg);overflow:hidden;
+  transition:transform var(--k-dur) var(--k-ease-emph),box-shadow var(--k-dur) var(--k-ease),border-color var(--k-dur) var(--k-ease)!important}
+.pi::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;z-index:1;
+  background:linear-gradient(180deg,var(--k-gold),var(--k-teal));transform:scaleY(0);transform-origin:top;
+  transition:transform var(--k-dur) var(--k-ease)}
+.pi::after{display:none}   /* replaced by the left route accent */
+.pi:hover{background:var(--s2)!important;transform:translateY(-4px);border-color:transparent;
+  box-shadow:var(--k-shadow-md),0 0 0 1px rgba(232,176,64,.3)}
+.pi:hover::before{transform:scaleY(1)}
+.pn{background:linear-gradient(120deg,var(--k-gold),var(--k-teal));-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;font-weight:600}
+/* Compare cards → token radius + refined lift (on the light section) */
+.cmp-card{border-radius:var(--k-r-lg);border:1px solid var(--k-border-2);
+  transition:transform var(--k-dur) var(--k-ease-emph),box-shadow var(--k-dur) var(--k-ease),border-color var(--k-dur) var(--k-ease)}
+.cmp-card:hover{transform:translateY(-4px);box-shadow:0 22px 46px -26px rgba(15,23,42,.4);border-color:rgba(37,99,235,.35)}
+.cmp-cta{border-radius:var(--k-r-md);transition:transform var(--k-dur) var(--k-ease),background var(--k-dur) var(--k-ease),border-color var(--k-dur) var(--k-ease)}
+.cmp-cta:hover{transform:translateY(-1px);border-color:var(--k-gold)}
+
 /* ===== SALARY REALITY CHECK ===== */
 .sal-sec{padding:24px 0 88px;position:relative;overflow:hidden}
 .sal-sec::before{content:'';position:absolute;bottom:-160px;right:-100px;width:520px;height:520px;
