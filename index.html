@@ -1903,7 +1903,7 @@ select.ff{cursor:pointer}
       <h1 class="rv">Build Your Career <span class="grad">Beyond Borders</span></h1>
       <p class="lead2 rv">Get practical, independent guidance for global careers, internships, education, and international opportunities — without confusing promises or expensive agency pressure.</p>
       <div class="bkv-hero-cta rv">
-        <button class="b b-primary b-lg" onclick="bkvScrollTo('bkvPricing')">Choose Your Guidance Plan</button>
+        <a class="b b-primary b-lg" href="https://calendar.app.google/FgdscMgoBHZtj5Zw5" target="_blank" rel="noopener" onclick="bkvTrack('booking_started',{type:'free_call'})">Book a free 10-min call</a>
         <button class="b b-ghost b-lg" onclick="go('resources')">Explore Free Resources</button>
       </div>
       <div class="rv"><span class="bkv-trustline">Clear information. Practical next steps. No guaranteed-outcome claims.</span></div>
@@ -1917,8 +1917,38 @@ select.ff{cursor:pointer}
     </div>
   </section>
 
-  <!-- 3. REGION SELECTOR -->
-  <section class="bkv-sec bkv-region">
+  <!-- FREE DISCOVERY CALL (paid plans temporarily hidden — flip the display:none
+       on the region + pricing sections below to switch pricing back on) -->
+  <section class="bkv-sec" id="bkvCall">
+    <div class="wrap">
+      <div class="bkv-callcard rv">
+        <div class="bkv-call-badge">Free · 10 minutes · 1-on-1</div>
+        <h2>Book a Free 10-Minute Discovery Call</h2>
+        <p>No cost, no pressure. Bring one question about studying, working, or moving abroad — and leave with a clear next step. Let's figure out your best move together.</p>
+        <a class="b b-lg bkv-call-btn" href="https://calendar.app.google/FgdscMgoBHZtj5Zw5" target="_blank" rel="noopener" onclick="bkvTrack('booking_started',{type:'free_discovery_call'})">Book my free call →</a>
+        <div class="bkv-call-sub">Prefer to explore first? <a href="https://www.youtube.com/@Vamshicreate_s" target="_blank" rel="noopener">Watch on YouTube</a> or <button class="bkv-linkbtn" onclick="go('resources')">browse the free guides</button>.</div>
+      </div>
+    </div>
+  </section>
+  <style>
+  .bkv-callcard{background:linear-gradient(135deg,var(--indigo),#4338ca 55%,var(--teal2));border-radius:26px;
+    padding:48px 40px;text-align:center;color:#fff;position:relative;overflow:hidden;
+    box-shadow:0 30px 70px -30px rgba(79,70,229,.6)}
+  .bkv-callcard::after{content:'';position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(50% 60% at 50% 0%,rgba(255,255,255,.16),transparent 60%)}
+  .bkv-call-badge{position:relative;display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:2px;
+    text-transform:uppercase;font-weight:600;color:#fff;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.28);border-radius:100px;padding:7px 15px;margin-bottom:18px}
+  .bkv-callcard h2{position:relative;color:#fff;font-size:clamp(26px,3.6vw,40px);margin:0;letter-spacing:-.02em}
+  .bkv-callcard p{position:relative;color:rgba(255,255,255,.92);font-size:16px;line-height:1.65;max-width:520px;margin:16px auto 0}
+  .bkv-call-btn{position:relative;background:#fff!important;color:var(--indigo)!important;margin-top:28px;font-size:17px;padding:17px 34px}
+  .bkv-call-btn:hover{transform:translateY(-2px);box-shadow:0 18px 40px -14px rgba(0,0,0,.4)}
+  .bkv-call-sub{position:relative;margin-top:18px;font-size:13.5px;color:rgba(255,255,255,.9)}
+  .bkv-call-sub a,.bkv-linkbtn{color:#fff;text-decoration:underline;text-underline-offset:3px;background:none;border:none;cursor:pointer;font:inherit;padding:0}
+  </style>
+
+  <!-- 3. REGION SELECTOR (hidden while we run free discovery calls) -->
+  <section class="bkv-sec bkv-region" style="display:none">
     <div class="wrap">
       <h2 class="rv">Where are you currently based?</h2>
       <div class="bkv-toggle rv" id="bkvToggle">
@@ -1947,8 +1977,8 @@ select.ff{cursor:pointer}
     </div>
   </section>
 
-  <!-- 5. PRICING -->
-  <section class="bkv-sec" id="bkvPricing">
+  <!-- 5. PRICING (hidden while we run free discovery calls) -->
+  <section class="bkv-sec" id="bkvPricing" style="display:none">
     <div class="wrap">
       <div class="bkv-price-head rv">
         <span class="badge-reg" id="bkvRegBadge"></span>
@@ -1984,9 +2014,9 @@ select.ff{cursor:pointer}
     <div class="wrap">
       <div class="bkv-sec-head rv"><h2>How It Works</h2></div>
       <div class="bkv-steps">
-        <div class="bkv-step rv"><div class="num">1</div><h3>Choose your region</h3><p>Select India or Outside India based on your current residence.</p></div>
-        <div class="bkv-step rv"><div class="num">2</div><h3>Select your session</h3><p>Choose the time and level of guidance that fit your question.</p></div>
-        <div class="bkv-step rv"><div class="num">3</div><h3>Share your question</h3><p>Complete a short form before the call so we can use the time effectively.</p></div>
+        <div class="bkv-step rv"><div class="num">1</div><h3>Pick a free slot</h3><p>Grab a free 10-minute time on the calendar that works for you.</p></div>
+        <div class="bkv-step rv"><div class="num">2</div><h3>Share your question</h3><p>Add the one thing you most want clarity on when you book.</p></div>
+        <div class="bkv-step rv"><div class="num">3</div><h3>We talk it through</h3><p>A quick, friendly 1-on-1 — video or voice, whatever suits you.</p></div>
         <div class="bkv-step rv"><div class="num">4</div><h3>Leave with direction</h3><p>Receive clear next steps and relevant resources after the discussion.</p></div>
       </div>
     </div>
@@ -2052,8 +2082,7 @@ select.ff{cursor:pointer}
         <h2>You Don't Need Every Answer Today.</h2>
         <p>You only need enough clarity to take the right next step.</p>
         <div class="fcta">
-          <button class="b b-lg" onclick="bkvSetRegion('india');bkvScrollTo('bkvPricing')">View India Plans</button>
-          <button class="b b-lg" onclick="bkvSetRegion('global');bkvScrollTo('bkvPricing')">View Global Plans</button>
+          <a class="b b-lg" href="https://calendar.app.google/FgdscMgoBHZtj5Zw5" target="_blank" rel="noopener" onclick="bkvTrack('booking_started',{type:'free_call'})">Book your free 10-min call</a>
         </div>
       </div>
     </div>
@@ -2296,14 +2325,14 @@ select.ff{cursor:pointer}
 
   /* ---- FAQ ---- */
   const FAQ = [
-    ['Which pricing section should I choose?','Choose India if you currently reside in India and will pay using the India checkout. Choose Outside India if you currently live in another country, including Indian citizens studying or working abroad.'],
-    ['Is the selection based on citizenship or residence?','It is based purely on your current country of residence and the service context — not your citizenship. An Indian citizen living in the US should choose “Outside India.”'],
+    ['Is the call really free?','Yes — the 10-minute discovery call is completely free. It\'s a chance to get one clear next step and see whether deeper guidance would help you.'],
+    ['Who is the call for?','Anyone exploring studying, working, or moving abroad — students, recent graduates, and working professionals, whether you\'re in India or already overseas.'],
     ['Can you guarantee a visa, admission, internship, or job?','No. This is independent educational guidance. No visa, admission, internship, sponsorship, or job outcome is ever guaranteed — anyone promising that is not being honest with you.'],
     ['Are you an immigration lawyer or recruitment agency?','No. I am not an immigration lawyer, visa consultant, admissions counselor, or recruitment agency. I provide independent guidance, research, and practical direction based on public information and personal experience.'],
-    ['Can I ask more than one question?','The shorter plans focus on one clear question so we use the time well. The 30- and 45-minute plans cover your broader situation and multiple next actions.'],
-    ['What happens after I book?','You share your details in a short form, receive a payment link and confirmation by email, get a meeting link for your session, and leave with clear next steps (plus a written summary on the roadmap plans).'],
+    ['Can I ask more than one question?','It\'s a focused 10 minutes, so come with the one thing you most want clarity on. If your situation is bigger than one call, I\'ll point you to the right next step.'],
+    ['What happens after I book?','You\'ll get a calendar confirmation with the meeting link. Come with your question, and you\'ll leave with clear next steps and any relevant free resources.'],
     ['Can I reschedule my session?','Yes — bookings may be rescheduled once with at least 12 hours’ notice. Missed sessions and late cancellations are generally non-refundable.'],
-    ['Will I receive resources after the call?','Yes. On the roadmap and deep-dive plans you receive relevant links, recommended platforms, and a short written summary. Follow-up support is limited to what your plan includes.'],
+    ['Will I receive resources after the call?','Yes — where it helps, I\'ll point you to relevant free guides, recommended platforms, and the clearest next steps for your situation.'],
     ['What languages are available?','Sessions are available in English or Telugu — just pick your preference in the booking form.'],
     ['What if I only want free resources?','That’s completely fine. Subscribe on YouTube and explore the free guides — no booking required. Come back whenever you want personalized direction.']
   ];
