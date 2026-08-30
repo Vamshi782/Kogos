@@ -909,6 +909,7 @@ select.ff{cursor:pointer}
   <div class="nav-links">
     <a onclick="go('about')" data-nav="about">About</a>
     <a onclick="go('resources')" data-nav="resources">Free Guides</a>
+    <a onclick="go('courses')" data-nav="courses">Courses</a>
     <a onclick="go('content')" data-nav="content">Content</a>
     <a onclick="go('faq')" data-nav="faq">FAQ</a>
     <a onclick="go('brands')" data-nav="brands">For Brands</a>
@@ -920,6 +921,7 @@ select.ff{cursor:pointer}
 <div id="mob">
   <a onclick="go('about');toggleMob()" data-nav="about">About</a>
   <a onclick="go('resources');toggleMob()" data-nav="resources">Free Guides</a>
+  <a onclick="go('courses');toggleMob()" data-nav="courses">Courses</a>
   <a onclick="go('content');toggleMob()" data-nav="content">Content</a>
   <a onclick="go('faq');toggleMob()" data-nav="faq">FAQ</a>
   <a onclick="go('brands');toggleMob()" data-nav="brands">For Brands</a>
@@ -2410,6 +2412,99 @@ select.ff{cursor:pointer}
       <a class="btn" href="https://instagram.com/vamshi.indianabroad" target="_blank" style="background:linear-gradient(135deg,#f472b6,#a855f7);color:white;display:inline-flex;justify-content:center">Follow on Instagram</a>
     </div>
   </div>
+  <footer><div class="w"><div class="fbot"><div class="fc2">2026 KOGOS</div></div></div></footer>
+</div>
+
+<!-- COURSES -->
+<div id="courses" class="page">
+  <div class="ih w">
+    <div class="ey" style="color:var(--teal)">Learn by Doing</div>
+    <h1>Courses</h1>
+    <p>Skills that get you hired, taught the way people actually learn them - by writing real code against real data, not by watching someone else do it.</p>
+  </div>
+
+  <div class="w pt72 pb72">
+    <style>
+    .crs-card{position:relative;overflow:hidden;background:linear-gradient(150deg,var(--s2),var(--s1));
+      border:1px solid var(--k-border-2);border-radius:var(--k-r-lg);padding:clamp(26px,4vw,44px);margin-bottom:26px}
+    .crs-card::after{content:'';position:absolute;top:-120px;right:-120px;width:300px;height:300px;
+      background:radial-gradient(circle,rgba(79,70,229,.22),transparent 70%);pointer-events:none}
+    .crs-eye{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:11.5px;
+      font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--k-indigo);margin-bottom:16px}
+    .crs-eye b{color:var(--white);font-weight:700}
+    .crs-h{font-family:var(--serif);font-size:clamp(32px,5vw,54px);font-weight:600;color:var(--white);
+      line-height:1.04;letter-spacing:-.5px;margin-bottom:12px}
+    .crs-h em{font-style:italic;color:var(--gold2)}
+    .crs-sub{font-size:15.5px;color:var(--text);line-height:1.75;font-weight:300;max-width:640px;margin-bottom:26px}
+    .crs-stats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+    .crs-stat{background:rgba(255,255,255,.03);border:1px solid var(--ring);border-radius:var(--k-r-pill);
+      padding:9px 16px;font-family:var(--sans);font-size:13px;color:var(--text)}
+    .crs-stat b{color:var(--white);font-weight:700;font-family:var(--mono);font-size:13.5px}
+    .crs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-bottom:30px}
+    .crs-f{background:rgba(255,255,255,.02);border:1px solid var(--ring);border-radius:var(--k-r-md);padding:16px 18px}
+    .crs-f h4{font-family:var(--sans);font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:6px;
+      display:flex;align-items:center;gap:8px}
+    .crs-f h4 span{color:var(--gold2);font-size:15px;line-height:1}
+    .crs-f p{font-size:13px;color:var(--text);line-height:1.65;font-weight:300}
+    .crs-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+    .crs-note{font-size:12.5px;color:var(--muted);font-family:var(--sans)}
+    .crs-soon{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .crs-sc{background:var(--s1);border:1px dashed var(--ring2);border-radius:var(--k-r-md);padding:22px;text-align:center}
+    .crs-sc h4{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--text);margin-bottom:6px}
+    .crs-sc p{font-size:12.5px;color:var(--muted);line-height:1.6}
+    .crs-lead{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:600;color:var(--white);
+      margin:0 0 20px;letter-spacing:-.3px}
+    </style>
+
+    <div class="crs-card">
+      <div class="crs-eye">LearnEasy &nbsp;·&nbsp; <b>a KOGOS course</b></div>
+      <h1 class="crs-h">SQL - Zero to <em>Hero</em></h1>
+      <p class="crs-sub">Built for the analyst interview. You start at "what is a table?" and finish able to solve a
+        JOIN + GROUP BY + CTE + window-function problem and explain why your answer is right. Every question runs
+        against a real SQLite database in your browser - your query executes, and the result is graded against the
+        data, not against a string.</p>
+
+      <div class="crs-stats">
+        <div class="crs-stat"><b>1,183</b> practice prompts</div>
+        <div class="crs-stat"><b>32</b> modules</div>
+        <div class="crs-stat"><b>8</b> real datasets</div>
+        <div class="crs-stat"><b>3</b> days, start to interview-ready</div>
+      </div>
+
+      <div class="crs-grid">
+        <div class="crs-f">
+          <h4><span>▸</span> A real SQL engine</h4>
+          <p>Not multiple choice pretending to be code. SQLite runs in the browser, so your query either works or it
+            tells you exactly why not.</p>
+        </div>
+        <div class="crs-f">
+          <h4><span>▸</span> Graded on results</h4>
+          <p>Write it your way. NOT EXISTS or LEFT JOIN, COUNT(1) or COUNT(*) - if the rows match, it is correct.</p>
+        </div>
+        <div class="crs-f">
+          <h4><span>▸</span> Adapts to you</h4>
+          <p>Three right in a row moves you up, two wrong moves you down. Weak skills resurface until they are not weak.</p>
+        </div>
+        <div class="crs-f">
+          <h4><span>▸</span> Interview mode</h4>
+          <p>Timed mock rounds, follow-up questions, business cases, and a mistake notebook that remembers what caught you.</p>
+        </div>
+      </div>
+
+      <div class="crs-cta">
+        <a class="btn bg" href="courses/sql/">Start learning - free</a>
+        <span class="crs-note">No signup. Your progress saves in this browser.</span>
+      </div>
+    </div>
+
+    <h3 class="crs-lead">More courses coming</h3>
+    <div class="crs-soon">
+      <div class="crs-sc"><h4>Excel for Analysts</h4><p>Pivot tables, lookups and the formulas that actually show up in interviews.</p></div>
+      <div class="crs-sc"><h4>Python for Data</h4><p>pandas from zero, taught the same way - you write it, we run it.</p></div>
+      <div class="crs-sc"><h4>Resume &amp; Interview Prep</h4><p>The CV, the story, and the questions you will be asked abroad.</p></div>
+    </div>
+  </div>
+
   <footer><div class="w"><div class="fbot"><div class="fc2">2026 KOGOS</div></div></div></footer>
 </div>
 
