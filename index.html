@@ -1053,12 +1053,34 @@ select.ff{cursor:pointer}
     const grid=document.getElementById('partGrid'); if(!grid) return;
 
     const PARTNERS=[
-      { key:'origo', icon:'🎓', acc:'#a855f7', badge:'Free eligibility check',
-        title:'Study Abroad on a Scholarship',
-        tag:'Dream of studying abroad but worried about the cost? See the scholarships and support you qualify for — free.',
-        perks:['Free scholarship matching','Free application guidance','Visa interview support','Student-loan support'],
-        cta:'Check if you qualify — free',
-        link:'https://origoabroad.com/register?creator=vamshi-usa' },
+      { key:'study', icon:'🎓', acc:'#a855f7', badge:'₹1.4 Cr+ in scholarships awarded',
+        title:'Study Abroad — Fully Supported',
+        tag:'Everything you need to study abroad, handled with you — from the right university to landing there. Zero guesswork.',
+        perks:[
+          'We curate the best-fit universities for you',
+          'Admissions &amp; applications, done together',
+          'Scholarship help — Origo has awarded ₹1.4 Cr+',
+          'Visa-interview prep with expert coaches',
+          'Language training included',
+          'Accommodation sorted after you land',
+          'Financial-need support — even a laptop if you truly need one'
+        ],
+        cta:'Start your study-abroad journey',
+        link:'https://www.origoabroad.com/register?creator=vamshi-usa' },
+
+      { key:'work', icon:'🌍', acc:'#4f46e5', badge:'Gold-pass support',
+        title:'Work Abroad — Done With You',
+        tag:'A hands-on partner for landing a real job abroad — from your profile all the way to your visa.',
+        perks:[
+          'We curate &amp; sharpen your profile',
+          'A 1-on-1 sit-down to understand your strengths',
+          'Role-specific training to get you interview-ready',
+          'Interview prep with people who actually hire',
+          'Applications handled with you, not left to you',
+          'Full visa support, right to the finish line'
+        ],
+        cta:'Get the gold-pass support',
+        link:'https://www.origoabroad.com/register?creator=vamshi-usa' },
 
       { key:'talvora', icon:'🤖', acc:'#14b8a6', badge:'20% off · code VAMSHI20',
         title:'Talvora AI — Resume &amp; Job Search',
@@ -1087,6 +1109,13 @@ select.ff{cursor:pointer}
         perks:['One AI interview → many job matches','Review &amp; grade AI in your subject','15–20 hrs / week, fully remote','Weekly pay via Stripe, no fees'],
         cta:'Get matched on Mercor',
         link:'https://t.mercor.com/oKe8W' },
+
+      { key:'paraform', icon:'🎯', acc:'#0ea5e9', badge:'Recruiters come to you',
+        title:'Get Matched by Recruiters — Paraform',
+        tag:'Upload your profile once. When a role fits, recruiters reach out to you directly — no cold applying, no endless forms.',
+        perks:['Build your profile in minutes','Recruiters match you to relevant roles','They reach out to you directly — skip the queue','Great for tech, startup &amp; high-growth roles'],
+        cta:'Put your profile in front of recruiters',
+        link:'https://www.paraform.com/connectors/refer/cmtvqsnfo00060cl6046e0mnz' },
 
       { key:'superprofile', icon:'🚀', acc:'#f43f6b', badge:'For creators',
         title:'Monetise Your Audience',
@@ -1418,7 +1447,7 @@ select.ff{cursor:pointer}
           <div class="soc-desc">Daily job drops, visa changes, and real abroad stories. This is where the community lives.</div>
           <span class="soc-btn">Follow @vamshi.indianabroad →</span>
         </a>
-        <a class="soc-card soc-yt" href="https://www.youtube.com/@Vamshicreate_s" target="_blank" rel="noopener">
+        <a class="soc-card soc-yt" href="https://www.youtube.com/@Vamshiindianabroad" target="_blank" rel="noopener">
           <span class="soc-ico">▶️</span>
           <div class="soc-plat">YouTube</div>
           <div class="soc-big">Just getting started</div>
@@ -1529,7 +1558,7 @@ select.ff{cursor:pointer}
         <div class="fc">
           <h4>Connect</h4>
           <a href="https://instagram.com/vamshi.indianabroad" target="_blank">Instagram</a>
-          <a href="https://www.youtube.com/@Vamshicreate_s" target="_blank">YouTube</a>
+          <a href="https://www.youtube.com/@Vamshiindianabroad" target="_blank">YouTube</a>
           <a onclick="go('brands')">Brand Partnerships</a>
           <a onclick="go('contact')">Contact</a>
         </div>
@@ -1538,7 +1567,7 @@ select.ff{cursor:pointer}
         <div class="fc2">2026 KOGOS - vamshi.indianabroad@gmail.com | kogos.co@gmail.com</div>
         <div class="fs">
           <a href="https://instagram.com/vamshi.indianabroad" target="_blank">Instagram</a>
-          <a href="https://www.youtube.com/@Vamshicreate_s" target="_blank">YouTube</a>
+          <a href="https://www.youtube.com/@Vamshiindianabroad" target="_blank">YouTube</a>
           <a href="mailto:vamshi.indianabroad@gmail.com">Email</a>
         </div>
       </div>
@@ -2116,7 +2145,7 @@ select.ff{cursor:pointer}
           <p>Start with free opportunities, internship updates, and global career resources on YouTube.</p>
         </div>
         <div class="bkv-free-cta">
-          <a class="b b-yt" href="https://www.youtube.com/@Vamshicreate_s" target="_blank" rel="noopener" onclick="bkvTrack('youtube_clicked',{source:'free_entry'})">▶ Subscribe on YouTube</a>
+          <a class="b b-yt" href="https://www.youtube.com/@Vamshiindianabroad" target="_blank" rel="noopener" onclick="bkvTrack('youtube_clicked',{source:'free_entry'})">▶ Subscribe on YouTube</a>
           <button class="b b-ghost" onclick="go('resources')">Explore Free Resources</button>
         </div>
       </div>
@@ -2554,7 +2583,7 @@ select.ff{cursor:pointer}
       <div style="font-size:50px;margin-bottom:14px">▶</div>
       <h3 style="font-family:var(--serif);font-size:30px;font-weight:600;color:var(--white);margin-bottom:9px">YouTube - KOGOS</h3>
       <p style="font-size:14px;color:var(--text);margin-bottom:26px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.72">Deep-dive country guides, visa walkthroughs, and real stories from Indians who made the move.</p>
-      <a class="btn" href="https://www.youtube.com/@Vamshicreate_s" target="_blank" style="background:linear-gradient(135deg,#ff2020,#cc0000);color:white;display:inline-flex;justify-content:center">Subscribe on YouTube</a>
+      <a class="btn" href="https://www.youtube.com/@Vamshiindianabroad" target="_blank" style="background:linear-gradient(135deg,#ff2020,#cc0000);color:white;display:inline-flex;justify-content:center">Subscribe on YouTube</a>
     </div>
     <div class="igb">
       <div style="font-size:50px;margin-bottom:14px">📱</div>
