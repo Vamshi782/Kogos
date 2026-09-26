@@ -3423,9 +3423,11 @@ async function kovSubmit(){
   if(_kov.done) return;
   const email=(document.getElementById('kEmail').value||'').trim();
   const loc=document.getElementById('kLoc').value;
+  const edu=document.getElementById('kEdu').value;
+  const exp=document.getElementById('kExp').value;
   const goal=_kov.goal||'';
-  // require the 3 fields we actually segment on
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !loc || !goal){
+  // require the fields we segment on
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !loc || !edu || !exp || !goal){
     document.getElementById('kErr').style.display='block'; return;
   }
   document.getElementById('kErr').style.display='none';
@@ -3437,8 +3439,10 @@ async function kovSubmit(){
   const payload={
     timestamp:new Date().toISOString(),
     name, email,
-    location,          // single clean value: India / USA / UK / …
+    location,          // India / North America / UK & Ireland / …
     region,            // In India / Outside India — for easy segmenting
+    education:edu,     // Bachelor's / Master's / PhD / …
+    experience:exp,    // 0–1 / 1–3 / 3–5 / 5–10 / 10+ years
     goal,              // Study abroad / Work abroad / Both / Just exploring
     source:'website popup'
   };
@@ -3555,19 +3559,46 @@ kovShow();
 
       <label class="kf-label">Where are you based? *</label>
       <select class="kf-inp" id="kLoc" onchange="kovToggleLoc()" style="cursor:pointer">
-        <option value="">Select your location…</option>
+        <option value="">Select your region…</option>
         <option>India</option>
-        <option>USA</option>
-        <option>Canada</option>
-        <option>UK</option>
-        <option>Europe (other)</option>
-        <option>UAE / Gulf</option>
-        <option>Australia / NZ</option>
-        <option>Singapore</option>
+        <option>North America (US / Canada)</option>
+        <option>UK &amp; Ireland</option>
+        <option>Europe (EU)</option>
+        <option>Middle East (UAE / Gulf)</option>
+        <option>Australia / New Zealand</option>
+        <option>Asia (Singapore, SE Asia, etc.)</option>
+        <option>Africa</option>
         <option>Other</option>
       </select>
       <div id="kOtherWrap" style="display:none">
         <input class="kf-inp" id="kOther" type="text" placeholder="Which country are you in?"/>
+      </div>
+
+      <div class="kf-row2">
+        <div>
+          <label class="kf-label">Highest education *</label>
+          <select class="kf-inp" id="kEdu" style="cursor:pointer">
+            <option value="">Select…</option>
+            <option>High school / 12th</option>
+            <option>Diploma</option>
+            <option>Bachelor's</option>
+            <option>Master's</option>
+            <option>PhD</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="kf-label">Experience *</label>
+          <select class="kf-inp" id="kExp" style="cursor:pointer">
+            <option value="">Select…</option>
+            <option>Student — none yet</option>
+            <option>0–1 years</option>
+            <option>1–3 years</option>
+            <option>3–5 years</option>
+            <option>5–10 years</option>
+            <option>10+ years</option>
+          </select>
+        </div>
       </div>
 
       <label class="kf-label">What do you want most? *</label>
@@ -3578,7 +3609,7 @@ kovShow();
         <button type="button" class="kf-goal-b" data-goal="Just exploring" onclick="kovGoal(this)">👀 Just exploring</button>
       </div>
 
-      <div class="kf-err" id="kErr" style="display:none">Please add your email, your location, and what you're looking for.</div>
+      <div class="kf-err" id="kErr" style="display:none">Please fill your email, region, education, experience, and what you're looking for.</div>
       <button class="kf-next" id="kovSubmitBtn" onclick="kovSubmit()" style="width:100%">Get my free guides →</button>
       <div class="kf-skip" onclick="kovClose()">Skip — just let me browse</div>
     </div>
