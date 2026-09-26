@@ -467,6 +467,12 @@ textarea.ff{resize:vertical;min-height:120px}
 .kf-chip.sel-n{background:rgba(14,184,122,.12);border-color:var(--green);color:var(--green)}
 .kf-step{display:none}
 .kf-step.active{display:block}
+.kf-goal{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.kf-goal-b{padding:12px 10px;border-radius:10px;border:1.5px solid #e2e8f0;background:#fff;color:#334155;
+  font-family:var(--sans);font-size:13.5px;font-weight:600;cursor:pointer;transition:all .18s;text-align:center}
+.kf-goal-b:hover{border-color:#4f46e5;color:#0f172a}
+.kf-goal-b.on{background:#4f46e5;border-color:#4f46e5;color:#fff}
+.kf-err{color:#e84560;font-size:12.5px;margin:-4px 0 12px;font-weight:600}
 .kf-prog{display:flex;gap:5px;margin-bottom:26px}
 .kf-dot{height:3px;flex:1;border-radius:2px;background:var(--ring);transition:background .3s}
 .kf-dot.done{background:var(--gold2)}
@@ -3386,7 +3392,7 @@ async function handleForm(ev,sid,formId){
 }
 /* ====== KOGOS SIGNUP SYSTEM — paste inside your existing <script> block ====== */
 const KOV_URL = "https://script.google.com/macros/s/AKfycbwgh3PxX9_lbEJuN5uoGVbmPpIkW_paxFKdhVk4wtWBsKKqohQFG7vX618keGrnlSV0/exec";
-const _kov = { chips:{iAm:[],goTo:[],explore:[],need:[]}, step:1, done:false };
+const _kov = { goal:'', done:false };
 
 function kovShow(){
   if(localStorage.getItem('kogos_v1')) return;
@@ -3399,7 +3405,7 @@ function kovShow(){
   }, 8000);
 }
 function kovOpen(){
-  if(!_kov.done) kovStep(1);
+  if(!_kov.done){ document.getElementById('ks1').classList.add('active'); document.getElementById('ksDone').classList.remove('active'); }
   document.getElementById('kovOverlay').classList.add('show');
 }
 function kovClose(){
@@ -3409,52 +3415,32 @@ function kovToggleLoc(){
   const v=document.getElementById('kLoc').value;
   document.getElementById('kOtherWrap').style.display=v==='Other'?'block':'none';
 }
-function kovChip(el,grp,cls){
-  const on=el.classList.toggle(cls);
-  const lbl=el.textContent.trim().replace(/^[^\w]+/,'').trim();
-  const arr=_kov.chips[grp];
-  const i=arr.indexOf(lbl);
-  if(i>-1)arr.splice(i,1); else arr.push(lbl);
-}
-function kovStep(n){
-  if(n>1 && _kov.step===1){
-    const em=document.getElementById('kEmail').value.trim();
-    if(!em||!em.includes('@')){
-      const el=document.getElementById('kEmail');
-      el.focus(); el.style.borderColor='#e84560';
-      setTimeout(()=>el.style.borderColor='',2000); return;
-    }
-  }
-  [1,2,3,'Done'].forEach(s=>{
-    const e=document.getElementById('ks'+s); if(e) e.classList.remove('active');
-  });
-  document.getElementById('ks'+n).classList.add('active');
-  _kov.step=n;
-  [1,2,3].forEach(i=>{
-    const d=document.getElementById('kd'+i); if(!d) return;
-    d.className='kf-dot';
-    if(i<n) d.classList.add('done');
-    else if(i===n) d.classList.add('cur');
-  });
-  document.getElementById('kovModal').scrollTop=0;
+function kovGoal(b){
+  _kov.goal=b.dataset.goal;
+  document.querySelectorAll('#kGoalWrap .kf-goal-b').forEach(x=>x.classList.toggle('on',x===b));
 }
 async function kovSubmit(){
   if(_kov.done) return;
+  const email=(document.getElementById('kEmail').value||'').trim();
+  const loc=document.getElementById('kLoc').value;
+  const goal=_kov.goal||'';
+  // require the 3 fields we actually segment on
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !loc || !goal){
+    document.getElementById('kErr').style.display='block'; return;
+  }
+  document.getElementById('kErr').style.display='none';
   const btn=document.getElementById('kovSubmitBtn');
-  btn.textContent='Saving...'; btn.disabled=true;
-  const name=document.getElementById('kName').value.trim()||'Friend';
-  const email=document.getElementById('kEmail').value.trim();
+  btn.textContent='Saving…'; btn.disabled=true;
+  const name=(document.getElementById('kName').value||'').trim()||'Friend';
+  const location = loc==='Other' ? (document.getElementById('kOther').value.trim()||'Other') : loc;
+  const region = (location==='India') ? 'In India' : 'Outside India';
   const payload={
-    name,email,
-    ageGroup:document.getElementById('kAge').value,
-    location:document.getElementById('kLoc').value,
-    locationOther:document.getElementById('kOther').value.trim(),
-    iAmA:_kov.chips.iAm,
-    goingTo:[..._kov.chips.goTo,..._kov.chips.explore],
-    needMost:_kov.chips.need,
-    source:document.getElementById('kSrc').value||'website',
-    subscribed:'Free',
-    timestamp:new Date().toISOString()
+    timestamp:new Date().toISOString(),
+    name, email,
+    location,          // single clean value: India / USA / UK / …
+    region,            // In India / Outside India — for easy segmenting
+    goal,              // Study abroad / Work abroad / Both / Just exploring
+    source:'website popup'
   };
   try{
     await fetch(KOV_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),mode:'no-cors'});
@@ -3463,8 +3449,7 @@ async function kovSubmit(){
   localStorage.setItem('kogos_name',name);
   _kov.done=true;
   document.getElementById('kDoneName').textContent=name.split(' ')[0];
-  [1,2,3].forEach(i=>document.getElementById('kd'+i)?.classList.add('done'));
-  ['ks1','ks2','ks3'].forEach(id=>document.getElementById(id)?.classList.remove('active'));
+  document.getElementById('ks1').classList.remove('active');
   document.getElementById('ksDone').classList.add('active');
 }
 /* ====== END KOGOS SIGNUP SYSTEM ====== */
@@ -3556,138 +3541,53 @@ kovShow();
 <div class="kov-overlay" id="kovOverlay">
   <div class="kov-modal" id="kovModal">
     <button class="kov-x" onclick="kovClose()">✕</button>
-    <div class="kf-prog">
-      <div class="kf-dot cur" id="kd1"></div>
-      <div class="kf-dot" id="kd2"></div>
-      <div class="kf-dot" id="kd3"></div>
-    </div>
 
-    <!-- STEP 1 -->
     <div class="kf-step active" id="ks1">
-      <div class="kov-tag">Join 13,000+ Indians Abroad</div>
-      <div class="kov-title">Quick intro before<br/>you explore</div>
-      <div class="kov-sub">Tell us a little about yourself so we can show you what's actually relevant — not just generic advice.</div>
-      <div class="kf-row2">
-        <div>
-          <label class="kf-label">Your Name</label>
-          <input class="kf-inp" id="kName" type="text" placeholder="Priya / Rahul..."/>
-        </div>
-        <div>
-          <label class="kf-label">Email *</label>
-          <input class="kf-inp" id="kEmail" type="email" placeholder="you@email.com"/>
-        </div>
-      </div>
-      <div class="kf-row2">
-        <div>
-          <label class="kf-label">Age Group</label>
-          <select class="kf-inp" id="kAge" style="cursor:pointer">
-            <option value="">Select...</option>
-            <option>18 - 24</option><option>25 - 30</option>
-            <option>31 - 40</option><option>40+</option>
-          </select>
-        </div>
-        <div>
-          <label class="kf-label">Where are you now?</label>
-          <select class="kf-inp" id="kLoc" onchange="kovToggleLoc()" style="cursor:pointer">
-            <option value="">Select...</option>
-            <option>India</option><option>USA</option><option>Canada</option>
-            <option>Australia</option><option>UAE / Dubai</option><option>UK</option>
-            <option>Europe</option><option>Singapore</option><option>Other</option>
-          </select>
-        </div>
-      </div>
+      <div class="kov-tag">Free guides · weekly opportunities</div>
+      <div class="kov-title">Get opportunities<br/>that actually fit you</div>
+      <div class="kov-sub">Two quick things so we can email you what's relevant — study or work, in your part of the world. No spam, unsubscribe anytime.</div>
+
+      <label class="kf-label">Email *</label>
+      <input class="kf-inp" id="kEmail" type="email" placeholder="you@email.com" required/>
+
+      <label class="kf-label">Your name (optional)</label>
+      <input class="kf-inp" id="kName" type="text" placeholder="Priya / Rahul…"/>
+
+      <label class="kf-label">Where are you based? *</label>
+      <select class="kf-inp" id="kLoc" onchange="kovToggleLoc()" style="cursor:pointer">
+        <option value="">Select your location…</option>
+        <option>India</option>
+        <option>USA</option>
+        <option>Canada</option>
+        <option>UK</option>
+        <option>Europe (other)</option>
+        <option>UAE / Gulf</option>
+        <option>Australia / NZ</option>
+        <option>Singapore</option>
+        <option>Other</option>
+      </select>
       <div id="kOtherWrap" style="display:none">
-        <label class="kf-label">Which country?</label>
-        <input class="kf-inp" id="kOther" type="text" placeholder="Type your country..."/>
+        <input class="kf-inp" id="kOther" type="text" placeholder="Which country are you in?"/>
       </div>
-      <label class="kf-label">I am a... (select all that apply)</label>
-      <div class="kf-chips">
-        <div class="kf-chip" onclick="kovChip(this,'iAm','sel-g')">Student</div>
-        <div class="kf-chip" onclick="kovChip(this,'iAm','sel-g')">Working Professional</div>
-        <div class="kf-chip" onclick="kovChip(this,'iAm','sel-g')">Job Seeker</div>
-        <div class="kf-chip" onclick="kovChip(this,'iAm','sel-g')">Fresher / Recent Graduate</div>
-        <div class="kf-chip" onclick="kovChip(this,'iAm','sel-g')">Entrepreneur</div>
-        <div class="kf-chip" onclick="kovChip(this,'iAm','sel-g')">Just Exploring</div>
+
+      <label class="kf-label">What do you want most? *</label>
+      <div class="kf-goal" id="kGoalWrap">
+        <button type="button" class="kf-goal-b" data-goal="Study abroad" onclick="kovGoal(this)">🎓 Study abroad</button>
+        <button type="button" class="kf-goal-b" data-goal="Work abroad" onclick="kovGoal(this)">💼 Work abroad</button>
+        <button type="button" class="kf-goal-b" data-goal="Both" onclick="kovGoal(this)">✨ Both</button>
+        <button type="button" class="kf-goal-b" data-goal="Just exploring" onclick="kovGoal(this)">👀 Just exploring</button>
       </div>
-      <div class="kf-nav">
-        <button class="kf-next" onclick="kovStep(2)">Next →</button>
-      </div>
+
+      <div class="kf-err" id="kErr" style="display:none">Please add your email, your location, and what you're looking for.</div>
+      <button class="kf-next" id="kovSubmitBtn" onclick="kovSubmit()" style="width:100%">Get my free guides →</button>
       <div class="kf-skip" onclick="kovClose()">Skip — just let me browse</div>
     </div>
 
-    <!-- STEP 2 -->
-    <div class="kf-step" id="ks2">
-      <div class="kov-tag">Step 2 of 3</div>
-      <div class="kov-title">Where do you<br/>want to go?</div>
-      <div class="kov-sub">Select all the destinations you're considering.</div>
-      <label class="kf-label">Looking to go to...</label>
-      <div class="kf-chips">
-        <div class="kf-chip" onclick="kovChip(this,'goTo','sel-t')">🇳🇱 Netherlands</div>
-        <div class="kf-chip" onclick="kovChip(this,'goTo','sel-t')">🇩🇪 Germany</div>
-        <div class="kf-chip" onclick="kovChip(this,'goTo','sel-t')">🇮🇪 Ireland</div>
-        <div class="kf-chip" onclick="kovChip(this,'goTo','sel-t')">🇫🇮 Finland</div>
-        <div class="kf-chip" onclick="kovChip(this,'goTo','sel-t')">🇸🇪 Sweden</div>
-        <div class="kf-chip" onclick="kovChip(this,'goTo','sel-t')">🇩🇰 Denmark</div>
-        <div class="kf-chip" onclick="kovChip(this,'goTo','sel-t')">🇬🇧 UK</div>
-        <div class="kf-chip" onclick="kovChip(this,'goTo','sel-t')">🇺🇸 USA</div>
-        <div class="kf-chip" onclick="kovChip(this,'goTo','sel-t')">🇨🇦 Canada</div>
-        <div class="kf-chip" onclick="kovChip(this,'goTo','sel-t')">🇦🇪 UAE / Dubai</div>
-        <div class="kf-chip" onclick="kovChip(this,'goTo','sel-t')">🇦🇺 Australia</div>
-        <div class="kf-chip" onclick="kovChip(this,'goTo','sel-t')">🇸🇬 Singapore</div>
-        <div class="kf-chip" onclick="kovChip(this,'goTo','sel-t')">🇳🇿 New Zealand</div>
-        <div class="kf-chip" onclick="kovChip(this,'goTo','sel-t')">Not sure yet</div>
-      </div>
-      <label class="kf-label" style="margin-top:8px">I am exploring to...</label>
-      <div class="kf-chips">
-        <div class="kf-chip" onclick="kovChip(this,'explore','sel-g')">Work Abroad</div>
-        <div class="kf-chip" onclick="kovChip(this,'explore','sel-g')">Study Abroad</div>
-        <div class="kf-chip" onclick="kovChip(this,'explore','sel-g')">Switch Jobs in Europe</div>
-        <div class="kf-chip" onclick="kovChip(this,'explore','sel-g')">Escape H-1B Lottery</div>
-        <div class="kf-chip" onclick="kovChip(this,'explore','sel-g')">Get PR / Permanent Stay</div>
-        <div class="kf-chip" onclick="kovChip(this,'explore','sel-g')">Just Researching</div>
-      </div>
-      <div class="kf-nav">
-        <button class="kf-back" onclick="kovStep(1)">← Back</button>
-        <button class="kf-next" onclick="kovStep(3)">Next →</button>
-      </div>
-    </div>
-
-    <!-- STEP 3 -->
-    <div class="kf-step" id="ks3">
-      <div class="kov-tag">Step 3 of 3</div>
-      <div class="kov-title">What do you<br/>need most?</div>
-      <div class="kov-sub">This helps us send you the right guides. Free forever.</div>
-      <label class="kf-label">My biggest need right now</label>
-      <div class="kf-chips">
-        <div class="kf-chip" onclick="kovChip(this,'need','sel-n')">Job / Company Lists</div>
-        <div class="kf-chip" onclick="kovChip(this,'need','sel-n')">Visa Process Help</div>
-        <div class="kf-chip" onclick="kovChip(this,'need','sel-n')">Resume / LinkedIn Review</div>
-        <div class="kf-chip" onclick="kovChip(this,'need','sel-n')">Salary and Negotiation Info</div>
-        <div class="kf-chip" onclick="kovChip(this,'need','sel-n')">Study Abroad Guidance</div>
-        <div class="kf-chip" onclick="kovChip(this,'need','sel-n')">Cold Email Templates</div>
-        <div class="kf-chip" onclick="kovChip(this,'need','sel-n')">Community and Support</div>
-        <div class="kf-chip" onclick="kovChip(this,'need','sel-n')">Just Motivation</div>
-      </div>
-      <label class="kf-label" style="margin-top:8px">How did you find KOGOS?</label>
-      <select class="kf-inp" id="kSrc" style="cursor:pointer">
-        <option value="">Select...</option>
-        <option>Instagram Reel</option><option>YouTube</option>
-        <option>Google Search</option><option>Friend / Referral</option>
-        <option>LinkedIn</option><option>Twitter / X</option>
-        <option>Reddit</option><option>Other</option>
-      </select>
-      <div class="kf-nav">
-        <button class="kf-back" onclick="kovStep(2)">← Back</button>
-        <button class="kf-next" id="kovSubmitBtn" onclick="kovSubmit()">Join Free →</button>
-      </div>
-    </div>
-
-    <!-- SUCCESS -->
     <div class="kf-step" id="ksDone">
       <div class="kf-done">
         <span class="kf-done-icon">🎉</span>
         <h3>You're in, <span id="kDoneName">friend</span>!</h3>
-        <p>Your free guides are ready. Explore the 13 country guides, visa breakdowns, salary data, and cold email templates — all waiting for you right now.</p>
+        <p>Your free guides are ready — country guides, visa breakdowns, salary data, and templates. We'll email you opportunities that fit you.</p>
         <button class="kf-next" onclick="kovClose();go('resources')" style="max-width:320px;margin:0 auto 12px;display:block">Browse Free Guides →</button>
       </div>
     </div>
