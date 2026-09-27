@@ -6,6 +6,29 @@
 <title>KOGOS - Find Your Country. Build Your Life.</title>
 <meta name="description" content="Free country guides, courses and real answers about moving abroad - visas, jobs, salaries and the skills that get you hired.">
 <link rel="canonical" href="https://kogos.co/">
+
+<!-- =========================================================
+     ANALYTICS INTEGRATION POINT  (measurement — ready to switch on)
+     Paste ONE snippet here when ready:
+       • GA4:      your gtag.js snippet (G-XXXXXXXX), or
+       • Plausible:<script defer data-domain="kogos.co" src="https://plausible.io/js/script.js"></script>
+     Events already fire via window.bkvTrack(): booking_started, affiliate_click,
+     youtube_clicked, region_selected, plan_viewed — they flow automatically
+     the moment gtag/dataLayer exists. No other change needed.
+     ========================================================= -->
+<script>
+/* Capture campaign params from reel / auto-DM links
+   (?utm_source=&utm_medium=&utm_campaign=) so attribution is ready the instant
+   you add GA4/Plausible. Nothing is transmitted anywhere yet. */
+(function(){try{
+  var p=new URLSearchParams(location.search), u={};
+  ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){
+    var v=p.get(k); if(v) u[k]=v;
+  });
+  if(Object.keys(u).length) sessionStorage.setItem('kogos_utm', JSON.stringify(u));
+  window.KOGOS_UTM = JSON.parse(sessionStorage.getItem('kogos_utm')||'{}');
+}catch(e){}})();
+</script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="KOGOS">
 <meta property="og:url" content="https://kogos.co/">
@@ -2358,7 +2381,7 @@ select.ff{cursor:pointer}
 
   /* ---- analytics placeholder ---- */
   window.bkvTrack = function(evt, data){
-    data = data || {};
+    data = Object.assign({}, window.KOGOS_UTM||{}, data||{});  // attach campaign attribution
     try{ if(window.gtag) gtag('event', evt, data); }catch(e){}
     try{ if(window.dataLayer) window.dataLayer.push(Object.assign({event:evt}, data)); }catch(e){}
     if(window.console) console.debug('[KOGOS analytics]', evt, data);
