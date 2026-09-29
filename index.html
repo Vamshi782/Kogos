@@ -2120,6 +2120,30 @@ select.ff{cursor:pointer}
       </div>
     </div>
 
+    <!-- ALL-ACCESS VAULT (bundle — best value) -->
+    <div class="sto-vault">
+      <div class="sto-vault-in">
+        <div class="sto-vault-l">
+          <div class="sto-vault-tag">★ Best value · Founding offer</div>
+          <h2 class="sto-vault-h">The All-Access Vault</h2>
+          <p class="sto-vault-p">One price for <b>every KOGOS Blueprint we release</b> — plus the templates and guides that go with them. Buy once, keep everything, including future drops.</p>
+          <ul class="sto-vault-list">
+            <li>EU Pharma Career Blueprint <span>available now</span></li>
+            <li>Every future Blueprint — IT/SAP, Nursing, Data &amp; more <span>added free</span></li>
+            <li>CV, cold-email &amp; LinkedIn templates</li>
+            <li>Lifetime updates — new drops added automatically</li>
+          </ul>
+        </div>
+        <div class="sto-vault-r">
+          <div class="sto-vault-old">$96+ value</div>
+          <div class="sto-vault-now">$39</div>
+          <div class="sto-vault-fnote">Founding price — locks in before launch</div>
+          <button class="btn bg" onclick="kovOpen()">Join the waitlist →</button>
+          <div class="sto-vault-sub">Be first in, at the lowest price it will ever be.</div>
+        </div>
+      </div>
+    </div>
+
     <!-- FEATURED BLUEPRINT BAND -->
     <div class="sto-band">
       <div class="sto-band-l">
@@ -2178,6 +2202,29 @@ select.ff{cursor:pointer}
     .sto-ctas{display:flex;flex-direction:column;gap:10px}
     .sto-card .btn{width:100%;justify-content:center}
     /* featured band */
+    /* All-Access Vault */
+    .sto-vault{margin-top:40px;position:relative;overflow:hidden;border-radius:var(--k-r-xl);
+      background:radial-gradient(600px 300px at 12% 0,rgba(232,176,64,.16),transparent 62%),linear-gradient(180deg,#161206,#0c0a06);
+      border:1px solid rgba(232,176,64,.45);box-shadow:0 0 0 1px rgba(232,176,64,.12),var(--k-shadow-lg)}
+    .sto-vault-in{position:relative;display:grid;grid-template-columns:1.5fr .8fr;gap:40px;align-items:center;padding:42px 40px}
+    @media(max-width:860px){.sto-vault-in{grid-template-columns:1fr;gap:26px;padding:32px 24px}}
+    .sto-vault-tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:1.6px;text-transform:uppercase;
+      font-weight:700;color:var(--k-navy);background:linear-gradient(120deg,var(--k-gold),#f2c766);padding:6px 13px;border-radius:var(--k-r-pill);margin-bottom:16px}
+    .sto-vault-h{font-family:var(--serif);font-size:clamp(28px,3.8vw,44px);font-weight:600;color:#fff;margin:0 0 12px}
+    .sto-vault-p{font-size:14.5px;color:var(--text);line-height:1.7;max-width:560px;margin-bottom:20px}
+    .sto-vault-p b{color:var(--white)}
+    .sto-vault-list{list-style:none;padding:0;margin:0;display:grid;gap:11px}
+    .sto-vault-list li{position:relative;padding-left:26px;font-size:13.5px;color:var(--text);line-height:1.5}
+    .sto-vault-list li::before{content:'\2713';position:absolute;left:0;top:0;color:var(--k-gold);font-weight:700}
+    .sto-vault-list li span{display:inline-block;margin-left:8px;font-family:var(--mono);font-size:9px;letter-spacing:1px;text-transform:uppercase;
+      color:var(--k-green);background:rgba(75,212,162,.1);border:1px solid rgba(75,212,162,.28);border-radius:var(--k-r-pill);padding:2px 7px;vertical-align:middle}
+    .sto-vault-r{text-align:center;background:rgba(0,0,0,.28);border:1px solid rgba(232,176,64,.28);border-radius:var(--k-r-lg);padding:28px 24px}
+    .sto-vault-old{font-family:var(--sans);font-size:14px;color:var(--k-text-muted);text-decoration:line-through;margin-bottom:2px}
+    .sto-vault-now{font-family:var(--serif);font-size:clamp(46px,6vw,64px);font-weight:600;line-height:1;
+      background:linear-gradient(120deg,var(--k-gold),#f2c766);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+    .sto-vault-fnote{font-size:11px;color:var(--k-text-muted);margin:8px 0 18px}
+    .sto-vault-r .btn{width:100%;justify-content:center}
+    .sto-vault-sub{font-size:11px;color:var(--k-text-muted);margin-top:12px}
     .sto-band{margin-top:40px;display:grid;grid-template-columns:1.35fr .65fr;gap:36px;align-items:center;
       background:radial-gradient(700px 300px at 85% 0,rgba(24,170,200,.12),transparent 60%),linear-gradient(180deg,var(--s2),var(--s1));
       border:1px solid var(--k-border-2);border-radius:var(--k-r-xl);padding:40px 38px;overflow:hidden}
@@ -3822,14 +3869,23 @@ window.addEventListener('scroll',()=>{
 function handleEmail(ev,sid){
   ev.preventDefault();
   const f=ev.target, em=f.querySelector('input[type="email"]').value;
+  const srcMap={es1:'home footer',es2:'guides page',esOpp:'opportunities page'};
+  const source='quick signup · '+(srcMap[sid]||sid||'website');
+  // 1) notify the inbox via Formspree
   fetch('https://formspree.io/f/mwvgwrvy',{
-    method:'POST',body:JSON.stringify({email:em,src:'kogos'}),
+    method:'POST',body:JSON.stringify({email:em,src:source}),
     headers:{'Content-Type':'application/json','Accept':'application/json'}
-  }).catch(()=>{}).finally(()=>{
-    const el=document.getElementById(sid);
-    if(el)el.style.display='block';
-    f.reset();
-  });
+  }).catch(()=>{});
+  // 2) ALSO store in the one Google Sheet ("Signups" tab) — single source of truth.
+  //    Email-only rows land with blank segment columns; if they later fill the
+  //    full popup, the Apps Script upserts by email and enriches the same row.
+  try{
+    fetch(KOV_URL,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({timestamp:new Date().toISOString(),email:em,source:source}),mode:'no-cors'});
+  }catch(e){}
+  const el=document.getElementById(sid);
+  if(el)el.style.display='block';
+  f.reset();
 }
 async function handleForm(ev,sid,formId){
   ev.preventDefault();
