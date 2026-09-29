@@ -1351,6 +1351,58 @@ select.ff{cursor:pointer}
     </div>
   </section>
 
+  <section class="opt-teaser">
+    <div class="w">
+      <div class="opt-inner">
+        <div class="opt-copy">
+          <div class="ey" style="color:var(--k-teal)">Handpicked · Updated regularly</div>
+          <h2>Real opportunities,<br/>waiting for you</h2>
+          <p class="lead">Live scholarships, fully-funded PhDs, work-visa routes and job platforms — every one linking straight to the official source. No fluff, no dead links. Just the doors that are actually open right now.</p>
+          <div class="opt-pills">
+            <button class="opt-pill" onclick="go('opportunities')">🎓 Scholarships</button>
+            <button class="opt-pill" onclick="go('opportunities')">🔬 PhD &amp; Research</button>
+            <button class="opt-pill" onclick="go('opportunities')">💼 Work Visas</button>
+            <button class="opt-pill" onclick="go('opportunities')">🌐 Job Platforms</button>
+          </div>
+          <button class="btn bg btn-sig" onclick="go('opportunities')">Browse live opportunities</button>
+        </div>
+        <div class="opt-stat">
+          <div class="opt-stat-num">20+</div>
+          <div class="opt-stat-lab">live listings</div>
+          <div class="opt-stat-line"></div>
+          <div class="opt-stat-sub">Chevening · DAAD · Erasmus Mundus · Fulbright · EU Blue Card · Express Entry &amp; more</div>
+        </div>
+      </div>
+    </div>
+    <style>
+    .opt-teaser{padding:88px 0;position:relative;overflow:hidden;
+      background:radial-gradient(1100px 460px at 82% -10%,rgba(24,170,200,.12),transparent 60%),
+                 radial-gradient(900px 400px at 5% 110%,rgba(232,176,64,.10),transparent 60%),
+                 linear-gradient(180deg,var(--bg),var(--s1))}
+    .opt-inner{display:grid;grid-template-columns:1.5fr .9fr;gap:44px;align-items:center}
+    .opt-copy h2{margin:14px 0 18px}
+    .opt-copy .lead{margin-bottom:26px;max-width:560px}
+    .opt-pills{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:28px}
+    .opt-pill{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--white);
+      background:var(--s2);border:1px solid var(--k-border-2);border-radius:var(--k-r-pill);
+      padding:9px 16px;cursor:pointer;
+      transition:border-color var(--k-dur) var(--k-ease),background var(--k-dur) var(--k-ease),transform var(--k-dur) var(--k-ease)}
+    .opt-pill:hover{border-color:var(--k-teal);background:rgba(24,170,200,.08);transform:translateY(-2px)}
+    .opt-stat{position:relative;text-align:center;padding:40px 30px;
+      background:linear-gradient(180deg,var(--s2),var(--s1));border:1px solid var(--k-border-2);
+      border-radius:var(--k-r-xl);box-shadow:var(--k-shadow-md)}
+    .opt-stat-num{font-family:var(--serif);font-size:clamp(56px,7vw,84px);font-weight:600;line-height:1;
+      background:linear-gradient(120deg,var(--k-gold),var(--k-teal));-webkit-background-clip:text;background-clip:text;
+      -webkit-text-fill-color:transparent;color:transparent}
+    .opt-stat-lab{font-family:var(--mono);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;
+      color:var(--k-text-muted);margin-top:10px}
+    .opt-stat-line{height:1px;background:var(--k-border-2);margin:22px auto;max-width:180px}
+    .opt-stat-sub{font-size:12px;color:var(--text);line-height:1.7}
+    @media(max-width:860px){.opt-inner{grid-template-columns:1fr;gap:32px}
+      .opt-stat{order:-1}.opt-copy h2 br{display:none}}
+    </style>
+  </section>
+
   <section class="cs" id="cgsec">
     <div class="w">
       <div class="ey" style="color:var(--teal)">Where Will You Go?</div>
