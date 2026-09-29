@@ -2101,7 +2101,7 @@ select.ff{cursor:pointer}
         </ul>
         <div class="sto-ctas">
           <button class="btn bg" onclick="go('resources')">Browse free guides →</button>
-          <button class="btn bo" onclick="kovOpen()">Blueprint — join the waitlist</button>
+          <button class="btn bo" onclick="document.getElementById('blueprints').scrollIntoView({behavior:'smooth'})">See premium Blueprints ↓</button>
         </div>
       </div>
 
@@ -2128,48 +2128,70 @@ select.ff{cursor:pointer}
           <h2 class="sto-vault-h">The All-Access Vault</h2>
           <p class="sto-vault-p">One price for <b>every KOGOS Blueprint we release</b> — plus the templates and guides that go with them. Buy once, keep everything, including future drops.</p>
           <ul class="sto-vault-list">
-            <li>EU Pharma Career Blueprint <span>available now</span></li>
-            <li>Every future Blueprint — IT/SAP, Nursing, Data &amp; more <span>added free</span></li>
+            <li>All 3 Blueprints: IT &amp; SAP, Pharma, Nursing <span>available now</span></li>
+            <li>Every future Blueprint (Data, Study Abroad &amp; more) <span>added free</span></li>
             <li>CV, cold-email &amp; LinkedIn templates</li>
-            <li>Lifetime updates — new drops added automatically</li>
+            <li>Lifetime updates, new drops added automatically</li>
           </ul>
         </div>
         <div class="sto-vault-r">
-          <div class="sto-vault-old">$96+ value</div>
-          <div class="sto-vault-now">$39</div>
-          <div class="sto-vault-fnote">Founding price — locks in before launch</div>
+          <div class="sto-vault-old">$14 separately</div>
+          <div class="sto-vault-now">$10</div>
+          <div class="sto-vault-fnote">Founding bundle price, locks in before launch</div>
           <button class="btn bg" onclick="kovOpen()">Join the waitlist →</button>
           <div class="sto-vault-sub">Be first in, at the lowest price it will ever be.</div>
         </div>
       </div>
     </div>
 
-    <!-- FEATURED BLUEPRINT BAND -->
-    <div class="sto-band">
-      <div class="sto-band-l">
-        <div class="ey" style="color:var(--k-teal)">Featured product</div>
-        <h2 class="sto-band-h">EU Pharma Career Blueprint</h2>
-        <p class="sto-band-p">The complete playbook for pharma &amp; life-sciences professionals targeting Europe — built from real research, not recycled advice.</p>
-        <ul class="sto-blue-list">
-          <li>✅ 50+ real hiring companies (Big Pharma, biotech, CROs, staffing)</li>
-          <li>✅ 6-country visa map &amp; realistic timelines</li>
-          <li>✅ European CV rules + LinkedIn formulas that get replies</li>
-          <li>✅ Free certifications + cold-email templates that work</li>
-          <li>✅ 6-step roadmap and the Masters route with universities</li>
-        </ul>
-        <div class="sto-band-cta">
-          <button class="btn bg" onclick="kovOpen()">Join the waitlist →</button>
-          <span class="sto-band-note">Launching soon · be first to get it</span>
+    <!-- PREMIUM BLUEPRINTS (live on Topmate) -->
+    <div class="sto-blueprints" id="blueprints">
+      <div class="ey" style="color:var(--k-teal);text-align:center">Premium Blueprints · instant download</div>
+      <h2 class="sto-bp-h">Pick your path abroad</h2>
+      <p class="sto-bp-sub">Step-by-step playbooks built from real research, with salary charts, company lists, visa routes and templates. One-time payment, lifetime access, delivered securely on Topmate.</p>
+      <div class="sto-bp-grid">
+        <div class="sto-bp">
+          <div class="sto-bp-top"><span class="sto-bp-ico">💻</span><span class="sto-bp-disc">20% off · first 20<br>code CAREER20</span></div>
+          <div class="sto-bp-title">Europe IT &amp; SAP</div>
+          <div class="sto-bp-for">For software, data, cloud &amp; SAP professionals escaping the H-1B lottery.</div>
+          <div class="sto-bp-price">$5</div>
+          <a class="btn bg" href="https://topmate.io/vamshi_krishna782/2323600?utm_source=kogos_store" target="_blank" rel="noopener" onclick="window.bkvTrack&amp;&amp;bkvTrack('blueprint_buy',{bp:'it_sap'})">Get the Blueprint →</a>
+        </div>
+        <div class="sto-bp">
+          <div class="sto-bp-top"><span class="sto-bp-ico">💊</span><span class="sto-bp-disc">25% off · first 25<br>code CAREER25</span></div>
+          <div class="sto-bp-title">Europe Pharma</div>
+          <div class="sto-bp-for">For pharmacy, MBBS &amp; life-sciences grads. The same role, up to 6x the pay.</div>
+          <div class="sto-bp-price">$5</div>
+          <a class="btn bg" href="https://topmate.io/vamshi_krishna782/2323564?utm_source=kogos_store" target="_blank" rel="noopener" onclick="window.bkvTrack&amp;&amp;bkvTrack('blueprint_buy',{bp:'pharma'})">Get the Blueprint →</a>
+        </div>
+        <div class="sto-bp sto-bp-feat">
+          <div class="sto-bp-top"><span class="sto-bp-ico">🩺</span><span class="sto-bp-disc">30% off<br>first 30 buyers</span></div>
+          <div class="sto-bp-title">Global Nursing</div>
+          <div class="sto-bp-for">For B.Sc &amp; GNM nurses heading to the UK, Gulf, Germany, Australia or Canada.</div>
+          <div class="sto-bp-price">$4</div>
+          <a class="btn bg" href="https://topmate.io/vamshi_krishna782/2323609?utm_source=kogos_store" target="_blank" rel="noopener" onclick="window.bkvTrack&amp;&amp;bkvTrack('blueprint_buy',{bp:'nursing'})">Get the Blueprint →</a>
         </div>
       </div>
-      <div class="sto-band-r">
-        <div class="sto-mock">
-          <div class="sto-mock-k">KOGOS</div>
-          <div class="sto-mock-t">EU Pharma<br/>Career Blueprint</div>
-          <div class="sto-mock-y">2026 Edition</div>
-        </div>
-      </div>
+      <p class="sto-bp-note">Prices in USD; Topmate shows your local currency (including ₹ for India) at checkout. Enter the code at checkout to claim the launch discount while it lasts.</p>
     </div>
+    <style>
+    .sto-blueprints{margin-top:44px}
+    .sto-bp-h{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);font-weight:600;color:var(--white);text-align:center;margin:8px 0 6px}
+    .sto-bp-sub{text-align:center;font-size:13.5px;color:var(--text);max-width:600px;margin:0 auto 28px;line-height:1.6}
+    .sto-bp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media(max-width:900px){.sto-bp-grid{grid-template-columns:1fr}}
+    .sto-bp{display:flex;flex-direction:column;background:linear-gradient(180deg,var(--s2),var(--s1));border:1px solid var(--k-border-2);border-radius:var(--k-r-lg);padding:24px 22px;transition:transform var(--k-dur) var(--k-ease-emph),box-shadow var(--k-dur) var(--k-ease),border-color var(--k-dur) var(--k-ease)}
+    .sto-bp:hover{transform:translateY(-4px);box-shadow:var(--k-shadow-md),0 0 0 1px rgba(232,176,64,.3);border-color:transparent}
+    .sto-bp-feat{border-color:rgba(232,176,64,.4);box-shadow:0 0 0 1px rgba(232,176,64,.16)}
+    .sto-bp-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:12px}
+    .sto-bp-ico{font-size:30px;line-height:1}
+    .sto-bp-disc{font-family:var(--mono);font-size:8.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--k-green);background:rgba(75,212,162,.1);border:1px solid rgba(75,212,162,.3);border-radius:10px;padding:5px 9px;text-align:right;line-height:1.45}
+    .sto-bp-title{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--white);margin-bottom:5px}
+    .sto-bp-for{font-size:12.5px;color:var(--text);line-height:1.55;margin-bottom:16px;flex:1}
+    .sto-bp-price{font-family:var(--serif);font-size:34px;font-weight:600;background:linear-gradient(120deg,var(--k-gold),#f2c766);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin-bottom:14px}
+    .sto-bp .btn{width:100%;justify-content:center}
+    .sto-bp-note{text-align:center;font-size:11.5px;color:var(--k-text-muted);margin-top:18px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6}
+    </style>
 
     <!-- PROOF -->
     <div class="sto-proof">
