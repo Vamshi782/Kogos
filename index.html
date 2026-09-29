@@ -7,6 +7,12 @@
 <meta name="description" content="Free country guides, courses and real answers about moving abroad - visas, jobs, salaries and the skills that get you hired.">
 <link rel="canonical" href="https://kogos.co/">
 
+<!-- Favicon / app icons (circled-K brand mark) -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#05060a">
+
 <!-- =========================================================
      ANALYTICS INTEGRATION POINT  (measurement — ready to switch on)
      Paste ONE snippet here when ready:
@@ -3747,6 +3753,65 @@ kovShow();
   });
 })();
 </script>
+  <!-- FLOATING PROMO — scroll-triggered revenue CTA (dismissible, session-remembered) -->
+  <div class="fpc" id="fpc" role="dialog" aria-label="Book a call with Vamshi">
+    <button class="fpc-x" onclick="fpcDismiss()" aria-label="Dismiss">✕</button>
+    <img class="fpc-av" src="favicon.svg" alt="KOGOS"/>
+    <div class="fpc-body">
+      <div class="fpc-t">Talk to Vamshi, 1:1</div>
+      <div class="fpc-s">15–30 min of honest, personal direction on your move abroad — study or work.</div>
+      <a class="fpc-btn" href="#book" onclick="fpcGo(event)">Book a call →</a>
+    </div>
+  </div>
+  <style>
+  .fpc{position:fixed;right:20px;bottom:20px;z-index:var(--k-z-overlay);width:326px;max-width:calc(100vw - 32px);
+    display:flex;gap:13px;padding:16px 16px 16px 14px;
+    background:linear-gradient(180deg,var(--s2),var(--s1));border:1px solid var(--k-border-2);
+    border-radius:var(--k-r-lg);box-shadow:var(--k-shadow-lg);
+    transform:translateY(150%);opacity:0;pointer-events:none;
+    transition:transform .55s var(--k-ease-emph),opacity .4s var(--k-ease)}
+  .fpc.show{transform:none;opacity:1;pointer-events:auto}
+  .fpc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:var(--k-r-lg) 0 0 var(--k-r-lg);
+    background:linear-gradient(180deg,var(--k-gold),var(--k-teal))}
+  .fpc-x{position:absolute;top:7px;right:10px;background:none;border:none;color:var(--k-text-muted);
+    font-size:14px;cursor:pointer;line-height:1;padding:2px}
+  .fpc-x:hover{color:var(--white)}
+  .fpc-av{width:46px;height:46px;border-radius:50%;flex-shrink:0;border:1px solid var(--k-border-2);
+    background:var(--k-navy);padding:3px}
+  .fpc-t{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--white);margin-bottom:3px}
+  .fpc-s{font-size:11.8px;color:var(--text);line-height:1.5;margin-bottom:11px}
+  .fpc-btn{display:inline-block;font-family:var(--sans);font-size:12.5px;font-weight:700;color:var(--k-navy);
+    background:linear-gradient(120deg,var(--k-gold),#f2c766);border-radius:var(--k-r-pill);
+    padding:8px 17px;text-decoration:none;transition:filter .2s var(--k-ease),transform .2s var(--k-ease)}
+  .fpc-btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+  @media(max-width:560px){.fpc{right:10px;left:10px;bottom:10px;width:auto}}
+  @media(prefers-reduced-motion:reduce){.fpc{transition:opacity .3s}.fpc:not(.show){transform:none}}
+  </style>
+  <script>
+  /* Floating promo: appears after the visitor scrolls in, on every page except
+     the booking page; hidden while the signup modal is open; dismiss = quiet for the session. */
+  (function(){
+    var fpc=document.getElementById('fpc'); if(!fpc) return;
+    var dismissed=false;
+    try{ dismissed = sessionStorage.getItem('kogos_fpc')==='1'; }catch(e){}
+    function page(){ return (location.hash||'#home').slice(1)||'home'; }
+    function maybeShow(){
+      if(dismissed){ fpc.classList.remove('show'); return; }
+      var ov=document.getElementById('kovOverlay');
+      var modalOpen = ov && ov.classList.contains('show');
+      if(page()==='book' || modalOpen){ fpc.classList.remove('show'); return; }
+      fpc.classList.toggle('show', window.scrollY>520);
+    }
+    window.fpcDismiss=function(){ dismissed=true; try{sessionStorage.setItem('kogos_fpc','1')}catch(e){} fpc.classList.remove('show'); };
+    window.fpcGo=function(e){ e.preventDefault();
+      try{ window.bkvTrack && bkvTrack('booking_started',{source:'floating_promo'}); }catch(_){}
+      fpc.classList.remove('show'); go('book'); };
+    window.addEventListener('scroll',maybeShow,{passive:true});
+    document.addEventListener('kogospage',maybeShow);
+    setTimeout(maybeShow,1400);
+  })();
+  </script>
+
   <!-- KOGOS SIGNUP MODAL — paste just before </body> -->
 <div class="kov-overlay" id="kovOverlay">
   <div class="kov-modal" id="kovModal">
