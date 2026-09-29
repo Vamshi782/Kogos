@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "kogos-attach",
+      "url": "http://localhost:4321"
+    },
+    {
+      "name": "sravya-app",
+      "runtimeExecutable": "/usr/bin/python3",
+      "runtimeArgs": [
+        "/private/tmp/claude-501/-Users-vamshi-k-Desktop-Kogos/867c1b3c-841a-470c-8c8f-f2a56c61be45/scratchpad/serve.py"
+      ],
+      "port": 8899
+    }
+  ]
+}
