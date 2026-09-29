@@ -1521,6 +1521,79 @@ select.ff{cursor:pointer}
     </div>
   </section>
 
+  <!-- ============ TESTIMONIALS WALL (auto-scroll when 3+ real reviews) ============ -->
+  <section class="tw-sec">
+    <div class="w">
+      <div class="tw-head">
+        <div class="ey" style="color:var(--k-gold)">Real people, real clarity</div>
+        <h2>What the community says</h2>
+        <p class="lead">Honest, researched guidance — not recycled advice. Here's what people take away after talking with Vamshi.</p>
+      </div>
+    </div>
+    <div class="tw-wrap" id="twWrap">
+      <div class="tw-track" id="twTrack"></div>
+    </div>
+    <style>
+    .tw-sec{padding:82px 0 20px;background:linear-gradient(180deg,#080a12,var(--bg))}
+    .tw-head{text-align:center;max-width:660px;margin:0 auto 40px}
+    .tw-head .lead{margin:14px auto 0}
+    .tw-wrap{position:relative;overflow:hidden;padding:6px 0 2px;
+      -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+      mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+    .tw-track{display:flex;gap:18px;width:max-content;padding:0 18px}
+    .tw-track.tw-anim{animation:twscroll 46s linear infinite}
+    .tw-track.tw-static{width:auto;justify-content:center;flex-wrap:wrap;padding:0 5%}
+    .tw-wrap:hover .tw-track.tw-anim{animation-play-state:paused}
+    @keyframes twscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .tw-card{flex:0 0 auto;width:360px;max-width:86vw;background:linear-gradient(180deg,var(--s2),var(--s1));
+      border:1px solid var(--k-border-2);border-radius:var(--k-r-lg);padding:26px 26px 22px;position:relative;
+      display:flex;flex-direction:column}
+    .tw-card::before{content:'\201C';position:absolute;top:6px;left:18px;font-family:var(--serif);
+      font-size:64px;line-height:1;color:rgba(232,176,64,.18)}
+    .tw-q{position:relative;font-size:14px;color:var(--text);line-height:1.7;margin:10px 0 18px;flex:1}
+    .tw-by{display:flex;align-items:center;gap:12px}
+    .tw-av{width:42px;height:42px;border-radius:50%;flex-shrink:0;background:var(--k-navy);
+      border:1px solid var(--k-border-2);object-fit:cover;display:flex;align-items:center;justify-content:center;
+      font-family:var(--serif);font-weight:600;color:var(--k-gold);font-size:17px}
+    .tw-name{font-family:var(--sans);font-size:13.5px;font-weight:700;color:var(--white);line-height:1.2}
+    .tw-meta{font-size:11.5px;color:var(--k-text-muted);margin-top:2px}
+    .tw-badge{margin-left:auto;font-family:var(--mono);font-size:8.5px;letter-spacing:1px;text-transform:uppercase;
+      color:var(--k-green);background:rgba(75,212,162,.1);border:1px solid rgba(75,212,162,.28);
+      border-radius:var(--k-r-pill);padding:4px 8px;white-space:nowrap}
+    @media(prefers-reduced-motion:reduce){.tw-track.tw-anim{animation:none;flex-wrap:wrap;width:auto;justify-content:center}}
+    </style>
+    <script>
+    /* Testimonials wall. Add real reviews to REVIEWS (one object each).
+       With 3+ reviews it auto-scrolls as a seamless marquee; with fewer it
+       shows them centered and static. NEVER put fabricated reviews here. */
+    (function(){
+      var track=document.getElementById('twTrack'); if(!track) return;
+      var REVIEWS=[
+        { q:"I had a great conversation with Vamshi about opportunities to work and build a career in the EU. He has excellent knowledge of different European countries and gave practical, honest guidance on where to start, how to approach the job search, and visa considerations — it gave me real clarity and a clear starting point for my EU job search. Highly recommended.",
+          name:"Vamshi A.", meta:"16 yrs in the US · in tech, planning an EU move", tag:"Verified review" }
+        /* Paste more REAL reviews here, e.g.:
+        ,{ q:"...their actual words...", name:"Priya S.", meta:"Hyderabad → Germany", tag:"Instagram DM" }
+        */
+      ];
+      function card(r){
+        var initial=(r.name||'?').trim().charAt(0).toUpperCase();
+        var av = r.photo ? '<img class="tw-av" src="'+r.photo+'" alt="'+r.name+'">' : '<span class="tw-av">'+initial+'</span>';
+        return '<div class="tw-card"><p class="tw-q">'+r.q+'</p><div class="tw-by">'+av+
+          '<div><div class="tw-name">'+r.name+'</div><div class="tw-meta">'+(r.meta||'')+'</div></div>'+
+          (r.tag?'<span class="tw-badge">'+r.tag+'</span>':'')+'</div></div>';
+      }
+      if(REVIEWS.length>=3){
+        // duplicate the set so the marquee loops seamlessly (translateX -50%)
+        track.innerHTML = (REVIEWS.map(card).join('')) + (REVIEWS.map(card).join(''));
+        track.classList.add('tw-anim');
+      } else {
+        track.innerHTML = REVIEWS.map(card).join('');
+        track.classList.add('tw-static');
+      }
+    })();
+    </script>
+  </section>
+
   <section class="soc">
     <div class="w">
       <div class="soc-head">
