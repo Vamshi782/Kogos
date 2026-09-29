@@ -1009,7 +1009,7 @@ select.ff{cursor:pointer}
         <button class="btn bg btn-sig" onclick="document.getElementById('cgsec').scrollIntoView({behavior:'smooth'})">Explore Countries</button>
         <button class="btn bo" onclick="go('resources')">Browse Free Guides</button>
       </div>
-      <div class="htrust"><span class="hstars">★★★★★</span> Trusted by a <b>32,000+</b> community · study &amp; work abroad</div>
+      <div class="htrust"><span class="hstars">★★★★★</span> Trusted by a <b>43,700+</b> community · study &amp; work abroad</div>
     </div>
   </section>
 
@@ -1198,6 +1198,89 @@ select.ff{cursor:pointer}
   })();
   </script>
 
+
+  <!-- ============ TESTIMONIALS WALL (auto-scroll when 3+ real reviews) ============ -->
+  <section class="tw-sec">
+    <div class="w">
+      <div class="tw-head">
+        <div class="ey" style="color:var(--k-gold)">Real people, real clarity</div>
+        <h2>What the community says</h2>
+        <p class="lead">Honest, researched guidance — not recycled advice. Here's what people take away after talking with Vamshi.</p>
+      </div>
+    </div>
+    <div class="tw-wrap" id="twWrap">
+      <div class="tw-track" id="twTrack"></div>
+    </div>
+    <style>
+    .tw-sec{padding:82px 0 20px;background:linear-gradient(180deg,#080a12,var(--bg))}
+    .tw-head{text-align:center;max-width:660px;margin:0 auto 40px}
+    .tw-head .lead{margin:14px auto 0}
+    .tw-wrap{position:relative;overflow:hidden;padding:6px 0 2px;
+      -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+      mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+    .tw-track{display:flex;gap:18px;width:max-content;padding:0 18px}
+    .tw-track.tw-anim{animation:twscroll 46s linear infinite}
+    .tw-track.tw-static{width:auto;justify-content:center;flex-wrap:wrap;padding:0 5%}
+    .tw-wrap:hover .tw-track.tw-anim{animation-play-state:paused}
+    @keyframes twscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .tw-card{flex:0 0 auto;width:360px;max-width:86vw;background:linear-gradient(180deg,var(--s2),var(--s1));
+      border:1px solid var(--k-border-2);border-radius:var(--k-r-lg);padding:26px 26px 22px;position:relative;
+      display:flex;flex-direction:column}
+    .tw-card::before{content:'\201C';position:absolute;top:6px;left:18px;font-family:var(--serif);
+      font-size:64px;line-height:1;color:rgba(232,176,64,.18)}
+    .tw-stars{position:relative;color:var(--k-gold);font-size:13px;letter-spacing:3px;margin:2px 0 2px}
+    .tw-stars .tw-star-d{color:rgba(255,255,255,.18)}
+    .tw-q{position:relative;font-size:14px;color:var(--text);line-height:1.7;margin:10px 0 18px;flex:1}
+    .tw-by{display:flex;align-items:center;gap:12px}
+    .tw-av{width:42px;height:42px;border-radius:50%;flex-shrink:0;background:var(--k-navy);
+      border:1px solid var(--k-border-2);object-fit:cover;display:flex;align-items:center;justify-content:center;
+      font-family:var(--serif);font-weight:600;color:var(--k-gold);font-size:17px}
+    .tw-name{font-family:var(--sans);font-size:13.5px;font-weight:700;color:var(--white);line-height:1.2}
+    .tw-meta{font-size:11.5px;color:var(--k-text-muted);margin-top:2px}
+    .tw-badge{margin-left:auto;font-family:var(--mono);font-size:8.5px;letter-spacing:1px;text-transform:uppercase;
+      color:var(--k-green);background:rgba(75,212,162,.1);border:1px solid rgba(75,212,162,.28);
+      border-radius:var(--k-r-pill);padding:4px 8px;white-space:nowrap}
+    @media(prefers-reduced-motion:reduce){.tw-track.tw-anim{animation:none;flex-wrap:wrap;width:auto;justify-content:center}}
+    </style>
+    <script>
+    /* Testimonials wall. Add real reviews to REVIEWS (one object each).
+       With 3+ reviews it auto-scrolls as a seamless marquee; with fewer it
+       shows them centered and static. NEVER put fabricated reviews here. */
+    (function(){
+      var track=document.getElementById('twTrack'); if(!track) return;
+      var REVIEWS=[
+        { q:"I was confused about which country made sense for my profile — too much information, no clarity. Vamshi broke it down by my background, budget and long-term plans, and by the end I knew which countries to focus on and which to skip. Practical and realistic — not someone selling a dream.",
+          name:"Priya Mehta", meta:"Country selection & career clarity", stars:5, tag:"1:1 call" },
+        { q:"With around 15 years' experience in India, my worry was starting over abroad without wasting it. Vamshi organized Australia into smaller steps — positioning, skills, job-market research and networking. I came in with 20 questions and left with a much clearer roadmap.",
+          name:"Harshita Kokde", meta:"~15 yrs experience · Australia pathway", stars:5, tag:"1:1 call" },
+        { q:"Most of what I found online about pharma in Europe was very generic. Vamshi showed me how to research opportunities country by country, shortlist companies and position my experience — and he didn't promise a job or visa. That clarity alone saved me a lot of time.",
+          name:"Sneha Rao", meta:"Pharma opportunities in Europe", stars:4, tag:"1:1 call" },
+        { q:"As a fresher I genuinely didn't know where to start — hundreds of internships and jobs, no strategy. We went through what to focus on first, how to improve my profile and how to find opportunities that match my background. Simple advice, but finally everything felt organized.",
+          name:"Abhishek Thakur", meta:"Fresher · internships & jobs abroad", stars:5, tag:"1:1 call" },
+        { q:"I started with one of Vamshi's paid guides before booking a call. I expected a generic PDF, but it gave me a structured starting point — where to search and what to research before choosing a country. It helped me prepare, and I eventually booked a call too.",
+          name:"Rohan Verma", meta:"Paid guide → 1:1 call", stars:5, tag:"Paid guide" },
+        { q:"I had a great conversation with Vamshi about opportunities to work and build a career in the EU. He has excellent knowledge of different European countries and gave practical, honest guidance on where to start, how to approach the job search, and visa considerations — it gave me real clarity and a clear starting point. Highly recommended.",
+          name:"Vamshi A.", meta:"16 yrs in the US · in tech, planning an EU move", stars:5, tag:"Verified review" }
+      ];
+      function stars(n){ n=n||5; var s=''; for(var i=0;i<5;i++){ s+= (i<n?'<span>★</span>':'<span class="tw-star-d">★</span>'); } return '<div class="tw-stars">'+s+'</div>'; }
+      function card(r){
+        var initial=(r.name||'?').trim().charAt(0).toUpperCase();
+        var av = r.photo ? '<img class="tw-av" src="'+r.photo+'" alt="'+r.name+'">' : '<span class="tw-av">'+initial+'</span>';
+        return '<div class="tw-card">'+stars(r.stars)+'<p class="tw-q">'+r.q+'</p><div class="tw-by">'+av+
+          '<div><div class="tw-name">'+r.name+'</div><div class="tw-meta">'+(r.meta||'')+'</div></div>'+
+          (r.tag?'<span class="tw-badge">'+r.tag+'</span>':'')+'</div></div>';
+      }
+      if(REVIEWS.length>=3){
+        // duplicate the set so the marquee loops seamlessly (translateX -50%)
+        track.innerHTML = (REVIEWS.map(card).join('')) + (REVIEWS.map(card).join(''));
+        track.classList.add('tw-anim');
+      } else {
+        track.innerHTML = REVIEWS.map(card).join('');
+        track.classList.add('tw-static');
+      }
+    })();
+    </script>
+  </section>
 
   <section class="jp-sec lightsec" id="start">
     <div class="w">
@@ -1536,88 +1619,6 @@ select.ff{cursor:pointer}
     </div>
   </section>
 
-  <!-- ============ TESTIMONIALS WALL (auto-scroll when 3+ real reviews) ============ -->
-  <section class="tw-sec">
-    <div class="w">
-      <div class="tw-head">
-        <div class="ey" style="color:var(--k-gold)">Real people, real clarity</div>
-        <h2>What the community says</h2>
-        <p class="lead">Honest, researched guidance — not recycled advice. Here's what people take away after talking with Vamshi.</p>
-      </div>
-    </div>
-    <div class="tw-wrap" id="twWrap">
-      <div class="tw-track" id="twTrack"></div>
-    </div>
-    <style>
-    .tw-sec{padding:82px 0 20px;background:linear-gradient(180deg,#080a12,var(--bg))}
-    .tw-head{text-align:center;max-width:660px;margin:0 auto 40px}
-    .tw-head .lead{margin:14px auto 0}
-    .tw-wrap{position:relative;overflow:hidden;padding:6px 0 2px;
-      -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
-      mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-    .tw-track{display:flex;gap:18px;width:max-content;padding:0 18px}
-    .tw-track.tw-anim{animation:twscroll 46s linear infinite}
-    .tw-track.tw-static{width:auto;justify-content:center;flex-wrap:wrap;padding:0 5%}
-    .tw-wrap:hover .tw-track.tw-anim{animation-play-state:paused}
-    @keyframes twscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .tw-card{flex:0 0 auto;width:360px;max-width:86vw;background:linear-gradient(180deg,var(--s2),var(--s1));
-      border:1px solid var(--k-border-2);border-radius:var(--k-r-lg);padding:26px 26px 22px;position:relative;
-      display:flex;flex-direction:column}
-    .tw-card::before{content:'\201C';position:absolute;top:6px;left:18px;font-family:var(--serif);
-      font-size:64px;line-height:1;color:rgba(232,176,64,.18)}
-    .tw-stars{position:relative;color:var(--k-gold);font-size:13px;letter-spacing:3px;margin:2px 0 2px}
-    .tw-stars .tw-star-d{color:rgba(255,255,255,.18)}
-    .tw-q{position:relative;font-size:14px;color:var(--text);line-height:1.7;margin:10px 0 18px;flex:1}
-    .tw-by{display:flex;align-items:center;gap:12px}
-    .tw-av{width:42px;height:42px;border-radius:50%;flex-shrink:0;background:var(--k-navy);
-      border:1px solid var(--k-border-2);object-fit:cover;display:flex;align-items:center;justify-content:center;
-      font-family:var(--serif);font-weight:600;color:var(--k-gold);font-size:17px}
-    .tw-name{font-family:var(--sans);font-size:13.5px;font-weight:700;color:var(--white);line-height:1.2}
-    .tw-meta{font-size:11.5px;color:var(--k-text-muted);margin-top:2px}
-    .tw-badge{margin-left:auto;font-family:var(--mono);font-size:8.5px;letter-spacing:1px;text-transform:uppercase;
-      color:var(--k-green);background:rgba(75,212,162,.1);border:1px solid rgba(75,212,162,.28);
-      border-radius:var(--k-r-pill);padding:4px 8px;white-space:nowrap}
-    @media(prefers-reduced-motion:reduce){.tw-track.tw-anim{animation:none;flex-wrap:wrap;width:auto;justify-content:center}}
-    </style>
-    <script>
-    /* Testimonials wall. Add real reviews to REVIEWS (one object each).
-       With 3+ reviews it auto-scrolls as a seamless marquee; with fewer it
-       shows them centered and static. NEVER put fabricated reviews here. */
-    (function(){
-      var track=document.getElementById('twTrack'); if(!track) return;
-      var REVIEWS=[
-        { q:"I was confused about which country made sense for my profile — too much information, no clarity. Vamshi broke it down by my background, budget and long-term plans, and by the end I knew which countries to focus on and which to skip. Practical and realistic — not someone selling a dream.",
-          name:"Priya Mehta", meta:"Country selection & career clarity", stars:5, tag:"1:1 call" },
-        { q:"With around 15 years' experience in India, my worry was starting over abroad without wasting it. Vamshi organized Australia into smaller steps — positioning, skills, job-market research and networking. I came in with 20 questions and left with a much clearer roadmap.",
-          name:"Harshita Kokde", meta:"~15 yrs experience · Australia pathway", stars:5, tag:"1:1 call" },
-        { q:"Most of what I found online about pharma in Europe was very generic. Vamshi showed me how to research opportunities country by country, shortlist companies and position my experience — and he didn't promise a job or visa. That clarity alone saved me a lot of time.",
-          name:"Sneha Rao", meta:"Pharma opportunities in Europe", stars:4, tag:"1:1 call" },
-        { q:"As a fresher I genuinely didn't know where to start — hundreds of internships and jobs, no strategy. We went through what to focus on first, how to improve my profile and how to find opportunities that match my background. Simple advice, but finally everything felt organized.",
-          name:"Abhishek Thakur", meta:"Fresher · internships & jobs abroad", stars:5, tag:"1:1 call" },
-        { q:"I started with one of Vamshi's paid guides before booking a call. I expected a generic PDF, but it gave me a structured starting point — where to search and what to research before choosing a country. It helped me prepare, and I eventually booked a call too.",
-          name:"Rohan Verma", meta:"Paid guide → 1:1 call", stars:5, tag:"Paid guide" },
-        { q:"I had a great conversation with Vamshi about opportunities to work and build a career in the EU. He has excellent knowledge of different European countries and gave practical, honest guidance on where to start, how to approach the job search, and visa considerations — it gave me real clarity and a clear starting point. Highly recommended.",
-          name:"Vamshi A.", meta:"16 yrs in the US · in tech, planning an EU move", stars:5, tag:"Verified review" }
-      ];
-      function stars(n){ n=n||5; var s=''; for(var i=0;i<5;i++){ s+= (i<n?'<span>★</span>':'<span class="tw-star-d">★</span>'); } return '<div class="tw-stars">'+s+'</div>'; }
-      function card(r){
-        var initial=(r.name||'?').trim().charAt(0).toUpperCase();
-        var av = r.photo ? '<img class="tw-av" src="'+r.photo+'" alt="'+r.name+'">' : '<span class="tw-av">'+initial+'</span>';
-        return '<div class="tw-card">'+stars(r.stars)+'<p class="tw-q">'+r.q+'</p><div class="tw-by">'+av+
-          '<div><div class="tw-name">'+r.name+'</div><div class="tw-meta">'+(r.meta||'')+'</div></div>'+
-          (r.tag?'<span class="tw-badge">'+r.tag+'</span>':'')+'</div></div>';
-      }
-      if(REVIEWS.length>=3){
-        // duplicate the set so the marquee loops seamlessly (translateX -50%)
-        track.innerHTML = (REVIEWS.map(card).join('')) + (REVIEWS.map(card).join(''));
-        track.classList.add('tw-anim');
-      } else {
-        track.innerHTML = REVIEWS.map(card).join('');
-        track.classList.add('tw-static');
-      }
-    })();
-    </script>
-  </section>
 
   <section class="soc">
     <div class="w">
@@ -1630,7 +1631,7 @@ select.ff{cursor:pointer}
         <a class="soc-card soc-ig" href="https://instagram.com/vamshi.indianabroad" target="_blank" rel="noopener">
           <span class="soc-ico">📸</span>
           <div class="soc-plat">Instagram</div>
-          <div class="soc-big">32,000+ strong</div>
+          <div class="soc-big">43,700+ strong</div>
           <div class="soc-desc">Daily job drops, visa changes, and real abroad stories. This is where the community lives.</div>
           <span class="soc-btn">Follow @vamshi.indianabroad →</span>
         </a>
@@ -1643,7 +1644,7 @@ select.ff{cursor:pointer}
         </a>
       </div>
       <div class="soc-stats">
-        <div class="soc-stat"><div class="soc-sv">32K+</div><div class="soc-sl">Instagram Followers</div></div>
+        <div class="soc-stat"><div class="soc-sv">43.7K+</div><div class="soc-sl">Instagram Followers</div></div>
         <div class="soc-stat"><div class="soc-sv">3M+</div><div class="soc-sl">Profile Views</div></div>
         <div class="soc-stat"><div class="soc-sv">280+</div><div class="soc-sl">Students Guided</div></div>
         <div class="soc-stat"><div class="soc-sv">20+</div><div class="soc-sl">Countries Mapped</div></div>
@@ -2136,7 +2137,7 @@ select.ff{cursor:pointer}
     <!-- PROOF -->
     <div class="sto-proof">
       <div class="sto-proof-stars">★★★★★</div>
-      <p>“Practical and realistic — not someone selling a dream.” Trusted by a <b>32,000-strong</b> community across Instagram &amp; YouTube.</p>
+      <p>“Practical and realistic — not someone selling a dream.” Trusted by a <b>43,700-strong</b> community across Instagram &amp; YouTube.</p>
     </div>
 
     <!-- HONESTY NOTE -->
@@ -2201,8 +2202,8 @@ select.ff{cursor:pointer}
 <div id="book" class="page">
 <style>
 .bkv{
-  --bg:#F8FAFC;--ink:#0F172A;--sub:#64748B;--indigo:#4F46E5;--indigo2:#6366F1;
-  --teal2:#14B8A6;--amber:#F59E0B;--card:#FFFFFF;--line:#E2E8F0;--line2:#EEF2F7;
+  --bg:#0a0c14;--ink:#f3f5f9;--sub:#99a3b8;--indigo:#6d67f5;--indigo2:#8b8cf7;
+  --teal2:#2fd0bd;--amber:#F59E0B;--card:#12151f;--line:#252c3d;--line2:#1a2030;
   --in1:#FF9933;--in2:#FF6B6B;
   background:var(--bg);color:var(--ink);min-height:100vh;
   font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;
@@ -2229,7 +2230,7 @@ select.ff{cursor:pointer}
 .bkv .b-primary{background:linear-gradient(135deg,var(--indigo),var(--indigo2));color:#fff;
   box-shadow:0 12px 26px -12px rgba(79,70,229,.65)}
 .bkv .b-primary:hover{transform:translateY(-2px);box-shadow:0 18px 34px -12px rgba(79,70,229,.7)}
-.bkv .b-ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+.bkv .b-ghost{background:var(--card);color:var(--ink);border:1.5px solid var(--line)}
 .bkv .b-ghost:hover{border-color:var(--indigo);color:var(--indigo);transform:translateY(-2px)}
 .bkv .b-yt{background:linear-gradient(135deg,#FF3B3B,#CC0000);color:#fff;box-shadow:0 12px 26px -12px rgba(220,0,0,.6)}
 .bkv .b-yt:hover{transform:translateY(-2px);box-shadow:0 18px 34px -12px rgba(220,0,0,.65)}
@@ -2269,7 +2270,7 @@ select.ff{cursor:pointer}
 /* --- REGION SELECTOR --- */
 .bkv-region{text-align:center}
 .bkv-region h2{font-size:clamp(22px,3vw,30px)}
-.bkv-toggle{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:18px;padding:6px;
+.bkv-toggle{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:6px;
   margin:22px auto 0;position:relative;box-shadow:0 6px 20px -12px rgba(15,23,42,.18);gap:4px}
 .bkv-toggle button{position:relative;z-index:2;display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;
   color:var(--sub);padding:13px 26px;border-radius:13px;transition:color .25s;min-height:50px}
@@ -2304,7 +2305,7 @@ select.ff{cursor:pointer}
 .bkv-card .ptag{color:var(--ink);font-size:15px;font-weight:600;margin-top:16px;line-height:1.5}
 .bkv-card .pbest{color:var(--indigo);font-size:12.5px;font-weight:700;margin-top:8px}
 .bkv-card ul{list-style:none;padding:0;margin:20px 0 24px;display:grid;gap:11px}
-.bkv-card li{display:flex;gap:11px;font-size:14px;color:#334155;line-height:1.5}
+.bkv-card li{display:flex;gap:11px;font-size:14px;color:var(--sub);line-height:1.5}
 .bkv-card li .ck{flex-shrink:0;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;
   font-size:11px;font-weight:800;color:#fff;margin-top:1px}
 .bkv-card .pcta{margin-top:auto}
@@ -2325,7 +2326,7 @@ select.ff{cursor:pointer}
 
 .reg-india .badge-reg{background:linear-gradient(135deg,rgba(255,153,51,.14),rgba(255,107,107,.14));color:#E85D3D}
 .reg-india .bkv-card .ck{background:linear-gradient(135deg,var(--in1),var(--in2))}
-.reg-india .bkv-card .pprice{color:#0F172A}
+.reg-india .bkv-card .pprice{color:var(--ink)}
 .reg-india .bkv-card.pop::before{background:linear-gradient(135deg,var(--in1),var(--in2))}
 .reg-india .bkv-card.pop{box-shadow:0 30px 60px -26px rgba(255,107,107,.5)}
 .reg-india .bkv-card .pcta .b-primary{background:linear-gradient(135deg,var(--in1),var(--in2));box-shadow:0 12px 26px -12px rgba(255,107,107,.6)}
@@ -2375,7 +2376,7 @@ select.ff{cursor:pointer}
 .bkv-bcol.no{border-top:4px solid #F87171}
 .bkv-bcol h3{font-size:18px;margin-bottom:16px}
 .bkv-bcol ul{list-style:none;padding:0;margin:0;display:grid;gap:12px}
-.bkv-bcol li{display:flex;gap:11px;font-size:14.5px;color:#334155;line-height:1.5}
+.bkv-bcol li{display:flex;gap:11px;font-size:14.5px;color:var(--sub);line-height:1.5}
 .bkv-bcol li .m{flex-shrink:0;font-weight:800}
 .bkv-bcol.yes li .m{color:var(--teal2)}
 .bkv-bcol.no li .m{color:#EF4444}
@@ -2399,12 +2400,12 @@ select.ff{cursor:pointer}
 .bkv-final h2{color:#fff;font-size:clamp(26px,3.6vw,40px);position:relative}
 .bkv-final p{color:rgba(255,255,255,.9);font-size:16px;margin:16px auto 0;max-width:520px;position:relative}
 .bkv-final .fcta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px;position:relative}
-.bkv-final .fcta .b{background:#fff;color:var(--indigo)}
+.bkv-final .fcta .b{background:var(--card);color:var(--indigo)}
 .bkv-final .fcta .b:hover{transform:translateY(-2px);box-shadow:0 18px 34px -14px rgba(0,0,0,.4)}
 
 /* --- DISCLAIMER + FOOTER --- */
-.bkv-disc{background:#F1F5F9;border:1px solid var(--line);border-radius:16px;padding:22px 24px;
-  color:#64748B;font-size:12.5px;line-height:1.75;max-width:900px;margin:0 auto}
+.bkv-disc{background:var(--line2);border:1px solid var(--line);border-radius:16px;padding:22px 24px;
+  color:var(--sub);font-size:12.5px;line-height:1.75;max-width:900px;margin:0 auto}
 .bkv-disc b{color:#475569}
 .bkv-policies{max-width:900px;margin:22px auto 0;color:#94A3B8;font-size:12px;line-height:1.8}
 .bkv-foot{text-align:center;padding:40px 0 60px;color:#94A3B8;font-size:12.5px}
@@ -2414,7 +2415,7 @@ select.ff{cursor:pointer}
   padding:24px;overflow-y:auto;background:rgba(15,23,42,.55);backdrop-filter:blur(6px)}
 .bkv-modal.on{display:flex;animation:bkvfade .25s ease}
 @keyframes bkvfade{from{opacity:0}to{opacity:1}}
-.bkv-sheet{background:#fff;border-radius:24px;max-width:560px;width:100%;margin:auto;padding:0;overflow:hidden;
+.bkv-sheet{background:var(--card);border-radius:24px;max-width:560px;width:100%;margin:auto;padding:0;overflow:hidden;
   box-shadow:0 40px 80px -30px rgba(15,23,42,.6);animation:bkvup .35s cubic-bezier(.16,1,.3,1)}
 @keyframes bkvup{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
 .bkv-sheet-head{padding:24px 26px;color:#fff;position:relative}
@@ -2430,12 +2431,12 @@ select.ff{cursor:pointer}
 .bkv-form .fld{margin-bottom:16px}
 .bkv-form label{display:block;font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:7px}
 .bkv-form label .req{color:#EF4444}
-.bkv-form input,.bkv-form select,.bkv-form textarea{width:100%;background:#F8FAFC;border:1.5px solid var(--line);
+.bkv-form input,.bkv-form select,.bkv-form textarea{width:100%;background:var(--bg);border:1.5px solid var(--line);
   border-radius:12px;padding:13px 15px;font-size:14.5px;color:var(--ink);font-family:inherit;transition:border-color .2s,background .2s}
-.bkv-form input:focus,.bkv-form select:focus,.bkv-form textarea:focus{outline:none;border-color:var(--indigo);background:#fff}
+.bkv-form input:focus,.bkv-form select:focus,.bkv-form textarea:focus{outline:none;border-color:var(--indigo);background:var(--card)}
 .bkv-form textarea{resize:vertical;min-height:84px}
 .bkv-form .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.bkv-check{display:flex;gap:11px;align-items:flex-start;background:#F8FAFC;border:1px solid var(--line);border-radius:12px;padding:14px}
+.bkv-check{display:flex;gap:11px;align-items:flex-start;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px}
 .bkv-check input{width:auto;margin-top:2px;flex-shrink:0}
 .bkv-check span{font-size:12.5px;color:var(--sub);line-height:1.6}
 .bkv-form .err{color:#EF4444;font-size:12.5px;margin-top:8px;display:none}
@@ -2443,7 +2444,7 @@ select.ff{cursor:pointer}
 .bkv-success .em{font-size:52px;display:block;margin-bottom:14px}
 .bkv-success h3{font-size:24px}
 .bkv-success p{color:var(--sub);font-size:14.5px;margin:12px auto 0;max-width:380px;line-height:1.7}
-.bkv-spin{display:inline-block;width:17px;height:17px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;
+.bkv-spin{display:inline-block;width:17px;height:17px;border:2.5px solid rgba(255,255,255,.4);border-top-color:var(--card);
   border-radius:50%;animation:bkvspin .7s linear infinite}
 @keyframes bkvspin{to{transform:rotate(360deg)}}
 
@@ -2484,7 +2485,7 @@ select.ff{cursor:pointer}
 
       <!-- 2. TRUST COUNTERS -->
       <div class="bkv-counters rv">
-        <div class="bkv-count"><b data-count="32" data-suffix="K+">32K+</b><span>Instagram Followers</span></div>
+        <div class="bkv-count"><b data-count="43.7" data-suffix="K+">43.7K+</b><span>Instagram Followers</span></div>
         <div class="bkv-count"><b data-count="3" data-suffix="M+">3M+</b><span>Profile Views</span></div>
         <div class="bkv-count"><b>Global</b><span>Student Audience</span></div>
       </div>
@@ -2562,21 +2563,21 @@ select.ff{cursor:pointer}
   <style>
   .tm-eyebrow{background:linear-gradient(135deg,rgba(79,70,229,.12),rgba(20,184,166,.12));color:var(--indigo)}
   .tm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(236px,1fr));gap:18px;margin-top:34px;align-items:stretch}
-  .tm-card{background:#fff;border:1px solid #e2e8f0;border-radius:22px;padding:28px 24px;display:flex;flex-direction:column;position:relative;box-shadow:0 2px 6px rgba(15,23,42,.05);transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
+  .tm-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px 24px;display:flex;flex-direction:column;position:relative;box-shadow:0 2px 6px rgba(15,23,42,.05);transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
   .tm-card:hover{transform:translateY(-6px);box-shadow:0 26px 48px -26px rgba(79,70,229,.3)}
   .tm-card.pop{border:1.5px solid #4f46e5;box-shadow:0 26px 52px -26px rgba(79,70,229,.42)}
   @media(min-width:721px){.tm-card.pop{transform:scale(1.03)}.tm-card.pop:hover{transform:scale(1.03) translateY(-6px)}}
   .tm-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#4f46e5,#14b8a6);color:#fff;font-size:11px;font-weight:800;letter-spacing:.4px;padding:6px 16px;border-radius:100px;white-space:nowrap;box-shadow:0 10px 22px -10px rgba(79,70,229,.5)}
-  .tm-name{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#64748b}
-  .tm-price{font-size:40px;font-weight:800;color:#0f172a;margin-top:10px;letter-spacing:-.02em;line-height:1}
-  .tm-price small{font-size:15px;font-weight:600;color:#64748b}
-  .tm-dur{color:#64748b;font-size:12.5px;font-weight:600;margin-top:4px}
-  .tm-tag{color:#334155;font-size:14px;line-height:1.5;margin-top:14px}
+  .tm-name{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--sub)}
+  .tm-price{font-size:40px;font-weight:800;color:var(--ink);margin-top:10px;letter-spacing:-.02em;line-height:1}
+  .tm-price small{font-size:15px;font-weight:600;color:var(--sub)}
+  .tm-dur{color:var(--sub);font-size:12.5px;font-weight:600;margin-top:4px}
+  .tm-tag{color:var(--sub);font-size:14px;line-height:1.5;margin-top:14px}
   .tm-card ul{list-style:none;padding:0;margin:16px 0 22px;display:grid;gap:9px}
   .tm-card li{display:flex;gap:9px;font-size:13.5px;color:#475569;line-height:1.45}
   .tm-card li .ck{flex-shrink:0;width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#4f46e5,#14b8a6);color:#fff;display:grid;place-items:center;font-size:10px;font-weight:800;margin-top:1px}
   .tm-cta{margin-top:auto}
-  .tm-note{text-align:center;color:#64748b;font-size:13px;margin-top:26px;line-height:1.6}
+  .tm-note{text-align:center;color:var(--sub);font-size:13px;margin-top:26px;line-height:1.6}
   .tm-note a{color:#4f46e5;font-weight:700;text-decoration:none}
   .tm-note a:hover{text-decoration:underline}
   </style>
@@ -2661,9 +2662,9 @@ select.ff{cursor:pointer}
     <div class="wrap">
       <div class="bkv-cred rv">
         <h2>Practical Guidance From Someone Who Understands the Journey</h2>
-        <p class="body">Vamshi, the founder of KOGOS, is a global-career content creator and researcher who shares curated opportunities, visa insights, and practical career direction with a community of more than 32,000 across Instagram and YouTube.</p>
+        <p class="body">Vamshi, the founder of KOGOS, is a global-career content creator and researcher who shares curated opportunities, visa insights, and practical career direction with a community of more than 43,700 across Instagram and YouTube.</p>
         <div class="cr">
-          <div><b>32K+</b><span>Instagram Followers</span></div>
+          <div><b>43.7K+</b><span>Instagram Followers</span></div>
           <div><b>3M+</b><span>Profile Views</span></div>
           <div><b>Research-Driven</b><span>Guidance</span></div>
         </div>
@@ -2673,12 +2674,12 @@ select.ff{cursor:pointer}
           <div class="bkv-quote-by">Experienced professional, India<span> · Verified Topmate review</span></div>
         </div>
         <style>
-        .bkv-quote{max-width:640px;margin:28px auto 0;background:#fff;border:1px solid #e2e8f0;border-radius:20px;
+        .bkv-quote{max-width:640px;margin:28px auto 0;background:var(--card);border:1px solid var(--line);border-radius:20px;
           padding:30px 32px 26px;text-align:left;position:relative;box-shadow:0 14px 40px -28px rgba(15,23,42,.3)}
         .bkv-quote-mark{position:absolute;top:10px;left:22px;font-family:var(--serif);font-size:68px;color:rgba(79,70,229,.16);line-height:1}
-        .bkv-quote p{position:relative;color:#334155;font-size:15.5px;line-height:1.7;margin:0}
-        .bkv-quote-by{margin-top:16px;font-size:13px;font-weight:700;color:#0f172a}
-        .bkv-quote-by span{color:#64748b;font-weight:500}
+        .bkv-quote p{position:relative;color:var(--sub);font-size:15.5px;line-height:1.7;margin:0}
+        .bkv-quote-by{margin-top:16px;font-size:13px;font-weight:700;color:var(--ink)}
+        .bkv-quote-by span{color:var(--sub);font-weight:500}
         </style>
       </div>
     </div>
@@ -2741,7 +2742,7 @@ select.ff{cursor:pointer}
         <b>Disclaimer:</b> This service provides general educational information, independent research, and personal guidance. It is not legal, immigration, financial, admissions, or employment advice. KOGOS does not guarantee any visa, admission, internship, sponsorship, interview, or job outcome. Immigration and employment decisions should be verified through official government sources or qualified professionals.
       </div>
       <div class="bkv-policies rv">
-        <b style="color:#64748B">Booking policies:</b> Bookings may be rescheduled once with at least 12 hours' notice. Missed sessions and late cancellations are generally non-refundable. Late arrivals reduce available session time. Sessions will not be recorded without permission. Follow-up support is limited to what is specifically included in the selected plan. <em>(Policies are editable placeholders and may be updated.)</em>
+        <b style="color:var(--sub)">Booking policies:</b> Bookings may be rescheduled once with at least 12 hours' notice. Missed sessions and late cancellations are generally non-refundable. Late arrivals reduce available session time. Sessions will not be recorded without permission. Follow-up support is limited to what is specifically included in the selected plan. <em>(Policies are editable placeholders and may be updated.)</em>
       </div>
       <div class="bkv-foot">© 2026 KOGOS · vamshi.indianabroad@gmail.com · kogos.co@gmail.com</div>
     </div>
@@ -3156,7 +3157,7 @@ select.ff{cursor:pointer}
   </div>
   <div class="w pt72 pb72">
     <div class="bsg">
-      <div class="bsc"><div class="bsv">32K+</div><div class="bsl">Instagram Followers</div></div>
+      <div class="bsc"><div class="bsv">43.7K+</div><div class="bsl">Instagram Followers</div></div>
       <div class="bsc"><div class="bsv">3M+</div><div class="bsl">Profile Views</div></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:44px">
