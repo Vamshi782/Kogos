@@ -952,6 +952,7 @@ select.ff{cursor:pointer}
   <div class="nav-links">
     <a onclick="go('about')" data-nav="about">About</a>
     <a onclick="go('resources')" data-nav="resources">Free Guides</a>
+    <a onclick="go('opportunities')" data-nav="opportunities">Opportunities</a>
     <a onclick="go('courses')" data-nav="courses">Courses</a>
     <a onclick="go('content')" data-nav="content">Content</a>
     <a onclick="go('faq')" data-nav="faq">FAQ</a>
@@ -964,6 +965,7 @@ select.ff{cursor:pointer}
 <div id="mob">
   <a onclick="go('about');toggleMob()" data-nav="about">About</a>
   <a onclick="go('resources');toggleMob()" data-nav="resources">Free Guides</a>
+  <a onclick="go('opportunities');toggleMob()" data-nav="opportunities">Opportunities</a>
   <a onclick="go('courses');toggleMob()" data-nav="courses">Courses</a>
   <a onclick="go('content');toggleMob()" data-nav="content">Content</a>
   <a onclick="go('faq');toggleMob()" data-nav="faq">FAQ</a>
@@ -1761,6 +1763,132 @@ select.ff{cursor:pointer}
     </div>
   </div>
   <footer><div class="w"><div class="fbot"><div class="fc2">2026 KOGOS - All guides are free. Always.</div></div></div></footer>
+</div>
+
+<!-- ============================================================
+     LIVE OPPORTUNITIES  (curated board — scholarships, PhDs, work visas, job platforms)
+     Data-driven like the guides page. Every link points to the official source.
+     ============================================================ -->
+<div id="opportunities" class="page">
+  <div class="ih w">
+    <div class="ey" style="color:var(--k-teal)">Updated regularly · Always free</div>
+    <h1>Live Opportunities</h1>
+    <p>A hand-picked board of real scholarships, fully-funded PhDs, work-visa routes and job platforms for Indians going abroad. Every link goes straight to the official source — filter by what you're after.</p>
+  </div>
+  <div class="w pt72 pb72">
+    <div class="opp-filter" id="oppFilter"></div>
+    <div class="opp-grid" id="oppGrid"></div>
+    <p class="opp-note">Deadlines and eligibility change every cycle — always confirm the latest details on the official page before you apply.</p>
+
+    <div class="opp-cta">
+      <h3>New opportunities, every week</h3>
+      <p>Scholarships open and visa rules change fast. Join the list and we'll email the ones that fit you — study or work, in your part of the world.</p>
+      <form class="ef" style="justify-content:center" onsubmit="handleEmail(event,'esOpp')">
+        <input class="ei ff" type="email" name="email" placeholder="your@email.com" required/>
+        <button class="esb" type="submit">Notify me →</button>
+      </form>
+      <div class="esucc" id="esOpp">You're on the list — check your inbox!</div>
+    </div>
+
+    <style>
+    .opp-filter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;justify-content:center}
+    .opp-chip{font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--text);background:var(--s1);
+      border:1px solid var(--k-border-2);border-radius:var(--k-r-pill);padding:8px 16px;cursor:pointer;
+      transition:color var(--k-dur) var(--k-ease),background var(--k-dur) var(--k-ease),border-color var(--k-dur) var(--k-ease)}
+    .opp-chip:hover{border-color:var(--k-gold);color:var(--white)}
+    .opp-chip.on{background:var(--k-gold);border-color:var(--k-gold);color:var(--k-navy);font-weight:700}
+    .opp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+    .oc{position:relative;display:flex;flex-direction:column;overflow:hidden;text-decoration:none;
+      background:linear-gradient(180deg,var(--s2),var(--s1));border:1px solid var(--k-border-2);
+      border-radius:var(--k-r-lg);padding:22px;
+      transition:transform var(--k-dur) var(--k-ease-emph),box-shadow var(--k-dur) var(--k-ease),border-color var(--k-dur) var(--k-ease)}
+    .oc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+      background:linear-gradient(180deg,var(--k-gold),var(--k-teal));transform:scaleY(0);transform-origin:top;
+      transition:transform var(--k-dur) var(--k-ease)}
+    .oc:hover{transform:translateY(-4px);border-color:transparent;
+      box-shadow:var(--k-shadow-md),0 0 0 1px rgba(232,176,64,.32)}
+    .oc:hover::before{transform:scaleY(1)}
+    .oc:hover .oc-go{color:var(--k-gold);transform:translateX(3px)}
+    .oc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:14px}
+    .oc-icon{font-size:30px;line-height:1}
+    .oc-badge{font-family:var(--mono);font-size:8.5px;letter-spacing:1.3px;text-transform:uppercase;
+      padding:5px 9px;border-radius:var(--k-r-pill);font-weight:700;white-space:nowrap;flex-shrink:0}
+    .oc-b-sch{color:#e8b040;background:rgba(232,176,64,.12);border:1px solid rgba(232,176,64,.32)}
+    .oc-b-phd{color:#7cc4ff;background:rgba(124,196,255,.1);border:1px solid rgba(124,196,255,.3)}
+    .oc-b-work{color:#4bd4a2;background:rgba(75,212,162,.1);border:1px solid rgba(75,212,162,.3)}
+    .oc-b-job{color:#c9a6ff;background:rgba(201,166,255,.1);border:1px solid rgba(201,166,255,.3)}
+    .oc-title{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--white);line-height:1.25;margin-bottom:5px}
+    .oc-org{font-family:var(--mono);font-size:9.5px;letter-spacing:.6px;text-transform:uppercase;color:var(--k-teal);margin-bottom:13px}
+    .oc-desc{font-size:12.8px;color:var(--text);line-height:1.6;margin-bottom:16px;flex:1}
+    .oc-meta{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:11px;color:var(--muted);margin-bottom:15px}
+    .oc-meta span{display:inline-flex;align-items:center;gap:5px}
+    .oc-go{font-family:var(--mono);font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--k-text-muted);
+      transition:color var(--k-dur) var(--k-ease),transform var(--k-dur) var(--k-ease)}
+    .opp-note{text-align:center;font-size:12px;color:var(--k-text-muted);margin-top:30px;font-style:italic;max-width:640px;margin-left:auto;margin-right:auto}
+    .opp-cta{margin-top:48px;text-align:center;padding:44px 28px;background:var(--s1);
+      border:1px solid var(--k-border-2);border-radius:var(--k-r-lg)}
+    .opp-cta h3{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--white);margin-bottom:8px}
+    .opp-cta p{font-size:13.5px;color:var(--text);margin:0 auto 22px;max-width:520px;line-height:1.65}
+    </style>
+
+    <script>
+    /* ===== LIVE OPPORTUNITIES: curated board + filter (official sources only) ===== */
+    (function(){
+      const grid=document.getElementById('oppGrid'); if(!grid) return;
+      /* type → badge class + label */
+      const T={sch:['oc-b-sch','Scholarship'],phd:['oc-b-phd','PhD / Research'],work:['oc-b-work','Work Visa'],job:['oc-b-job','Job Platform']};
+      const OPPS=[
+        {icon:'🇬🇧',t:'sch',title:'Chevening Scholarship',org:'UK Government · Fully funded',cat:'Study',region:'United Kingdom',when:'Opens ~Aug',desc:'Fully-funded one-year Master’s in the UK — tuition, stipend, flights. For future leaders with work experience.',url:'https://www.chevening.org/scholarships/'},
+        {icon:'🇬🇧',t:'sch',title:'Commonwealth Scholarships',org:'UK Government · Fully funded',cat:'Study',region:'United Kingdom',when:'Annual',desc:'Fully-funded Master’s and PhD for students from India and other Commonwealth countries. Strong development focus.',url:'https://cscuk.fcdo.gov.uk/scholarships/'},
+        {icon:'🇩🇪',t:'sch',title:'DAAD Scholarships',org:'Germany · Government',cat:'Study',region:'Germany',when:'Varies by program',desc:'Germany’s national scholarship body — Master’s, PhD and research grants with monthly stipends and low/zero tuition.',url:'https://www.daad.de/en/study-and-research-in-germany/scholarships/'},
+        {icon:'🇪🇺',t:'sch',title:'Erasmus Mundus Joint Masters',org:'European Union · Fully funded',cat:'Study',region:'Europe (multi-country)',when:'Opens ~Oct',desc:'Study in 2–3 European countries on one fully-funded Master’s — tuition, travel and a generous monthly allowance.',url:'https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters-scholarships'},
+        {icon:'🇺🇸',t:'sch',title:'Fulbright-Nehru Master’s',org:'USIEF · Fully funded',cat:'Study',region:'United States',when:'Deadline ~May',desc:'Prestigious fully-funded Master’s in the US for Indian citizens with leadership potential and 3+ years’ experience.',url:'https://www.usief.org.in/fulbright-nehru-masters-fellowships/'},
+        {icon:'🇫🇷',t:'sch',title:'Eiffel Excellence Scholarship',org:'France · Campus France',cat:'Study',region:'France',when:'Deadline ~Jan',desc:'French government scholarship for Master’s and PhD — monthly stipend, travel and cover for top international students.',url:'https://www.campusfrance.org/en/eiffel-scholarship-program-of-excellence'},
+        {icon:'🇸🇪',t:'sch',title:'Swedish Institute Scholarships',org:'Sweden · SISGP',cat:'Study',region:'Sweden',when:'Opens ~Feb',desc:'Fully-funded Master’s in Sweden for global professionals — tuition, living costs, insurance and a travel grant.',url:'https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/'},
+        {icon:'🇦🇺',t:'sch',title:'Australia Awards',org:'Australian Government',cat:'Study',region:'Australia',when:'Annual',desc:'Long-standing fully-funded scholarships for study and research at Australian universities and institutions.',url:'https://www.dfat.gov.au/people-to-people/australia-awards'},
+        {icon:'🔬',t:'phd',title:'Max Planck PhD (IMPRS)',org:'Germany · Fully funded',cat:'Research',region:'Germany',when:'Rolling intakes',desc:'Fully-funded, salaried PhDs at world-leading Max Planck research institutes — zero tuition, English programs.',url:'https://www.mpg.de/en/imprs'},
+        {icon:'🇪🇺',t:'phd',title:'Marie Skłodowska-Curie Actions',org:'European Union · Research',cat:'Research',region:'Europe',when:'Annual calls',desc:'The EU’s flagship research fellowships — funded doctoral networks and postdoctoral positions across Europe.',url:'https://marie-sklodowska-curie-actions.ec.europa.eu/'},
+        {icon:'🇩🇪',t:'work',title:'Germany Opportunity Card',org:'Chancenkarte · Points-based',cat:'Work',region:'Germany',when:'Open now',desc:'A points-based job-seeker visa: move to Germany to look for skilled work, no job offer needed up front.',url:'https://www.make-it-in-germany.com/en/visa-residence/types/opportunity-card'},
+        {icon:'🇪🇺',t:'work',title:'EU Blue Card',org:'European Union · Skilled work',cat:'Work',region:'Europe',when:'Open now',desc:'The fast-track work-and-residence permit for university graduates with a qualifying job offer in the EU.',url:'https://www.make-it-in-germany.com/en/visa-residence/types/eu-blue-card'},
+        {icon:'🇳🇱',t:'work',title:'Netherlands Highly Skilled Migrant',org:'IND · Employer-sponsored',cat:'Work',region:'Netherlands',when:'Open now',desc:'The Dutch route for skilled professionals with a recognised sponsor employer — fast processing, family included.',url:'https://ind.nl/en/residence-permits/work/highly-skilled-migrant'},
+        {icon:'🇮🇪',t:'work',title:'Ireland Critical Skills Permit',org:'Government of Ireland',cat:'Work',region:'Ireland',when:'Open now',desc:'For in-demand roles (tech, engineering, health). A direct route to living and working in Ireland with a path to residency.',url:'https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/permit-types/critical-skills-employment-permit/'},
+        {icon:'🇨🇦',t:'work',title:'Canada Express Entry',org:'IRCC · Points-based PR',cat:'Work',region:'Canada',when:'Rolling draws',desc:'Canada’s points-based system for skilled workers — the main route to permanent residency for professionals.',url:'https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html'},
+        {icon:'🇦🇺',t:'work',title:'Australia Skilled Migration',org:'SkillSelect · Points-based',cat:'Work',region:'Australia',when:'Rolling invitations',desc:'Points-tested skilled visas (189/190/491) for professionals on Australia’s in-demand occupation lists.',url:'https://immi.homeaffairs.gov.au/visas/working-in-australia/skillselect'},
+        {icon:'🇬🇧',t:'work',title:'UK Global Talent Visa',org:'UK Government',cat:'Work',region:'United Kingdom',when:'Open now',desc:'For leaders and promising talent in tech, research and the arts — no job offer required, flexible route to settlement.',url:'https://www.gov.uk/global-talent'},
+        {icon:'🌐',t:'job',title:'EURES — European Job Mobility',org:'European Commission',cat:'Work',region:'Europe',when:'Live listings',desc:'The official EU portal for jobs across member states, with tools on living and working in each country.',url:'https://eures.europa.eu/index_en'},
+        {icon:'✈️',t:'job',title:'Relocate.me',org:'Visa-sponsored tech jobs',cat:'Work',region:'Global',when:'Live listings',desc:'A platform listing tech roles that come with visa sponsorship and relocation support — filter by country and stack.',url:'https://relocate.me/'},
+        {icon:'💼',t:'job',title:'Landing.jobs',org:'European tech careers',cat:'Work',region:'Europe',when:'Live listings',desc:'A European tech job marketplace with many relocation- and visa-friendly roles across the continent.',url:'https://landing.jobs/'}
+      ];
+      const CATS=['All','Scholarships','PhD & Research','Work Visas','Job Platforms'];
+      const CATMAP={'Scholarships':'sch','PhD & Research':'phd','Work Visas':'work','Job Platforms':'job'};
+      let cat='All';
+      const filt=document.getElementById('oppFilter');
+      filt.innerHTML=CATS.map(c=>`<button class="opp-chip${c==='All'?' on':''}" data-cat="${c}">${c}</button>`).join('');
+      filt.querySelectorAll('.opp-chip').forEach(b=>b.onclick=()=>{
+        cat=b.dataset.cat;
+        filt.querySelectorAll('.opp-chip').forEach(x=>x.classList.toggle('on',x===b));
+        render();
+      });
+      function render(){
+        const key=CATMAP[cat];
+        const list=OPPS.filter(o=>cat==='All'||o.t===key);
+        grid.innerHTML=list.map(o=>{
+          const b=T[o.t]||T.job;
+          return `<a class="oc" href="${o.url}" target="_blank" rel="noopener">
+            <div class="oc-top"><span class="oc-icon">${o.icon}</span><span class="oc-badge ${b[0]}">${b[1]}</span></div>
+            <div class="oc-title">${o.title}</div>
+            <div class="oc-org">${o.org}</div>
+            <div class="oc-desc">${o.desc}</div>
+            <div class="oc-meta"><span>🌍 ${o.region}</span><span>🗓 ${o.when}</span></div>
+            <span class="oc-go">Official site ↗</span>
+          </a>`;
+        }).join('');
+      }
+      render();
+    })();
+    </script>
+  </div>
+  <footer><div class="w"><div class="fbot"><div class="fc2">2026 KOGOS — Opportunities link to official sources. Always verify before applying.</div></div></div></footer>
 </div>
 
 <!-- SERVICES -->
